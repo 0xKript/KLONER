@@ -175,3 +175,37 @@ def test_toolchain_dir_can_live_outside_the_home(monkeypatch: pytest.MonkeyPatch
     monkeypatch.setenv("KLONER_TOOLCHAIN", str(tmp_path / "opt"))
     assert toolchain_dir(tmp_path / "home") == tmp_path / "opt"
     assert lock_path(tmp_path / "home") == tmp_path / "opt" / "toolchain.json"
+
+
+def test_client_profile_records_user_agent_and_proxy() -> None:
+    """Every sighting records the client profile used (T-17 selective serving, multi-vantage fetching)."""
+    from kloner.acquire.http import Http
+    from kloner.acquire.sources import _profile
+
+    h = Http("kloner-test/1", proxy="http://127.0.0.1:3128")
+    try:
+        p = _profile(h)
+    finally:
+        h.close()
+    assert p.user_agent == "kloner-test/1" and p.proxy == "http://127.0.0.1:3128"
+
+
+@pytest.mark.toolchain
+def test_an_unpinned_apksigner_jar_is_refused(rt: Any, monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    """INV-7: setup and doctor refuse any apksigner.jar whose SHA-256 is not the pinned one."""
+    import kloner.toolchain as tcmod
+    from kloner.doctor import run_doctor
+
+    bt = tmp_path / "sdk" / "build-tools" / "36.0.0"
+    (bt / "lib").mkdir(parents=True)
+    fake = bt / "lib" / "apksigner.jar"
+    fake.write_bytes(b"not the pinned apksig")
+    monkeypatch.setattr(tcmod, "find_build_tools", lambda home: (tmp_path / "sdk", bt, "36.0.0"))
+    with pytest.raises(ToolchainError, match="not the pinned value"):
+        tcmod.setup(tmp_path / "home", install_apkeep_binary=False, user_agent="kloner-tests")
+    import kloner.doctor as doctor_mod
+
+    tampered = replace(rt.toolchain(), apksigner_jar=str(fake))
+    monkeypatch.setattr(doctor_mod, "load_toolchain", lambda home: tampered)
+    apksig = next(c for c in run_doctor(rt, network=False) if c.name == "apksig")
+    assert apksig.status == "FAIL" and apksig.critical

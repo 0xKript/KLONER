@@ -111,6 +111,9 @@ def test_hunt_with_mocked_aptoide(fresh_rt: Runtime, server: dict[str, Any], tmp
     assert len(by_verdict[Verdict.FORGED]) == 1
     forged = by_verdict[Verdict.FORGED][0]
     assert "METADATA_MISMATCH" in forged.sightings[0].labels
+    # the forger's key also signed the impersonator: the two hostile copies are linked (§12)
+    assert "SHARED_FOREIGN_SIGNER" in forged.intel_labels
+    assert any(x["kind"] == "SHARED_FOREIGN_SIGNER" and "dev.kloner.fixture.lite" in x["packages"] for x in rep.intel)
     assert any("UNSTABLE_SOURCE" in s.labels for e in rep.samples for s in e.sightings)
     assert Verdict.INVALID in by_verdict and len(by_verdict[Verdict.GENUINE]) == 2
     imp = by_verdict[Verdict.IMPERSONATOR][0]
@@ -136,3 +139,9 @@ def test_survey_and_fetch(fresh_rt: Runtime, server: dict[str, Any], corpus: dic
     assert fresh_rt.anchors.get("dev.kloner.fixture.lite") is None  # a survey never writes an anchor
     rep = run_fetch(fresh_rt, ["https://pool.example/a2.apk"], P)
     assert rep.samples[0].evaluation.verdict == Verdict.FORGED and rep.exit_code == 10
+    profile = rep.samples[0].sightings[0].client_profile
+    assert profile is not None and profile.user_agent == fresh_rt.http().user_agent and profile.proxy is None
+    # a plain-HTTP link (a smishing link, say) is fetched but labeled
+    rep = run_fetch(fresh_rt, ["http://pool.example/a1.apk"], P)
+    assert rep.samples[0].evaluation.verdict == Verdict.GENUINE
+    assert "INSECURE_TRANSPORT" in rep.samples[0].sightings[0].labels

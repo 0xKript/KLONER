@@ -435,7 +435,7 @@ def run_selftest(rt: Runtime, mode: str = "standard", console: Console | None = 
             outcomes.append(metadata_case(rt, ctx))
             outcomes.append(reverify_case(rt, ctx))
             outcomes += agreement_cases(rt, ctx, mode)
-            n1, n2 = (1000, 200) if mode == "full" else (50, 30)
+            n1, n2 = (1000, 200) if mode == "full" else (200, 30)  # P-01: N = 200, --full 1000 (§18.3)
             outcomes += mutation_cases(rt, ctx, n1, n2)
     finally:
         shutil.rmtree(work, ignore_errors=True)
@@ -482,7 +482,9 @@ def anchor_cases(rt: Runtime, ctx: dict[str, Any]) -> list[Outcome]:
     before = existing.model_dump_json()
     try:
         anchor_methods.merge(existing, res, package=c.FIXTURE_PACKAGE, known_keys=rt.known_keys)
-        out.append(Outcome("C-35", "Anchor add with disjoint evidence", False, "merged", "CONFLICT (exit 3)"))
+        out.append(
+            Outcome("C-35", "Anchor add with disjoint evidence", False, "merged", "CONFLICT (exit 3)", level="anchor")
+        )
     except AnchorConflict:
         ok = existing.model_dump_json() == before
         out.append(
@@ -492,6 +494,7 @@ def anchor_cases(rt: Runtime, ctx: dict[str, Any]) -> list[Outcome]:
                 ok,
                 "CONFLICT (exit 3), nothing written",
                 "CONFLICT (exit 3)",
+                level="anchor",
             )
         )
     testkey = next(k for k, n in rt.known_keys.items() if n == "AOSP_TESTKEY")
@@ -508,10 +511,19 @@ def anchor_cases(rt: Runtime, ctx: dict[str, Any]) -> list[Outcome]:
     )
     try:
         anchor_methods.merge(None, res2, package=c.FIXTURE_PACKAGE, known_keys=rt.known_keys)
-        out.append(Outcome("C-36", "Anchor whose identity is a public test key", False, "accepted", "exit 3"))
+        out.append(
+            Outcome("C-36", "Anchor whose identity is a public test key", False, "accepted", "exit 3", level="anchor")
+        )
     except HygieneError:
         out.append(
-            Outcome("C-36", "Anchor whose identity is a public test key", True, "hygiene failure (exit 3)", "exit 3")
+            Outcome(
+                "C-36",
+                "Anchor whose identity is a public test key",
+                True,
+                "hygiene failure (exit 3)",
+                "exit 3",
+                level="anchor",
+            )
         )
     _ = V
     return out

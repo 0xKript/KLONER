@@ -5,6 +5,9 @@ from __future__ import annotations
 import json
 import os
 import shutil
+import threading
+from collections.abc import Iterator
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from typing import Any
 
@@ -41,12 +44,44 @@ def k(home: Path, *args: str) -> Any:
     return runner.invoke(app, ["--home", str(home), *args], catch_exceptions=False)
 
 
+@pytest.fixture()
+def webhook() -> Iterator[tuple[str, list[dict[str, Any]]]]:
+    """A local receiver for --notify-webhook; it records every JSON body it is sent."""
+    received: list[dict[str, Any]] = []
+
+    class Hook(BaseHTTPRequestHandler):
+        def do_POST(self) -> None:
+            body = self.rfile.read(int(self.headers.get("content-length", "0")))
+            received.append(json.loads(body))
+            self.send_response(204)
+            self.end_headers()
+
+        def log_message(self, format: str, *args: Any) -> None:
+            return
+
+    server = HTTPServer(("127.0.0.1", 0), Hook)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    try:
+        yield f"http://127.0.0.1:{server.server_address[1]}/hook", received
+    finally:
+        server.shutdown()
+        server.server_close()
+
+
 def test_version_and_help() -> None:
     assert runner.invoke(app, ["--version"]).output.startswith("kloner ")
     assert runner.invoke(app, ["--help"]).exit_code == 0
 
 
-def test_end_to_end(cli_home: Path, drop: Path, corpus: dict[str, Any], tmp_path: Path) -> None:
+def test_end_to_end(
+    cli_home: Path,
+    drop: Path,
+    corpus: dict[str, Any],
+    tmp_path: Path,
+    webhook: tuple[str, list[dict[str, Any]]],
+) -> None:
+    hook_url, posted = webhook
     # no anchor yet: usage error with the next command
     r = k(cli_home, "hunt", P, "--sources", "local", "--local", str(drop))
     assert r.exit_code == 2 and "kloner anchor add" in r.output
@@ -68,6 +103,8 @@ def test_end_to_end(cli_home: Path, drop: Path, corpus: dict[str, Any], tmp_path
     assert r.exit_code == 2 and "USER_ASSERTED" in r.output
 
     assert k(cli_home, "verify", str(corpus["files"]["C-01"]), "--package", P).exit_code == 0
+    js = k(cli_home, "--json", "verify", str(corpus["files"]["C-01"]), "--package", P)
+    assert js.exit_code == 0 and json.loads(js.output)["samples"][0]["evaluation"]["verdict"] == "GENUINE"
     r = k(cli_home, "verify", str(corpus["files"]["C-02"]), "--package", P)
     assert r.exit_code == 10 and "FORGED" in r.output
     r = k(cli_home, "verify", str(corpus["files"]["C-33"]))  # SOC triage: every brand profile is checked
@@ -86,9 +123,14 @@ def test_end_to_end(cli_home: Path, drop: Path, corpus: dict[str, Any], tmp_path
         str(out),
         "--format",
         "terminal,json,md,html,csv,iocs,stix21",
+        "--notify-webhook",
+        hook_url,
     )
     assert r.exit_code == 10, r.output
     assert "Coverage:" in r.output and "Exit 10" in r.output
+    assert len(posted) == 1 and set(posted[0]) == {"run", "summary", "coverage"}
+    assert posted[0]["summary"]["exit_code"] == 10 and posted[0]["summary"]["hostile"] > 0
+    assert posted[0]["coverage"].startswith("Evaluated ")
     for name in ("report.json", "report.md", "report.html", "samples.csv", "iocs.txt", "iocs.csv", "stix21.json"):
         assert (out / name).is_file(), name
     doc = json.loads((out / "report.json").read_text(encoding="utf-8"))
@@ -149,10 +191,13 @@ def test_end_to_end(cli_home: Path, drop: Path, corpus: dict[str, Any], tmp_path
         "json",
         "--out",
         str(tmp_path / "run2"),
+        "--notify-webhook",
+        hook_url,
     )
     assert r.exit_code == 0
     doc2 = json.loads((tmp_path / "run2" / "report.json").read_text(encoding="utf-8"))
     assert doc2["samples"] == []
+    assert len(posted) == 1  # nothing new and hostile: no notification
 
     r = k(cli_home, "export", "samples", "--run", run_id, "--out", str(tmp_path / "samples.zip"))
     assert r.exit_code in (0, 2)

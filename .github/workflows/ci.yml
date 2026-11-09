@@ -1,0 +1,63 @@
+# Lint, types, security lint, the test suite with its coverage gates (spec §18.7), the full self-test, and the
+# release SBOM (§16.8).
+#
+# GitHub's ubuntu-24.04 image ships JDK 17 and Android SDK build-tools 36.0.0 under $ANDROID_HOME (licenses
+# accepted by the image). `kloner setup` finds that SDK and refuses it unless lib/apksigner.jar matches the
+# pinned SHA-256. Actions are pinned by commit SHA.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      KLONER_FUZZ_ITERATIONS: "1000"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-java@77dd5b2ce225ea11469928ac317850245a74ae78 # v6.2.0
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+
+      - name: Install from the lock file
+        run: uv sync --frozen
+
+      - name: Lint and format
+        run: |
+          uv run ruff check src tests
+          uv run ruff format --check src tests
+
+      - name: Types
+        run: uv run mypy
+
+      - name: Security lint
+        run: uv run bandit -q -c pyproject.toml -r src
+
+      - name: Toolchain
+        run: |
+          uv run kloner setup
+          uv run kloner doctor
+
+      - name: Tests and coverage gates
+        run: |
+          uv run pytest --cov=kloner --cov-report=json:coverage.json --cov-report=
+          uv run python scripts/check_coverage.py coverage.json
+
+      - name: Self-test
+        run: uv run kloner selftest --full
+
+      - name: SBOM
+        run: uv run python scripts/build_sbom.py --out dist/kloner.cdx.json
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: sbom
+          path: dist/kloner.cdx.json
