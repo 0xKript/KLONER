@@ -209,3 +209,31 @@ def test_an_unpinned_apksigner_jar_is_refused(rt: Any, monkeypatch: pytest.Monke
     monkeypatch.setattr(doctor_mod, "load_toolchain", lambda home: tampered)
     apksig = next(c for c in run_doctor(rt, network=False) if c.name == "apksig")
     assert apksig.status == "FAIL" and apksig.critical
+
+
+def test_apkeep_download_is_checksum_verified(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    """A downloaded apkeep binary whose SHA-256 is not the pinned digest is discarded, never installed."""
+    import contextlib
+    from collections.abc import Iterator
+
+    import httpx
+
+    import kloner.toolchain as tcmod
+
+    class Resp:
+        def raise_for_status(self) -> None:
+            return None
+
+        def iter_bytes(self) -> Iterator[bytes]:
+            yield b"not the pinned apkeep"
+
+    @contextlib.contextmanager
+    def fake_stream(*args: Any, **kwargs: Any) -> Iterator[Resp]:
+        yield Resp()
+
+    monkeypatch.delenv("KLONER_TOOLCHAIN", raising=False)
+    monkeypatch.setattr(tcmod, "apkeep_asset", lambda: ("apkeep-x86_64-unknown-linux-gnu", "0" * 64))
+    monkeypatch.setattr(httpx, "stream", fake_stream)
+    with pytest.raises(ToolchainError, match="checksum mismatch"):
+        tcmod.install_apkeep(tmp_path, "kloner-tests")
+    assert not [p for p in (tmp_path / "toolchain" / "apkeep").rglob("*") if p.is_file()]
