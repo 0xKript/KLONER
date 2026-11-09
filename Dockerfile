@@ -8,6 +8,9 @@
 #
 # Run:   docker run --rm -v "$PWD/kloner-home:/kloner" kloner hunt <package>
 # Test:  docker run --rm kloner selftest --full
+#
+# /kloner holds the data (anchors, quarantine, database, reports, logs) and can be a host directory. The
+# toolchain lives in /opt/kloner/toolchain (KLONER_TOOLCHAIN), so mounting /kloner never hides it.
 
 FROM eclipse-temurin:17-jdk-jammy@sha256:057a0daec60e87c96571bf5c9c7792065bcb19e804d584cd37d4144038a35717 AS jdk
 
@@ -17,13 +20,14 @@ COPY --from=jdk /opt/java/openjdk /opt/java/openjdk
 ENV JAVA_HOME=/opt/java/openjdk \
     PATH="/opt/java/openjdk/bin:${PATH}" \
     KLONER_HOME=/kloner \
+    KLONER_TOOLCHAIN=/opt/kloner/toolchain \
     PYTHONDONTWRITEBYTECODE=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
 RUN groupadd --gid 10001 kloner \
  && useradd --uid 10001 --gid kloner --create-home --shell /usr/sbin/nologin kloner \
- && mkdir -p /kloner/toolchain/android-sdk/licenses \
- && chown -R kloner:kloner /kloner
+ && mkdir -p /kloner /opt/kloner/toolchain/android-sdk/licenses \
+ && chown -R kloner:kloner /kloner /opt/kloner
 
 WORKDIR /src
 COPY requirements.lock ./
@@ -34,7 +38,7 @@ COPY bridge ./bridge
 COPY data ./data
 RUN pip install --no-cache-dir --no-deps . && rm -rf /src
 
-COPY --chown=kloner:kloner docker/android-licenses/ /kloner/toolchain/android-sdk/licenses/
+COPY --chown=kloner:kloner docker/android-licenses/ /opt/kloner/toolchain/android-sdk/licenses/
 USER kloner
 WORKDIR /kloner
 ARG ACCEPT_ANDROID_SDK_LICENSE=no

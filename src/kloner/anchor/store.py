@@ -14,7 +14,9 @@ from pathlib import Path
 from kloner.intel.db import IntelDB
 from kloner.models import Anchor
 from kloner.util.canonical import canonical_sha256
+from kloner.util.logging import get_logger, log_event
 
+_log = get_logger("anchor")
 PACKAGE_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_]*(\.[A-Za-z0-9_]+)+$")
 
 
@@ -72,6 +74,15 @@ class AnchorStore:
         os.replace(tmp, p)
         if self.db is not None:
             self.db.put_anchor(anchor)
+        log_event(
+            _log,
+            "anchor saved",
+            event="anchor.save",
+            package=anchor.package,
+            record_sha256=anchor.record_sha256,
+            corroboration=anchor.corroboration,
+            identities=sorted(anchor.trusted()),
+        )
         return anchor
 
     def list(self) -> list[Anchor]:

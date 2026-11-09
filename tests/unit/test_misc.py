@@ -144,3 +144,34 @@ def test_export_requires_7zip_or_samples(rt: Any, monkeypatch: pytest.MonkeyPatc
     monkeypatch.setattr(sh, "which", lambda name: None)
     with pytest.raises(ValueError, match="7-Zip"):
         export_samples(rt, "no-run", "infected", None)
+
+
+def test_closed_stdout_keeps_the_run_exit_code(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    """`kloner hunt … | head` must still exit 10/11/0, not Python's 120 (found in the live trial)."""
+    from kloner.cli import exit_keeping_code
+
+    target = open(tmp_path / "stdout.txt", "w", encoding="utf-8")  # noqa: SIM115 - fd is replaced below
+
+    class ClosedPipe:
+        def flush(self) -> None:
+            raise BrokenPipeError(32, "Broken pipe")
+
+        def fileno(self) -> int:
+            return target.fileno()
+
+    monkeypatch.setattr(sys, "stdout", ClosedPipe())
+    with pytest.raises(SystemExit) as exc:
+        exit_keeping_code(10)
+    assert exc.value.code == 10
+    target.close()
+
+
+def test_toolchain_dir_can_live_outside_the_home(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    """The Docker image keeps its toolchain outside the /kloner data volume (D-051)."""
+    from kloner.toolchain import lock_path, toolchain_dir
+
+    monkeypatch.delenv("KLONER_TOOLCHAIN", raising=False)
+    assert toolchain_dir(tmp_path / "home") == tmp_path / "home" / "toolchain"
+    monkeypatch.setenv("KLONER_TOOLCHAIN", str(tmp_path / "opt"))
+    assert toolchain_dir(tmp_path / "home") == tmp_path / "opt"
+    assert lock_path(tmp_path / "home") == tmp_path / "opt" / "toolchain.json"

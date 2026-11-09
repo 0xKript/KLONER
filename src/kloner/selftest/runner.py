@@ -43,6 +43,9 @@ class Outcome:
     want: str
     detail: str = ""
     seconds: float = 0.0
+    # "file": a real file through the whole pipeline; "facts": decide() on real C-01 facts changed
+    # only in the data it sees (D-026); "anchor": the anchor merge/hygiene code on evidence records.
+    level: str = "file"
 
 
 def _check(case: c.Case, verdict: Verdict, labels: list[str]) -> tuple[bool, str]:
@@ -425,6 +428,7 @@ def run_selftest(rt: Runtime, mode: str = "standard", console: Console | None = 
                         f"{ev.verdict.value} {' '.join(ev.label_codes())}".strip(),
                         _want(case),
                         why or case.note,
+                        level="facts",
                     )
                 )
             outcomes += anchor_cases(rt, ctx)
@@ -436,14 +440,16 @@ def run_selftest(rt: Runtime, mode: str = "standard", console: Console | None = 
     finally:
         shutil.rmtree(work, ignore_errors=True)
     table = Table(box=None, header_style="bold")
-    for col in ("CASE", "RESULT", "GOT", "EXPECTED", "DETAIL"):
+    for col in ("CASE", "RESULT", "LEVEL", "GOT", "EXPECTED", "DETAIL"):
         table.add_column(col, overflow="fold")
     for o in sorted(outcomes, key=lambda o: o.case):
-        table.add_row(o.case, "[green]PASS[/]" if o.ok else "[red]FAIL[/]", o.got, o.want, o.detail)
+        table.add_row(o.case, "[green]PASS[/]" if o.ok else "[red]FAIL[/]", o.level, o.got, o.want, o.detail)
     console.print(table)
     failed = [o for o in outcomes if not o.ok]
+    n_facts = sum(1 for o in outcomes if o.level == "facts")
     console.print(
         f"selftest {mode}: {len(outcomes) - len(failed)}/{len(outcomes)} PASS in {time.monotonic() - t_all:.0f}s"
+        + (f" ({n_facts} decided at the facts level, see docs/DECISIONS.md D-026)" if n_facts else "")
     )
     _write_golden_projection(rt, outcomes)
     return not failed

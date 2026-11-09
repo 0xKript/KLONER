@@ -8,10 +8,11 @@ from __future__ import annotations
 
 import contextlib
 import json
+import os
 import sys
 from collections.abc import Callable
 from pathlib import Path
-from typing import TYPE_CHECKING, Annotated, Any, TypeVar
+from typing import TYPE_CHECKING, Annotated, Any, NoReturn, TypeVar
 
 import typer
 from rich.console import Console
@@ -829,7 +830,26 @@ def _intel_rows(kind: str, key: str) -> None:
 
 
 def main() -> None:
-    app()
+    try:
+        app()
+    except SystemExit as e:
+        exit_keeping_code(e.code)
+    exit_keeping_code(0)
+
+
+def exit_keeping_code(code: str | int | None) -> NoReturn:
+    """Exit with the run's own code even when the reader closed stdout early (``kloner … | head``).
+
+    Python would turn the failed final flush into exit status 120, which is not a KLONER exit code;
+    CI depends on 0/10/11. Reports and the database are already written at this point.
+    """
+    try:
+        sys.stdout.flush()
+    except (BrokenPipeError, ValueError):
+        with contextlib.suppress(OSError, ValueError):
+            devnull = os.open(os.devnull, os.O_WRONLY)
+            os.dup2(devnull, sys.stdout.fileno())
+    sys.exit(code)
 
 
 if __name__ == "__main__":

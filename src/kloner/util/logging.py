@@ -9,6 +9,7 @@ import json
 import logging
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit, urlunsplit
 
 from kloner.util.timeutil import now_iso
 
@@ -57,6 +58,23 @@ def setup_logging(home: Path, run_id: str | None, debug: bool = False) -> Path:
     logger.addHandler(handler)
     logger.propagate = False
     return path
+
+
+def bind_run(run_id: str) -> None:
+    """Tag every following line with the run that has just started (the file stays per invocation)."""
+    for h in logging.getLogger(LOGGER_NAME).handlers:
+        if isinstance(h.formatter, JsonLineFormatter):
+            h.formatter.run_id = run_id
+
+
+def safe_url(url: str | None) -> str | None:
+    """Scheme, host and path only: query strings and user info can carry tokens."""
+    if not url:
+        return url
+    p = urlsplit(url)
+    if p.scheme.lower() not in ("http", "https"):
+        return url
+    return urlunsplit((p.scheme, p.netloc.rsplit("@", 1)[-1], p.path, "", ""))
 
 
 def get_logger(name: str = LOGGER_NAME) -> logging.Logger:

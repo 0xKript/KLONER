@@ -106,6 +106,20 @@ def test_end_to_end(cli_home: Path, drop: Path, corpus: dict[str, Any], tmp_path
     assert projection == json.loads(GOLDEN.read_text(encoding="utf-8"))
 
     run_id = doc["run"]["id"]
+    logged = [
+        json.loads(line)
+        for f in sorted((cli_home / "logs").glob("*.jsonl"))
+        for line in f.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    events = [ln["event"] for ln in logged if ln.get("run_id") == run_id]
+    assert events[0] == "run.start" and events[-1] == "run.finish", events
+    assert {"source.discover", "fetch", "evaluate"} <= set(events)
+    evals = [ln for ln in logged if ln.get("run_id") == run_id and ln["event"] == "evaluate"]
+    assert len(evals) == len(doc["samples"]) and all(ln["seconds"] >= 0 for ln in evals)
+    finish = next(ln for ln in logged if ln.get("run_id") == run_id and ln["event"] == "run.finish")
+    assert finish["exit_code"] == 10
+
     r = k(cli_home, "reverify", run_id)
     assert r.exit_code == 0 and "IDENTICAL" in r.output, r.output
     r = k(cli_home, "report", run_id, "--format", "md,html,csv,iocs,stix21,json")

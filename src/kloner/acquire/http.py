@@ -20,8 +20,10 @@ from urllib.parse import urljoin, urlsplit
 import httpx
 
 from kloner.acquire.quarantine import QuarantineError, Sink
+from kloner.util.logging import get_logger, log_event, safe_url
 
 RedirectPolicy = Callable[[str], None]  # raises HttpError to refuse a hop
+_log = get_logger("http")
 _jitter = secrets.SystemRandom()
 CHALLENGE_MARKERS = (
     b"cf-chl",
@@ -153,7 +155,11 @@ class Http:
                 resp = self.client.send(req, stream=True)
             except (httpx.ConnectError, httpx.ReadTimeout, httpx.ConnectTimeout, httpx.RemoteProtocolError) as e:
                 if attempt >= self.retries:
+                    log_event(_log, "giving up", event="http.fail", url=safe_url(url), error=type(e).__name__)
                     raise HttpError(f"{type(e).__name__}: {e}", url=url) from e
+                log_event(
+                    _log, "retry", event="http.retry", url=safe_url(url), error=type(e).__name__, attempt=attempt + 1
+                )
                 self._backoff(attempt, None)
                 attempt += 1
                 continue
@@ -161,12 +167,17 @@ class Http:
                 head = _peek(resp)
                 if looks_blocked(resp.status_code, resp.headers, head):
                     resp.close()
+                    log_event(_log, "bot protection", event="http.blocked", url=safe_url(url), status=resp.status_code)
                     raise HttpError(f"bot protection at {host_of(url)}", status=resp.status_code, blocked=True, url=url)
                 if attempt >= self.retries:
                     resp.close()
+                    log_event(_log, "giving up", event="http.fail", url=safe_url(url), status=resp.status_code)
                     raise HttpError(f"HTTP {resp.status_code}", status=resp.status_code, url=url)
                 retry_after = resp.headers.get("retry-after")
                 resp.close()
+                log_event(
+                    _log, "retry", event="http.retry", url=safe_url(url), status=resp.status_code, attempt=attempt + 1
+                )
                 self._backoff(attempt, retry_after)
                 attempt += 1
                 continue
@@ -205,6 +216,13 @@ class Http:
                 head = _peek(resp)
                 blocked = looks_blocked(resp.status_code, resp.headers, head)
                 resp.close()
+                log_event(
+                    _log,
+                    "bot protection" if blocked else "HTTP error",
+                    event="http.blocked" if blocked else "http.error",
+                    url=safe_url(current),
+                    status=resp.status_code,
+                )
                 raise HttpError(
                     "bot protection" if blocked else f"HTTP {resp.status_code}",
                     status=resp.status_code,

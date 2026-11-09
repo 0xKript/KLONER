@@ -98,7 +98,9 @@ class Toolchain:
 
 
 def toolchain_dir(home: Path) -> Path:
-    return home / "toolchain"
+    """``<home>/toolchain``, or ``$KLONER_TOOLCHAIN``: the Docker image keeps it outside the data volume (D-051)."""
+    env = os.environ.get("KLONER_TOOLCHAIN")
+    return Path(env) if env else home / "toolchain"
 
 
 def lock_path(home: Path) -> Path:

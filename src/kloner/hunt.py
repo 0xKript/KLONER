@@ -8,6 +8,8 @@ labels and findings.
 from __future__ import annotations
 
 import json
+import time
+from collections import Counter
 from collections.abc import Iterable, Sequence
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
@@ -36,11 +38,13 @@ from kloner.models import (
     Verdict,
 )
 from kloner.util.fingerprints import short_fp
+from kloner.util.logging import bind_run, get_logger, log_event, safe_url
 from kloner.util.timeutil import now_iso
 from kloner.util.timeutil import run_id as make_run_id
 from kloner.verify.facts import SampleResult
 
 DEFAULT_FAIL_ON = frozenset({"TAMPERED", "FORGED", "IMPERSONATOR"})
+_log = get_logger("run")
 
 
 class UsageError(Exception):
@@ -104,6 +108,24 @@ class RunReport:
 def _isolated_discover(
     src: Source | DisabledSource, package: str, all_versions: bool, limit: int
 ) -> tuple[list[Offer], SourceStatus]:
+    t0 = time.monotonic()
+    offers, st = _discover(src, package, all_versions, limit)
+    log_event(
+        _log,
+        "source discovery",
+        event="source.discover",
+        source=st.source,
+        status=st.status,
+        offers=st.offers,
+        reason=st.reason,
+        seconds=round(time.monotonic() - t0, 3),
+    )
+    return offers, st
+
+
+def _discover(
+    src: Source | DisabledSource, package: str, all_versions: bool, limit: int
+) -> tuple[list[Offer], SourceStatus]:
     st = SourceStatus(source=src.name, status="OK")
     if isinstance(src, DisabledSource):
         st.status, st.reason = "DISABLED", src.reason
@@ -131,12 +153,31 @@ def _fetch_all(
 
     def one(pair: tuple[Source, Offer]) -> tuple[Offer, Any]:
         src, offer = pair
+        t0 = time.monotonic()
+        res: Any
         try:
-            return offer, src.fetch(offer, rt.quarantine)
+            res = src.fetch(offer, rt.quarantine)
         except SourceError as e:
-            return offer, e
+            res = e
         except Exception as e:
-            return offer, SourceError("ERROR", f"{type(e).__name__}: {e}")
+            res = SourceError("ERROR", f"{type(e).__name__}: {e}")
+        ok = not isinstance(res, SourceError)
+        log_event(
+            _log,
+            "fetch",
+            event="fetch",
+            source=offer.source,
+            store=offer.store,
+            url=safe_url(offer.download_url),
+            path=offer.local_path,
+            status=res.status,
+            reason=res.reason,
+            sample_sha256=res.sample_sha256 if ok else None,
+            size=res.size if ok else None,
+            http_status=res.http_status if ok else None,
+            seconds=round(time.monotonic() - t0, 3),
+        )
+        return offer, res
 
     with ThreadPoolExecutor(max_workers=rt.config.network.concurrency) as pool:
         for offer, res in pool.map(one, pairs):
@@ -169,7 +210,23 @@ def _evaluate(
 
     def one(item: tuple[str, str | None]) -> tuple[str, SampleResult]:
         sha, expected = item
-        return sha, pipe.evaluate(sha, expected, anchors, kk)
+        t0 = time.monotonic()
+        sr = pipe.evaluate(sha, expected, anchors, kk)
+        ev = sr.evaluation
+        log_event(
+            _log,
+            "evaluation",
+            event="evaluate",
+            sample_sha256=sha,
+            expected_package=expected,
+            package=ev.package,
+            verdict=ev.verdict.value,
+            labels=ev.label_codes(),
+            reasons=ev.reasons,
+            members=len(sr.members),
+            seconds=round(time.monotonic() - t0, 3),
+        )
+        return sha, sr
 
     with ThreadPoolExecutor(max_workers=rt.worker_count()) as pool:
         return dict(pool.map(one, items))
@@ -280,6 +337,20 @@ def finish(rt: Runtime, rep: RunReport, anchors: dict[str, Anchor], acquire: Any
     rep.exit_code = exit_code_for(rep.reported(), rep.fail_on)
     rep.finished_utc = now_iso()
     rt.db.finish_run(rep.run_id, rep.exit_code, rep.finished_utc)
+    log_event(
+        _log,
+        "run finished",
+        event="run.finish",
+        command=rep.command,
+        package=rep.package,
+        exit_code=rep.exit_code,
+        verdicts=dict(sorted(Counter(e.evaluation.verdict.value for e in rep.samples).items())),
+        unique_files=unique,
+        sightings=sightings,
+        sources={s.source: s.status for s in rep.sources},
+        started_utc=rep.started_utc,
+        finished_utc=rep.finished_utc,
+    )
     return rep
 
 
@@ -306,6 +377,19 @@ def _start(rt: Runtime, command: str, package: str | None, anchors: dict[str, An
         rep.started_utc,
     )
     rt.db.put_run_anchors(rid, anchors.values())
+    bind_run(rid)
+    log_event(
+        _log,
+        "run started",
+        event="run.start",
+        command=command,
+        package=package,
+        kloner_version=__version__,
+        apksig=tc.apksig_version,
+        anchor_record_sha256=anchor.record_sha256 if anchor else None,
+        anchor_corroboration=anchor.corroboration if anchor else None,
+        config_sha256=rep.config_sha256,
+    )
     return rep
 
 
@@ -394,7 +478,19 @@ def run_hunt(
             )
         finally:
             fresh.close()
-        if res.status == "OK" and res.sample_sha256 and res.sample_sha256 != sha:
+        unstable = res.status == "OK" and bool(res.sample_sha256) and res.sample_sha256 != sha
+        log_event(
+            _log,
+            "re-fetch",
+            event="refetch",
+            source=offer.source,
+            url=safe_url(offer.download_url),
+            first_sha256=sha,
+            second_sha256=res.sample_sha256,
+            status=res.status,
+            unstable=unstable,
+        )
+        if unstable and res.sample_sha256:
             sighting.labels = sorted(set(sighting.labels) | {"UNSTABLE_SOURCE"})
             s2 = sighting_from(offer, res, ["UNSTABLE_SOURCE"])
             extra.append((offer, s2))
@@ -492,6 +588,16 @@ def _impersonation_sweep(
         rep.samples.append(entry)  # every evaluated candidate is reported (INV-10), not only hits
     impostors = sum(1 for sr in results.values() if sr.evaluation.verdict == Verdict.IMPERSONATOR)
     looks = sum(1 for e in rep.samples if e.candidate and e.lookalikes)
+    log_event(
+        _log,
+        "impersonation sweep",
+        event="sweep",
+        queries=qs,
+        candidate_offers=len(pairs),
+        evaluated=len(results),
+        impersonators=impostors,
+        lookalikes=looks,
+    )
     rep.notes.append(
         f"impersonation sweep: {len(qs)} quer{'y' if len(qs) == 1 else 'ies'} "
         f"({', '.join(repr(q) for q in qs[:5])}), {len(pairs)} candidate offer(s), "
@@ -625,6 +731,15 @@ def reverify(rt: Runtime, run_id: str) -> tuple[bool, list[str], int]:
                 diffs.append(
                     f"{ev.sample_sha256}: verdict JSON differs (stored {stored['verdict']}, now {ev.verdict.value})"
                 )
+    log_event(
+        _log,
+        "reverify",
+        event="reverify",
+        reverified_run=run_id,
+        identical=not diffs,
+        checked=checked,
+        differences=len(diffs),
+    )
     return not diffs, diffs, checked
 
 
