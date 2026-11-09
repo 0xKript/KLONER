@@ -76,6 +76,9 @@ def test_fingerprints_and_corroboration(fresh_rt: Runtime, corpus: dict[str, Any
 
     mock_http(fresh_rt, handler)
     assert V.sha256 in extract_fingerprints(page)
+    fp = colon_fp(V.sha256)
+    split = f"<p>{fp[:47]}\n            {fp[48:]}</p>".encode()  # two groups over two lines
+    assert V.sha256 in extract_fingerprints(split)
     pub = methods.from_fingerprints(fresh_rt, P, [V.sha256], "https://vendor.example/fingerprints")
     a1, _ = merge(None, pub, package=P, known_keys=fresh_rt.known_keys)
     assert a1.corroboration == "SINGLE_OFFICIAL"

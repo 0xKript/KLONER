@@ -41,6 +41,7 @@ STRONG_CLASSES = frozenset({"VENDOR_HTTPS", "PLAY_API", "STORE_INSTALL", "FDROID
 OFFICIAL_INSTALLERS = frozenset({"com.android.vending", "com.huawei.appmarket"})
 _HEX_FP = re.compile(r"(?<![0-9A-Fa-f:])((?:[0-9A-Fa-f]{2}[:\s\-]?){31}[0-9A-Fa-f]{2})(?![0-9A-Fa-f:])")
 _TAG = re.compile(r"<[^>]+>")
+_WS = re.compile(r"\s+")
 FDROID_REPO = "https://f-droid.org/repo"
 DAL_API = "https://digitalassetlinks.googleapis.com/v1/statements:list"
 
@@ -251,6 +252,7 @@ def from_apk(rt: Runtime, package: str, path: Path) -> MethodResult:
 
 def extract_fingerprints(content: bytes) -> set[str]:
     text = html.unescape(_TAG.sub(" ", content.decode("utf-8", errors="replace")))
+    text = _WS.sub(" ", text)  # fingerprints are often split over lines (found in the live trial)
     found: set[str] = set()
     for m in _HEX_FP.finditer(text):
         try:

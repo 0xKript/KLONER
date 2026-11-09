@@ -84,7 +84,7 @@ def ensure_build_tools(home: Path, *, accept_license: bool, console: Console) ->
     # Show the license (answering "no" changes nothing). A license accepted earlier by the same user is
     # recorded under <sdk>/licenses (Google's documented way to provision CI machines) and needs no prompt.
     lic = proc.run([sdkmanager, f"--sdk_root={sdk}", "--licenses"], timeout_s=300, env=env, input_bytes=b"n\n" * 20)
-    already = "All SDK package licenses accepted" in lic.text()
+    already = "All SDK package licenses accepted" in lic.text() or (sdk / "licenses" / "android-sdk-license").is_file()
     if not already:
         console.print(lic.text()[-6000:])
     if not already and not accept_license:
