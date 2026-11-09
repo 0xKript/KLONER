@@ -1,0 +1,67 @@
+{
+ "info": {
+  "status": "OK"
+ },
+ "list": [
+  {
+   "added": "2020-06-04 17:58:46",
+   "file": {
+    "added": "2026-07-02 15:10:47",
+    "filesize": 66315957,
+    "md5sum": "4e8edcb490fd46e0ac13e08620405d08",
+    "vercode": 142804,
+    "vername": "7.9.6"
+   },
+   "id": 75482942,
+   "modified": "2026-07-02 15:10:48",
+   "name": "Signal - Private Messenger",
+   "package": "org.thoughtcrime.securesms",
+   "size": 66315957,
+   "store": {
+    "id": 2899481,
+    "name": "appupdater"
+   },
+   "updated": "2026-11-08 09:08:12"
+  },
+  {
+   "added": "2020-06-04 17:58:46",
+   "file": {
+    "added": "2026-06-26 17:53:05",
+    "filesize": 53321664,
+    "md5sum": "c8b547de7ee8b2228a8323cb253178ce",
+    "vercode": 119602,
+    "vername": "6.8.3"
+   },
+   "id": 75375786,
+   "modified": "2026-06-26 17:53:05",
+   "name": "Signal Private Messenger",
+   "package": "org.thoughtcrime.securesms",
+   "size": 53321664,
+   "store": {
+    "id": 2899481,
+    "name": "appupdater"
+   },
+   "updated": "2026-11-08 09:08:12"
+  },
+  {
+   "added": "2015-07-24 15:42:14",
+   "file": {
+    "added": "2019-03-26 11:26:16",
+    "filesize": 40384169,
+    "md5sum": "3d707ad2e8cbcd42a904502e95b714a7",
+    "vercode": 470,
+    "vername": "4.36.2"
+   },
+   "id": 45063947,
+   "modified": "2019-03-26 11:26:16",
+   "name": "Signal Private Messenger",
+   "package": "org.thoughtcrime.securesms",
+   "size": 40384169,
+   "store": {
+    "id": 750918,
+    "name": "msi8"
+   },
+   "updated": "2019-03-26 11:26:16"
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "data": {
+  "added": "2015-07-24 15:42:14",
+  "file": {
+   "added": "2019-03-26 11:26:16",
+   "filesize": 40384169,
+   "md5sum": "3d707ad2e8cbcd42a904502e95b714a7",
+   "path": "https://pool.apk.aptoide.com/msi8/org-thoughtcrime-securesms-470-45063947-3d707ad2e8cbcd42a904502e95b714a7.apk",
+   "path_alt": "https://pool.apk.aptoide.com/msi8/org-thoughtcrime-securesms-470-45063947-3d707ad2e8cbcd42a904502e95b714a7.apk",
+   "signature": {
+    "owner": "CN=Whisper Systems, OU=Research and Development, O=Whisper Systems, L=Pittsburgh, ST=PA, C=US",
+    "sha1": "45:98:9D:C9:AD:87:28:C2:AA:9A:82:FA:55:50:3E:34:A8:87:93:74"
+   },
+   "vercode": 470,
+   "vername": "4.36.2"
+  },
+  "id": 45063947,
+  "modified": "2019-03-26 11:26:16",
+  "name": "Signal Private Messenger",
+  "package": "org.thoughtcrime.securesms",
+  "size": 40384169,
+  "store": {
+   "id": 750918,
+   "name": "msi8"
+  },
+  "updated": "2026-11-08 09:08:12"
+ },
+ "info": {
+  "status": "OK"
+ }
+}

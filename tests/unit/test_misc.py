@@ -1,0 +1,146 @@
+"""Toolchain helpers, process supervision, bridge failure handling, quarantine, logging, export, doctor."""
+
+from __future__ import annotations
+
+import json
+import logging
+import sys
+import zipfile
+from dataclasses import replace
+from pathlib import Path
+from typing import Any
+
+import pytest
+
+from kloner.acquire.quarantine import Quarantine, QuarantineError
+from kloner.toolchain import (
+    BUILD_TOOLS_FLOOR,
+    Toolchain,
+    ToolchainError,
+    java_major,
+    load_toolchain,
+    parse_revision,
+)
+from kloner.util import proc
+from kloner.util.hashing import sha256_bytes, sha256_stream
+from kloner.util.logging import get_logger, log_event, setup_logging
+
+
+def test_revision_and_java_parsing() -> None:
+    assert parse_revision("36.0.0") == (36, 0, 0) >= BUILD_TOOLS_FLOOR
+    assert parse_revision("34.0.0 rc3") == (34, 0, 0) < BUILD_TOOLS_FLOOR
+    assert parse_revision("junk") == (0, 0, 0)
+    assert java_major('java version "17.0.12" 2024-07-16 LTS') == 17
+    assert java_major('openjdk version "1.8.0_392"') == 8
+    assert java_major("nothing") is None
+
+
+def test_proc_run_handles_timeouts_and_missing_tools(tmp_path: Path) -> None:
+    ok = proc.run([sys.executable, "-c", "print('hi')"], timeout_s=60)
+    assert ok.ok and ok.text().strip() == "hi"
+    slow = proc.run([sys.executable, "-c", "import time; time.sleep(30)"], timeout_s=0.5)
+    assert slow.timed_out and not slow.ok
+    missing = proc.run([str(tmp_path / "no-such-tool")], timeout_s=5)
+    assert missing.returncode is None and not missing.ok
+    env = proc.minimal_env({"EXTRA": "1"})
+    assert env["EXTRA"] == "1" and "PATH" in env
+
+
+def test_quarantine_layout_and_limits(tmp_path: Path) -> None:
+    q = Quarantine(tmp_path)
+    sha, size = q.ingest_bytes(b"sample", 100)
+    assert size == 6 and q.has(sha) and q.path_for(sha).name == sha
+    assert q.path_for(sha).parent.parent.name == sha[:2]
+    assert q.ingest_bytes(b"sample", 100) == (sha, 6)  # deduplicated
+    with pytest.raises(QuarantineError):
+        q.ingest_bytes(b"x" * 101, 100)
+    with pytest.raises(QuarantineError):
+        q.path_for("../../etc/passwd")
+    ev = q.write_evidence(sha, {"source": "test"})
+    assert json.loads(ev.read_text())["source"] == "test"
+    q.remove(sha)
+    assert not q.has(sha)
+    assert list(q.incoming.iterdir()) == []
+
+
+def test_hash_stream(tmp_path: Path) -> None:
+    p = tmp_path / "f"
+    p.write_bytes(b"abcdef")
+    with p.open("rb") as f:
+        assert sha256_stream(f, 3) == sha256_bytes(b"abc")
+
+
+def test_logging_redacts_secrets(tmp_path: Path) -> None:
+    path = setup_logging(tmp_path, "run-1", debug=True)
+    log = get_logger("test")
+    log_event(log, "fetch", url="https://x.example", aas_token="secret-value", status=200)
+    try:
+        raise ValueError("boom")
+    except ValueError:
+        log.exception("failed")
+    for h in logging.getLogger("kloner").handlers:
+        h.flush()
+    lines = [json.loads(x) for x in path.read_text(encoding="utf-8").splitlines()]
+    assert lines[0]["aas_token"] == "<redacted>" and lines[0]["run_id"] == "run-1" and lines[0]["status"] == 200
+    assert "exc" in lines[1]
+
+
+@pytest.mark.toolchain
+def test_bridge_failures_are_contained(rt: Any) -> None:
+    from kloner.verify.bridge import BridgeClient, BridgeFailure
+
+    tc: Toolchain = rt.toolchain()
+    crash = BridgeClient(replace(tc, java=sys.executable), timeout_s=30)
+    with pytest.raises(BridgeFailure):
+        crash.verify(Path("x.apk"), 24, 30)
+    crash.close()
+    slow = BridgeClient(tc, timeout_s=0.001)
+    with pytest.raises(BridgeFailure):
+        slow.verify(Path("x.apk"), 24, 30)
+    assert slow.restarts >= 1
+    slow.close()
+    good = BridgeClient(tc, timeout_s=60)
+    v = good.version()
+    assert v["bridge_version"] == "1"
+    res = good.verify(Path("definitely-missing.apk"), 24, 30)
+    assert res.fatal and not res.verified
+    good.close()
+
+
+@pytest.mark.toolchain
+def test_toolchain_lock_and_doctor(rt: Any, tmp_path: Path) -> None:
+    from kloner.doctor import run_doctor
+
+    with pytest.raises(ToolchainError):
+        load_toolchain(tmp_path)
+    checks = run_doctor(rt, network=False)
+    names = {c.name: c.status for c in checks}
+    assert names["bridge"] == "PASS" and names["apksig"] == "PASS" and names["aapt2"] == "PASS"
+    assert names["apkeep"] in ("PASS", "WARN")
+
+
+def test_installer_refuses_unsafe_archives(tmp_path: Path) -> None:
+    from kloner.toolchain_install import _safe_extract
+
+    good = tmp_path / "good.zip"
+    with zipfile.ZipFile(good, "w") as z:
+        z.writestr("cmdline-tools/bin/sdkmanager", "#!/bin/sh\n")
+    _safe_extract(good, tmp_path / "out")
+    assert (tmp_path / "out" / "cmdline-tools" / "bin" / "sdkmanager").is_file()
+    bad = tmp_path / "bad.zip"
+    with zipfile.ZipFile(bad, "w") as z:
+        z.writestr("../outside.txt", "x")
+    with pytest.raises(ToolchainError):
+        _safe_extract(bad, tmp_path / "out2")
+    assert not (tmp_path / "outside.txt").exists()
+
+
+@pytest.mark.toolchain
+def test_export_requires_7zip_or_samples(rt: Any, monkeypatch: pytest.MonkeyPatch) -> None:
+    import shutil as sh
+
+    from kloner.export import export_samples
+
+    monkeypatch.setattr(sh, "which", lambda name: None)
+    with pytest.raises(ValueError, match="7-Zip"):
+        export_samples(rt, "no-run", "infected", None)

@@ -1,0 +1,92 @@
+{
+  "C-01.apk": {
+    "forensic_labels": [],
+    "labels": [],
+    "members": [],
+    "verdict": "GENUINE"
+  },
+  "C-02.apk": {
+    "forensic_labels": [
+      "REPACKAGED"
+    ],
+    "labels": [],
+    "members": [],
+    "verdict": "FORGED"
+  },
+  "C-03.apk": {
+    "forensic_labels": [
+      "REPACKAGED"
+    ],
+    "labels": [
+      "DEBUG_DN"
+    ],
+    "members": [],
+    "verdict": "FORGED"
+  },
+  "C-06.apk": {
+    "forensic_labels": [],
+    "labels": [],
+    "members": [],
+    "verdict": "INVALID"
+  },
+  "C-15.apk": {
+    "forensic_labels": [],
+    "labels": [
+      "ROTATED_KEY"
+    ],
+    "members": [],
+    "verdict": "GENUINE"
+  },
+  "C-21.apk": {
+    "forensic_labels": [],
+    "labels": [
+      "SAME_VENDOR"
+    ],
+    "members": [],
+    "verdict": "MISMATCH"
+  },
+  "C-22.apk": {
+    "forensic_labels": [],
+    "labels": [],
+    "members": [],
+    "verdict": "INVALID"
+  },
+  "C-24.xapk": {
+    "forensic_labels": [],
+    "labels": [],
+    "members": [
+      "GENUINE",
+      "GENUINE",
+      "GENUINE"
+    ],
+    "verdict": "GENUINE"
+  },
+  "C-25.xapk": {
+    "forensic_labels": [],
+    "labels": [
+      "BUNDLE_INCONSISTENT"
+    ],
+    "members": [
+      "FORGED",
+      "GENUINE",
+      "GENUINE"
+    ],
+    "verdict": "FORGED"
+  },
+  "C-33.apk": {
+    "forensic_labels": [
+      "IMPOSTOR"
+    ],
+    "labels": [
+      "EXACT_LABEL"
+    ],
+    "members": [],
+    "verdict": "IMPERSONATOR"
+  },
+  "X-02.apk": {
+    "forensic_labels": [],
+    "labels": [],
+    "members": [],
+    "verdict": "GENUINE"
+  }
+}

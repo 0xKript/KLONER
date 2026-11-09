@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KLONER report — {{ run.package or run.command }}</title>
+<style>
+:root { --fg:#1b1f24; --muted:#5b6470; --bg:#ffffff; --card:#f6f8fa; --line:#d8dee4;
+        --bad:#b42318; --warn:#9a6700; --ok:#1a7f37; --imp:#8250df; }
+@media (prefers-color-scheme: dark) {
+  :root { --fg:#e6edf3; --muted:#9da7b3; --bg:#0d1117; --card:#161b22; --line:#30363d;
+          --bad:#ff7b72; --warn:#d29922; --ok:#3fb950; --imp:#bc8cff; }
+}
+body { font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--fg); background: var(--bg);
+       margin: 0 auto; max-width: 1080px; padding: 24px 16px; }
+h1 { font-size: 1.6em; margin: 0 0 4px; } h2 { margin-top: 2em; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+code, .mono { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .9em; word-break: break-all; }
+.meta { color: var(--muted); }
+.banner { background: var(--card); border-left: 4px solid var(--warn); padding: 8px 12px; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; margin: 8px 0; display: block; overflow-x: auto; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+.v { font-weight: 700; } .TAMPERED, .FORGED { color: var(--bad); } .IMPERSONATOR { color: var(--imp); }
+.ANOMALY, .ERROR { color: var(--warn); } .GENUINE { color: var(--ok); } .MISMATCH, .INVALID, .UNANCHORED { color: var(--muted); }
+.tag { display: inline-block; border: 1px solid var(--line); border-radius: 4px; padding: 0 6px; margin: 2px 2px 0 0; font-size: .85em; }
+ul { padding-left: 20px; }
+</style>
+</head>
+<body>
+<h1>KLONER report — {{ run.package or run.command }}</h1>
+<div class="meta">Run <code>{{ run.id }}</code> · {{ run.command }} · {{ run.started_utc }} → {{ run.finished_utc }}<br>
+KLONER {{ run.kloner_version }} · apksig {{ run.apksig_version }}
+{% if anchor %}<br>Anchor <code>{{ anchor.package }}</code> record <code>{{ anchor.record_sha256 }}</code> ({{ anchor.corroboration }}){% endif %}</div>
+{% if anchor and anchor.corroboration == "USER_ASSERTED" %}<div class="banner"><strong>Anchor not corroborated.</strong> Verdicts are relative to a USER-asserted identity.</div>{% endif %}
+
+<h2>Executive summary</h2>
+<table><tr><th>Verdict</th><th>Count</th></tr>
+{% for v, n in summary.counts.items() if n %}<tr><td class="v {{ v }}">{{ v }}</td><td>{{ n }}</td></tr>{% endfor %}
+</table>
+<p><strong>Coverage.</strong> {{ coverage.statement }}</p>
+
+<h2>Hostile findings</h2>
+{% set hostile = samples | selectattr("evaluation.verdict", "in", ["TAMPERED", "FORGED", "IMPERSONATOR"]) | list %}
+{% if not hostile %}<p>No hostile copies among {{ coverage.unique_files }} files from the sources listed above.</p>{% endif %}
+{% for s in hostile %}{% set ev = s.evaluation %}{% set f = findings_by.get(ev.sample_sha256) %}
+<div class="card">
+<div class="v {{ ev.verdict }}">{{ ev.verdict }} <code>{{ ev.sample_sha256 }}</code></div>
+<p>{{ ev.explanation }}</p>
+<ul>
+<li>Package <code>{{ ev.package }}</code> {{ ev.version_name }} ({{ ev.version_code }}), {{ ev.size }} bytes</li>
+{% for sig in ev.signers %}<li>Signer <code>{{ sig.cert_sha256 }}</code> ({{ sig.trust }}) {{ sig.subject or "" }}{% if sig.known_key %} — known key <strong>{{ sig.known_key }}</strong>{% endif %}</li>{% endfor %}
+<li>Reasons: {% for r in ev.reasons %}<code>{{ r }}</code> {% endfor %}</li>
+<li>Labels: {% for l in ev.labels %}<span class="tag">{{ l.code }}</span>{% endfor %}{% for l in s.forensic_labels + s.intel_labels %}<span class="tag">{{ l }}</span>{% endfor %}</li>
+{% for g in s.sightings %}<li>Seen at {{ g.source }}{% if g.store %}:{{ g.store }}{% endif %} — <code>{{ g.final_url or g.offer_url }}</code> ({{ g.retrieved_utc }})</li>{% endfor %}
+{% if f %}
+{% if f.capabilities %}<li>{{ f.capabilities.line }}</li>{% endif %}
+{% if f.reference %}<li>Diff reference <code>{{ f.reference.sha256 }}</code> ({{ f.reference.kind }})</li>{% endif %}
+{% if f.overlap %}<li>Overlap (heuristic): J_class {{ f.overlap.j_class }}, J_res {{ f.overlap.j_res }}</li>{% endif %}
+{% if f.payload %}<li>Payload <code>{{ f.payload.payload_id }}</code></li>{% endif %}
+{% endif %}
+{% for line in intel if line.sample_sha256 == ev.sample_sha256 %}<li>{{ line.text }}</li>{% endfor %}
+</ul></div>
+{% endfor %}
+
+<h2>Review items</h2>
+{% set review = samples | selectattr("evaluation.verdict", "in", ["ANOMALY", "ERROR"]) | list %}
+{% if not review %}<p>None.</p>{% endif %}
+<ul>{% for s in review %}<li><span class="v {{ s.evaluation.verdict }}">{{ s.evaluation.verdict }}</span> <code>{{ s.evaluation.sample_sha256 }}</code>: {{ s.evaluation.explanation }}</li>{% endfor %}</ul>
+
+<h2>Genuine copies</h2>
+{% set genuine = samples | selectattr("evaluation.verdict", "equalto", "GENUINE") | list %}
+{% if genuine %}<table><tr><th>File</th><th>Version</th><th>Sources</th><th>Labels</th></tr>
+{% for s in genuine %}<tr><td><code>{{ s.evaluation.sample_sha256[:12] }}</code></td><td>{{ s.evaluation.version_name }} ({{ s.evaluation.version_code }})</td>
+<td>{% for g in s.sightings %}{{ g.source }}{% if g.store %}:{{ g.store }}{% endif %} {% endfor %}</td>
+<td>{% for l in s.evaluation.labels %}<span class="tag">{{ l.code }}</span>{% endfor %}</td></tr>{% endfor %}
+</table>{% else %}<p>None.</p>{% endif %}
+
+<h2>Lookalikes (heuristic)</h2>
+{% set looks = samples | selectattr("lookalikes") | list %}
+{% if not looks %}<p>None.</p>{% endif %}
+<ul>{% for s in looks %}<li><code>{{ s.evaluation.package }}</code> ({{ s.evaluation.verdict }}): {% for x in s.lookalikes %}<span class="tag">{{ x.signal }} {{ x.candidate }} ~ {{ x.official }} ({{ x.score }})</span>{% endfor %}</li>{% endfor %}</ul>
+
+<h2>Appendix</h2>
+{% if anchor %}<p>Anchor record <code>{{ anchor.record_sha256 }}</code></p>
+<ul>{% for i in anchor.identities %}<li>{{ i.id }} {{ i.label }} <code>{{ i.cert_sha256 }}</code> {{ i.subject or "" }} [{{ i.evidence_classes | join(", ") }}]{% if i.declared_additional %} (declared additional){% endif %}</li>{% endfor %}</ul>{% endif %}
+<p>Gate traces</p>
+<ul>{% for s in samples %}<li><code>{{ s.evaluation.sample_sha256[:12] }}</code> {{ s.evaluation.verdict }}: {% for g in s.evaluation.gate_trace %}{{ g.gate }} {{ g.status }}{% if not loop.last %}; {% endif %}{% endfor %}</li>{% endfor %}</ul>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{
+  "keys": [
+    {
+      "cert_sha256": "a6ccc500ff0e7421200eb66a7fe174ef1b00e52ca91727070cbedf061ff76c35",
+      "name": "AOSP_BLUETOOTH",
+      "retrieved_utc": "2026-11-09T17:24:54Z",
+      "source_file_sha256": "167cd77fa7d2b86755bdf645c3dc25c5a09e727a75db65f0ad76ca7cb0cb534a",
+      "source_tree": "9900c158ef61e0200ad034d0b80f6f79cd16d738",
+      "source_url": "https://android.googlesource.com/platform/build/+/refs/heads/main/target/product/security/bluetooth.x509.pem",
+      "subject": "1.2.840.113549.1.9.1=android@android.com,CN=com.android.bluetooth.services,OU=Android,O=Android,L=Mountain View,ST=California,C=US"
+    },
+    {
+      "cert_sha256": "ce7b2b47ae2b7552c8f92cc29124279883041fb623a5f194a82c9bf15d492aa0",
+      "name": "AOSP_CTS_UICC_2021",
+      "retrieved_utc": "2026-11-09T17:24:54Z",
+      "source_file_sha256": "eb95cc5eff8d8bb7be8b0a6e0d67c4d87c7e4004894f2b9bb71107e31ed233a2",
+      "source_tree": "9900c158ef61e0200ad034d0b80f6f79cd16d738",
+      "source_url": "https://android.googlesource.com/platform/build/+/refs/heads/main/target/product/security/cts_uicc_2021.x509.pem",
+      "subject": "1.2.840.113549.1.9.1=android@android.com,CN=Android,OU=Android,O=Android,L=Mountain View,ST=California,C=US"
+    },
+    {
+      "cert_sha256": "465983f7791f2abeb43ea2cbdc7f21a8260b72bc08a55c839fc1a43bc741a81e",
+      "name": "AOSP_MEDIA",
+      "retrieved_utc": "2026-11-09T17:24:54Z",
+      "source_file_sha256": "84c279d163d2ff27b63d1b63bb648bc413216f4a97bf716023d1fe480020dddc",
+      "source_tree": "9900c158ef61e0200ad034d0b80f6f79cd16d738",
+      "source_url": "https://android.googlesource.com/platform/build/+/refs/heads/main/target/product/security/media.x509.pem",
+      "subject": "1.2.840.113549.1.9.1=android@android.com,CN=Android,OU=Android,O=Android,L=Mountain View,ST=California,C=US"
+    },
+    {
+      "cert_sha256": "e1dbadce60dc080d15b58a014b0dcf9400e24de23fa00b287a5a982bfebda2ee",
+      "name": "AOSP_NETWORKSTACK",
+      "retrieved_utc": "2026-11-09T17:24:55Z",
+      "source_file_sha256": "d9c9eebb1732bbabb500573b3df26c0af63ee1ecea80c39a1f62b96aede067aa",
+      "source_tree": "9900c158ef61e0200ad034d0b80f6f79cd16d738",
+      "source_url": "https://android.googlesource.com/platform/build/+/refs/heads/main/target/product/security/networkstack.x509.pem",
+      "subject": "CN=com.android.networkstack,OU=Android,O=Android,L=Mountain View,ST=California,C=US"
+    },
+    {
+      "cert_sha256": "fae9122a8721d6e2a196d2224dffcf773c9127e2bb956cbddb40b009192ffdfd",
+      "name": "AOSP_NFC",
+      "retrieved_utc": "2026-11-09T17:24:55Z",
+      "source_file_sha256": "8b027801f493f9ca96f53f6638df24461959d12b996b786f5ffffce98513ac54",
+      "source_tree": "9900c158ef61e0200ad034d0b80f6f79cd16d738",
+      "source_url": "https://android.googlesource.com/platform/build/+/refs/heads/main/target/product/security/nfc.x509.pem",
+      "subject": "CN=com_android_nfc,OU=Android,O=Google Inc.,L=Mountain View,ST=California,C=US"
+    },
+    {
+      "cert_sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8",
+      "name": "AOSP_PLATFORM",
+      "retrieved_utc": "2026-11-09T17:24:56Z",
+      "source_file_sha256": "9837de028f460c35cc8d3fa45f14eecce30f6fbfe4b93d399aef1acb80c20d14",
+      "source_tree": "9900c158ef61e0200ad034d0b80f6f79cd16d738",
+      "source_url": "https://android.googlesource.com/platform/build/+/refs/heads/main/target/product/security/platform.x509.pem",
+      "subject": "1.2.840.113549.1.9.1=android@android.com,CN=Android,OU=Android,O=Android,L=Mountain View,ST=California,C=US"
+    },
+    {
+      "cert_sha256": "abf21f9e2af1d881cc673fddcefa6ed9c269a437bd64b279cf45844cfd589126",
+      "name": "AOSP_SDK_SANDBOX",
+      "retrieved_utc": "2026-11-09T17:24:56Z",
+      "source_file_sha256": "a4ccc13b9d8e3084114a4e7a205dde7685cde983432edb7881b869b9f026da38",
+      "source_tree": "9900c158ef61e0200ad034d0b80f6f79cd16d738",
+      "source_url": "https://android.googlesource.com/platform/build/+/refs/heads/main/target/product/security/sdk_sandbox.x509.pem",
+      "subject": "1.2.840.113549.1.9.1=android@android.com,CN=Android,OU=Android,O=Android,L=Mountain View,ST=California,C=US"
+    },
+    {
+      "cert_sha256": "28bbfe4a7b97e74681dc55c2fbb6ccb8d6c74963733f6af6ae74d8c3a6e879fd",
+      "name": "AOSP_SHARED",
+      "retrieved_utc": "2026-11-09T17:24:56Z",
+      "source_file_sha256": "d72c27d4375f37c2bc0631a873eb115e030781753846aa2073e0c20e49c45832",
+      "source_tree": "9900c158ef61e0200ad034d0b80f6f79cd16d738",
+      "source_url": "https://android.googlesource.com/platform/build/+/refs/heads/main/target/product/security/shared.x509.pem",
+      "subject": "1.2.840.113549.1.9.1=android@android.com,CN=Android,OU=Android,O=Android,L=Mountain View,ST=California,C=US"
+    },
+    {
+      "cert_sha256": "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc",
+      "name": "AOSP_TESTKEY",
+      "retrieved_utc": "2026-11-09T17:24:57Z",
+      "source_file_sha256": "a4384ba815b9499a5ce349b4e33c1755278873fe2eac150a068823f526e6dbde",
+      "source_tree": "9900c158ef61e0200ad034d0b80f6f79cd16d738",
+      "source_url": "https://android.googlesource.com/platform/build/+/refs/heads/main/target/product/security/testkey.x509.pem",
+      "subject": "1.2.840.113549.1.9.1=android@android.com,CN=Android,OU=Android,O=Android,L=Mountain View,ST=California,C=US"
+    }
+  ],
+  "schema": "kloner.known_keys/1"
+}
