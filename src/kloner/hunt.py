@@ -489,8 +489,14 @@ def _impersonation_sweep(
             label_max_edit=rt.config.forensics.label_max_edit_distance,
             dhash_max=rt.config.forensics.dhash_max_distance,
         )
-        if sr.evaluation.verdict == Verdict.IMPERSONATOR or entry.lookalikes:
-            rep.samples.append(entry)
+        rep.samples.append(entry)  # every evaluated candidate is reported (INV-10), not only hits
+    impostors = sum(1 for sr in results.values() if sr.evaluation.verdict == Verdict.IMPERSONATOR)
+    looks = sum(1 for e in rep.samples if e.candidate and e.lookalikes)
+    rep.notes.append(
+        f"impersonation sweep: {len(qs)} quer{'y' if len(qs) == 1 else 'ies'} "
+        f"({', '.join(repr(q) for q in qs[:5])}), {len(pairs)} candidate offer(s), "
+        f"{len(results)} candidate file(s) evaluated, {impostors} IMPERSONATOR, {looks} with lookalike signals"
+    )
 
 
 def run_verify(rt: Runtime, paths: list[Path], package: str | None, command: str = "verify") -> RunReport:
