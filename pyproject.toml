@@ -3,6 +3,8 @@ name = "kloner"
 version = "1.0.0"
 description = "Key-Lineage Oracle for Network-wide Exposure of Repackaging: prove every copy of an Android app genuine or not."
 readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 requires-python = ">=3.11"
 authors = [{ name = "Khel (0xKript)" }]
 keywords = ["android", "apk", "apksig", "repackaging", "brand-protection", "threat-intelligence"]
