@@ -25,3 +25,7 @@ dist/
 *.jks
 .kloner/
 coverage.json
+
+# Android SDK license acceptances supplied by whoever builds the Docker image
+docker/android-licenses/*
+!docker/android-licenses/.keep

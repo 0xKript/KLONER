@@ -81,9 +81,13 @@ def ensure_build_tools(home: Path, *, accept_license: bool, console: Console) ->
                 f.chmod(0o755)
     java, _, _ = find_java()
     env = proc.minimal_env({"JAVA_HOME": str(java.parent.parent)})
+    # Show the license (answering "no" changes nothing). A license accepted earlier by the same user is
+    # recorded under <sdk>/licenses (Google's documented way to provision CI machines) and needs no prompt.
     lic = proc.run([sdkmanager, f"--sdk_root={sdk}", "--licenses"], timeout_s=300, env=env, input_bytes=b"n\n" * 20)
-    console.print(lic.text()[-6000:])
-    if not accept_license:
+    already = "All SDK package licenses accepted" in lic.text()
+    if not already:
+        console.print(lic.text()[-6000:])
+    if not already and not accept_license:
         if not sys.stdin.isatty():
             raise ToolchainError(
                 "the Android SDK license must be accepted to install build-tools; read it above and re-run: "
@@ -92,9 +96,10 @@ def ensure_build_tools(home: Path, *, accept_license: bool, console: Console) ->
         answer = console.input("Do you accept the Android SDK license shown above? [y/N] ").strip().lower()
         if answer not in ("y", "yes"):
             raise ToolchainError("Android SDK license not accepted; nothing was installed")
-    res = proc.run([sdkmanager, f"--sdk_root={sdk}", "--licenses"], timeout_s=300, env=env, input_bytes=b"y\n" * 20)
-    if not res.ok:
-        raise ToolchainError(f"sdkmanager --licenses failed: {res.err_text()[-500:]}")
+    if not already:
+        res = proc.run([sdkmanager, f"--sdk_root={sdk}", "--licenses"], timeout_s=300, env=env, input_bytes=b"y\n" * 20)
+        if not res.ok:
+            raise ToolchainError(f"sdkmanager --licenses failed: {res.err_text()[-500:]}")
     res = proc.run([sdkmanager, f"--sdk_root={sdk}", "--install", *PACKAGES], timeout_s=3600, env=env)
     if not res.ok:
         raise ToolchainError(f"sdkmanager install failed: {res.err_text()[-1000:]}")

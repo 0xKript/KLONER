@@ -1,0 +1,11 @@
+.venv
+.git
+.mypy_cache
+.ruff_cache
+.pytest_cache
+.hypothesis
+**/__pycache__
+coverage.json
+.coverage
+bridge/out
+work
