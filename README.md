@@ -5,7 +5,7 @@
 Hunt forged, trojanized and tampered copies of any Android app across the internet, and prove every verdict
 cryptographically.
 
-[![CI](https://github.com/0xKript/kloner/actions/workflows/ci.yml/badge.svg)](https://github.com/0xKript/kloner/actions/workflows/ci.yml)
+[![CI](https://github.com/0xKript/KLONER/actions/workflows/ci.yml/badge.svg)](https://github.com/0xKript/KLONER/actions/workflows/ci.yml)
 ![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
 ![Release 1.0.0](https://img.shields.io/badge/release-1.0.0-informational)
 ![License Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-green)
@@ -21,13 +21,71 @@ itself uses, whether it is exactly what the vendor signed.
 
 ## Quick start
 
+Linux or macOS, with Python 3.11+, a JDK 17+ and [uv](https://docs.astral.sh/uv/):
+
 ```bash
-git clone https://github.com/0xKript/kloner && cd kloner
+git clone https://github.com/0xKript/KLONER.git && cd KLONER
 uv venv && . .venv/bin/activate
 uv pip install --require-hashes -r requirements.lock && uv pip install --no-deps .
 kloner setup            # JDK 17+ check, pinned Android build-tools 36.0.0, apkeep, the apksig bridge
 kloner doctor           # every component PASS/FAIL, with fixes
 ```
+
+### Windows: Docker Desktop (PowerShell)
+
+The image holds the JDK, the pinned build-tools, apkeep and KLONER. Your anchors, quarantine and database live
+on the `kloner-home` volume, and reports go to `.\reports`:
+
+```powershell
+git clone https://github.com/0xKript/KLONER.git
+cd KLONER
+Copy-Item "$env:LOCALAPPDATA\Android\Sdk\licenses\android-sdk-license" docker\android-licenses\
+docker build -t kloner .
+docker volume create kloner-home
+docker run --rm -v kloner-home:/kloner kloner doctor
+docker run --rm -v kloner-home:/kloner kloner selftest
+docker run --rm -v kloner-home:/kloner kloner anchor add org.thoughtcrime.securesms --from-fingerprint 29f34e5f27f211b424bc5bf9d67162c0eafba2da35af35c16416fc446276ba26 4be4f6cd5be844083e900279dc822af65a547fecc26aba7ff1f5203a45518cd8 --evidence-url https://signal.org/android/apk/
+$apk = (Invoke-RestMethod https://updates.signal.org/android/latest.json).url
+docker run --rm -v kloner-home:/kloner kloner anchor add org.thoughtcrime.securesms --from-url $apk --vendor-domain signal.org
+docker run --rm -v kloner-home:/kloner -v "${PWD}\reports:/reports" kloner hunt org.thoughtcrime.securesms --sources url,fdroid --url $apk --out /reports/signal --format terminal,json,html
+```
+
+The `Copy-Item` line reuses the Android SDK license you accepted in Android Studio. Without Android Studio, read
+the license at <https://developer.android.com/studio/terms> and build with
+`docker build --build-arg ACCEPT_ANDROID_SDK_LICENSE=yes -t kloner .` instead.
+
+### Windows: WSL2 (Ubuntu)
+
+Inside an Ubuntu terminal (`wsl -d Ubuntu`):
+
+```bash
+sudo apt-get update && sudo apt-get install -y git curl openjdk-17-jdk-headless
+curl -LsSf https://astral.sh/uv/0.13.7/install.sh | sh
+source "$HOME/.local/bin/env"
+git clone https://github.com/0xKript/KLONER.git && cd KLONER
+uv venv && . .venv/bin/activate
+uv pip install --require-hashes -r requirements.lock && uv pip install --no-deps .
+mkdir -p ~/.kloner/toolchain/android-sdk/licenses
+cp "$(wslpath "$(powershell.exe -NoProfile -Command '$env:LOCALAPPDATA' | tr -d '\r')")/Android/Sdk/licenses/android-sdk-license" ~/.kloner/toolchain/android-sdk/licenses/
+kloner setup
+kloner doctor
+kloner selftest
+kloner anchor add org.thoughtcrime.securesms --from-fingerprint 29f34e5f27f211b424bc5bf9d67162c0eafba2da35af35c16416fc446276ba26 4be4f6cd5be844083e900279dc822af65a547fecc26aba7ff1f5203a45518cd8 --evidence-url https://signal.org/android/apk/
+apk=$(curl -s https://updates.signal.org/android/latest.json | python3 -c 'import json,sys; print(json.load(sys.stdin)["url"])')
+kloner anchor add org.thoughtcrime.securesms --from-url "$apk" --vendor-domain signal.org
+kloner hunt org.thoughtcrime.securesms --sources url,fdroid --url "$apk" --out reports/signal --format terminal,json,html
+```
+
+If `apt-get` stalls while downloading, your network may block plain HTTP from WSL; it did on the validation
+machine, while HTTPS worked. Switch Ubuntu's mirrors to HTTPS, then run the first line again:
+
+```bash
+sudo sed -i 's|http://|https://|g' /etc/apt/sources.list.d/ubuntu.sources
+```
+
+The `mkdir`/`cp` lines reuse the Android SDK license you accepted in Android Studio on Windows. Skip them to have
+`kloner setup` show the license and ask. Both Windows paths were run end to end, from a fresh clone and on a
+freshly imported Ubuntu 24.04 distro ([docs/VALIDATION.md](docs/VALIDATION.md), "Windows quick start").
 
 Pin the official identity once, then hunt. This is the live Signal run from the field trial (trimmed):
 
@@ -125,24 +183,30 @@ and reason-code tables are in [docs/VERDICTS.md](docs/VERDICTS.md).
 
 A naive check reads the certificate stored in the APK, for example with
 `unzip -p app.apk 'META-INF/*.RSA' | openssl pkcs7 -inform DER -print_certs` or a parser's certificate list.
-That certificate is public data, and anyone can copy it into a modified file. KLONER instead asks Google's apksig
-whether the signature validates *this* content:
+That certificate is public data, and it can sit unchanged in a file whose content changed. KLONER instead asks
+Google's apksig whether the signature validates *this* content. Here are two real files from AOSP's apksig test
+suite: a correctly signed APK, and the same APK whose content no longer matches its signature. The official
+certificate is still inside:
 
 ```text
-$ kloner selftest
- CASE  RESULT  LEVEL  GOT                                                 DETAIL
- C-08  PASS    facts  TAMPERED CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE  the androguard inventory reports the vendor certificate
+$ kloner verify v2-only-with-ecdsa-sha256-p256.apk v2-only-with-ecdsa-sha256-p256-digest-mismatch.apk --package android.appsecurity.cts.tinyapp
+VERDICT   SOURCE  VERSION   FILE      SIGNER    LABELS
+GENUINE   local   1.0 (10)  f2b3…1a1  official  LEGACY_PLATFORM_INCOMPATIBLE
+TAMPERED  local   1.0 (10)  b410…354  6a8b…599  CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE · REPACKAGED
+
+Top finding — TAMPERED b410…354 (local)
+  The file was modified after it was signed: V2_SIG_APK_DIGEST_DID_NOT_VERIFY. The official certificate is present,
+  but it does not validate this content.
+Exit 10 — hostile copies found
 ```
 
-The parser still "sees" the vendor's certificate, and the verdict is TAMPERED. The explanation KLONER prints:
-
-> The file was modified after it was signed: JAR_SIG_ZIP_ENTRY_DIGEST_DID_NOT_VERIFY. The official certificate
-> is present, but it does not validate this content.
-
-In this release, the transplant and the other cases that need a crafted hostile file are checked at the
-**facts level**: real facts of a vendor-signed file, changed only in the data the decision sees. `selftest` labels
-each case `file`, `facts` or `anchor`. Separately, 1,200 random bit flips of a real signed file never come out
-GENUINE or FORGED. See [docs/DECISIONS.md](docs/DECISIONS.md) D-026.
+The test suite pins 117 such files from AOSP by commit and SHA-256, and checks 133 cases against exactly the
+verdict and labels recorded for each (D-057). They include stripped signature schemes (TAMPERED + SCHEME_STRIPPED),
+invalid rotation lineages, a second signer added next to the official one (FORGED + MIXED_SIGNERS), the public AOSP
+test key (FORGED + KNOWN_PUBLIC_KEY:AOSP_TESTKEY), and ZIP layouts the structural gate refuses (TAMPERED +
+ZIP_AMBIGUITY). The cases that need a file no public suite provides, such as a signature copied from one app into
+another, are decided at the **facts level**: real facts of a vendor-signed file, changed only in the data the
+decision sees. `selftest` labels each case `file`, `facts` or `anchor` (D-026).
 
 ## The guarantee
 
@@ -333,10 +397,11 @@ verdict=$(kloner --json verify dist/app-release.apk --package com.example.bank |
 
 Requirements: Python 3.11+, a JDK 17+ (Temurin recommended), and network access for `kloner setup`.
 
-- **Linux:** validated on Ubuntu 24.04 (WSL2).
-- **macOS:** targeted but not yet validated.
-- **Windows:** works natively, but `doctor` warns that POSIX worker limits are unavailable. Use WSL2 or Docker
-  there for authoritative runs.
+- **Linux:** validated on Ubuntu 24.04 (WSL2 and CI) and in the Docker image (Debian bookworm).
+- **macOS:** validated in CI on macOS 15 (arm64). apkeep publishes no macOS build, so `apkpure` and `googleplay`
+  report DISABLED there, and `doctor` warns that worker address-space limits are not applied (D-061).
+- **Windows:** use Docker Desktop or WSL2 (see the quick starts). KLONER also runs natively, but `doctor` warns
+  that POSIX worker limits are unavailable there.
 
 ```bash
 # verified install from the hash-locked requirements
@@ -350,16 +415,17 @@ kloner doctor
 pinned one. It installs apkeep 1.1.0 (checksum-verified) and compiles the apksig bridge. An existing Android SDK
 that already holds build-tools 36.0.0 is reused.
 
-Docker (Debian slim, Temurin 17, pinned build-tools, apkeep, KLONER; base images pinned by digest):
+Docker (Debian slim, Temurin 17, pinned build-tools, apkeep, KLONER; base images pinned by digest). The image
+keeps its toolchain in `/opt/kloner/toolchain`, so a volume or host folder on `/kloner` never hides it. Inside the
+image, `kloner doctor` passes every check, POSIX worker limits included, and `kloner selftest --full` passes 55/55:
 
 ```bash
 docker build --build-arg ACCEPT_ANDROID_SDK_LICENSE=yes -t kloner .    # only after reading the license
-docker run --rm -v "$PWD/kloner-home:/kloner" kloner hunt <package>
+docker run --rm -v kloner-home:/kloner kloner hunt <package>
 ```
 
-The image build has not been run yet for this release: see [docs/VALIDATION.md](docs/VALIDATION.md), "Open
-items". `python scripts/build_sbom.py` writes a CycloneDX SBOM of the locked dependencies and the pinned
-toolchain, and CI uploads it with every run.
+`python scripts/build_sbom.py` writes a CycloneDX SBOM of the locked dependencies and the pinned toolchain; CI
+uploads it with every run, and each release attaches it.
 
 ## FAQ
 
@@ -395,14 +461,20 @@ certify the file rather than guess. It fails closed.
 Don't trust us, run it: `kloner selftest --full` regenerates the synthetic corpus from KLONER's own fixtures and
 checks every case.
 
-- **Live field trial** (official sources, 2026-11-09): 8 official copies of Signal, Wikipedia and DuckDuckGo, all
-  **GENUINE**, with **0** hostile verdicts. Signal's anchor was CORROBORATED from signal.org, and its key rotation
-  was proven live in both directions (R1 and R2). The DuckDuckGo CONFLICT was resolved with a declared F-Droid
-  identity. `reverify` was IDENTICAL on every run.
-- **Self-test.** `selftest --full`: 55/55 PASS on Linux, including 38 corpus cases, 13 engine-agreement checks
-  against `apksigner` and 1,200 random mutations of a signed file. Standard mode: 47/47 PASS in 39 s on 4 CPUs.
-- **Tests.** 122 pytest tests, including property tests and fuzzing (1,000 iterations per parser). Line coverage:
-  `decide.py` 97.8%, `verify/` 92.9%, `container/` 93.9%, `anchor/` 93.0%, overall 85.2% (gates 90/90/90/90/80).
+- **Live field trial** (official sources, two rounds, the second inside Docker): 10 official files of Signal,
+  Wikipedia, DuckDuckGo and Bitwarden, all **GENUINE**, with **0** hostile verdicts. Signal's key rotation was
+  proven live in both directions (R1 and R2). Wikipedia is CORROBORATED from three official sources, two keys
+  included. The DuckDuckGo CONFLICT was resolved with a declared F-Droid identity. `reverify` was IDENTICAL on all
+  9 hunts.
+- **Real files from Google.** 133 cases on 117 test APKs of AOSP's apksig, pinned by commit and SHA-256. Each
+  must reach its exact verdict and labels. They found two bugs, both fixed: RSA-PSS on desktop JDKs and a
+  misleading label on stripped schemes.
+- **Self-test.** `selftest --full`: 55/55 PASS in Docker, on Linux and on macOS (CI), including 38 corpus cases,
+  13 engine-agreement checks against `apksigner` and 1,200 random mutations of a signed file. Standard mode: 47/47
+  PASS in 39 s on 4 CPUs.
+- **Tests.** 130 pytest tests, including property tests and fuzzing (1,000 iterations per parser). Line coverage
+  on Linux CI: `decide.py` 98.8%, `verify/` 93.5%, `container/` 95.3%, `anchor/` 93.0%, overall 86.0% (gates
+  90/90/90/90/80).
   mypy --strict, ruff and bandit are clean.
 - **Speed.** A 142 MB APK gets its verdict in about 3.5 s on 4 CPUs. Signal's 115 MB APK takes about 9 s, because
   its minSdk 23 also requires v1 verification of 4,115 entries.
@@ -412,7 +484,7 @@ this README is mapped to its evidence in [docs/CLAIMS.md](docs/CLAIMS.md).
 
 ## Roadmap
 
-- Run the Docker image's `selftest --full`, and publish images and SBOMs with each release.
+- Publish the Docker image (GHCR) with each release.
 - Verify the F-Droid index signature (`entry.jar`) in addition to the TLS and hash chain.
 - A harness for owner-run negative controls on real APKs, and file-level versions of the facts-level corpus cases.
 - More sources where a stable public API exists.
