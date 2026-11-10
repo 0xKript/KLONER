@@ -628,29 +628,33 @@ def mutation_cases(rt: Runtime, ctx: dict[str, Any], n1: int, n2: int) -> list[O
     if facts01.native_inventory:
         for p in facts01.native_inventory.pairs:
             if p.kind in ("unsigned", "padding"):
-                unsigned_ranges.append((p.offset, p.offset + p.size))
+                # the whole pair is unsigned: its 8-byte length and 4-byte ID as well as its value (D-064)
+                unsigned_ranges.append((p.offset - 12, p.offset + p.size))
     outside = [i for i in range(len(data)) if not (blk.start <= i < blk.end)]
     inside = list(range(blk.start, blk.end))
 
-    def mutate(offsets: list[int]) -> list[tuple[int, Verdict]]:
-        def one(off: int) -> tuple[int, Verdict]:
+    def mutate(offsets: list[int]) -> list[tuple[int, Verdict, list[str]]]:
+        def one(off: int) -> tuple[int, Verdict, list[str]]:
             b = bytearray(data)
             b[off] ^= 1 << _rng.randrange(8)
             sha, _ = rt.quarantine.ingest_bytes(bytes(b), 1 << 30)
             ev = pipe.evaluate(sha, c.FIXTURE_PACKAGE, anchors, rt.known_keys).evaluation
             rt.quarantine.remove(sha)
-            return off, ev.verdict
+            return off, ev.verdict, ev.label_codes()
 
         with ThreadPoolExecutor(max_workers=rt.worker_count()) as pool:
             return list(pool.map(one, offsets))
 
     r1 = mutate(_rng.sample(outside, min(n1, len(outside))))
-    bad1 = [(o, v.value) for o, v in r1 if v in (Verdict.GENUINE, Verdict.FORGED)]
+    bad1 = [(o, v.value) for o, v, _ in r1 if v in (Verdict.GENUINE, Verdict.FORGED)]
     r2 = mutate(_rng.sample(inside, min(n2, len(inside))))
     bad2 = []
-    for o, v in r2:
+    for o, v, labels in r2:
         in_unsigned = any(a <= o < b for a, b in unsigned_ranges)
-        if v == Verdict.FORGED or (v == Verdict.GENUINE and not in_unsigned):
+        # GENUINE inside the block: the flip is in an unsigned pair, or the verdict records the changed block
+        # (a pair that is no longer recognized is listed, D-021, D-064). Never FORGED.
+        recorded = bool({"UNSIGNED_BLOCK_DATA", "UNKNOWN_SIGNER_BLOCK"} & set(labels))
+        if v == Verdict.FORGED or (v == Verdict.GENUINE and not (in_unsigned or recorded)):
             bad2.append((o, v.value))
     return [
         Outcome(
@@ -666,7 +670,7 @@ def mutation_cases(rt: Runtime, ctx: dict[str, Any], n1: int, n2: int) -> list[O
             f"{len(r2)} mutations inside the signing block",
             not bad2,
             f"{len(bad2)} violations",
-            "GENUINE only in unsigned pairs; never FORGED",
+            "GENUINE only in unsigned pairs or with the block change recorded; never FORGED",
             str(bad2[:5]) if bad2 else "",
         ),
     ]
