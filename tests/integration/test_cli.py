@@ -176,7 +176,13 @@ def test_end_to_end(
     assert k(cli_home, "intel", "sources").exit_code == 0
     assert k(cli_home, "intel", "payload", "00" * 32).exit_code == 0
     r = k(cli_home, "diff", str(corpus["files"]["C-02"]), "--against", str(corpus["files"]["C-01"]))
-    assert r.exit_code == 0 and "Injected:" in r.output
+    assert r.exit_code == 0 and "Injected:" in r.output and "Code overlap (heuristic): classes 1.00" in r.output
+    # an unrelated app is not "injected" code (found on the live Signal sweep, D-063)
+    js = k(cli_home, "--json", "diff", str(corpus["files"]["C-33"]), "--against", str(corpus["files"]["C-01"]))
+    ov = json.loads(js.output)["overlap"]
+    r = k(cli_home, "diff", str(corpus["files"]["C-33"]), "--against", str(corpus["files"]["C-01"]))
+    assert r.exit_code == 0 and "Code overlap (heuristic)" in r.output
+    assert ("not an injection" in r.output) == (ov["label"] == "IMPOSTOR")
 
     r = k(
         cli_home,

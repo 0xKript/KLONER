@@ -635,6 +635,7 @@ def diff(
     def run() -> None:
         from kloner.forensics.capabilities import capabilities
         from kloner.forensics.diff import diff_views
+        from kloner.forensics.overlap import overlap
         from kloner.forensics.runner import Forensics
 
         rt = _runtime()
@@ -650,10 +651,13 @@ def diff(
 
         fx = Forensics(rt)
         a, b = resolve(sample), resolve(against)
-        d = diff_views(fx.view(a), fx.view(b))
+        sv, rv = fx.view(a), fx.view(b)
+        d = diff_views(sv, rv)
         caps = capabilities(d)
+        cfg = rt.config.forensics
+        ov = overlap(sv, rv, cfg.repackaged_min_jaccard, cfg.impostor_max_jaccard)
         if S.json:
-            typer.echo(json.dumps({"diff": d, "capabilities": caps}, indent=2, sort_keys=True))
+            typer.echo(json.dumps({"diff": d, "capabilities": caps, "overlap": ov}, indent=2, sort_keys=True))
             return
         m = d["manifest"]
         S.console.print(f"[bold]{a[:12]} vs {b[:12]}[/]")
@@ -670,7 +674,15 @@ def diff(
             "New network indicators: "
             f"{sum(len(v) for k, v in c['new_indicators'].items() if k in ('urls', 'domains', 'ips'))}"
         )
-        S.console.print(caps["line"])
+        S.console.print(
+            f"Code overlap (heuristic): classes {ov['j_class']:.2f}, resources {ov['j_res']:.2f}"
+            + (f" → {ov['label']} range" if ov["label"] else "")
+        )
+        line = str(caps["line"])
+        if ov["label"] == "IMPOSTOR":
+            # The files share little code: what one has and the other lacks is its own code, not an injection.
+            line = line.replace("Injected: ", "Only in the sample (different code base, not an injection): ", 1)
+        S.console.print(line)
 
     _guard(run)
 
