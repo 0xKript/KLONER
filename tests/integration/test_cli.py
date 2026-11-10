@@ -228,6 +228,9 @@ def project(doc: dict[str, Any]) -> dict[str, Any]:
 
 def test_errors_map_to_exit_codes(cli_home: Path, tmp_path: Path) -> None:
     empty = tmp_path / "empty-home"
+    # the next command in an error message is never hard-wrapped, whatever the width (found in CI)
+    r = runner.invoke(app, ["--home", str(empty), "hunt", P], env={"COLUMNS": "40"})
+    assert r.exit_code == 2 and f"kloner anchor add {P} --from-url <official-apk-url>" in r.output
     r = k(empty, "verify", str(tmp_path))
     assert r.exit_code == 4 and "kloner setup" in r.output
     r = k(cli_home, "anchor", "add", "not a package", "--from-fingerprint", "00" * 32)

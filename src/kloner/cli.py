@@ -96,7 +96,7 @@ def _runtime(proxy: str | None = None, user_agent: str | None = None) -> Runtime
 
 
 def _fail(msg: str, code: int) -> None:
-    Console(stderr=True, highlight=False).print(f"[bold red]error:[/] {msg}")
+    Console(stderr=True, highlight=False, soft_wrap=True).print(f"[bold red]error:[/] {msg}")
     raise typer.Exit(code)
 
 
