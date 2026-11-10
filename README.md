@@ -486,8 +486,8 @@ checks every case.
 - **Self-test.** `selftest --full`: 55/55 PASS in Docker, on Linux and on macOS (CI), including 38 corpus cases,
   13 engine-agreement checks against `apksigner` and 1,200 random mutations of a signed file. Standard mode: 47/47
   PASS in 39 s on 4 CPUs.
-- **Tests.** 130 pytest tests, including property tests and fuzzing (1,000 iterations per parser). Line coverage
-  on Linux CI: `decide.py` 98.8%, `verify/` 93.5%, `container/` 95.3%, `anchor/` 93.0%, overall 86.0% (gates
+- **Tests.** 138 pytest tests, including property tests and fuzzing (1,000 iterations per parser). Line coverage
+  on Linux CI: `decide.py` 98.8%, `verify/` 93.3%, `container/` 95.1%, `anchor/` 93.0%, overall 86.4% (gates
   90/90/90/90/80).
   mypy --strict, ruff and bandit are clean.
 - **Speed.** A 142 MB APK gets its verdict in about 3.5 s on 4 CPUs. Signal's 115 MB APK takes about 9 s, because
