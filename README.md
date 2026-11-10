@@ -1,6 +1,8 @@
-# KLONER
+<p align="center">
+  <img src="docs/assets/banner.svg" alt="KLONER: Key-Lineage Oracle for Network-wide Exposure of Repackaging" width="840">
+</p>
 
-**K**ey-**L**ineage **O**racle for **N**etwork-wide **E**xposure of **R**epackaging
+# KLONER
 
 Hunt forged, trojanized and tampered copies of any Android app across the internet, and prove every verdict
 cryptographically.
@@ -44,13 +46,17 @@ git clone https://github.com/0xKript/KLONER.git
 cd KLONER
 docker build --build-arg ACCEPT_ANDROID_SDK_LICENSE=yes -t kloner .
 docker volume create kloner-home
-docker run --rm -v kloner-home:/kloner kloner doctor
-docker run --rm -v kloner-home:/kloner kloner selftest
-docker run --rm -v kloner-home:/kloner kloner anchor add org.thoughtcrime.securesms --from-fingerprint 29f34e5f27f211b424bc5bf9d67162c0eafba2da35af35c16416fc446276ba26 4be4f6cd5be844083e900279dc822af65a547fecc26aba7ff1f5203a45518cd8 --evidence-url https://signal.org/android/apk/
+docker run --rm -t -e COLORTERM -e WT_SESSION -v kloner-home:/kloner kloner doctor
+docker run --rm -t -e COLORTERM -e WT_SESSION -v kloner-home:/kloner kloner selftest
+docker run --rm -t -e COLORTERM -e WT_SESSION -v kloner-home:/kloner kloner anchor add org.thoughtcrime.securesms --from-fingerprint 29f34e5f27f211b424bc5bf9d67162c0eafba2da35af35c16416fc446276ba26 4be4f6cd5be844083e900279dc822af65a547fecc26aba7ff1f5203a45518cd8 --evidence-url https://signal.org/android/apk/
 $apk = (Invoke-RestMethod https://updates.signal.org/android/latest.json).url
-docker run --rm -v kloner-home:/kloner kloner anchor add org.thoughtcrime.securesms --from-url $apk --vendor-domain signal.org
-docker run --rm -v kloner-home:/kloner -v "${PWD}\reports:/reports" kloner hunt org.thoughtcrime.securesms --sources url,fdroid --url $apk --out /reports/signal --format terminal,json,html
+docker run --rm -t -e COLORTERM -e WT_SESSION -v kloner-home:/kloner kloner anchor add org.thoughtcrime.securesms --from-url $apk --vendor-domain signal.org
+docker run --rm -t -e COLORTERM -e WT_SESSION -v kloner-home:/kloner -v "${PWD}\reports:/reports" kloner hunt org.thoughtcrime.securesms --sources url,fdroid --url $apk --out /reports/signal --format terminal,json,html
 ```
+
+`-t` gives the container a terminal, so colors and the startup banner show. `-e COLORTERM -e WT_SESSION` pass your
+terminal's true-color hints into the container (Windows Terminal sets `WT_SESSION`); a variable your terminal does
+not set is simply not passed. Leave `-t` out when you capture the output.
 
 If you already accepted the license in Android Studio, you can reuse that acceptance and build without the
 argument:
@@ -332,6 +338,13 @@ kloner export samples --run <run-id>
 Global options: `--home DIR` (default `~/.kloner`), `--json`, `--quiet`, `--debug`, `--no-color`, `--workers N`,
 `--rate R`.
 
+Bare `kloner`, `--help`, `--version`, `hunt`, `verify`, `fetch`, `survey`, `doctor` and `selftest` start with the
+banner above, on stderr, when stdout and stderr are both terminals. It never shows with `--json` or `--quiet`, when
+output is piped or redirected, or in CI, and `KLONER_NO_BANNER=1` turns it off. It never changes stdout, reports or
+exit codes. Its colors follow the terminal: true color with `COLORTERM=truecolor` or in Windows Terminal
+(`WT_SESSION`), a calm 256-color ramp when `TERM` names 256 colors, and otherwise no color, as with `--no-color` or
+`NO_COLOR`. A terminal narrower than 65 columns gets one line, `KLONER v1.0.0` (D-067).
+
 | Exit code | Meaning |
 |---|---|
 | 0 | Run complete: no hostile verdicts, no ANOMALY/ERROR |
@@ -429,7 +442,7 @@ image, `kloner doctor` passes every check, POSIX worker limits included, and `kl
 
 ```bash
 docker build --build-arg ACCEPT_ANDROID_SDK_LICENSE=yes -t kloner .    # only after reading the license
-docker run --rm -v kloner-home:/kloner kloner hunt <package>
+docker run --rm -t -e COLORTERM -e WT_SESSION -v kloner-home:/kloner kloner hunt <package>
 ```
 
 The license is never accepted silently. Without the build argument, the build uses a license file you accepted

@@ -846,6 +846,12 @@ def _intel_rows(kind: str, key: str) -> None:
 
 
 def main() -> None:
+    # The startup banner goes to stderr and only to a person at a terminal (D-067). It can never change stdout or
+    # the exit code: any failure while printing it is ignored.
+    with contextlib.suppress(Exception):
+        from kloner import banner
+
+        banner.show(sys.argv[1:], __version__)
     try:
         app()
     except SystemExit as e:
