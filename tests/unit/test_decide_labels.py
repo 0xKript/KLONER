@@ -100,3 +100,19 @@ def test_impersonator_requires_presentation_evidence(corpus: dict[str, Any], rt:
     labelled = c.anchor_for([corpus["keys"]["vendor"]], brand_labels=["kloner FIXTURE"])
     ev = decide(facts, {P: labelled}, {})
     assert ev.verdict == Verdict.IMPERSONATOR and ev.has_label("EXACT_LABEL") and ev.brand_package == P
+
+
+def test_a_missing_scheme_is_not_called_a_content_modification(
+    facts01: EvaluationFacts, corpus: dict[str, Any]
+) -> None:
+    """D-058 (found on AOSP's v2-stripped.apk): only scheme-requirement failures → SCHEME_STRIPPED, no
+    CONTENT_MODIFIED label, and an explanation that names the missing scheme."""
+    a = {P: _anchor(corpus)}
+    for issue in ("JAR_SIG_MISSING_APK_SIG_REFERENCED", "NO_SIG_FOR_TARGET_SANDBOX_VERSION"):
+        ev = decide(c.with_unverified(facts01, issue), a, {})
+        assert ev.verdict == Verdict.TAMPERED and ev.has_label("SCHEME_STRIPPED"), issue
+        assert not ev.has_label("CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"), issue
+        assert "is missing" in ev.explanation and issue in ev.explanation
+    mixed = decide(c.with_unverified(facts01, "V2_SIG_APK_DIGEST_DID_NOT_VERIFY", "V31_BLOCK_MISSING"), a, {})
+    assert mixed.verdict == Verdict.TAMPERED
+    assert mixed.has_label("SCHEME_STRIPPED") and mixed.has_label("CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE")

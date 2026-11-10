@@ -101,7 +101,9 @@ def test_bridge_failures_are_contained(rt: Any) -> None:
     slow.close()
     good = BridgeClient(tc, timeout_s=60)
     v = good.version()
-    assert v["bridge_version"] == "1"
+    from kloner.toolchain import BRIDGE_VERSION
+
+    assert v["bridge_version"] == BRIDGE_VERSION
     res = good.verify(Path("definitely-missing.apk"), 24, 30)
     assert res.fatal and not res.verified
     good.close()
@@ -237,3 +239,28 @@ def test_apkeep_download_is_checksum_verified(monkeypatch: pytest.MonkeyPatch, t
     with pytest.raises(ToolchainError, match="checksum mismatch"):
         tcmod.install_apkeep(tmp_path, "kloner-tests")
     assert not [p for p in (tmp_path / "toolchain" / "apkeep").rglob("*") if p.is_file()]
+
+
+def test_a_stale_compiled_bridge_is_refused(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    """The bridge protocol changed (v2 adds RSA-PSS on desktop JDKs): an older compiled bridge must be rebuilt."""
+    import kloner.toolchain as tcmod
+
+    tc = Toolchain(
+        home=str(tmp_path),
+        java="java",
+        javac=None,
+        java_version="17",
+        sdk_root=str(tmp_path),
+        build_tools=str(tmp_path),
+        build_tools_version="36.0.0",
+        apksigner_jar=str(tmp_path / "apksigner.jar"),
+        apksigner_jar_sha256="ab" * 32,
+        aapt2=str(tmp_path / "aapt2"),
+        d8_jar=str(tmp_path / "d8.jar"),
+        platform_jar=None,
+        bridge_classes=str(tmp_path),
+    )
+    old = json.dumps({"bridge_version": "1", "apksig_jar_sha256": "ab" * 32, "java_version": "17"}).encode()
+    monkeypatch.setattr(tcmod.proc, "run", lambda *a, **k: proc.ProcResult(("java",), 0, old, b"", False, 0.1))
+    with pytest.raises(ToolchainError, match="run: kloner setup"):
+        tcmod.bridge_round_trip(tc)

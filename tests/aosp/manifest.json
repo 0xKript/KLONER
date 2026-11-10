@@ -1,0 +1,2083 @@
+{
+  "repository": "https://android.googlesource.com/platform/tools/apksig",
+  "commit": "184702d9d18877edf9e5296c4e191cf0aa2b5fbb",
+  "path": "src/test/resources/com/android/apksig",
+  "spdx_license": "Apache-2.0",
+  "notice": "These files are test resources of AOSP's apksig (platform/tools/apksig, commit 184702d9d18877edf9e5296c4e191cf0aa2b5fbb, src/test/resources/com/android/apksig). Copyright (c) 2016, The Android Open Source Project. Licensed under the Apache License, Version 2.0 (see LICENSE in this directory). KLONER uses them unmodified as test inputs and does not redistribute them.",
+  "license": {
+    "file": "LICENSE",
+    "path": "LICENSE",
+    "git_blob": "0b08601cae6bc9fe6637974830d4e657bfe56122",
+    "sha256": "39961513f07c54e796b0fec574e8d64c75e1f0f83736061f114b6f6be1d91e6b"
+  },
+  "certs": [
+    {
+      "file": "dsa-1024.x509.pem",
+      "git_blob": "e230eb0bc5dfedd0dfae3a44cf43b20f9e6c7ca0",
+      "sha256": "50fe615ca70e8a497f0780aabcfde2f9c36868eddd2457852becd7609b5af5e9",
+      "cert_sha256": "fee7c19ff9bfb4197b3727b9fd92d95406b1bd96db99ea642f5faac019a389d7"
+    },
+    {
+      "file": "dsa-2048.x509.pem",
+      "git_blob": "705db393783df5273f978419de646b49017a4bfe",
+      "sha256": "0a633f5211afffe3d317c1719e0da76489ea4c71371cbf4d867d1941500f7884",
+      "cert_sha256": "97cce0bab292c2d5afb9de90e1810b41a5d25c006a10d10982896aa12ab35a9e"
+    },
+    {
+      "file": "dsa-3072.x509.pem",
+      "git_blob": "0284b13a5f052af89133010ede90c057c53f79ce",
+      "sha256": "dc6ac39300501647a3af0ebaff789ae9c84c84caf6129ebbd099e4e3881984be",
+      "cert_sha256": "966a4537058d24098ea213f12d4b24e37ff5a1d8f68deb8a753374881f23e474"
+    },
+    {
+      "file": "ec-p256.x509.pem",
+      "git_blob": "06adcfebd3a53888fbd9804f695cfbf1eea02f22",
+      "sha256": "124cc12a0c809ef5da9f4db179661fffabf16a8856549f7668b6dbbbd4fbca87",
+      "cert_sha256": "6a8b96e278e58f62cfe3584022cec1d0527fcb85a9e5d2e1694eb0405be5b599"
+    },
+    {
+      "file": "ec-p256_2.x509.pem",
+      "git_blob": "f8e5e65b628f47fc7c0abf0ab7554cdb96a57318",
+      "sha256": "852e457da0ca1af520420a2d3261b8b704b7a35ed75ce3d942378a7c624fbd63",
+      "cert_sha256": "d78405f761ff6236cc9b570347a570aba0c62a129a3ac30c831c64d09ad95469"
+    },
+    {
+      "file": "ec-p384.x509.pem",
+      "git_blob": "9d1403b77445d9e1c2ce1ecc5fc98b7e3f34a319",
+      "sha256": "7abceb102bf2d674fd6f9e6568d292256993aa769aacd34d1f97f229a38fef42",
+      "cert_sha256": "5e7777ada7ee7ce8f9c4d1b07094876e5604617b7988b4c5d5b764a23431afbe"
+    },
+    {
+      "file": "ec-p521.x509.pem",
+      "git_blob": "a9b8194ae0eb891a0186ab06eb5d44c8e1efa497",
+      "sha256": "254a995694285c7eb530340a8d5d4364bd8185f58613b40e5ea2f61b539b3f55",
+      "cert_sha256": "69b50381d98bebcd27df6d7df8af8c8b38d0e51e9168a95ab992d1a9da6082da"
+    },
+    {
+      "file": "rsa-1024.x509.pem",
+      "git_blob": "9498ec55e9cd92072f947e3b5b0a8fcff15f99c9",
+      "sha256": "8c25dbb34132fdb53aac450fe0c197e1aac35ed0a1186d86c02a564fee9a2058",
+      "cert_sha256": "bc5e64eab1c4b5137c0fbc5ed05850b3a148d1c41775cffa4d96eea90bdd0eb8"
+    },
+    {
+      "file": "rsa-1024_2.x509.pem",
+      "git_blob": "55a2c453b5d1f58c0fa869c5579bbc2282745a49",
+      "sha256": "300a57f9bb53649aaa3e10efc5531f1a97b4b27717b9fb242087d048a10db08b",
+      "cert_sha256": "eba3685e799f59804684abebf0363e14ccb1c213e2b954a22669714ed97f61e9"
+    },
+    {
+      "file": "rsa-16384.x509.pem",
+      "git_blob": "22b6148b58c073f0f0440e9375cfeb425e77f2d0",
+      "sha256": "9babbbce5b9a60bc82619e72b612a70c2e2c9bce37e2ece72676ce8d8becdaeb",
+      "cert_sha256": "f3c6b37909f6df310652fbd7c55ec27d3079dcf695dc6e75e22ba7c4e1c95601"
+    },
+    {
+      "file": "rsa-2048-2-1.x509.pem",
+      "git_blob": "b14fae494c45a32ff5739e13c9e238c57da287c2",
+      "sha256": "6eade701d3c9abb633ebe9f629c9dd98023e0a44c4026812a898e198aff27db0",
+      "cert_sha256": "681b0e56a796350c08647352a4db800cc44b2adc8f4c72fa350bd05d4d50264d"
+    },
+    {
+      "file": "rsa-2048.x509.pem",
+      "git_blob": "0e7b38e5af2abcbe35d61bf4737129a3b438c8b4",
+      "sha256": "37483d6e5085bfff45a05642b222d19ae37675686d7ce00a721296ebcb44c2d1",
+      "cert_sha256": "fb5dbd3c669af9fc236c6991e6387b7f11ff0590997f22d0f5c74ff40e04fca8"
+    },
+    {
+      "file": "rsa-2048_2.x509.pem",
+      "git_blob": "104f56621eb82ad0711acc80d13290579500ea59",
+      "sha256": "f62acede0e87e50e79ec63dd3a8acbeb187c016af5fb34a2d7f9d7dee647ecd5",
+      "cert_sha256": "681b0e56a796350c08647352a4db800cc44b2adc8f4c72fa350bd05d4d50264d"
+    },
+    {
+      "file": "rsa-2048_3.x509.pem",
+      "git_blob": "35825ecf9cd4c16a0359da0ae9108447de25c146",
+      "sha256": "e359cebe2194b24359989236d3998c0c3db9e6387ea549337f12323b6e427034",
+      "cert_sha256": "bb77a72efc60e66501ab75953af735874f82cfe52a70d035186a01b3482180f3"
+    },
+    {
+      "file": "rsa-2048_negmod.x509.der",
+      "git_blob": "ba7e78e799a13d8904ac1ac8c789d6facf312ccd",
+      "sha256": "e6914235056815913beee2942bb21be3f3d841713e9220aba26a331cacf1f048",
+      "cert_sha256": "e6914235056815913beee2942bb21be3f3d841713e9220aba26a331cacf1f048"
+    },
+    {
+      "file": "rsa-3072.x509.pem",
+      "git_blob": "0f3cd1454ba685a4285c2a3cc64e846bdf826335",
+      "sha256": "4958743c81edf92ca9bf3f4cdf77ec0795d602097d2275931233d726e5ee0ae4",
+      "cert_sha256": "483934461229a780010bc07cd6eeb0b67025fc4fe255757abbf5c3f2ed249e89"
+    },
+    {
+      "file": "rsa-4096.x509.pem",
+      "git_blob": "704dcbd83ac999702f09e3c35a738421fd1e2983",
+      "sha256": "375ed9c933a791c6f40019528aa85781a097c503a71c75f346331643e2738f8f",
+      "cert_sha256": "6a46158f87753395a807edcc7640ac99c9125f6b6e025bdbf461ff281e64e685"
+    },
+    {
+      "file": "rsa-8192.x509.pem",
+      "git_blob": "42f142857b2da992e0db9db29fc47b730551e063",
+      "sha256": "639b5f6d84739fc6742e2f259514fb9904e5665cd54a1a7ad67a4083fd2d350e",
+      "cert_sha256": "060d0a24fea9b60d857225873f78838e081795f7ef2d1ea401262bbd75a58234"
+    }
+  ],
+  "apks": [
+    {
+      "file": "golden-aligned-in.apk",
+      "git_blob": "97f788131115fd54d72934f73cde4b34cf26a316",
+      "sha256": "0e896ce038fb093e1342f65e815ffe45c121ea0a61ebc46bdc48b775866a6185",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "UNANCHORED",
+          "labels": []
+        },
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SIGNATURE_INVALID"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "golden-aligned-v1-out.apk",
+      "git_blob": "403e45a2f7f47032bcd2a1a410a310c31030d76e",
+      "sha256": "b9513e617253cc5864bccd731adeae270861e690a8dae86c15b1ee2aa3f867f4",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "golden-aligned-v2-out.apk",
+      "git_blob": "69f5e642aa550a1313a9b5658b139b677b968857",
+      "sha256": "2670d3a8ec0b5f0be3ac33527a3aa6704c244a1b86cb5e42a6b03596414df383",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "golden-aligned-v3-out.apk",
+      "git_blob": "48f9aa3c74347fe4240173ad78b33980f46fef8e",
+      "sha256": "6e606307a39c826330db293a63c677566265d593bcb9b5c6fa58b34f86102668",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "golden-aligned-v1v2v3-out.apk",
+      "git_blob": "e82f67be2a8825676255ef207c8a3a03c2661c91",
+      "sha256": "ba7828ba42a3b68bd3acff78773e41d6a62aabe6317538671441c568748d9cd7",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "golden-aligned-v1v2v3-lineage-out.apk",
+      "git_blob": "a273b0c0cd729ec0405858220188472b6b8d255a",
+      "sha256": "bfadb71b338bee98f06b6ae870d5aca8306e74d599b94a984de1e7fc1e2ae17f",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_2",
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        },
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "ROTATED_KEY"
+          ]
+        },
+        {
+          "anchor": [
+            "rsa-2048_2"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "ROTATED_KEY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "golden-aligned-v3-lineage-out.apk",
+      "git_blob": "4a4cda990e252af351f3dd46b2bb8baed19c07a3",
+      "sha256": "e2f5131444fdefb60614ae48c5cd0092ccddd7eceb75b13a349045c9acad8632",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_2"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "golden-rsa-minSdkVersion-1-out.apk",
+      "git_blob": "5ae642ac714c33594a626f051deba2fad9a176e2",
+      "sha256": "c61942d91d92271c5e76a2d39817ad773d74558237bbb51a0ef47fe6b29a1f4d",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "golden-rsa-minSdkVersion-24-out.apk",
+      "git_blob": "5ce588a6d36fd1164ec21693d5dd28bdb36e6c84",
+      "sha256": "46ee18face9d46b8daf9411b6aa4128d6a551b6af15594e266de926d2f133ded",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "golden-rsa-verity-out.apk",
+      "git_blob": "232db96d1ad40e836215f09989634691f2401406",
+      "sha256": "eb11cff7612213b97ec2a98ca1010adcc1470af20c268c66390f7cd6a585388e",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "golden-pinsapp-signed.apk",
+      "git_blob": "43c39f13e9b9dafbd32cc6026bb8ad2b1635bc58",
+      "sha256": "5b90240c907b1f4d5728fb0066c097de55afdc57f5572f8d8d7e1e40e6370922",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-rsa-1024.apk",
+      "git_blob": "c1dff8a9fdff5afbe0e420fb6cea8dcf533d5915",
+      "sha256": "39b1ac3b8d8f3e10ac19393ad15e1cbc632153fc8151106f46b05a6c1df56dbd",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-1024"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-rsa-2048.apk",
+      "git_blob": "61f4122600d4540165405834344f214c92ecbd6e",
+      "sha256": "1a2aa49011c5e0a773bd559484cb867b8bd15423381178b2137b63d16dff7540",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        },
+        {
+          "anchor": [
+            "rsa-1024"
+          ],
+          "verdict": "FORGED",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-ecdsa-sha256-1.2.840.10045.4.3.2-p256.apk",
+      "git_blob": "02b8a3189203c0c42d11d576a7c36e52247a01cc",
+      "sha256": "716810d44a0a6ff2b575b677613c0c49a92d3124ffe140d6c1e2ce1e84e6d466",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-dsa-sha256-1.2.840.10040.4.1-2048.apk",
+      "git_blob": "edeb27ddec6284b76b33d5efa340e5723cfcba7a",
+      "sha256": "43a9e92174a1023150fa8f2e1c3b8a50cf928f607e714577a9a4890160247678",
+      "cases": [
+        {
+          "anchor": [
+            "dsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-rsa-pkcs1-md5-1.2.840.113549.1.1.1-2048.apk",
+      "git_blob": "5eb6dec488c21287e9d42b2f686c94f619f6229e",
+      "sha256": "d5337afe1751f6cf305b90909d0363ecd04b5f02ba0565f0caa126703623b01b",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-rsa-pkcs1-sha1-1.2.840.113549.1.1.5-2048.apk",
+      "git_blob": "43bb698730961176f13226c6e10e83d8eaa85b32",
+      "sha256": "811cdc7150d96858735a5dfc848647c86f81366fe5ee6e0cd2518ce430ce137f",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-rsa-pkcs1-sha256-1.2.840.113549.1.1.11-4096.apk",
+      "git_blob": "34be32d487b4feb1b7a1bdef1d50af9f2190d4ed",
+      "sha256": "2504cce1f20f14b25cb15670163cc2dbb73e9a3bf98c91d7d6697008e08f7c9b",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-4096"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-rsa-1024-cert-not-der.apk",
+      "git_blob": "28c8e0ca0c0f8d188ff5e9df8d213a3c223595ef",
+      "sha256": "440f3d09b43cf7ab05ace244767781692774db7806ff341595e6aa252627bc54",
+      "cases": [
+        {
+          "anchor": [
+            "sha256:c5d4535a7e1c8111687a8374b2198da6f5ff8d811a7a25aa99ef060669342fa9"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-two-signers.apk",
+      "git_blob": "f096a564fe6d7b4dec92caf365fe6da3595ba39c",
+      "sha256": "f753f6d42052d12997e3650750e9d96f4a45b3cf31e650ec3c90ba6375233162",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256",
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        },
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "FORGED",
+          "labels": [
+            "MIXED_SIGNERS",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-signed-attrs.apk",
+      "git_blob": "49b1d830437bb69385cacf66a738c40087cfbe5c",
+      "sha256": "f0710837f6cfdc470bf5775d00b660d8c6742f9745b946173c0653660420e238",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-signed-attrs-wrong-digest.apk",
+      "git_blob": "9968555bab7d70904b239956bf8c9ad2e640eb95",
+      "sha256": "1c21832dd294ac55fca373790157662838e464239a46c236ed143fb7fbb50474",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-signed-attrs-wrong-signature.apk",
+      "git_blob": "a686fbfb2f3d349cdd7e03cec7bd4bb5f2eaa74a",
+      "sha256": "7348d6cd9b35925d41b9889a3d5a04d3bd625e5f65907ed5c89d8bf36f3a4567",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-sha1-sha256-manifest-and-sf.apk",
+      "git_blob": "f347a1c60f2397ca00fe575dbb3dee2b7948281d",
+      "sha256": "39c4e7293625051696b5bd22e1341feb8017104ae35ee9282899258ded4fd2a0",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-sha1-sha256-manifest-and-sf-with-sha256-wrong-in-manifest.apk",
+      "git_blob": "29a6030a304e3be287a52d333b49a02a081d3603",
+      "sha256": "63818831655b76b87ee80ee72b7e224bda69476c2acd523bda98233940e6bf2d",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-cr-in-entry-name.apk",
+      "git_blob": "84828b0104611bb404b6905ac0dc2a861478eb18",
+      "sha256": "d5a84385c6442b091dd301ee6e9855f6d41e872f849e9efaf29144d32dfaa83d",
+      "cases": [
+        {
+          "anchor": [
+            "sha256:430e9a6924db43f31a2efe0c8c3c4a4e48b061a84fb3f3337f2eca257bd4d720"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE",
+            "HOSTILE_ENTRY_NAME",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-lf-in-entry-name.apk",
+      "git_blob": "7d341da784f668dd0774b3128e07e9df64cf183b",
+      "sha256": "77f2d1c07a81f83689393fc09ec84c930409f1cd6ac557f9578595f4815a9c6b",
+      "cases": [
+        {
+          "anchor": [
+            "sha256:430e9a6924db43f31a2efe0c8c3c4a4e48b061a84fb3f3337f2eca257bd4d720"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE",
+            "HOSTILE_ENTRY_NAME",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-nul-in-entry-name.apk",
+      "git_blob": "2bcdec17837e5b5fa15b7440c215530b52e5cb17",
+      "sha256": "5043e79831e896fc733bfbb620bb4be7377fcfc16db77cd2cb5348e824f9c5c4",
+      "cases": [
+        {
+          "anchor": [
+            "sha256:430e9a6924db43f31a2efe0c8c3c4a4e48b061a84fb3f3337f2eca257bd4d720"
+          ],
+          "verdict": "ANOMALY",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v1-only-max-sized-eocd-comment.apk",
+      "git_blob": "f7c8db334ae3d8711fe94bf234f7e28cc87c186e",
+      "sha256": "23f7b9e076567c7a05dd5a5ddc8be6fc1bf7251f48833e0bfcefe4a6c9d7fa12",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "ANOMALY",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v1-only-empty.apk",
+      "git_blob": "1967272f882f9c0aea546815477dc625dd426965",
+      "sha256": "bcf451811b588a196bbe34f87f98d4d640d5f776542dc42a13117933b8233542",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "INVALID",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v1-only-no-uses-sdk.apk",
+      "git_blob": "714f9fffde4e0c5aa321268a13a8cacfe6658a7d",
+      "sha256": "3f35f83665183381b8409fdde357146924383b462c696c9749292f6b7356feaf",
+      "cases": [
+        {
+          "anchor": [
+            "sha256:fafce934db36452e9ab58d3e52b55e7e54a362a5b431d33910d702ffc3fb18a7"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-targetSandboxVersion-2.apk",
+      "git_blob": "4a0087919620f08e13b3f83abf3c872c80f79206",
+      "sha256": "2b0757d04a8081a674fc9f98647d6d6bb57bc6a9c1be831d1af6e19f998e86b4",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SCHEME_STRIPPED",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-ec-p256-targetSdk-30.apk",
+      "git_blob": "6a561c0cfb660d32ba472ce22d4f6450230d24cd",
+      "sha256": "6d8cfc7fe9c39476c50e92904d6d8b4ad5737773975134eb957c8ee43198ea02",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SCHEME_STRIPPED",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-with-apk-sig-block-but-without-apk-sig-scheme-v2-block.apk",
+      "git_blob": "a194a2c4df0508dccd936f3550f093c0c286f753",
+      "sha256": "9eeb0cebc8421ba5d70ec659110f0b1a9a170eb55eb232b3655d8d2420bc3ec6",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "UNKNOWN_SIGNER_BLOCK",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-pkcs7-cert-bag-first-cert-not-used.apk",
+      "git_blob": "0ebd01f0c0557cf90acff92b76f37b940a2ed008",
+      "sha256": "6a15ec8e6be6d1402b11adb48463ed5fd4b6c422932a8b0f13b38741f269f886",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1-only-with-stamp.apk",
+      "git_blob": "745a7aa85a73eeb67e02770dbbaee4783bceec47",
+      "sha256": "b104ca693db43b2fdf3a14089e582f15611f6294e3bd9fffe92709fadc906c8c",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "PLAY_SOURCE_STAMP",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-with-rsa-pkcs1-sha256-2048.apk",
+      "git_blob": "51ed3ff384ad6738760c635905d4aff6f2465b51",
+      "sha256": "b11e85df088c3474b2d0f266f1a4863744162fc44b4b53a87d3432f03dce25c6",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        },
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "FORGED",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-with-rsa-pss-sha256-2048.apk",
+      "git_blob": "8bdfb4587199e73d2fa9883d5a1bc610b840bcf0",
+      "sha256": "65e21addea2f6b6c669d66caceae86af0c4ace3c8375e9b33a60a73f5508c1c4",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-with-ecdsa-sha256-p256.apk",
+      "git_blob": "657f1f9181b09c3e535e2d95425e3dc3ed3c7571",
+      "sha256": "f2b3533c9a7b2f50253730052b0b1cad431f010bda7ad6e20febf777594e31a1",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-with-dsa-sha256-2048.apk",
+      "git_blob": "1d679b1aef32b110cf8c42f8ee3150cd208a8129",
+      "sha256": "76ef80372b2533d606d509e0930a107eb1ca6a69ba045aa422af5549a00af229",
+      "cases": [
+        {
+          "anchor": [
+            "dsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-with-rsa-pkcs1-sha256-16384.apk",
+      "git_blob": "a83236697b6a7074927b230cda2c3233c3c8a155",
+      "sha256": "ea25df6eea09bb75d605d18ca461d704edb432135c52f3aee2898c3c1b78733b",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-16384"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-with-ecdsa-sha512-p521.apk",
+      "git_blob": "fde4294e0f6f65af1038ac68b324d95d918a1d83",
+      "sha256": "a50ddd766952449bc6c168f9a1042ba95d6d8f1b01ef4820e7d5ba637336f7c0",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p521"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-with-rsa-pkcs1-sha256-2048-sig-does-not-verify.apk",
+      "git_blob": "fe6be6f906db30969f2af204aba387324f862e9d",
+      "sha256": "ae2f6bf5ae1cf510cc871f0e81bf8577c986362717e91d3bccb63d642760d02e",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-with-ecdsa-sha256-p256-digest-mismatch.apk",
+      "git_blob": "4cfc49cf083926ad71f16c88ae369b7b488eb506",
+      "sha256": "b410ae8b13ca44971937f23a8cff836db03861e1663fe5bb5a3bd19f6f29d354",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-with-rsa-pkcs1-sha512-4096-digest-mismatch.apk",
+      "git_blob": "72f5dba25f856128d13291fe4e4d5928a531579a",
+      "sha256": "7a0ce2f84c0492dda3229c46b2ac72e4c42161b433f00578827df6016a913cf9",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-4096"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-cert-and-public-key-mismatch.apk",
+      "git_blob": "5fbe97e0317f0852108de4472dc2fa93335a9f86",
+      "sha256": "dc3aae6b417a37fa4adcc4414a09d3023fdaee7655bcb876bae0b4c793aa76e5",
+      "cases": [
+        {
+          "anchor": [
+            "sha256:06c4d2e23dfb5a0c879bccca0bf31c2a94e0a80710480c8533a0837bbcba6c48"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-no-certs-in-sig.apk",
+      "git_blob": "692c6b348d9632da07ba394c87d0d8be1024e9d0",
+      "sha256": "0b70b8756462b443a8bb85723b270ab2916eb39d95f403e0b191a90309c09cbf",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "UNANCHORED",
+          "labels": []
+        },
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SIGNATURE_INVALID"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-signatures-and-digests-block-mismatch.apk",
+      "git_blob": "fb397a4af5731b096f7469bb5c515ef08cdf02dd",
+      "sha256": "2b66deee0b1413ecf662b44dde40babbdde659d6e9a27351365f106076678208",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-two-signers.apk",
+      "git_blob": "697b046cbfc1b9e6d68800319fe1f0f8f9a87af5",
+      "sha256": "eb00014677b22cceaa019e4d5a240ee7897664ef6e08993a5881084ce9e27261",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256",
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-two-signers-second-signer-no-sig.apk",
+      "git_blob": "1133085a84b461fbfff9f544e3cb5e429811104e",
+      "sha256": "4d6a72a4b18208c5cdf1228e36e0a83ca181e95acebc7fcd07e8e64ebfccb584",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-unknown-additional-attr.apk",
+      "git_blob": "f1a02000877b645d963cb64c94636151e2b69d7f",
+      "sha256": "ac857810cf4c262c57641bf96ef573d050e0368f91487018b1eff360940f46e3",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "ERROR",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE",
+            "VERIFIER_WARNING:V2_SIG_UNKNOWN_SIG_ALGORITHM"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-unknown-pair-in-apk-sig-block.apk",
+      "git_blob": "2904305b7ba5b9d7e5265ca0f232f9b862ae25f0",
+      "sha256": "4d235185a2c4546d4dc45aebfecb6bc130d3fd300e0a2425734fe7031553f10c",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-4096"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE",
+            "UNSIGNED_BLOCK_DATA"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-with-ignorable-unsupported-sig-algs.apk",
+      "git_blob": "165b262ef1236056270c4d458febe501ee6525ce",
+      "sha256": "1df91027c7557efd27b8da0bfa452b058869fdc1e1461136be0abfc0cef456ca",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE",
+            "VERIFIER_WARNING:V2_SIG_UNKNOWN_SIG_ALGORITHM"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-truncated-cd.apk",
+      "git_blob": "d2e3e8dc1cb740c6f8c37c84025d8cf7abcffb4d",
+      "sha256": "1e332dc0b473de5fae8ef6c347672fe5386aba881a1b9ac77d0193092e308d9e",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "INVALID",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v2-only-garbage-between-cd-and-eocd.apk",
+      "git_blob": "9360383626e8dfa524d17ef9221e66107e227f92",
+      "sha256": "511f4fb06895f6fe2d1fb87793ad3f066bc2f5e72931def1f5bd600158a84f28",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "UNREFERENCED_BYTES",
+            "ZIP_AMBIGUITY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-apk-sig-block-size-mismatch.apk",
+      "git_blob": "e657a80bf8796b78fe097491b7fa59b31bd466f9",
+      "sha256": "04c8290687554d74b479f6a609306c999fd0011ffd38e3d96d102ca6eae4b304",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "UNANCHORED",
+          "labels": []
+        },
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SIGNATURE_INVALID",
+            "UNREFERENCED_BYTES"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-wrong-apk-sig-block-magic.apk",
+      "git_blob": "85750d4b375b5a1567f41abc148f7d04c589679c",
+      "sha256": "d48bed9dc4d49fd11fc5d199beab9533d926f2d27d34230a8d693e59f19eec98",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "UNANCHORED",
+          "labels": []
+        },
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SIGNATURE_INVALID",
+            "UNREFERENCED_BYTES"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-max-sized-eocd-comment.apk",
+      "git_blob": "ef6cb43f68b2ddb85b3fc861df19d90307c8e9c2",
+      "sha256": "40fe177753484de82fb8cc1ad68e8e89c49c3452e4f25674ee7507cd88501a64",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "ANOMALY",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v2-only-missing-classes.dex.apk",
+      "git_blob": "0f1350ace28ab930d08c9aec6cf930f38d67a00c",
+      "sha256": "1767d61a485fbaff0eb3b83a29b05f42d8d910c6143a907d07719d971cf7501b",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p384"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-empty.apk",
+      "git_blob": "071ac7ee068f3f3237aecfb818c69db9daf18943",
+      "sha256": "71b9fc349ee48419647189e628a038c09bba68ee7de8abfc8f5434e5db79fd81",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "INVALID",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v2-only-targetSandboxVersion-2.apk",
+      "git_blob": "f3487c8999e6ec725145624c6952a96befe24aaa",
+      "sha256": "bcbd66a172a364b75875a942c103a4d6cfc6f2ad61b56e57c6cade3c89cdeaf2",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-stripped.apk",
+      "git_blob": "0d04d9348a8b8b9a42ecd0281bbd5c1b4a4f2312",
+      "sha256": "96c72698d495c033d3576ade17079890ba92350c0f52ea7a4923ce4f39310e20",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SCHEME_STRIPPED",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-stripped-with-ignorable-signing-schemes.apk",
+      "git_blob": "634255b32da893aa26e271e67bfc9675ec0db709",
+      "sha256": "21357c0cc662102a9fb483680c4cc6e4f2142e1a83b6639126d454a4dafe5bdb",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SCHEME_STRIPPED",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-rsa-2048-with-extra-sig-block.apk",
+      "git_blob": "94b54c90aa646ce29cda895e7ef93bf88443a66a",
+      "sha256": "428cea91161bd61b71faa94cd8cf862e57ae0c2d86b476ec633bae6bdf0d3e45",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "UNSIGNED_BLOCK_DATA"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-ec-p256-targetSdk-30.apk",
+      "git_blob": "a29dd6c6a6044d16551225072a8b6d4158caa70e",
+      "sha256": "c695a41b1d3c7da25e86ec8a737ffe8b062a020f36fb7dd24da26297f3b5f89f",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v2-only-with-stamp.apk",
+      "git_blob": "ebd402127f81eb8c49f0ac1b0800d573122620f7",
+      "sha256": "0ba86c3d4e748387e7a9c92961b79c4c9f2f52e92dfb1815ce002c3d797de256",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "PLAY_SOURCE_STAMP"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2-only-with-rsa-pkcs1-sha256-1024-cert-not-der.apk",
+      "git_blob": "ada1b00934aa317a77fd2ffc8160e5c5616ce347",
+      "sha256": "da7860428348d521f8f642b67604062206dac890603b2987ee7c94c29e5ca4a8",
+      "cases": [
+        {
+          "anchor": [
+            "sha256:c5d4535a7e1c8111687a8374b2198da6f5ff8d811a7a25aa99ef060669342fa9"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2v3-signed-v3-block-stripped.apk",
+      "git_blob": "751c67d1534c11659aebcfa2c7d5e7b4b376ae72",
+      "sha256": "ba6b48842c845d1593f3f54104ab8457e7fafc930ce67d7e61d62eefdf201f95",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-16384"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SCHEME_STRIPPED"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v2v3-unknown-additional-attr.apk",
+      "git_blob": "cb080f462905d4409ae665aaaffc8817a938fac4",
+      "sha256": "29c8af0cabbc219c27682dd59185b8062667fb8d1ab8166cb9009bf7667fe948",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_2",
+            "rsa-2048"
+          ],
+          "verdict": "ERROR",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-only-with-rsa-pkcs1-sha256-2048.apk",
+      "git_blob": "1ab85f8e95b88b1299960016b12e14c05969e2ff",
+      "sha256": "11394d65bfd43bb7e6a234dccaa6b6a18078c5d57fc8f3d17a5159332e0c4455",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-only-with-ecdsa-sha256-p256.apk",
+      "git_blob": "5ef4fec13735752a0c4b16beb77632c55d87ef89",
+      "sha256": "dc42c4d7221e6c56562f3393b67fd10abed35c232e14688744ba5054b1f83a61",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        },
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "FORGED",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-only-with-dsa-sha256-2048.apk",
+      "git_blob": "3d2161e59100e68c667503706d65e7775714c5c5",
+      "sha256": "8437f158b914f96eb26c8bb88bd4f3358402b5c8e4657bdd38569e9da830b20a",
+      "cases": [
+        {
+          "anchor": [
+            "dsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-only-with-rsa-pkcs1-sha512-8192-digest-mismatch.apk",
+      "git_blob": "280092962eb6ba3ceaf602cb4ffd5eeda145976b",
+      "sha256": "a1238138801e3497d6df3c3a61a6ccac4367e815522b55451ef3f2896a9f524c",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-8192"
+          ],
+          "verdict": "ANOMALY",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v3-only-with-ecdsa-sha512-p521-sig-does-not-verify.apk",
+      "git_blob": "8e89c984577585017dd9f43bc2809e73ed0527ea",
+      "sha256": "4d14fbdb6f27e2b49f27191ad58ec4835383e87d0acdda2af70e42779106657d",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p521"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-only-unknown-additional-attr.apk",
+      "git_blob": "2245922d3a683e23ad1af22808da12c235543d70",
+      "sha256": "20ca03a5e5d589e195856fd35df4e3799e5cfcf9b32686a95a192b9e6ed58035",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_2"
+          ],
+          "verdict": "ERROR",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-only-unknown-pair-in-apk-sig-block.apk",
+      "git_blob": "49eeaf3d70bd71a68c025d57c41c6508157eaa87",
+      "sha256": "19d6d44edcf8a6c2d818a4b7cc4ad432b881c2d7f443c03333977dab9ffb1bea",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-1024"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE",
+            "UNSIGNED_BLOCK_DATA"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-only-with-ignorable-unsupported-sig-algs.apk",
+      "git_blob": "88ae376478a92384c025e49fe091f481794a355c",
+      "sha256": "3512704830706f002b359e3688fcef44122a4c9bbcb551f356c07459f5c839fe",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "LEGACY_PLATFORM_INCOMPATIBLE",
+            "VERIFIER_WARNING:V3_SIG_UNKNOWN_SIG_ALGORITHM"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-only-no-supported-sig-algs.apk",
+      "git_blob": "f0debf36b8fe855d0538adf19c1b40fa70f65ff5",
+      "sha256": "448d22d4c7bfbb6086ccd57cc43236c142b43e63179b7d6edbde1d38a6cdd318",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-only-cert-and-public-key-mismatch.apk",
+      "git_blob": "2291e7eb274b80ba9ccd7f00d1da8cbc4a7ce214",
+      "sha256": "dea9769f05ca6a224786249214229e3cda2a592822b6b14364d0ac18a5f5df22",
+      "cases": [
+        {
+          "anchor": [
+            "sha256:ce0a859a121ebc030170162e225f04ac10530070ec86a57747c696576a1244b3"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-stripped.apk",
+      "git_blob": "751c67d1534c11659aebcfa2c7d5e7b4b376ae72",
+      "sha256": "ba6b48842c845d1593f3f54104ab8457e7fafc930ce67d7e61d62eefdf201f95",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-16384"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SCHEME_STRIPPED"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-ec-p256-targetSdk-30.apk",
+      "git_blob": "c58ec8bf0fed51c3b42cb809353b42401b59a713",
+      "sha256": "11767d53b7f9bbb3b2ff18a456e2aa7150f409d19f21afaf7d2a9c0d7fcb36cd",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v3-only-with-stamp.apk",
+      "git_blob": "5f65214251370d793462a74e8c509de712f931a2",
+      "sha256": "40a1f35b9306f782e46d5f2a2dd8b26f655f7c25363e587132bcfdd47227a5c0",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "PLAY_SOURCE_STAMP"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-rsa-2048_2-tgt-dev-release.apk",
+      "git_blob": "d3b2c14c1e69bcc82a6e378e6f970cb5d7d61df2",
+      "sha256": "c482a68c316fe4b01ded141642bc5e397b170a6fef63437a276a835b5fe00d0d",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_2",
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "VERIFIER_WARNING:V31_ROTATION_TARGETS_DEV_RELEASE_ATTR_ON_V3_SIGNER"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v3-only-empty.apk",
+      "git_blob": "15cb0ecb3e219d1701294bfdf0fe3f5cb5d208e7",
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "INVALID",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v1v2v3-with-rsa-2048-lineage-3-signers.apk",
+      "git_blob": "fd141b59cca7ea562ee263a409849305023a637b",
+      "sha256": "9c6947bf9398a15e85a52bf83b07cfae6686ff49e03034d09cbea45a19bdaa15",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_3",
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        },
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "ROTATED_KEY"
+          ]
+        },
+        {
+          "anchor": [
+            "rsa-2048_3"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "ROTATED_KEY"
+          ]
+        },
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "FORGED",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v1v2v3-with-rsa-2048-lineage-3-signers-invalid-lineage-attr.apk",
+      "git_blob": "1bd3828dfd9116e986e638ef56569f8c7b040052",
+      "sha256": "d521755adb86006d8247da2e94f17f28067654b802f7350ca97dd668eadaa477",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_3",
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1v2v3-with-rsa-2048-lineage-3-signers-invalid-zip.apk",
+      "git_blob": "2621f21eafe6d27b45662822968c2a464946c5f3",
+      "sha256": "94be14416a8bbffb5d156295a0e69eeac586b915bbb070b5d4729ffeeef97eff",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "INVALID",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v1v2v3-with-rsa-2048-lineage-3-signers-no-sig-block.apk",
+      "git_blob": "17dea33d9fd9b9d7a3fa345f3ab327e85370f070",
+      "sha256": "c68b3e83132087ed21a7a447f90f9b251a218c1e52664d16a02d62280369e74f",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SCHEME_STRIPPED",
+            "UNREFERENCED_BYTES",
+            "V1_ONLY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v1v2v3-rsa-2048-negmod-in-cert.apk",
+      "git_blob": "6f73b92bf3d651672d4510c8c810fab431950fb4",
+      "sha256": "21f6c62a79087c8d2b18927c1f1cc815f7920c6abb17049eaeedf4548575f8eb",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_negmod"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v1v2v3-rotated-v3-key-valid-stamp.apk",
+      "git_blob": "5f1103abde63433dbf9c8f095b65aa4f0ec04903",
+      "sha256": "1191cccd4596346b38d808dba9d8d24981bab559062cb05b3536553ea141dc83",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256_2"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "PLAY_SOURCE_STAMP",
+            "ROTATED_KEY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v31-rsa-2048_2-tgt-33-1-tgt-28.apk",
+      "git_blob": "aeaec3386b6a1a4d482190506e89b33ee5ccf603",
+      "sha256": "a40f823ac90d7ff366157923c689fc0eb14956354af647644b3148fc1ca3fe70",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_2",
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        },
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "ROTATED_KEY"
+          ]
+        },
+        {
+          "anchor": [
+            "rsa-2048_2"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "ROTATED_KEY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v31-rsa-2048_2-tgt-34-1-tgt-28.apk",
+      "git_blob": "ccf59d4f167497e1c6d730c92396b64119e3e76b",
+      "sha256": "5d6554386a76c453499b6bb6e3a4b183eb5098f89058fedbec101c39588edc6b",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_2",
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v31-2elem-incorrect-lineage.apk",
+      "git_blob": "517a1efb3f370b34209544961eaa504398e5c159",
+      "sha256": "26f7571dab499d3d9ef6e87ea0564e315f88ea5f593263aa54bb2e648d77c69c",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_2"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v31-2elem-lineage-incorrect-digest.apk",
+      "git_blob": "2eba63e1298f77a76a91d94ac759fca35c9f9f00",
+      "sha256": "106005d2ccd13fd3bab80dded8ea7cadeafcea2747241e69ecbc04936660d5b4",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_2"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v31-block-stripped-v3-attr-value-33.apk",
+      "git_blob": "d09107561ae30a20d2df6863ddae0c32ca16dc61",
+      "sha256": "111090e77fd28e61cf6caa3f8a165fbf5cc7cbf0408621eda9e061d8a18e3331",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SCHEME_STRIPPED"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v31-tgt-33-no-v3-block.apk",
+      "git_blob": "1c797a7eb97d3721b30bda5d20e6e7a849f22191",
+      "sha256": "2eb9627c2fea5e72c8c7f033ff73292a738b5da37f7137c989cea949115a4849",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_2"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v31-ec-p256-2-tgt-33-1-tgt-28-targetSdk-30.apk",
+      "git_blob": "ad14731707d396e818c7434880452b5130976898",
+      "sha256": "a26caa6fdc59a5d022257c26400cb293cca6a01cc1b13ffce47e83e76a7665f5",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256",
+            "ec-p256_2"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "v31-empty-lineage-no-v3.apk",
+      "git_blob": "fbc7f76ee7e288b456c53a32e15b339f9c48900d",
+      "sha256": "d185944c303260e70008ff6bdb83803ba67a8a33ef9c00aab753c8c2a6873598",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "v31-rsa-2048_2-tgt-10000-1-tgt-28.apk",
+      "git_blob": "dde89cbb1194edbaf626b7148e46adc541dd69d2",
+      "sha256": "6fb3adbe2c1832ea2aaf5437a27b5e7296fd9146782824f51b5a213a6ce9e8f8",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048_2",
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "valid-stamp.apk",
+      "git_blob": "2f2a5923d24aad2d8c046025ff9fffa07f9e8734",
+      "sha256": "63620b13925dbd5e13915f9b917cb064f87f353b4d81af622113352bb7749a0b",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "PLAY_SOURCE_STAMP"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "stamp-apk-hash-mismatch.apk",
+      "git_blob": "1dc1e998f1eec74997b607ad755b70f4ad1a7a84",
+      "sha256": "17ef9ddbc2dcf68d96e05e584eb7acd43aecd2d57a8f5d55d3fcfa5f2b760532",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "VERIFIER_WARNING:SOURCE_STAMP_SIG_MISSING"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "stamp-certificate-mismatch.apk",
+      "git_blob": "f1105f96664c919203ddd481e77cba6937a0acb5",
+      "sha256": "3617dfddd930c53af112b516913b3756f35dfa8f28e483d7e71ad2c84f04097d",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "SOURCE_STAMP_INVALID"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "stamp-malformed-signature.apk",
+      "git_blob": "d28774aa2b1427eb2731950f4a705d93c0144ba3",
+      "sha256": "5ea0d75cd712f6588a353d789277255d9e0295f29d8e9fb3ea308a60b4dfce88",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "SOURCE_STAMP_INVALID"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "stamp-without-block.apk",
+      "git_blob": "604fe6f43523732bbb080160d8e3c6f7c8b2585e",
+      "sha256": "c17aee8a039d14ce384e2d88531289570c910bf54d64e9f3e993783994466ed0",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "VERIFIER_WARNING:SOURCE_STAMP_SIG_MISSING"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "stamp-unknown-attr.apk",
+      "git_blob": "68771a53ab882dcc1ca74b08af0c4268c6456949",
+      "sha256": "76f0ab806c992c465778d49f86bbc3c2f3b3d7507992b71ee5ab34cf52283c43",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256"
+          ],
+          "verdict": "GENUINE",
+          "labels": [
+            "PLAY_SOURCE_STAMP"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "two-signers.apk",
+      "git_blob": "f11760f65a01920db77510316e490ae4b1fd0a43",
+      "sha256": "738ac9ff164bb4fefd4a89946b17cb5f66ce79df4f03c05d90531d4976dfd54a",
+      "cases": [
+        {
+          "anchor": [
+            "ec-p256",
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        },
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "FORGED",
+          "labels": [
+            "MIXED_SIGNERS"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "two-signers-second-signer-v2-broken.apk",
+      "git_blob": "fcf154ea7b6fed23d741afdb393980fc454e9d76",
+      "sha256": "367df437bc94a6acb56e366a5cf1c112a63cc7895c093501e9eda61d022c4e22",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "original.apk",
+      "git_blob": "05f89aa80e11f9c76d53e25f8036e6889e38e225",
+      "sha256": "3c2fe9b5ce639371490a92e0cec783413bdb9deb4a5e6620d413d86cb5ca518f",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "empty-unsigned.apk",
+      "git_blob": "15cb0ecb3e219d1701294bfdf0fe3f5cb5d208e7",
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "INVALID",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "invalid_manifest.apk",
+      "git_blob": "b4fcd91defda6ff0544cd95a3a72a4f30dc6b287",
+      "sha256": "4860954cf66b3abe921f20fe7d5bf4edb06849a736064b4943b62f0fbde04b1d",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "INVALID",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "incorrect-manifest-size.apk",
+      "git_blob": "34bc091e15948543b203548803b72be968125f18",
+      "sha256": "061f382bcda8edebce4c27bf6a3fed3a58879e3f25e231f029035d7c0b9e24c6",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "INVALID",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "incorrect-v2-block-size.apk",
+      "git_blob": "75a6a0e7247327941d32704b0166efb078cd59a1",
+      "sha256": "8e4c5cb752aedce90a3d80528fee3fa07516c4f881c2b75c7f5df6e6cbc060f3",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "SCHEME_STRIPPED",
+            "UNREFERENCED_BYTES"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "weird-compression-method.apk",
+      "git_blob": "33f9af9032972f0e408e455e1dfe0ccff0d243ef",
+      "sha256": "e90efb5f2eac5bae345ab0cfac993e4946de9312d4ab879a0860e4c4690c2856",
+      "cases": [
+        {
+          "anchor": [],
+          "verdict": "INVALID",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "mismatched-compression-method.apk",
+      "git_blob": "9fe9ff96ad529caef4ddd3263c230c92418bf91e",
+      "sha256": "a6f454f39765817f0569a52cf545f5898495e6ccfc3b0bde202f84509c60ae75",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "TAMPERED",
+          "labels": [
+            "V1_ONLY",
+            "ZIP_AMBIGUITY"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "targetSandboxVersion-2.apk",
+      "git_blob": "2d7685a0426e2076832889bebfb5d5f0e0e02b55",
+      "sha256": "3ec48035e455e1020016ceac7df26b6010ddd105a4e22c93c82bb14ccd3d7eaf",
+      "cases": [
+        {
+          "anchor": [
+            "sha256:6cecc50e34ae31bfb5678986d6d6d3736c571ded2f2459527793e1f054eb0c9b"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    },
+    {
+      "file": "debuggable-boolean.apk",
+      "git_blob": "573376ac6acf8a4da272d5e0bbecf2a6c264ce07",
+      "sha256": "3510d769b346b47fada0c3c388f23dec7801d0ded5907f97a352df9e90d3ce06",
+      "cases": [
+        {
+          "anchor": [
+            "rsa-2048"
+          ],
+          "verdict": "FORGED",
+          "labels": [
+            "KNOWN_PUBLIC_KEY:AOSP_TESTKEY",
+            "VERIFIER_WARNING:V2_SIG_UNKNOWN_SIG_ALGORITHM"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "original-minSdk33.apk",
+      "git_blob": "a2ea9eb4d2e60edd0f23cf86f76bf08d05ab9e9d",
+      "sha256": "947fd17d143e249637a650550fdc3ebadc6df1a5791d2065c862e69a93f7189d",
+      "cases": [
+        {
+          "anchor": [
+            "sha256:6cecc50e34ae31bfb5678986d6d6d3736c571ded2f2459527793e1f054eb0c9b"
+          ],
+          "verdict": "GENUINE",
+          "labels": []
+        }
+      ]
+    }
+  ]
+}

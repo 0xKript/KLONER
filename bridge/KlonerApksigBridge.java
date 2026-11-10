@@ -28,8 +28,20 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.InvalidParameterException;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.Provider;
+import java.security.PublicKey;
+import java.security.Security;
+import java.security.Signature;
+import java.security.SignatureException;
+import java.security.SignatureSpi;
 import java.security.cert.CertificateEncodingException;
+import java.security.spec.AlgorithmParameterSpec;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -38,12 +50,13 @@ import java.util.List;
 import java.util.Map;
 
 public final class KlonerApksigBridge {
-    static final String BRIDGE_VERSION = "1";
+    static final String BRIDGE_VERSION = "2";
     static final int MAX_REQUEST_CHARS = 1 << 16;
 
     private KlonerApksigBridge() {}
 
     public static void main(String[] args) throws Exception {
+        PssAliases.installIfMissing();
         PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), false);
         if (args.length == 1 && "--version".equals(args[0])) {
             out.println(versionJson(null));
@@ -571,6 +584,93 @@ public final class KlonerApksigBridge {
                     sb.append(c);
                 }
             }
+        }
+    }
+
+    /**
+     * apksig asks the JCA for "SHA256withRSA/PSS" and "SHA512withRSA/PSS" (the names Android's Conscrypt
+     * provides). Desktop JDKs implement the same algorithm as "RSASSA-PSS", configured by the PSSParameterSpec
+     * apksig sets. When the names are missing, this registers verify-only adapters so that APKs signed with
+     * RSA-PSS verify on the desktop exactly as on a device. Signing is refused.
+     */
+    static final class PssAliases extends Provider {
+        private static final long serialVersionUID = 1L;
+
+        private PssAliases() {
+            super("KlonerPssAliases", "1.0", "SHAxxxwithRSA/PSS names mapped to the JDK's RSASSA-PSS (verify only)");
+            put("Signature.SHA256withRSA/PSS", PssVerifier.class.getName());
+            put("Signature.SHA512withRSA/PSS", PssVerifier.class.getName());
+        }
+
+        static void installIfMissing() {
+            try {
+                Signature.getInstance("SHA256withRSA/PSS");
+                return; // a provider already offers the names
+            } catch (NoSuchAlgorithmException e) {
+                // fall through
+            }
+            try {
+                Signature.getInstance("RSASSA-PSS");
+            } catch (NoSuchAlgorithmException e) {
+                return; // nothing to map to; apksig reports the failure itself
+            }
+            Security.addProvider(new PssAliases());
+        }
+    }
+
+    /** Verify-only SignatureSpi delegating to the JDK's RSASSA-PSS. */
+    public static final class PssVerifier extends SignatureSpi {
+        private final Signature delegate;
+
+        public PssVerifier() throws NoSuchAlgorithmException {
+            delegate = Signature.getInstance("RSASSA-PSS");
+        }
+
+        @Override
+        protected void engineInitVerify(PublicKey publicKey) throws InvalidKeyException {
+            delegate.initVerify(publicKey);
+        }
+
+        @Override
+        protected void engineInitSign(PrivateKey privateKey) throws InvalidKeyException {
+            throw new InvalidKeyException("the KLONER bridge only verifies");
+        }
+
+        @Override
+        protected void engineUpdate(byte b) throws SignatureException {
+            delegate.update(b);
+        }
+
+        @Override
+        protected void engineUpdate(byte[] b, int off, int len) throws SignatureException {
+            delegate.update(b, off, len);
+        }
+
+        @Override
+        protected byte[] engineSign() throws SignatureException {
+            throw new SignatureException("the KLONER bridge only verifies");
+        }
+
+        @Override
+        protected boolean engineVerify(byte[] sigBytes) throws SignatureException {
+            return delegate.verify(sigBytes);
+        }
+
+        @Override
+        protected void engineSetParameter(AlgorithmParameterSpec params) throws InvalidAlgorithmParameterException {
+            delegate.setParameter(params);
+        }
+
+        @Override
+        @Deprecated
+        protected void engineSetParameter(String param, Object value) {
+            throw new InvalidParameterException("unsupported");
+        }
+
+        @Override
+        @Deprecated
+        protected Object engineGetParameter(String param) {
+            throw new InvalidParameterException("unsupported");
         }
     }
 }

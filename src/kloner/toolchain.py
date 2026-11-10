@@ -52,6 +52,7 @@ APKEEP_ASSETS: dict[tuple[str, str], tuple[str, str]] = {
 APKEEP_URL = "https://github.com/EFForg/apkeep/releases/download/{version}/{asset}"
 
 BRIDGE_CLASS = "KlonerApksigBridge"
+BRIDGE_VERSION = "2"  # must equal KlonerApksigBridge.BRIDGE_VERSION; a stale compiled bridge is refused
 JAVA_MIN_MAJOR = 17
 
 
@@ -345,6 +346,11 @@ def bridge_round_trip(tc: Toolchain, timeout_s: float = 60) -> dict[str, Any]:
     data: dict[str, Any] = json.loads(res.text())
     if data.get("apksig_jar_sha256") != tc.apksigner_jar_sha256:
         raise ToolchainError("the bridge loaded a different apksig than the pinned one")
+    if data.get("bridge_version") != BRIDGE_VERSION:
+        raise ToolchainError(
+            f"the compiled apksig bridge is version {data.get('bridge_version')}, this KLONER needs "
+            f"{BRIDGE_VERSION}; run: kloner setup"
+        )
     return data
 
 

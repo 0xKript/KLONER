@@ -40,6 +40,7 @@ STRIP_ISSUES = frozenset(
         "MIN_SIG_SCHEME_FOR_TARGET_SDK_NOT_MET",
         "V31_BLOCK_MISSING",
         "JAR_SIG_NO_APK_SIG_STRIP_PROTECTION",
+        "NO_SIG_FOR_TARGET_SANDBOX_VERSION",  # targetSandboxVersion 2+ requires v2 or higher (found in D-057)
     }
 )
 UNKNOWN_ATTRIBUTE_ISSUES = frozenset({"V2_SIG_UNKNOWN_ADDITIONAL_ATTRIBUTE", "V3_SIG_UNKNOWN_ADDITIONAL_ATTRIBUTE"})
@@ -446,7 +447,15 @@ def decide(
                 ctx.reasons.append(f"R-G5-APKSIG:{i}")
             claimed = app_signers(rng, f.native_inventory)
             official = anchor.trusted()
-            if set(claimed) & official:
+            stripped = sorted(STRIP_ISSUES & set(issues))
+            if stripped and set(issues) <= STRIP_ISSUES:
+                # Every failure is a missing stronger scheme: the signatures that are present verify, so the
+                # content was not changed under them (D-058).
+                explanation = (
+                    f"A signature scheme this file requires or names is missing ({stripped[0]}). The signatures "
+                    "that are present verify, but apksig rejects the file without the missing scheme."
+                )
+            elif set(claimed) & official:
                 ctx.label("CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE", issues[0], issues=issues)
                 explanation = (
                     f"The file was modified after it was signed: {issues[0]}. The official certificate is "
@@ -455,8 +464,8 @@ def decide(
             else:
                 ctx.label("SIGNATURE_INVALID", issues[0], issues=issues)
                 explanation = f"The signatures do not verify: {issues[0]}."
-            if STRIP_ISSUES & set(issues):
-                ctx.label("SCHEME_STRIPPED", ", ".join(sorted(STRIP_ISSUES & set(issues))))
+            if stripped:
+                ctx.label("SCHEME_STRIPPED", ", ".join(stripped))
             ctx.step("G5", "fail", f"apksig rejects the file: {', '.join(issues)}")
             _common_labels(ctx, None)
             return ctx.result(Verdict.TAMPERED, explanation, anchor=anchor, signers=_signer_records(claimed, {}, ctx))
