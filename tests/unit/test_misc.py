@@ -283,3 +283,38 @@ def test_apkeep_sources_without_a_platform_build_are_disabled(rt: Any, monkeypat
     monkeypatch.setattr(sources, "apkeep_asset", lambda: None)
     src = sources.build_source(rt, "apkpure")
     assert isinstance(src, DisabledSource) and "publishes no build for" in src.reason
+
+
+def test_apkeep_that_cannot_run_is_reported_not_trusted(rt: Any, monkeypatch: pytest.MonkeyPatch) -> None:
+    """The Docker image on bookworm had apkeep 1.1.0 with the right checksum, but its Linux build needs glibc 2.38:
+    doctor said PASS and every apkpure call failed (D-068)."""
+    import sys
+
+    from kloner import doctor, toolchain
+    from kloner.acquire import sources
+    from kloner.acquire.base import DisabledSource
+    from kloner.util.proc import ProcResult
+
+    glibc = "apkeep: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.38' not found (required by apkeep)"
+
+    def failing(argv: Any, **_: Any) -> ProcResult:
+        return ProcResult(tuple(map(str, argv)), 1, b"", glibc.encode(), False, 0.01)
+
+    with monkeypatch.context() as m:  # proc.run is shared: restore it before doctor runs the real tools
+        m.setattr(toolchain.proc, "run", failing)
+        assert toolchain.apkeep_runs("apkeep") == glibc
+    with monkeypatch.context() as m:
+        m.setattr(
+            toolchain.proc, "run", lambda argv, **_: ProcResult(tuple(argv), 0, b"apkeep 1.1.0", b"", False, 0.01)
+        )
+        assert toolchain.apkeep_runs("apkeep") is None
+
+    broken = replace(rt.toolchain(), apkeep=sys.executable, apkeep_error=glibc)
+    monkeypatch.setattr(rt, "_toolchain", broken)
+    src = sources.build_source(rt, "apkpure")
+    assert isinstance(src, DisabledSource) and "cannot run on this system" in src.reason and "GLIBC_2.38" in src.reason
+
+    monkeypatch.setattr(doctor, "load_toolchain", lambda _home: broken)
+    monkeypatch.setattr(doctor, "apkeep_runs", lambda _path: glibc)
+    check = next(c for c in doctor.run_doctor(rt, network=False) if c.name == "apkeep")
+    assert check.status == "WARN" and "cannot run on this system" in check.detail and "GLIBC_2.38" in check.detail

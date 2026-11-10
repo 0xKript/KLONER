@@ -418,7 +418,7 @@ verdict=$(kloner --json verify dist/app-release.apk --package com.example.bank |
 
 Requirements: Python 3.11+, a JDK 17+ (Temurin recommended), and network access for `kloner setup`.
 
-- **Linux:** validated on Ubuntu 24.04 (WSL2 and CI) and in the Docker image (Debian bookworm).
+- **Linux:** validated on Ubuntu 24.04 (WSL2 and CI) and in the Docker image (Debian 13).
 - **macOS:** validated in CI on macOS 15 (arm64). apkeep publishes no macOS build, so `apkpure` and `googleplay`
   report DISABLED there, and `doctor` warns that worker address-space limits are not applied (D-061).
 - **Windows:** use Docker Desktop or WSL2 (see the quick starts). KLONER also runs natively, but `doctor` warns
@@ -475,7 +475,8 @@ queried, which failed or were blocked, and how many files were evaluated. "No ho
 N files from sources X".
 
 **Why is a mirror's file INVALID?** It is not an evaluable APK: a truncated or corrupt download, an HTML page saved
-as `.apk`, an AAB, or an encrypted or unsafe archive. A corrupt network download is re-fetched once, and
+as `.apk`, an AAB, or an encrypted or unsafe archive, such as one whose entries overlap (a patched Spotify built with
+LSPatch in the mirror sweep). A corrupt network download is re-fetched once, and
 corruption is never reported as TAMPERED.
 
 **Why ANOMALY instead of a verdict?** When the engines or the two manifest parsers disagree, KLONER refuses to
@@ -491,8 +492,11 @@ checks every case.
   proven live in both directions (R1 and R2). Wikipedia is CORROBORATED from three official sources, two keys
   included. The DuckDuckGo CONFLICT was resolved with a declared F-Droid identity. `reverify` was IDENTICAL on all
   9 hunts.
-- **Third-party mirrors.** The build agent did not sweep them (D-056). `scripts/mirror-sweep.ps1` runs that sweep
-  and Trial D inside Docker with one command, under the same rules (D-066). Its `-DryRun` plan is tested.
+- **Third-party mirrors** (the owner's run of `scripts/mirror-sweep.ps1`, D-066): 21 GENUINE copies of Signal,
+  Wikipedia, DuckDuckGo and Bitwarden, from official links, F-Droid and Aptoide, and 0 FORGED or IMPOSTOR among
+  them. 54 apps with similar names were MISMATCH. One TAMPERED was DuckDuckGo's own release, a KLONER defect that
+  was fixed (D-068). Trial D found a real **FORGED** `com.spotify.music` on Aptoide: a 1.1 MB app signed by an unknown
+  key, with none of Spotify's code.
 - **Real files from Google.** 133 cases on 117 test APKs of AOSP's apksig, pinned by commit and SHA-256. Each
   must reach its exact verdict and labels. They found two bugs, both fixed: RSA-PSS on desktop JDKs and a
   misleading label on stripped schemes.

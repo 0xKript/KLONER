@@ -171,9 +171,12 @@ def setup(
         S.console.print(f"[green]PASS[/] build-tools {tc.build_tools_version} at {tc.build_tools}")
         S.console.print(f"[green]PASS[/] apksig: {tc.apksig_version}")
         S.console.print(f"[green]PASS[/] bridge compiled: {tc.bridge_classes}")
-        S.console.print(
-            f"{'[green]PASS[/]' if tc.apkeep else '[yellow]WARN[/]'} apkeep: {tc.apkeep or 'not installed'}"
-        )
+        if tc.apkeep and tc.apkeep_error:
+            S.console.print(f"[yellow]WARN[/] apkeep: {tc.apkeep} cannot run on this system ({tc.apkeep_error})")
+        else:
+            S.console.print(
+                f"{'[green]PASS[/]' if tc.apkeep else '[yellow]WARN[/]'} apkeep: {tc.apkeep or 'not installed'}"
+            )
         for n in notes:
             S.console.print(f"[yellow]note[/] {n}")
         S.console.print("Next: kloner doctor")
@@ -637,7 +640,7 @@ def diff(
     """Forensic diff of one sample against another (sha256 in the quarantine, or a file)."""
 
     def run() -> None:
-        from kloner.forensics.capabilities import capabilities
+        from kloner.forensics.capabilities import capabilities, for_overlap
         from kloner.forensics.diff import diff_views
         from kloner.forensics.overlap import overlap
         from kloner.forensics.runner import Forensics
@@ -682,11 +685,7 @@ def diff(
             f"Code overlap (heuristic): classes {ov['j_class']:.2f}, resources {ov['j_res']:.2f}"
             + (f" → {ov['label']} range" if ov["label"] else "")
         )
-        line = str(caps["line"])
-        if ov["label"] == "IMPOSTOR":
-            # The files share little code: what one has and the other lacks is its own code, not an injection.
-            line = line.replace("Injected: ", "Only in the sample (different code base, not an injection): ", 1)
-        S.console.print(line)
+        S.console.print(for_overlap(str(caps["line"]), ov["label"]))
 
     _guard(run)
 

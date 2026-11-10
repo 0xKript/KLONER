@@ -248,3 +248,28 @@ def test_icons_and_labels_from_apk(corpus: dict[str, Any]) -> None:
     assert dhash(b"not an image") is None
     assert normalize_label("  \uff2bloner\tFIXTURE ") == "kloner fixture"
     assert resource_id("@7F010000") == 0x7F010000 and resource_id("plain") is None
+
+
+def test_a_cross_version_diff_does_not_call_release_changes_injected() -> None:
+    # DuckDuckGo's official 5.114.3, compared with a newer official release, showed "Injected: dropper · 248 new
+    # network endpoints": the differences between two releases, not an injection (D-068).
+    d: dict[str, Any] = {
+        "manifest": {"permissions": {"added": [], "removed": []}, "components_added": []},
+        "code": {"risky_api_deltas": {}, "packages_added": [], "new_indicators": {"urls": ["https://a.example"]}},
+        "files": {"embedded_payloads": [{"type": "dex", "name": "assets/x.dex"}]},
+    }
+    same = capabilities(d)["line"]
+    other = capabilities(d, other_version=51880000)["line"]
+    assert same.startswith("Injected: ")
+    assert other.startswith("Changed against version code 51880000, another version (release changes included): ")
+    assert "Injected" not in other and other.endswith("dropper · 1 new network endpoint")
+
+
+def test_an_impostor_overlap_is_not_called_an_injection_in_reports() -> None:
+    # The FORGED "Spotify" 110.5 from the mirror sweep shares almost no code with Spotify; its report said
+    # "Injected: overlay · location · …". Hunt and verify reports now word it as `kloner diff` does (D-063, D-068).
+    from kloner.forensics.capabilities import for_overlap
+
+    line = "Injected: overlay · location · audio/camera · 39 new network endpoints"
+    assert for_overlap(line, "IMPOSTOR").startswith("Only in the sample (different code base, not an injection): ")
+    assert for_overlap(line, "REPACKAGED") == line and for_overlap(line, None) == line

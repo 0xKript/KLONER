@@ -20,6 +20,7 @@ from kloner.toolchain import (
     BUILD_TOOLS_FLOOR,
     ToolchainError,
     apkeep_asset,
+    apkeep_runs,
     bridge_round_trip,
     load_toolchain,
     parse_revision,
@@ -108,7 +109,19 @@ def run_doctor(rt: Runtime, network: bool = True) -> list[Check]:
         )
     )
     if tc.apkeep and Path(tc.apkeep).is_file():
-        out.append(Check("apkeep", "PASS", f"{tc.apkeep_version} at {tc.apkeep}"))
+        # Run it: a binary with the right checksum can still fail to start (glibc too old, D-068).
+        why = apkeep_runs(tc.apkeep)
+        if why is None:
+            out.append(Check("apkeep", "PASS", f"{tc.apkeep_version} at {tc.apkeep}"))
+        else:
+            out.append(
+                Check(
+                    "apkeep",
+                    "WARN",
+                    f"{tc.apkeep_version} cannot run on this system ({why}): apkpure and googleplay sources are "
+                    "disabled",
+                )
+            )
     else:
         if apkeep_asset() is None:
             detail = f"apkeep {APKEEP_VERSION} publishes no build for {platform.system()} {platform.machine()}"

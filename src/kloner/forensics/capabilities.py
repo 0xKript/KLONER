@@ -83,7 +83,10 @@ DISPLAY = {
 ORDER = list(DISPLAY)
 
 
-def capabilities(diff: dict[str, Any]) -> dict[str, Any]:
+def capabilities(diff: dict[str, Any], *, other_version: int | None = None) -> dict[str, Any]:
+    """The capability summary of a diff. ``other_version`` is the reference's versionCode when the reference is
+    another version (CROSS_VERSION_DIFF): the line then says that ordinary release changes are included, instead of
+    calling every difference an injection (D-068)."""
     found: dict[str, list[str]] = {}
 
     def hit(cap: str, why: str) -> None:
@@ -119,7 +122,12 @@ def capabilities(diff: dict[str, Any]) -> dict[str, Any]:
     if endpoints:
         plural = "s" if len(endpoints) != 1 else ""
         parts.append(f"{len(endpoints)} new network endpoint{plural}")
-    line = "Injected: " + " · ".join(parts) if parts else "Injected: nothing detected by the capability table"
+    head = (
+        "Injected: "
+        if other_version is None
+        else f"Changed against version code {other_version}, another version (release changes included): "
+    )
+    line = head + (" · ".join(parts) if parts else "nothing detected by the capability table")
     extra = [f"NEW_NETWORK_ENDPOINTS({len(endpoints)})"] if endpoints else []
     return {
         "capabilities": caps + extra,
@@ -127,3 +135,11 @@ def capabilities(diff: dict[str, Any]) -> dict[str, Any]:
         "endpoints": endpoints[:200],
         "line": line,
     }
+
+
+def for_overlap(line: str, overlap_label: str | None) -> str:
+    """The capability line for a diff whose files share little code (IMPOSTOR overlap): what the sample has and the
+    reference lacks is its own code, not an injection (D-063, D-068)."""
+    if overlap_label == "IMPOSTOR":
+        return line.replace("Injected: ", "Only in the sample (different code base, not an injection): ", 1)
+    return line

@@ -77,6 +77,7 @@ class Toolchain:
     bridge_classes: str
     apkeep: str | None = None
     apkeep_version: str | None = None
+    apkeep_error: str | None = None  # why the installed apkeep cannot run here (D-068)
     adb: str | None = None
     created_utc: str = field(default_factory=now_iso)
 
@@ -264,6 +265,20 @@ def install_apkeep(home: Path, user_agent: str) -> tuple[Path, str]:
     return dest, APKEEP_VERSION
 
 
+def apkeep_runs(path: str) -> str | None:
+    """None if ``apkeep --version`` runs here, else why not (D-068).
+
+    A file with the right checksum can still fail to start: apkeep 1.1.0's Linux build needs glibc 2.38, which
+    Debian bookworm (glibc 2.36) does not have.
+    """
+    res = proc.run([path, "--version"], timeout_s=30, env=proc.minimal_env())
+    if res.ok:
+        return None
+    lines = [x.strip() for x in (res.err_text() or res.text()).splitlines() if x.strip()]
+    why = lines[0] if lines else ("timed out" if res.timed_out else f"exit status {res.returncode}")
+    return why[:300]
+
+
 def find_apkeep(home: Path) -> tuple[Path, str] | None:
     asset = apkeep_asset()
     if asset:
@@ -321,6 +336,13 @@ def setup(home: Path, *, install_apkeep_binary: bool, user_agent: str) -> tuple[
         found = find_apkeep(home)
         if found:
             tc.apkeep, tc.apkeep_version = str(found[0]), found[1]
+    if tc.apkeep:
+        tc.apkeep_error = apkeep_runs(tc.apkeep)
+        if tc.apkeep_error:
+            notes.append(
+                f"apkeep {tc.apkeep_version} cannot run on this system ({tc.apkeep_error}): the apkpure and "
+                "googleplay sources are disabled"
+            )
     if tc.platform_jar is None:
         notes.append(f"{PINNED_PLATFORM} android.jar not found: fixtures cannot be rebuilt (selftest still works)")
     tc.save(lock_path(home))

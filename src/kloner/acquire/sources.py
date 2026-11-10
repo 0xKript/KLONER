@@ -342,6 +342,8 @@ class ApkeepSource:
                     f"apkeep {APKEEP_VERSION} publishes no build for {platform.system()} {platform.machine()}",
                 )
             raise SourceError("ERROR", "apkeep is not installed; run: kloner setup")
+        if tc.apkeep_error:
+            raise SourceError("DISABLED", f"apkeep {APKEEP_VERSION} cannot run on this system: {tc.apkeep_error}")
         self.rt = rt
         self.name = name
         self.downloader = downloader

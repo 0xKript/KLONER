@@ -13,7 +13,7 @@ from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
-from kloner.forensics.capabilities import capabilities
+from kloner.forensics.capabilities import capabilities, for_overlap
 from kloner.forensics.diff import diff_views
 from kloner.forensics.overlap import overlap
 from kloner.forensics.payload import payload_ids
@@ -142,8 +142,10 @@ class Forensics:
             finding["error"] = str(e)
             return finding
         d = diff_views(sv, rv)
-        caps = capabilities(d)
+        cross = "CROSS_VERSION_DIFF" in finding["labels"]
+        caps = capabilities(d, other_version=ref.version_code if cross else None)
         ov = overlap(sv, rv, cfg.repackaged_min_jaccard, cfg.impostor_max_jaccard)
+        caps["line"] = for_overlap(caps["line"], ov["label"])  # hunt and verify reports, as `kloner diff` (D-068)
         added = {c: sv["classes"][c] for c in d["code"]["classes_added"]}
         ids = payload_ids(added)
         if ov["label"]:

@@ -220,3 +220,63 @@ def test_sniff_and_members(tmp_path: Path) -> None:
     with zipfile.ZipFile(q, "w") as z:
         z.writestr("readme.txt", "hi")
     assert detect(open_archive(q, DEFAULT_LIMITS)).format == "zip"
+
+
+def _with_leading(tmp_path: Path, prefix: bytes) -> Path:
+    """A ZIP whose entries follow ``prefix``; the central directory offsets include it (D-068)."""
+    buf = io.BytesIO()
+    buf.write(prefix)
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_STORED) as z:
+        z.writestr("a.txt", b"hello")
+        z.writestr("b.txt", b"world")
+    p = tmp_path / "leading.zip"
+    p.write_bytes(buf.getvalue())
+    return p
+
+
+def _empty_header(
+    name: bytes, *, flags: int = 0, method: int = 0, crc: int = 0, size: int = 0, extra: bytes = b""
+) -> bytes:
+    return (
+        struct.pack(
+            "<IHHHHHIIIHH", 0x04034B50, 0, flags, method, 0x0821, 0x0221, crc, size, size, len(name), len(extra)
+        )
+        + name
+        + extra
+    )
+
+
+@pytest.mark.parametrize(
+    "prefix",
+    [
+        # DuckDuckGo's own release 5.114.3: one stored, empty local header with an empty name and a 102-byte
+        # zero-filled extra field (alignment padding), not listed in the central directory, then the entries
+        _empty_header(b"", extra=b"\x00" * 102),
+        _empty_header(b"\x00" * 102),  # the same padding in a NUL name
+        _empty_header(b"", extra=b"\x00" * 40) + _empty_header(b"", extra=b"\x00" * 32),  # two of them
+    ],
+)
+def test_leading_empty_local_headers_are_padding_not_a_polyglot(tmp_path: Path, prefix: bytes) -> None:
+    a = open_archive(_with_leading(tmp_path, prefix), DEFAULT_LIMITS)
+    assert a.starts_with_local_header and min(e.local.offset for e in a.entries) == len(prefix)
+    st = structural_gate(a, None)
+    assert st.violations == []
+    assert st.unreferenced[0].start == 0 and st.unreferenced[0].end == len(prefix)
+
+
+@pytest.mark.parametrize(
+    "prefix",
+    [
+        _empty_header(b"x" * 102),  # a real name
+        _empty_header(b"", extra=b"\x00" * 50 + b"\x01" + b"\x00" * 51),  # an extra field that holds a byte
+        _empty_header(b"\x00" * 10, size=4) + b"DATA",  # data
+        _empty_header(b"\x00" * 10, crc=1),
+        _empty_header(b"\x00" * 10, method=8),
+        _empty_header(b"\x00" * 10, flags=0x0008),  # a data descriptor
+        _empty_header(b"\x00" * 10) + b"\x00" * 7,  # trailing bytes that are no header
+        b"dex\n035\x00" + b"\x00" * 104,  # a DEX header (Janus class)
+    ],
+)
+def test_leading_bytes_that_could_carry_anything_stay_s1(tmp_path: Path, prefix: bytes) -> None:
+    st = structural_gate(open_archive(_with_leading(tmp_path, prefix), DEFAULT_LIMITS), None)
+    assert [v.rule for v in st.violations] == ["S1"] and st.violations[0].kind == "POLYGLOT"

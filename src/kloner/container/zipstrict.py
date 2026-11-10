@@ -417,17 +417,53 @@ def hostile_name(name: bytes) -> str | None:
     return None
 
 
+MAX_LEADING_PADDING = 1 << 20
+
+
+def _empty_local_headers(archive: ZipArchive, end: int) -> ByteGap | None:
+    """The bytes before the first listed entry, if they are only empty local headers, else None (D-068).
+
+    Each header must be stored (method 0), unencrypted, without a data descriptor, with CRC-32 and both sizes 0, and
+    its name and extra field must hold only zero bytes (zero-filled extra fields are how Android's zip tools pad for
+    alignment). It carries no data any parser could read, and the central directory does not list it. DuckDuckGo's
+    own release 5.114.3 starts with one (an empty name and 102 zero bytes of extra field), inside its v2 signature.
+    """
+    if not 0 < end <= MAX_LEADING_PADDING:
+        return None
+    with archive.path.open("rb") as f:
+        head = f.read(end)
+    pos = 0
+    while pos < end:
+        if end - pos < LOCAL_FIXED or _u32(head, pos) != LOCAL_SIG:
+            return None
+        flags, method = _u16(head, pos + 6), _u16(head, pos + 8)
+        crc, csize, usize = _u32(head, pos + 14), _u32(head, pos + 18), _u32(head, pos + 22)
+        nlen, xlen = _u16(head, pos + 26), _u16(head, pos + 28)
+        rest = head[pos + LOCAL_FIXED : pos + LOCAL_FIXED + nlen + xlen]  # name, then extra field
+        if flags & (FLAG_ENCRYPTED | FLAG_DATA_DESCRIPTOR) or method or crc or csize or usize:
+            return None
+        if len(rest) != nlen + xlen or rest.count(0) != len(rest):
+            return None
+        pos += LOCAL_FIXED + nlen + xlen
+    return ByteGap(start=0, end=end, sha256=hashlib.sha256(head).hexdigest()) if pos == end else None
+
+
 def structural_gate(archive: ZipArchive, signing_block: tuple[int, int] | None) -> StructureFacts:
     """Rules S1, S2, S3, S5 (decisive) and the informational structure facts (§9 G4)."""
     violations: list[StructureViolation] = []
     first_lho = min((e.local.offset for e in archive.entries), default=0)
-    if not archive.starts_with_local_header or first_lho != 0:
+    padding = _empty_local_headers(archive, first_lho) if archive.starts_with_local_header else None
+    if padding is None and (not archive.starts_with_local_header or first_lho != 0):
         violations.append(
             StructureViolation(
                 rule="S1",
                 kind="POLYGLOT",
                 code="DATA-BEFORE-FIRST-ENTRY",
-                detail=f"the file does not start with a ZIP local file header (first local header at {first_lho})",
+                detail=(
+                    f"the file does not start with a ZIP local file header (first local header at {first_lho})"
+                    if not archive.starts_with_local_header
+                    else f"{first_lho} bytes before the first entry the central directory lists are not empty padding"
+                ),
             )
         )
     for dup in archive.duplicates():
@@ -502,6 +538,8 @@ def structural_gate(archive: ZipArchive, signing_block: tuple[int, int] | None) 
 
     hostile = sorted({f"{e.name!r}: {why}" for e in archive.entries if (why := hostile_name(e.raw_name))})
     gaps = _unreferenced(archive, signing_block)
+    if padding is not None:
+        gaps.insert(0, padding)  # reported as UNREFERENCED_BYTES, a notice
     return StructureFacts(violations=violations, unreferenced=gaps, hostile_names=hostile)
 
 

@@ -1,4 +1,4 @@
-# KLONER — reproducible, authoritative runs (§16.4): Debian slim + Temurin JDK 17 + pinned Android
+# KLONER — reproducible, authoritative runs (§16.4): Debian 13 slim + Temurin JDK 17 + pinned Android
 # build-tools 36.0.0 + apkeep 1.1.0 + KLONER. Base images are pinned by digest.
 #
 # The Android SDK license must be accepted by whoever builds the image, explicitly (D-065). On a clean machine,
@@ -17,7 +17,8 @@
 
 FROM eclipse-temurin:17-jdk-jammy@sha256:057a0daec60e87c96571bf5c9c7792065bcb19e804d584cd37d4144038a35717 AS jdk
 
-FROM python:3.12-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df
+# Debian 13 (trixie, glibc 2.41): apkeep 1.1.0's Linux build needs glibc 2.38, which bookworm lacks (D-068).
+FROM python:3.12-slim-trixie@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b
 
 COPY --from=jdk /opt/java/openjdk /opt/java/openjdk
 ENV JAVA_HOME=/opt/java/openjdk \
