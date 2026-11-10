@@ -17,6 +17,9 @@ from dataclasses import dataclass
 from pathlib import Path
 
 IS_WINDOWS = os.name == "nt"
+# macOS: no preexec_fn. Running Python between fork and exec is unsafe there once system frameworks are
+# loaded, and macOS does not enforce address-space limits; workers keep their timeouts (D-061).
+IS_MACOS = sys.platform == "darwin"
 _WINDOWS_KEEP = ("SYSTEMROOT", "SYSTEMDRIVE", "WINDIR", "TEMP", "TMP", "PATHEXT", "NUMBER_OF_PROCESSORS")
 
 
@@ -62,7 +65,7 @@ def minimal_env(extra: Mapping[str, str] | None = None) -> dict[str, str]:
 
 
 def _posix_limits(address_space: int | None, cpu_seconds: int | None) -> Callable[[], None] | None:
-    if IS_WINDOWS or (address_space is None and cpu_seconds is None):
+    if IS_WINDOWS or IS_MACOS or (address_space is None and cpu_seconds is None):
         return None
 
     def apply() -> None:  # pragma: no cover - runs in the child

@@ -4,6 +4,8 @@ write permissions and network reachability of the enabled sources, each with a f
 from __future__ import annotations
 
 import os
+import platform
+import sys
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
@@ -13,9 +15,11 @@ import httpx
 from kloner import __version__
 from kloner.app import Runtime
 from kloner.toolchain import (
+    APKEEP_VERSION,
     APKSIGNER_JAR_SHA256,
     BUILD_TOOLS_FLOOR,
     ToolchainError,
+    apkeep_asset,
     bridge_round_trip,
     load_toolchain,
     parse_revision,
@@ -106,9 +110,13 @@ def run_doctor(rt: Runtime, network: bool = True) -> list[Check]:
     if tc.apkeep and Path(tc.apkeep).is_file():
         out.append(Check("apkeep", "PASS", f"{tc.apkeep_version} at {tc.apkeep}"))
     else:
-        out.append(
-            Check("apkeep", "WARN", "not installed: apkpure and googleplay sources are disabled", "kloner setup")
-        )
+        if apkeep_asset() is None:
+            detail = f"apkeep {APKEEP_VERSION} publishes no build for {platform.system()} {platform.machine()}"
+            out.append(Check("apkeep", "WARN", f"{detail}: apkpure and googleplay sources are disabled"))
+        else:
+            out.append(
+                Check("apkeep", "WARN", "not installed: apkpure and googleplay sources are disabled", "kloner setup")
+            )
     try:
         rt.quarantine.root.mkdir(parents=True, exist_ok=True)
         with tempfile.NamedTemporaryFile(dir=rt.quarantine.incoming, delete=True) as f:
@@ -116,7 +124,17 @@ def run_doctor(rt: Runtime, network: bool = True) -> list[Check]:
         out.append(Check("permissions", "PASS", f"quarantine writable at {rt.quarantine.root}"))
     except OSError as e:
         out.append(Check("permissions", "FAIL", str(e), f"make {rt.home} writable", critical=True))
-    if os.name == "nt":
+    if sys.platform == "darwin":
+        out.append(
+            Check(
+                "isolation",
+                "WARN",
+                "macOS: workers run with timeouts and the JVM heap cap, but without POSIX address-space/CPU "
+                "limits (D-061)",
+                "use the Docker image for authoritative runs",
+            )
+        )
+    elif os.name == "nt":
         out.append(
             Check(
                 "isolation",

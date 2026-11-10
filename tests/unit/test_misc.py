@@ -264,3 +264,22 @@ def test_a_stale_compiled_bridge_is_refused(monkeypatch: pytest.MonkeyPatch, tmp
     monkeypatch.setattr(tcmod.proc, "run", lambda *a, **k: proc.ProcResult(("java",), 0, old, b"", False, 0.1))
     with pytest.raises(ToolchainError, match="run: kloner setup"):
         tcmod.bridge_round_trip(tc)
+
+
+def test_no_preexec_limits_on_macos(monkeypatch: pytest.MonkeyPatch) -> None:
+    """D-061: on macOS workers keep their timeouts, but no Python runs between fork and exec."""
+    monkeypatch.setattr(proc, "IS_MACOS", True)
+    assert proc._posix_limits(1 << 30, 10) is None
+    monkeypatch.setattr(proc, "IS_MACOS", False)
+    assert (proc._posix_limits(1 << 30, 10) is None) == proc.IS_WINDOWS
+
+
+@pytest.mark.toolchain
+def test_apkeep_sources_without_a_platform_build_are_disabled(rt: Any, monkeypatch: pytest.MonkeyPatch) -> None:
+    from kloner.acquire import sources
+    from kloner.acquire.base import DisabledSource
+
+    monkeypatch.setattr(rt, "_toolchain", replace(rt.toolchain(), apkeep=None))
+    monkeypatch.setattr(sources, "apkeep_asset", lambda: None)
+    src = sources.build_source(rt, "apkpure")
+    assert isinstance(src, DisabledSource) and "publishes no build for" in src.reason

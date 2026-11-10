@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import platform
 import re
 import shutil
 import tempfile
@@ -18,6 +19,7 @@ from kloner.acquire.http import Http, HttpError
 from kloner.acquire.quarantine import Quarantine
 from kloner.app import Runtime
 from kloner.models import Claimed, ClientProfile, FetchResult, Offer
+from kloner.toolchain import APKEEP_VERSION, apkeep_asset
 from kloner.util import proc
 from kloner.util.timeutil import now_iso
 
@@ -334,6 +336,11 @@ class ApkeepSource:
     def __init__(self, rt: Runtime, name: str, downloader: str, options: list[str], extra: list[str]) -> None:
         tc = rt.toolchain()
         if not tc.apkeep:
+            if apkeep_asset() is None:
+                raise SourceError(
+                    "DISABLED",
+                    f"apkeep {APKEEP_VERSION} publishes no build for {platform.system()} {platform.machine()}",
+                )
             raise SourceError("ERROR", "apkeep is not installed; run: kloner setup")
         self.rt = rt
         self.name = name

@@ -32,7 +32,7 @@ RUN groupadd --gid 10001 kloner \
 WORKDIR /src
 COPY requirements.lock ./
 RUN pip install --no-cache-dir --require-hashes -r requirements.lock
-COPY pyproject.toml README.md LICENSE ./
+COPY pyproject.toml README.md LICENSE NOTICE ./
 COPY src ./src
 COPY bridge ./bridge
 COPY data ./data

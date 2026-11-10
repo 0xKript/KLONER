@@ -1,31 +1,80 @@
-# Python
+# --- Python: virtualenvs, caches, build output, coverage ---------------------------------------
+.venv/
+venv/
+env/
 __pycache__/
 *.py[cod]
-.venv/
 .mypy_cache/
 .ruff_cache/
 .pytest_cache/
 .hypothesis/
-.coverage
-.coverage.*
-coverage.xml
-htmlcov/
+.tox/
+.nox/
 build/
 dist/
 *.egg-info/
+.eggs/
+.coverage
+.coverage.*
+coverage.json
+coverage.xml
+htmlcov/
 
-# Local scratch and generated artifacts
+# --- KLONER homes and toolchains: quarantine, runs, logs, database, caches, SDK ----------------
+# Default home is ~/.kloner (outside the repository); these cover homes created inside it.
+.kloner/
+kloner-home/
+toolchain/
+android-sdk/
+quarantine/
+evidence/
+*.db
+*.db-wal
+*.db-shm
+*.jsonl
+selftest-last.json
+
+# --- Samples: no downloaded or third-party APK ever enters git ---------------------------------
+# Only KLONER's own small synthetic fixtures (built from its own sources and test keys) are tracked.
+*.apk
+*.xapk
+*.apkm
+*.apks
+*.aab
+*.obb
+*.idsig
+!src/kloner/selftest/fixtures/*.apk
+
+# --- Keys and credentials ----------------------------------------------------------------------
+*.keystore
+*.jks
+*.pk8
+*.p12
+*.pfx
+*.pem
+*.der
+*.key
+.env
+.env.*
+
+# --- Local scratch and generated artifacts -----------------------------------------------------
 /work/
 /tests/corpus/generated/
 /bridge/out/
 *.class
-
-# Never commit samples, keys or local homes
-*.keystore
-*.jks
-.kloner/
-coverage.json
+*.cdx.json
 
 # Android SDK license acceptances supplied by whoever builds the Docker image
 docker/android-licenses/*
 !docker/android-licenses/.keep
+
+# --- IDE and OS files ---------------------------------------------------------------------------
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
