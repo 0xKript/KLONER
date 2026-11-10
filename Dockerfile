@@ -1,12 +1,15 @@
 # KLONER — reproducible, authoritative runs (§16.4): Debian slim + Temurin JDK 17 + pinned Android
 # build-tools 36.0.0 + apkeep 1.1.0 + KLONER. Base images are pinned by digest.
 #
-# The Android SDK license must be accepted by whoever builds the image. Either pass
+# The Android SDK license must be accepted by whoever builds the image, explicitly (D-065). On a clean machine,
+# read it (https://developer.android.com/studio/terms) and pass
 #   docker build --build-arg ACCEPT_ANDROID_SDK_LICENSE=yes -t kloner .
-# after reading it (https://developer.android.com/studio/terms), or place the license files you accepted
-# earlier (the contents of <your-sdk>/licenses/) in docker/android-licenses/ before building.
+# The build then accepts only the license the pinned packages require and prints its text in the build log.
+# If you accepted it earlier (Android Studio), you can instead copy <your-sdk>/licenses/android-sdk-license into
+# docker/android-licenses/ and build without the argument. With neither, the build stops before downloading
+# anything from Google.
 #
-# Run:   docker run --rm -v "$PWD/kloner-home:/kloner" kloner hunt <package>
+# Run:   docker run --rm -v kloner-home:/kloner kloner hunt <package>
 # Test:  docker run --rm kloner selftest --full
 #
 # /kloner holds the data (anchors, quarantine, database, reports, logs) and can be a host directory. The
@@ -42,8 +45,20 @@ COPY --chown=kloner:kloner docker/android-licenses/ /opt/kloner/toolchain/androi
 USER kloner
 WORKDIR /kloner
 ARG ACCEPT_ANDROID_SDK_LICENSE=no
-RUN if [ "$ACCEPT_ANDROID_SDK_LICENSE" = "yes" ]; then kloner setup --accept-android-sdk-license; \
-    else kloner setup; fi \
+RUN if [ "$ACCEPT_ANDROID_SDK_LICENSE" = "yes" ]; then \
+      echo "ACCEPT_ANDROID_SDK_LICENSE=yes: you accept the Android SDK License Agreement" \
+           "(https://developer.android.com/studio/terms) for the pinned packages. Its text follows."; \
+      kloner setup --accept-android-sdk-license; \
+    elif [ -f /opt/kloner/toolchain/android-sdk/licenses/android-sdk-license ]; then \
+      echo "Using the Android SDK license accepted earlier (docker/android-licenses/android-sdk-license)."; \
+      kloner setup; \
+    else \
+      echo "error: the Android SDK license has not been accepted. Nothing was downloaded." >&2; \
+      echo "Read https://developer.android.com/studio/terms, then build with:" >&2; \
+      echo "  docker build --build-arg ACCEPT_ANDROID_SDK_LICENSE=yes -t kloner ." >&2; \
+      echo "or copy the android-sdk-license you accepted in Android Studio into docker/android-licenses/." >&2; \
+      exit 1; \
+    fi \
  && kloner doctor
 
 VOLUME ["/kloner"]

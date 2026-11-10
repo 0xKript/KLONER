@@ -34,13 +34,15 @@ kloner doctor           # every component PASS/FAIL, with fixes
 ### Windows: Docker Desktop (PowerShell)
 
 The image holds the JDK, the pinned build-tools, apkeep and KLONER. Your anchors, quarantine and database live
-on the `kloner-home` volume, and reports go to `.\reports`:
+on the `kloner-home` volume, and reports go to `.\reports`. Building the image installs Google's Android
+build-tools, which requires the Android SDK License Agreement. Read it at
+<https://developer.android.com/studio/terms>. The build argument `ACCEPT_ANDROID_SDK_LICENSE=yes` is your
+acceptance. The build accepts only the license of the packages it installs and prints its text in the build log:
 
 ```powershell
 git clone https://github.com/0xKript/KLONER.git
 cd KLONER
-Copy-Item "$env:LOCALAPPDATA\Android\Sdk\licenses\android-sdk-license" docker\android-licenses\
-docker build -t kloner .
+docker build --build-arg ACCEPT_ANDROID_SDK_LICENSE=yes -t kloner .
 docker volume create kloner-home
 docker run --rm -v kloner-home:/kloner kloner doctor
 docker run --rm -v kloner-home:/kloner kloner selftest
@@ -50,9 +52,15 @@ docker run --rm -v kloner-home:/kloner kloner anchor add org.thoughtcrime.secure
 docker run --rm -v kloner-home:/kloner -v "${PWD}\reports:/reports" kloner hunt org.thoughtcrime.securesms --sources url,fdroid --url $apk --out /reports/signal --format terminal,json,html
 ```
 
-The `Copy-Item` line reuses the Android SDK license you accepted in Android Studio. Without Android Studio, read
-the license at <https://developer.android.com/studio/terms> and build with
-`docker build --build-arg ACCEPT_ANDROID_SDK_LICENSE=yes -t kloner .` instead.
+If you already accepted the license in Android Studio, you can reuse that acceptance and build without the
+argument:
+
+```powershell
+Copy-Item "$env:LOCALAPPDATA\Android\Sdk\licenses\android-sdk-license" docker\android-licenses\
+docker build -t kloner .
+```
+
+With neither, the build stops before downloading anything and prints both options (D-065).
 
 ### Windows: WSL2 (Ubuntu)
 
@@ -424,6 +432,10 @@ docker build --build-arg ACCEPT_ANDROID_SDK_LICENSE=yes -t kloner .    # only af
 docker run --rm -v kloner-home:/kloner kloner hunt <package>
 ```
 
+The license is never accepted silently. Without the build argument, the build uses a license file you accepted
+earlier (`docker/android-licenses/android-sdk-license`). With neither, it stops before downloading anything. CI
+checks that refusal on a clean runner, and CI never accepts the license itself (D-065).
+
 `python scripts/build_sbom.py` writes a CycloneDX SBOM of the locked dependencies and the pinned toolchain; CI
 uploads it with every run, and each release attaches it.
 
@@ -466,6 +478,8 @@ checks every case.
   proven live in both directions (R1 and R2). Wikipedia is CORROBORATED from three official sources, two keys
   included. The DuckDuckGo CONFLICT was resolved with a declared F-Droid identity. `reverify` was IDENTICAL on all
   9 hunts.
+- **Third-party mirrors.** The build agent did not sweep them (D-056). `scripts/mirror-sweep.ps1` runs that sweep
+  and Trial D inside Docker with one command, under the same rules (D-066). Its `-DryRun` plan is tested.
 - **Real files from Google.** 133 cases on 117 test APKs of AOSP's apksig, pinned by commit and SHA-256. Each
   must reach its exact verdict and labels. They found two bugs, both fixed: RSA-PSS on desktop JDKs and a
   misleading label on stripped schemes.

@@ -3,6 +3,12 @@
 Downloads the pinned Android command-line tools (checksum from Google's repository manifest
 repository2-3.xml), shows the Android SDK license and requires acceptance, then installs the
 pinned build-tools, platform and platform-tools with sdkmanager into ~/.kloner/toolchain.
+
+Acceptance is never silent (D-065). It comes from the person running setup: an answer at the prompt, the
+``--accept-android-sdk-license`` flag (Docker: the ``ACCEPT_ANDROID_SDK_LICENSE=yes`` build argument), or a license
+file they accepted earlier. Only the licenses the pinned packages require are accepted, through sdkmanager's own
+install prompt, and their text is printed. Without any of these and without a terminal, setup stops before
+downloading anything.
 """
 
 from __future__ import annotations
@@ -10,6 +16,7 @@ from __future__ import annotations
 import hashlib
 import os
 import platform
+import re
 import shutil
 import sys
 import zipfile
@@ -29,6 +36,22 @@ CMDLINE_TOOLS: dict[str, tuple[str, str]] = {
     "darwin": ("commandlinetools-mac-14742923_latest.zip", "cc27cca4b84bfdbc7df17e3d0a01d0c640d8ee71"),
 }
 PACKAGES = (f"build-tools;{PINNED_BUILD_TOOLS}", f"platforms;{PINNED_PLATFORM}", "platform-tools")
+LICENSE_URL = "https://developer.android.com/studio/terms"
+# sdkmanager's install prompt: "License <id>:", a dashed rule, the text, a dashed rule, "Accept? (y/N):".
+_LICENSE_PROMPT = re.compile(r"License ([\w.-]+):\s*\n-{10,}\n(.*?)\n-{10,}", re.S)
+
+
+def license_prompts(output: str) -> list[tuple[str, str]]:
+    """The (license id, text) pairs sdkmanager asked about while installing, in order."""
+    return [(m.group(1), m.group(2).strip()) for m in _LICENSE_PROMPT.finditer(output.replace("\r", "\n"))]
+
+
+def license_refusal() -> str:
+    return (
+        f"the Android SDK license must be accepted to install build-tools. Read it at {LICENSE_URL}, then re-run: "
+        "kloner setup --accept-android-sdk-license (Docker: docker build --build-arg ACCEPT_ANDROID_SDK_LICENSE=yes "
+        "-t kloner .)"
+    )
 
 
 def _download(url: str, dest: Path, sha1: str) -> None:
@@ -63,6 +86,11 @@ def ensure_build_tools(home: Path, *, accept_license: bool, console: Console) ->
     sdk = toolchain_dir(home) / "android-sdk"
     tools = sdk / "cmdline-tools" / "latest"
     sdkmanager = tools / "bin" / ("sdkmanager.bat" if system == "windows" else "sdkmanager")
+    # A license accepted earlier by the same person is recorded under <sdk>/licenses (Google's documented way to
+    # provision CI machines) and needs no prompt.
+    accepted_before = (sdk / "licenses" / "android-sdk-license").is_file()
+    if not accepted_before and not accept_license and not sys.stdin.isatty():
+        raise ToolchainError(license_refusal())  # nothing was downloaded
     if not sdkmanager.exists():
         name, sha1 = CMDLINE_TOOLS[system]
         dl = toolchain_dir(home) / name
@@ -82,26 +110,28 @@ def ensure_build_tools(home: Path, *, accept_license: bool, console: Console) ->
                 f.chmod(0o755)
     java, _, _ = find_java()
     env = proc.minimal_env({"JAVA_HOME": str(java.parent.parent)})
-    # Show the license (answering "no" changes nothing). A license accepted earlier by the same user is
-    # recorded under <sdk>/licenses (Google's documented way to provision CI machines) and needs no prompt.
-    lic = proc.run([sdkmanager, f"--sdk_root={sdk}", "--licenses"], timeout_s=300, env=env, input_bytes=b"n\n" * 20)
-    already = "All SDK package licenses accepted" in lic.text() or (sdk / "licenses" / "android-sdk-license").is_file()
-    if not already:
-        console.print(lic.text()[-6000:])
-    if not already and not accept_license:
-        if not sys.stdin.isatty():
-            raise ToolchainError(
-                "the Android SDK license must be accepted to install build-tools; read it above and re-run: "
-                "kloner setup --accept-android-sdk-license"
-            )
-        answer = console.input("Do you accept the Android SDK license shown above? [y/N] ").strip().lower()
-        if answer not in ("y", "yes"):
-            raise ToolchainError("Android SDK license not accepted; nothing was installed")
-    if not already:
-        res = proc.run([sdkmanager, f"--sdk_root={sdk}", "--licenses"], timeout_s=300, env=env, input_bytes=b"y\n" * 20)
-        if not res.ok:
-            raise ToolchainError(f"sdkmanager --licenses failed: {res.err_text()[-500:]}")
-    res = proc.run([sdkmanager, f"--sdk_root={sdk}", "--install", *PACKAGES], timeout_s=3600, env=env)
-    if not res.ok:
-        raise ToolchainError(f"sdkmanager install failed: {res.err_text()[-1000:]}")
+    install: list[str | Path] = [sdkmanager, f"--sdk_root={sdk}", "--install", *PACKAGES]
+    answers: bytes | None = None
+    if not accepted_before:
+        if not accept_license:
+            # Show the license the pinned packages require. Answering "n" installs and accepts nothing.
+            shown = license_prompts(proc.run(install, timeout_s=600, env=env, input_bytes=b"n\n" * 8).text())
+            for lic_id, text in shown:
+                console.print(f"License {lic_id}:\n{text}\n", markup=False, highlight=False)
+            if not shown:
+                console.print(f"The Android SDK License Agreement: {LICENSE_URL}")
+            answer = console.input("Do you accept the Android SDK license shown above? [y/N] ").strip().lower()
+            if answer not in ("y", "yes"):
+                raise ToolchainError("Android SDK license not accepted; nothing was installed")
+        # One "y" per license prompt of the pinned packages; sdkmanager asks about nothing else during an install.
+        answers = b"y\n" * 8
+    res = proc.run(install, timeout_s=3600, env=env, input_bytes=answers)
+    if answers is not None:
+        for lic_id, text in license_prompts(res.text()):
+            console.print(f"License {lic_id}:\n{text}\n", markup=False, highlight=False)
+            console.print(f"Accepted {lic_id} for {', '.join(PACKAGES)} ({LICENSE_URL}).")
+    # sdkmanager exits 0 even when it skips packages whose license was not accepted.
+    if not res.ok or not (sdk / "build-tools" / PINNED_BUILD_TOOLS).is_dir():
+        tail = (res.err_text() or res.text())[-1000:]
+        raise ToolchainError(f"sdkmanager did not install {PACKAGES[0]}: {tail}")
     return sdk

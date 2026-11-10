@@ -4,7 +4,8 @@
 # GitHub's ubuntu-24.04 and macos-15 images ship JDK 17 and Android SDK build-tools 36.0.0 under $ANDROID_HOME
 # (licenses accepted by the images). `kloner setup` finds that SDK and refuses it unless lib/apksigner.jar matches
 # the pinned SHA-256. apkeep 1.1.0 has no macOS build, so apkpure/googleplay report DISABLED there (D-061).
-# Actions are pinned by commit SHA.
+# The docker-license-gate job builds the image without accepting the Android SDK license, which must fail with
+# instructions (D-065); CI never accepts that license on anyone's behalf. Actions are pinned by commit SHA.
 name: CI
 
 on:
@@ -68,3 +69,25 @@ jobs:
         with:
           name: sbom
           path: dist/kloner.cdx.json
+
+  # A clean machine: no license file in docker/android-licenses/ and no ACCEPT_ANDROID_SDK_LICENSE. The image must
+  # refuse to build, say how to accept the license explicitly, and download nothing from Google (D-065).
+  docker-license-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: The image does not build without an explicit license acceptance
+        run: |
+          test ! -e docker/android-licenses/android-sdk-license
+          if docker build --progress=plain -t kloner-gate . > build.log 2>&1; then
+            echo "the build passed without an explicit license acceptance"; exit 1
+          fi
+          tail -n 12 build.log
+          # the gate's own output lines ("#<step> <seconds> ..."), not the Dockerfile excerpt of the error
+          grep -Eq '^#[0-9]+ [0-9.]+ error: the Android SDK license has not been accepted' build.log
+          grep -Eq '^#[0-9]+ [0-9.]+ +docker build --build-arg ACCEPT_ANDROID_SDK_LICENSE=yes -t kloner \.$' build.log
+          grep -Eq '^#[0-9]+ [0-9.]+ Read https://developer\.android\.com/studio/terms' build.log
+          if grep -q "Downloading Android command-line tools" build.log; then
+            echo "the build downloaded the SDK before the license was accepted"; exit 1
+          fi

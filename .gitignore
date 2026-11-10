@@ -59,6 +59,7 @@ selftest-last.json
 
 # --- Local scratch and generated artifacts -----------------------------------------------------
 /work/
+/reports/
 /tests/corpus/generated/
 /bridge/out/
 *.class

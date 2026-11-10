@@ -140,7 +140,11 @@ def _guard(fn: Callable[[], T]) -> T:
 @app.command()
 def setup(
     accept_android_sdk_license: Annotated[
-        bool, typer.Option(help="Accept the Android SDK license non-interactively")
+        bool,
+        typer.Option(
+            help="Accept the Android SDK License Agreement for the pinned packages without a prompt. Read it first: "
+            "https://developer.android.com/studio/terms"
+        ),
     ] = False,
     upgrade: Annotated[bool, typer.Option(help="Re-resolve and re-pin every component")] = False,
     no_apkeep: Annotated[bool, typer.Option("--no-apkeep", help="Do not download apkeep")] = False,
