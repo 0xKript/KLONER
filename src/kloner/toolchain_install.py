@@ -76,6 +76,7 @@ def ensure_build_tools(home: Path, *, accept_license: bool, console: Console) ->
         shutil.rmtree(tools, ignore_errors=True)
         (staging / "cmdline-tools").rename(tools)
         shutil.rmtree(staging, ignore_errors=True)
+        dl.unlink(missing_ok=True)  # the extracted tools are kept; the 170 MB archive is not needed again
         if system != "windows":
             for f in (tools / "bin").iterdir():
                 f.chmod(0o755)
