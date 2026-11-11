@@ -1,7 +1,7 @@
 """Native proof-of-rotation (signing certificate lineage) parsing and verification (§6.4, §9 G6).
 
 Layout, confirmed against AOSP apksig ``V3SigningCertificateLineage.readSigningCertificateLineage``
-(see docs/DECISIONS.md), little endian:
+little endian:
 
     uint32 version (= 1)
     sequence of uint32-length-prefixed nodes:

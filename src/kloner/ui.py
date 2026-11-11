@@ -40,7 +40,7 @@ _ON_AMBER = "bold #1f1800 on #e8b93c"
 _ON_BLUE = "bold #0b1622 on #7fb3d5"
 _ON_GREY = "bold #e6e6e6 on #4d4d4d"
 
-# verdict: (icon, pill style, text style, class, meaning). Meanings follow docs/VERDICTS.md.
+# verdict: (icon, pill style, text style, class, meaning). Meanings follow the README's verdict table.
 VERDICTS: dict[str, tuple[str, str, str, str, str]] = {
     "TAMPERED": (
         "✗",
@@ -106,7 +106,7 @@ VERDICTS: dict[str, tuple[str, str, str, str, str]] = {
         "Exactly the bytes the official identity signed. Safe to trust.",
     ),
 }
-ORDER = list(VERDICTS)  # severity, highest first (docs/VERDICTS.md)
+ORDER = list(VERDICTS)  # severity, highest first
 SCREEN_ORDER = [
     "TAMPERED",
     "FORGED",

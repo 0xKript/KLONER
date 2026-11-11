@@ -27,7 +27,7 @@ CLASS = {"Hostile": "hostile", "Review": "review", "Clean": "clean", "Not applic
 
 def test_every_verdict_has_a_look_and_a_meaning() -> None:
     assert set(ui.VERDICTS) == {v.value for v in Verdict}
-    assert [v.value for v in Verdict] == ui.ORDER  # severity order, as docs/VERDICTS.md
+    assert [v.value for v in Verdict] == ui.ORDER  # severity order, as in the README
     for v in Verdict:
         icon, pill, text, klass, meaning = ui.VERDICTS[v.value]
         assert icon and pill and text and meaning.endswith(".")

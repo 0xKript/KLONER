@@ -1,6 +1,6 @@
 """Toolchain resolution, ``kloner setup`` and ``kloner doctor`` (§16.4).
 
-Pinned components (confirmed in docs/DECISIONS.md):
+Pinned components:
 
 * Android SDK build-tools 36.0.0: ``lib/apksigner.jar`` (contains apksig), ``aapt2``, ``lib/d8.jar``.
   Floor: build-tools 35.0.0 (v3.1 and source-stamp support). KLONER refuses to run below it (INV-7).
@@ -29,7 +29,7 @@ PINNED_BUILD_TOOLS = "36.0.0"
 BUILD_TOOLS_FLOOR = (35, 0, 0)
 PINNED_PLATFORM = "android-36"
 
-# SHA-256 of lib/apksigner.jar per build-tools revision (recorded in docs/DECISIONS.md).
+# SHA-256 of lib/apksigner.jar per build-tools revision.
 APKSIGNER_JAR_SHA256: dict[str, frozenset[str]] = {
     "36.0.0": frozenset({"3716d9311e55d2b0918a2fd9d54ba9e406c5f6abeea700b287f11259bc163dec"}),
 }

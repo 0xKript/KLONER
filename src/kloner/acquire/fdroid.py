@@ -1,6 +1,6 @@
 """F-Droid repository index (index-v2), verified against the SHA-256 published in entry.json.
 
-Format confirmed live (docs/DECISIONS.md): packages[P].versions[<sha256>] = {file: {name, sha256,
+Format confirmed live: packages[P].versions[<sha256>] = {file: {name, sha256,
 size}, manifest: {versionCode, versionName, signer: {sha256: [...]}, usesSdk: {...}}, ...}.
 """
 

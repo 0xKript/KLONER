@@ -1,6 +1,6 @@
 """Injected-capability summary (§10.3): a fixed, documented, table-driven mapping from deltas.
 
-Deterministic and explanatory only; it never influences a verdict. docs/VERDICTS.md reproduces
+Deterministic and explanatory only; it never influences a verdict. The README reproduces
 this table.
 """
 

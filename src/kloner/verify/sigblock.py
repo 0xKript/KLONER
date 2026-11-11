@@ -1,6 +1,6 @@
 """Native APK Signing Block inventory (§9 G6), independent of apksig.
 
-Constants are confirmed against the pinned apksig (build-tools 36.0.0) in docs/DECISIONS.md.
+Constants are confirmed against the pinned apksig (build-tools 36.0.0).
 """
 
 from __future__ import annotations

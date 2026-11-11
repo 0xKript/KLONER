@@ -8,7 +8,7 @@ from kloner.container.zipstrict import Entry, ZipArchive, entry_head
 
 ZIP_MAGIC = b"PK\x03\x04"
 
-# Bundle metadata, per format (docs/DECISIONS.md):
+# Bundle metadata, per format:
 #   XAPK (APKPure): manifest.json, icon.png, Android/obb/...
 #   APKM (APKMirror): info.json, icon.png
 #   APKS (bundletool build-apks): toc.pb

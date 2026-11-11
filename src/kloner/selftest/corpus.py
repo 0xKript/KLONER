@@ -8,7 +8,7 @@ download, a non-ZIP file, an AAB-shaped archive.
 Cases that would need a crafted hostile file (content modified under a kept signature, polyglot,
 ZIP ambiguity, stripped or grafted signature blocks, forged lineage, unsigned-region injection,
 oversized archives, hostile entry names) are covered at the facts level: they start from the real
-facts of C-01 and change only the data ``decide()`` sees. docs/DECISIONS.md records this choice.
+facts of C-01 and change only the data ``decide()`` sees (D-026).
 """
 
 from __future__ import annotations

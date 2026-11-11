@@ -32,7 +32,7 @@ from kloner.verify.inventory import disagreements
 MAX_SDK = 2_147_483_647
 EN_DASH = "\u2013"
 
-# apksig issues that mean a stronger scheme was stripped or required but absent (docs/DECISIONS.md).
+# apksig issues that mean a stronger scheme was stripped or required but absent.
 STRIP_ISSUES = frozenset(
     {
         "JAR_SIG_MISSING_APK_SIG_REFERENCED",

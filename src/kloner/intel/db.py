@@ -1,7 +1,7 @@
 """Local SQLite database (§17): WAL mode, single writer (the main process).
 
 The spec's tables are kept verbatim; ``run_sources``, ``run_samples`` and ``facts`` are additions
-recorded in docs/DECISIONS.md (they let ``report``, ``explain`` and ``reverify`` work offline).
+kept on purpose (they let ``report``, ``explain`` and ``reverify`` work offline).
 """
 
 from __future__ import annotations

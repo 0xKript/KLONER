@@ -25,7 +25,7 @@
   <a href="#your-first-hunt-step-by-step">First hunt</a> ·
   <a href="#reading-the-screen">Reading the screen</a> ·
   <a href="#verdicts">Verdicts</a> ·
-  <a href="#commands">Commands</a> ·
+  <a href="#command-reference">Command reference</a> ·
   <a href="#faq">FAQ</a>
 </p>
 
@@ -395,8 +395,8 @@ flowchart TD
     class MIS blue
 ```
 
-Every verdict carries reason codes, labels and this gate-by-gate trace (`kloner explain <sha256>`). The full label
-and reason-code tables are in [docs/VERDICTS.md](docs/VERDICTS.md).
+Every verdict carries reason codes, labels and this gate-by-gate trace (`kloner explain <sha256>`). Every label and
+reason code is listed under [Labels and reason codes](#labels-and-reason-codes).
 
 ## What KLONER catches
 
@@ -523,8 +523,8 @@ kloner anchor add com.duckduckgo.mobile.android --from-fdroid --declare-addition
 ```
 
 Copies from both channels are then GENUINE, and the F-Droid ones are labeled SECONDARY_IDENTITY. `anchor show`,
-`list`, `refresh [--accept]`, `export`/`import` and `adopt-rotation` manage anchors over time. See
-[docs/ANCHORS.md](docs/ANCHORS.md).
+`list`, `refresh [--accept]`, `export`/`import` and `adopt-rotation` manage anchors over time (see the
+[command reference](#step-1--anchor)).
 
 ## Sources
 
@@ -541,13 +541,12 @@ Copies from both channels are then GENUINE, and the F-Droid ones are labeled SEC
 
 Credentials come from environment variables only and never reach logs, the database or reports. Every source is
 isolated: one failure never affects another, and every status (OK, NO_OFFERS, BLOCKED, ERROR, DISABLED) appears on
-the screen and in the coverage sentence. A source is a small Python class with `discover`, `search` and `fetch`; see
-[docs/SOURCES.md](docs/SOURCES.md).
+the screen and in the coverage sentence. A source is a small Python class with `discover`, `search` and `fetch`.
 
 ## Commands
 
 `kloner --help` groups the commands by the three steps, and every command's `--help` explains each option, with
-examples.
+examples. The [command reference](#command-reference) below covers every command and every option.
 
 | Step | Command | What it does |
 |---|---|---|
@@ -568,9 +567,6 @@ examples.
 | **Intel** | `kloner intel signer <sha256>` · `payload <id>` · `package <package>` · `sources` | correlations across runs |
 | | `kloner export samples --run <run-id>` | hostile samples for analysts, in a password-protected ZIP |
 
-Global options: `--home DIR` (default `~/.kloner`), `--json`, `--quiet`, `--debug`, `--no-color`, `--workers N`,
-`--rate R`.
-
 Bare `kloner`, `--help`, `--version`, `hunt`, `verify`, `fetch`, `survey`, `doctor` and `selftest` start with the
 banner, on stderr, when stdout and stderr are both terminals. It never shows with `--json` or `--quiet`, when output
 is piped or redirected, or in CI, and `KLONER_NO_BANNER=1` turns it off.
@@ -584,6 +580,666 @@ is piped or redirected, or in CI, and `KLONER_NO_BANNER=1` turns it off.
 | **3** | Anchor conflict or hygiene failure |
 | **4** | The authoritative verifier is missing or below the minimum version: no verdicts at all |
 | **5** | Run aborted by an internal error |
+
+## Command reference
+
+Every command, every option, with examples. In the examples, `<package>` is an Android package name such as
+`org.wikipedia`, `<sha256>` is a file's full SHA-256 as printed by a report, and `<run-id>` is the id printed on every
+run (`2026-11-10T21-17-48Z`).
+
+> [!NOTE]
+> Global options go **before** the command: `kloner --json hunt org.wikipedia`, not `kloner hunt org.wikipedia --json`.
+> In Docker, put the whole command after the image name:
+> `docker run --rm -t -v kloner-home:/kloner kloner --json hunt org.wikipedia`.
+
+### Global options
+
+| Option | What it does |
+|---|---|
+| `--home DIR` | Where KLONER keeps anchors, the quarantine, the database, runs and logs. Default `~/.kloner`, or `$KLONER_HOME` |
+| `--json` | Print the machine-readable JSON document instead of the screen, for scripts and CI |
+| `--quiet` | No screen output; errors still print, the exit code tells the result, and `--json` still prints |
+| `--debug` | Show the traceback of an internal error, and write debug detail to the logs |
+| `--no-color` | Plain text without colors (`NO_COLOR=1` does the same) |
+| `--workers N` | Parallel verification workers, 1 to 64 (default 4, from the configuration) |
+| `--rate R` | Requests per second per host (default 1.0) |
+| `--version` | Print the version and exit |
+| `--help` | On any command: what it does, every option, and examples |
+
+```bash
+kloner --version
+kloner --home ~/kloner-lab anchor list                      # a separate home, for a separate investigation
+kloner --json --quiet hunt org.wikipedia > wikipedia.json   # JSON only, nothing else on the screen
+kloner --workers 8 --rate 0.5 hunt org.wikipedia            # more parallel verification, gentler on the hosts
+NO_COLOR=1 kloner doctor
+```
+
+### Setup and health
+
+<details open>
+<summary><b><code>kloner setup</code></b>: install and pin the toolchain</summary>
+
+```text
+kloner setup [--accept-android-sdk-license] [--upgrade] [--no-apkeep]
+```
+
+Run it once on a new machine. It works under `<home>/toolchain` (or `$KLONER_TOOLCHAIN`) and:
+
+1. checks the JDK (17 or newer);
+2. installs Android build-tools 36.0.0 with Google's sdkmanager, after it shows the Android SDK License Agreement and
+   asks (an existing Android SDK that already holds 36.0.0 is reused);
+3. refuses any `apksigner.jar` whose SHA-256 is not the pinned one;
+4. compiles the bridge that lets KLONER call apksig directly;
+5. downloads apkeep 1.1.0 and checks its checksum (the `apkpure` and `googleplay` sources use it);
+6. writes `config.toml` with the defaults, if there is none.
+
+| Option | What it does |
+|---|---|
+| `--accept-android-sdk-license` | Accept the Android SDK License Agreement for the pinned packages without a prompt. Read it first: <https://developer.android.com/studio/terms> |
+| `--upgrade` | The same steps as plain `setup`: every run re-checks every component against the pinned versions |
+| `--no-apkeep` | Skip apkeep; the `apkpure` and `googleplay` sources then stay disabled |
+
+```bash
+kloner setup
+kloner setup --accept-android-sdk-license    # unattended, once you have read the license
+kloner setup --no-apkeep                     # no apkeep download
+```
+
+</details>
+
+<details>
+<summary><b><code>kloner doctor</code></b>: check every component, with a fix for each problem</summary>
+
+```text
+kloner doctor
+```
+
+Checks, each with PASS, WARN or FAIL and the fix: KLONER's version and home, the JDK, the build-tools (at least
+35.0.0), the pinned apksig, a full round trip through the bridge, aapt2, apkeep (it is run, not only found), write
+permissions on the quarantine, the worker isolation, and that every enabled source answers on the network. The last
+line says whether KLONER is ready. It exits 4 when a critical check fails.
+
+```bash
+kloner doctor
+kloner --json doctor     # the same checks as JSON
+```
+
+</details>
+
+<details>
+<summary><b><code>kloner selftest</code></b>: prove the whole pipeline on KLONER's own test files</summary>
+
+```text
+kloner selftest [--quick | --full]
+```
+
+Builds the synthetic test corpus from KLONER's own fixtures (forged, tampered, stripped, rotated, bundled and broken
+files), evaluates every case through the real pipeline and compares the verdict and labels with the expected ones.
+The standard run also checks the facts-level cases, the anchor rules, reverify, engine agreement with `apksigner`
+and random mutations of a signed file. It exits 0 when every case passes, 1 otherwise.
+
+| Option | What it does |
+|---|---|
+| *(none)* | The standard run: 47 checks |
+| `--quick` | Seven core cases, the fastest check |
+| `--full` | 55 checks, with 1,000 + 200 random mutations instead of 200 + 30 |
+
+```bash
+kloner selftest --quick
+kloner selftest
+kloner selftest --full
+```
+
+</details>
+
+### Step 1 · Anchor
+
+<details open>
+<summary><b><code>kloner anchor add</code></b>: pin the official signing identity of a package</summary>
+
+```text
+kloner anchor add <package> <one method> [--brand-label TEXT]… [--brand-keyword TEXT]…
+                  [--declare-additional-identity --reason TEXT [--label NAME]]
+```
+
+Choose **exactly one** method per run. Run the command again with a second, different method to make the anchor
+CORROBORATED.
+
+| Method | What KLONER checks | Evidence |
+|---|---|---|
+| `--from-url URL --vendor-domain DOMAIN` | The vendor's own APK over HTTPS with certificate validation; every redirect and the final host stay inside the vendor domain (repeat `--vendor-domain` for several); the APK passes the full pipeline and is the package | VENDOR_HTTPS |
+| `--from-fingerprint SHA256 [SHA256 …] --evidence-url URL` | The vendor's HTTPS page lists every fingerprint (colon, space, dash or plain hex). More fingerprints may follow as extra arguments | VENDOR_PUBLISHED |
+| `--from-assetlinks DOMAIN` | `https://DOMAIN/.well-known/assetlinks.json`, without redirects, at most 1 MiB, with `android_app` statements for the package | VENDOR_PUBLISHED |
+| `--from-fdroid` | F-Droid's repository index (hash-checked against `entry.json`); the APK matches the index hash and its verified signer is the index signer | FDROID_INDEX |
+| `--from-play` | Google Play through apkeep, with your `KLONER_PLAY_EMAIL` and `KLONER_PLAY_AAS_TOKEN`; full pipeline | PLAY_API |
+| `--from-device [--serial SERIAL]` | The app on a USB-connected phone: `pm path` and `adb pull` of the base and splits, which must share the base's signers. Installed by Google Play or Huawei AppGallery, it counts as a store install; any other installer gives USER evidence. `--serial` picks the device when several are connected | STORE_INSTALL |
+| `--from-apk FILE` | A local APK through the full pipeline. Its origin cannot be proven: the anchor stays USER_ASSERTED | USER |
+
+| Option | What it does |
+|---|---|
+| `--brand-label TEXT` | A brand-distinctive app name (repeatable). Only these names count for EXACT_LABEL, so another package showing this name is an IMPERSONATOR |
+| `--brand-keyword TEXT` | A search term for sources that search by name, used by the impersonation sweep (repeatable) |
+| `--declare-additional-identity` | Record evidence that shares no key with the anchor as a second official identity, instead of refusing it as a CONFLICT |
+| `--reason TEXT` | Why the second identity is legitimate; required with `--declare-additional-identity`, and kept in the anchor |
+| `--label NAME` | A short name for the new identity, for example `f-droid` |
+
+```bash
+# Signal: the fingerprints signal.org publishes, then Signal's own APK from signal.org
+kloner anchor add org.thoughtcrime.securesms \
+    --from-fingerprint 29f34e5f27f211b424bc5bf9d67162c0eafba2da35af35c16416fc446276ba26 \
+                       4be4f6cd5be844083e900279dc822af65a547fecc26aba7ff1f5203a45518cd8 \
+    --evidence-url https://signal.org/android/apk/
+kloner anchor add org.thoughtcrime.securesms --from-url <official-apk-url> --vendor-domain signal.org
+
+# Wikipedia: Wikimedia's Digital Asset Links, then F-Droid
+kloner anchor add org.wikipedia --from-assetlinks en.wikipedia.org
+kloner anchor add org.wikipedia --from-fdroid
+
+# a brand name that impersonators would copy
+kloner anchor add com.example.bank --from-assetlinks example.com --brand-label "Example Bank"
+
+# a second official key, on purpose and with a reason
+kloner anchor add com.duckduckgo.mobile.android --from-fdroid --declare-additional-identity \
+    --reason "F-Droid builds DuckDuckGo from source and signs it with its own repository key" --label f-droid
+
+# Google Play, and a phone
+KLONER_PLAY_EMAIL=you@example.com KLONER_PLAY_AAS_TOKEN=… kloner anchor add com.example.app --from-play
+kloner anchor add com.example.app --from-device --serial R58M12345
+```
+
+Evidence that shares no key with the anchor is a **CONFLICT**: nothing is written, and the exit code is 3. A key
+from the public AOSP test-key registry is refused, also with exit 3.
+
+</details>
+
+<details>
+<summary><b><code>kloner anchor show</code> · <code>kloner anchor list</code></b>: read the anchors</summary>
+
+```text
+kloner anchor show <package>
+kloner anchor list
+```
+
+`show` prints one anchor: its trust level, every identity with its certificate, subject, key and evidence, the key
+lineage, the official releases seen, the brand profile and the decisions recorded. `list` prints every anchor with
+its trust level, its number of identities and its record hash. Both take `--json`.
+
+```bash
+kloner anchor show org.wikipedia
+kloner --json anchor show org.wikipedia
+kloner anchor list
+```
+
+</details>
+
+<details>
+<summary><b><code>kloner anchor refresh</code></b>: re-run the recorded methods and see what changed</summary>
+
+```text
+kloner anchor refresh <package> [--accept]
+```
+
+Re-runs the automatic methods recorded as evidence (the vendor URL, fingerprint pages, assetlinks and F-Droid) and
+shows the difference. A change in what the vendor publishes is either a key rotation or a compromise of the vendor's
+site, and KLONER never decides that alone: nothing is written without `--accept`.
+
+| Option | What it does |
+|---|---|
+| `--accept` | Write the refreshed anchor |
+
+```bash
+kloner anchor refresh org.wikipedia
+kloner anchor refresh org.wikipedia --accept
+```
+
+</details>
+
+<details>
+<summary><b><code>kloner anchor export</code> · <code>kloner anchor import</code></b>: move an anchor to another machine</summary>
+
+```text
+kloner anchor export <package> <file>
+kloner anchor import <file>
+```
+
+`export` writes the anchor as portable JSON. `import` reads it and re-checks everything: the hygiene rules, the
+corroboration level and the record hash. A record that shares no key with an existing anchor is refused.
+
+```bash
+kloner anchor export org.wikipedia wikipedia-anchor.json
+kloner anchor import wikipedia-anchor.json
+```
+
+</details>
+
+<details>
+<summary><b><code>kloner anchor adopt-rotation</code></b>: keep a key rotation that a genuine file proves</summary>
+
+```text
+kloner anchor adopt-rotation <package> <sha256>
+```
+
+When a GENUINE sample carries a v3 proof-of-rotation lineage (R1/R2), this command stores the rotation in the anchor,
+with that sample as evidence.
+
+```bash
+kloner anchor adopt-rotation org.thoughtcrime.securesms <sha256-of-a-genuine-copy>
+```
+
+</details>
+
+### Step 2 · Hunt
+
+<details open>
+<summary><b><code>kloner hunt</code></b>: sweep the sources for copies and prove each one</summary>
+
+```text
+kloner hunt <package> [options]
+```
+
+It needs an anchor for the package first. Every file goes into the quarantine, is never installed or run, and gets
+a verdict.
+
+| What to sweep | |
+|---|---|
+| `--sources LIST` | Comma-separated: `local`, `url`, `apkpure`, `aptoide`, `fdroid`, `huawei`, `googleplay`. Default: the sources enabled in the configuration |
+| `--all-versions` | Every version the sources offer, not only the latest |
+| `--max-per-source N` | At most N files per source (default 10). `local` and `url` are never capped |
+| `--impersonators` | Also search for other packages that copy the brand: the icon, the label, lookalike names |
+| `--new-only` | Report only files that no earlier run has seen (for scheduled monitoring) |
+| `--require-corroborated` | Refuse to run unless the anchor is CORROBORATED |
+| `--local PATH` | Files or folders for the `local` source (repeatable) |
+| `--url URL` | Direct links for the `url` source (repeatable) |
+
+| Output | |
+|---|---|
+| `--out DIR` | The folder for the report files. Default: `<home>/runs/<run-id>` |
+| `--format LIST` | Comma-separated: `terminal`, `json`, `md`, `html`, `csv`, `iocs`, `stix21`. Default: `terminal,json,md,html,iocs` |
+| `--fail-on LIST` | The verdicts that set exit code 10. Default: `TAMPERED,FORGED,IMPERSONATOR` |
+| `--notify-webhook URL` | POST the run summary (run, counts, coverage) to this URL when hostile copies are found |
+
+| Network | |
+|---|---|
+| `--proxy URL` | Send the source requests through this proxy |
+| `--user-agent UA` | Override the User-Agent, for tests from several vantage points |
+
+```bash
+kloner hunt org.wikipedia
+kloner hunt org.wikipedia --all-versions --impersonators
+kloner hunt org.wikipedia --sources aptoide,apkpure --max-per-source 25
+kloner hunt org.thoughtcrime.securesms --sources url,fdroid --url <official-apk-url>
+kloner hunt com.example.app --sources local --local ./downloads --local ./more-apks
+kloner hunt com.example.bank --require-corroborated --new-only --format json,html --out reports/bank
+kloner hunt com.example.bank --fail-on FORGED,TAMPERED,IMPERSONATOR,ANOMALY
+kloner hunt com.example.bank --new-only --notify-webhook https://hooks.example.com/kloner
+```
+
+</details>
+
+<details>
+<summary><b><code>kloner verify</code></b>: judge files you already have</summary>
+
+```text
+kloner verify <path>… [--package <package>] [--format LIST] [--out DIR]
+```
+
+Takes APK, XAPK, APKM, APKS or ZIP files, or folders of them. With `--package`, each file is judged against that
+package's anchor. Without it, every anchored brand is checked, which is what a SOC needs for a file of unknown origin:
+a copy of any protected app, or an impersonator of one, is caught.
+
+| Option | What it does |
+|---|---|
+| `--package P` | Judge against this package's anchor |
+| `--format LIST` | Default `terminal`; also `json`, `md`, `html`, `csv`, `iocs`, `stix21` |
+| `--out DIR` | The folder for the report files |
+
+```bash
+kloner verify ./suspicious.apk --package org.thoughtcrime.securesms
+kloner verify ./inbox/                                  # every anchored brand is checked
+kloner --json verify dist/app-release.apk --package com.example.bank
+kloner verify ./case-42/*.apk --format terminal,html --out reports/case-42
+```
+
+</details>
+
+<details>
+<summary><b><code>kloner fetch</code></b>: download links into the quarantine and judge them</summary>
+
+```text
+kloner fetch <url>… [--package <package>] [--format LIST] [--out DIR]
+```
+
+For the link in a smishing message, a chat or a website. HTTPS certificates are validated; plain HTTP is allowed and
+labeled INSECURE_TRANSPORT. The file is evaluated as with `verify`.
+
+```bash
+kloner fetch https://example.net/bank-update.apk --package com.example.bank
+kloner fetch https://example.net/a.apk https://example.net/b.apk --format terminal,json --out reports/smishing
+```
+
+</details>
+
+<details>
+<summary><b><code>kloner survey</code></b>: who signs the copies of an app you have not anchored</summary>
+
+```text
+kloner survey <package> [--sources LIST] [--max-per-source N]
+```
+
+A census of the signers behind a package's copies, every version, from the network sources (not `local` or `url`).
+It shows each signing key, how many files it signed, whether apksig verified them, known public keys, and the
+versions and sources. It gives **no verdicts** and **never** writes an anchor: a survey cannot tell which signer is
+official. Use it to see what is out there, then anchor the real key through an official method.
+
+| Option | What it does |
+|---|---|
+| `--sources LIST` | Comma-separated sources (default: the enabled ones) |
+| `--max-per-source N` | At most N files per source (default 10) |
+
+```bash
+kloner survey com.spotify.music --sources aptoide --max-per-source 20
+kloner --json survey com.spotify.music
+```
+
+</details>
+
+### Step 3 · Inspect
+
+<details open>
+<summary><b><code>kloner explain</code></b>: why one file got its verdict</summary>
+
+```text
+kloner explain <sha256> [--run <run-id>]
+```
+
+The full trace of one evaluation: the verdict and its explanation, the file, the anchor and the engine versions,
+every gate from G0 to G7 with its result and detail, the reason codes, the labels with their severity, every signer
+with its trust, the entries of the APK Signing Block, the forensic summary, and where the file was seen.
+
+| Option | What it does |
+|---|---|
+| `--run RUN` | Only accept the sample if it is part of this run |
+
+```bash
+kloner explain 20183b29d6ee3d187402a254c3c7df585e6744e6065f3519d111834427b365e6
+kloner --json explain <sha256>
+```
+
+</details>
+
+<details>
+<summary><b><code>kloner diff</code></b>: a copy next to the official build</summary>
+
+```text
+kloner diff <copy> --against <reference>
+```
+
+Both sides are a file path or a SHA-256 already in the quarantine (a file is first copied into the quarantine). Both
+files are unpacked in a sandboxed worker. The screen shows them side by side (package, version, classes,
+permissions, components, native libraries, files, with ≠ on every difference), the code and resource overlap with
+its reading (REPACKAGED: the same code base, modified; IMPOSTOR: a different app), every change by area, and the
+injected capabilities.
+
+| Option | What it does |
+|---|---|
+| `--against REFERENCE` | The build to compare with, usually the official one (required) |
+
+```bash
+kloner diff <suspicious-sha256> --against <official-sha256>
+kloner diff ./suspicious.apk --against ./official.apk
+kloner --json diff ./suspicious.apk --against ./official.apk
+```
+
+</details>
+
+<details>
+<summary><b><code>kloner report</code></b>: re-render a past run</summary>
+
+```text
+kloner report <run-id> [--format LIST] [--out FILE]
+```
+
+Renders a past run again from its `report.json`, in any format. Files go to the run's folder unless `--out` names a
+file. `--format terminal` shows the hunt screen again.
+
+| Option | What it does |
+|---|---|
+| `--format LIST` | Default `md`; also `terminal`, `json`, `html`, `csv`, `iocs`, `stix21` |
+| `--out FILE` | Write to this file instead of the run's folder (use it with one format at a time) |
+
+```bash
+kloner report 2026-11-10T21-17-48Z --format terminal
+kloner report 2026-11-10T21-17-48Z --format html,csv,stix21
+kloner report 2026-11-10T21-17-48Z --format md --out case-42.md
+```
+
+</details>
+
+<details>
+<summary><b><code>kloner reverify</code></b>: prove a run's verdicts are reproducible</summary>
+
+```text
+kloner reverify <run-id>
+```
+
+Recomputes every verdict of a run offline, from the stored facts, and compares the canonical JSON byte for byte. It
+prints IDENTICAL and exits 0, or lists each difference and exits 1.
+
+```bash
+kloner reverify 2026-11-10T21-17-48Z
+```
+
+</details>
+
+### Intel and sharing
+
+<details>
+<summary><b><code>kloner intel</code></b>: correlations across runs</summary>
+
+```text
+kloner intel signer <cert-sha256>
+kloner intel payload <payload-id>
+kloner intel package <package>
+kloner intel sources
+```
+
+| Command | What it lists |
+|---|---|
+| `intel signer <cert-sha256>` | Every package and sample a certificate signed: one forger's key across apps and runs |
+| `intel payload <id>` | Every sample that carries an injected payload (a `payload_id` or `shape_id` from a report) |
+| `intel package <package>` | Every sample of a package across runs, with its verdict and where it was seen |
+| `intel sources` | Per source: GENUINE, hostile and invalid counts, and metadata mismatches over time |
+
+```bash
+kloner intel signer 6581cfc3bf1a2d7e19eda0ee84bfb70da08238088cd02063fe350c22ab0470a1
+kloner intel package com.example.bank
+kloner --json intel sources
+```
+
+</details>
+
+<details>
+<summary><b><code>kloner export samples</code></b>: hostile samples for analysts</summary>
+
+```text
+kloner export samples --run <run-id> [--zip-password PASSWORD] [--out FILE]
+```
+
+Packages the hostile samples of a run (TAMPERED, FORGED, IMPERSONATOR) with a manifest, in an AES-256 ZIP, on
+explicit request only. It needs 7-Zip (`7z`, `7za` or `7zz`) on the PATH and refuses to write an unprotected archive.
+
+| Option | What it does |
+|---|---|
+| `--run RUN` | The run whose hostile samples to package (required) |
+| `--zip-password PASSWORD` | The ZIP password. Default `infected`, the malware-sharing convention |
+| `--out FILE` | The ZIP file to write |
+
+```bash
+kloner export samples --run 2026-11-10T21-17-48Z --out case-42-samples.zip
+```
+
+Never run or install what is inside.
+
+</details>
+
+### Configuration
+
+`kloner setup` writes `<home>/config.toml` with these defaults. Edit it to change them:
+
+```toml
+[general]
+workers = 4                      # parallel verification workers (also --workers)
+user_agent = "kloner/{version} (+https://github.com/0xKript/kloner)"
+
+[limits]                         # bounds for hostile files
+max_file_bytes = 1073741824      # 1 GiB per file
+max_entries = 200000             # ZIP entries
+max_total_uncompressed = 8589934592
+max_ratio = 1000                 # compression ratio (zip bombs)
+bridge_timeout_s = 120
+bridge_heap = "2g"               # the apksig JVM's heap cap
+
+[network]
+rate_per_host = 1.0              # requests per second per host (also --rate)
+connect_timeout_s = 15
+read_timeout_s = 120
+retries = 3
+
+[sources]
+enabled = ["local", "url", "apkpure", "aptoide", "fdroid", "huawei"]
+googleplay_email_env = "KLONER_PLAY_EMAIL"
+googleplay_token_env = "KLONER_PLAY_AAS_TOKEN"
+
+[forensics]
+repackaged_min_jaccard = 0.60    # class overlap from which a copy reads REPACKAGED
+impostor_max_jaccard = 0.20      # class overlap below which it reads IMPOSTOR
+dhash_max_distance = 10          # lookalike icons
+label_max_edit_distance = 2      # lookalike labels
+```
+
+### Environment variables
+
+| Variable | Effect |
+|---|---|
+| `KLONER_HOME` | The default home, instead of `~/.kloner` |
+| `KLONER_TOOLCHAIN` | Where the toolchain lives, instead of `<home>/toolchain` (the Docker image uses `/opt/kloner/toolchain`) |
+| `KLONER_PLAY_EMAIL`, `KLONER_PLAY_AAS_TOKEN` | Your Google Play credentials, for the `googleplay` source and `--from-play`. Never written to logs, the database or reports |
+| `KLONER_PLAY_ACCEPT_TOS=1` | Accept Google Play's terms for apkeep |
+| `KLONER_NO_BANNER=1` | No startup banner |
+| `NO_COLOR` | No colors on any screen |
+| `COLORTERM`, `WT_SESSION`, `TERM` | How many colors the terminal can show (true color, 256 or none) |
+| `CI` | Set by CI systems: no banner and no spinner |
+
+## Labels and reason codes
+
+<details>
+<summary><b>Every label</b>: what KLONER noticed about a file (labels never change a verdict on their own)</summary>
+<br>
+
+"Verdict" labels are part of the reproducible verdict, and `kloner reverify` compares them byte for byte. "Side"
+labels depend on other samples, sources or heuristics, and are reported next to the verdict.
+
+| Label | Category | Severity | Where | Meaning |
+|---|---|---|---|---|
+| `LEGACY_KEY` | identity | info | verdict | Signed by a legacy key of the official lineage |
+| `ROTATED_KEY` | identity | info | verdict | Signed by a key admitted through proof-of-rotation (R1/R2) |
+| `SECONDARY_IDENTITY` | identity | info | verdict | Signed by an explicitly declared additional identity |
+| `PLAY_SOURCE_STAMP` | identity | info | verdict | Carries a valid source stamp (stamp signer recorded) |
+| `SOURCE_STAMP_INVALID` | identity | notice | verdict | Carries a source stamp that does not verify |
+| `AHEAD_OF_OFFICIAL` | identity | notice | verdict | versionCode is above every strong-provenance release reference |
+| `OUTDATED` | identity | info | verdict | versionCode is below the latest official reference |
+| `LEGACY_KEY_ON_NEW_BUILD` | identity | alert | verdict | Only a superseded key signed a build at or above the rotation point |
+| `LEGACY_PLATFORM_INCOMPATIBLE` | identity | info | verdict | Signatures verify for API 24+ but not for every declared older platform |
+| `V1_ONLY` | identity | notice | verdict | Only the v1 (JAR) scheme protects this APK; ZIP metadata is unsigned |
+| `SAME_VENDOR` | identity | info | verdict | Signed by the official identity of the expected package (a sibling app) |
+| `KNOWN_PUBLIC_KEY:<name>` | forgery | alert | verdict | Signed with a publicly known test or platform key |
+| `DEBUG_DN` | forgery | notice | verdict | The signer certificate uses the Android debug subject DN |
+| `MIXED_SIGNERS` | forgery | alert | verdict | Trusted and foreign signers appear in the same file |
+| `UNKNOWN_SIGNER_BLOCK` | forgery | alert | verdict | A signer block under an ID apksig does not recognize |
+| `REPACKAGED` | forgery | notice | side | Heuristic: most of the official code is present (class overlap) |
+| `IMPOSTOR` | forgery | notice | side | Heuristic: little of the official code is present (class overlap) |
+| `SHARED_FOREIGN_SIGNER` | forgery | alert | side | The foreign key also signed other hostile copies |
+| `SHARED_PAYLOAD` | forgery | alert | side | The injected payload also appears in other hostile copies |
+| `CONTENT_MODIFIED_UNDER_OFFICIAL_SIGNATURE` | tamper | alert | verdict | The official certificate is present but does not validate this content |
+| `SIGNATURE_INVALID` | tamper | alert | verdict | The signatures do not verify |
+| `POLYGLOT` | tamper | alert | verdict | Data precedes the ZIP structure (Janus class, CVE-2017-13156) |
+| `ZIP_AMBIGUITY` | tamper | alert | verdict | The ZIP structure reads in more than one way (Master Key class) |
+| `SCHEME_STRIPPED` | tamper | alert | verdict | A stronger signature scheme was removed |
+| `BUNDLE_INCONSISTENT` | container | alert | verdict | Bundle members disagree: some are genuine, some are not |
+| `UNEXPECTED_MEMBER` | container | alert | verdict | The bundle carries an APK of another package |
+| `UNEXPECTED_PAYLOAD` | container | notice | verdict | The bundle carries files that are neither APKs nor metadata |
+| `UNVERIFIABLE_OBB` | container | info | verdict | Expansion (OBB) files are not covered by APK signatures |
+| `INCOMPLETE_BUNDLE` | container | notice | verdict | The bundle has no base APK |
+| `SPLIT_SIGNER_DIVERGENCE` | container | alert | verdict | Bundle members of the package have different signer sets |
+| `UNSIGNED_BLOCK_DATA` | unsigned | notice | verdict | Unsigned data inside the APK Signing Block |
+| `UNREFERENCED_BYTES` | unsigned | notice | verdict | Bytes not referenced by the ZIP structure |
+| `HOSTILE_ENTRY_NAME` | unsigned | notice | verdict | Entry names with absolute paths, `..` or control characters |
+| `METADATA_MISMATCH` | source | notice | side | The source's claims differ from the file |
+| `UNSTABLE_SOURCE` | source | alert | side | The source served different bytes for the same offer |
+| `INSECURE_TRANSPORT` | source | notice | side | Fetched over plain HTTP |
+| `EXACT_ICON` | impersonation | alert | verdict | A launcher icon asset is byte-identical to an official one |
+| `EXACT_LABEL` | impersonation | alert | verdict | The label equals a declared brand label |
+| `LOOKALIKE:<signal>` | impersonation | notice | side | Heuristic similarity to the brand, with its score |
+| `ICON_UNRESOLVED` | impersonation | info | verdict | Launcher icons could not be resolved |
+| `VERIFIER_WARNING:<issue>` | engine | info | verdict | apksig reported a warning |
+| `FORENSICS_INCOMPLETE` | engine | notice | side | Forensic analysis did not complete; the verdict is unaffected |
+| `NO_REFERENCE` | engine | info | side | No genuine reference was available for a forensic diff |
+| `CROSS_VERSION_DIFF` | engine | info | side | The forensic diff uses a reference of another version |
+
+Lookalike signals: `LABEL_EDIT` (a label within edit distance 2), `CONFUSABLE` (equal Unicode confusable
+skeletons, UTS #39), `ICON_DHASH` (an icon within dHash distance 10), `PACKAGE_TYPOSQUAT` (a package within edit
+distance 2), `PACKAGE_AFFIX` (the official package used as a prefix, suffix or substring).
+
+</details>
+
+<details>
+<summary><b>Every reason code</b>: which gate decided, and why</summary>
+<br>
+
+| Gate | Check | Outcome | Reason code |
+|---|---|---|---|
+| — | facts collection failed (worker crash or timeout) | ERROR | `R-PIPELINE-FACTS-INCOMPLETE` |
+| G0 | not a ZIP, empty, too large, encrypted, an AAB, or no Android content | INVALID | `R-G0-<REASON>` |
+| G2 | CRC mismatch, truncation, inflate error, limits, ZIP64 | INVALID | `R-G2-CORRUPT`, `R-G2-UNSAFE-ARCHIVE`, `R-G2-UNSUPPORTED-ZIP64` |
+| G3 | a manifest parser failed | ANOMALY | `R-G3-MANIFEST-UNREADABLE` |
+| G3 | androguard and aapt2 disagree | ANOMALY | `R-G3-PARSER-DIFFERENTIAL` |
+| G3 | another package than expected | IMPERSONATOR or MISMATCH | `R-IMP-*`, `R-G3-PACKAGE-MISMATCH` |
+| G3 | no anchor | IMPERSONATOR or UNANCHORED | `R-IMP-*`, `R-G3-UNANCHORED` |
+| G4 | a structural rule broken (S1, S2, S3, S5) | TAMPERED | `R-G4-DATA-BEFORE-FIRST-ENTRY`, `R-G4-DUPLICATE-ENTRY`, `R-G4-LOCAL-CENTRAL-NAME-MISMATCH`, `R-G4-LOCAL-CENTRAL-HEADER-MISMATCH`, `R-G4-MULTIPLE-EOCD`, `R-G4-EOCD-NOT-ADJACENT`, `R-G4-CENTRAL-DIRECTORY-SIZE-MISMATCH` |
+| G5 | the bridge to apksig failed | ERROR | `R-G5-VERIFIER-FAILURE` |
+| G5 | apksig rejects the full range and the API 24+ range | TAMPERED | `R-G5-APKSIG:<ISSUE>` for each apksig issue |
+| G6 | apksig, the native parser and androguard disagree | ANOMALY | `R-G6-ENGINE-DISAGREEMENT` |
+| G7 | a signer outside the official identity | FORGED | `R-G7-FOREIGN-SIGNER` |
+| G7 | an unknown signed attribute in a trusted signer | ERROR | `R-G7-VERIFIER-OUTDATED` |
+| G7 | every signer is official | GENUINE | `R-G7-TRUSTED` |
+
+</details>
+
+<details>
+<summary><b>Injected capabilities</b>: what the forensic diff looks for in a copy</summary>
+<br>
+
+A fixed table over the forensic diff against a GENUINE reference, shown as one line, for example
+`Injected: SMS interception · accessibility abuse · 3 new network endpoints`. It explains; it never decides.
+
+| Capability | Triggered by, when the copy adds it |
+|---|---|
+| SMS interception | the permissions `RECEIVE_SMS`, `READ_SMS`, `SEND_SMS`; components handling `SMS_RECEIVED` or `SMS_DELIVER`; new references to `SmsManager` |
+| Overlay | the permission `SYSTEM_ALERT_WINDOW`; new references to `WindowManager.addView` |
+| Accessibility abuse | components handling or guarded by the accessibility service; new references to `AccessibilityService`, `AccessibilityNodeInfo.performAction` |
+| Dynamic code loading | new references to `DexClassLoader`, `InMemoryDexClassLoader`, `PathClassLoader` |
+| Dropper | embedded `.apk`, `.dex`, `.jar`, `.zip` or `.so` files, or high-entropy blobs (7.5 bits per byte or more) |
+| Device admin | components handling `DEVICE_ADMIN_ENABLED` or guarded by `BIND_DEVICE_ADMIN`; new references to `DevicePolicyManager` |
+| Notification access | components handling the notification listener service, or guarded by its permission |
+| Contacts access | the permission `READ_CONTACTS` |
+| Location | the location permissions; new references to `LocationManager` |
+| Audio or camera | `RECORD_AUDIO`, `CAMERA`; new references to `MediaRecorder`, `Camera` |
+| Package install | `REQUEST_INSTALL_PACKAGES`, `INSTALL_PACKAGES`; new references to `PackageInstaller` |
+| Persistence | `RECEIVE_BOOT_COMPLETED`; components handling `BOOT_COMPLETED` |
+| Ad SDK | new code packages of known advertising SDKs |
+| New network endpoints | URLs, domains and IP addresses that only the copy contains |
+
+</details>
 
 ## Reports and integrations
 
@@ -734,24 +1390,84 @@ checks every case.
 | | Result |
 |---|---|
 | **Live field trial** | 10 official files of Signal, Wikipedia, DuckDuckGo and Bitwarden, all **GENUINE**, with **0** hostile verdicts. Signal's key rotation proven live in both directions (R1 and R2). Wikipedia CORROBORATED from three official sources, two keys included. `reverify` IDENTICAL on all 9 hunts |
-| **Third-party mirrors** | **22 GENUINE** copies of Signal, Wikipedia, DuckDuckGo and Bitwarden from official links, F-Droid and Aptoide, and **0** FORGED or IMPOSTOR among them; 54 unrelated apps with similar names kept apart as MISMATCH. The survey found a real **FORGED** `com.spotify.music` on Aptoide: a 1.1 MB app under Spotify's name, signed by an unknown key, with none of Spotify's code |
+| **Third-party mirrors** | Signal, Wikipedia, DuckDuckGo and Bitwarden: **22 GENUINE** copies from official links, F-Droid and Aptoide, and **60 GENUINE** from APKPure (15 of each app), with **0** FORGED or IMPOSTOR among them; 54 unrelated apps with similar names kept apart as MISMATCH. The survey found a real **FORGED** `com.spotify.music` on Aptoide: a 1.1 MB app under Spotify's name, signed by an unknown key, with none of Spotify's code |
 | **Real files from Google** | 133 cases on 117 test APKs of AOSP's apksig, pinned by commit and SHA-256, each with its exact verdict and labels |
 | **Self-test** | `selftest --full`: 55/55 PASS in Docker, on Linux and on macOS (CI), including 38 corpus cases, 13 engine-agreement checks against `apksigner` and 1,200 random mutations of a signed file. Standard mode: 47/47 PASS in 39 s on 4 CPUs |
-| **Tests** | 206 pytest tests, including property tests and fuzzing (1,000 iterations per parser). Line coverage on Linux CI: `decide.py` 98.8%, `verify/` 93.3%, `container/` 95.1%, `anchor/` 93.0%, overall 87.3% (gates 90/90/90/90/80). mypy --strict, ruff and bandit are clean |
+| **Tests** | 203 pytest tests, including property tests and fuzzing (1,000 iterations per parser). Line coverage on Linux CI: `decide.py` 98.8%, `verify/` 93.3%, `container/` 95.1%, `anchor/` 93.0%, overall 87.3% (gates 90/90/90/90/80). mypy --strict, ruff and bandit are clean |
 | **Speed** | a 142 MB APK gets its verdict in about 3.5 s on 4 CPUs; Signal's 115 MB APK takes about 9 s, because its minSdk 23 also requires v1 verification of 4,115 entries |
 
-Every number, with the commands and raw outputs, is in [docs/VALIDATION.md](docs/VALIDATION.md). Every claim in this
-README is mapped to its evidence in [docs/CLAIMS.md](docs/CLAIMS.md).
 
 ## Roadmap
 
-- Publish the Docker image (GHCR) with each release.
-- Verify the F-Droid index signature (`entry.jar`) in addition to the TLS and hash chain.
-- A harness for owner-run negative controls on real APKs, and file-level versions of the facts-level corpus cases.
-- More sources where a stable public API exists.
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '15px', 'textColor': '#45bf88', 'cScale0': '#22875c', 'cScaleLabel0': '#ffffff', 'cScale1': '#e8b93c', 'cScaleLabel1': '#1f1800', 'cScale2': '#7fb3d5', 'cScaleLabel2': '#0b1622'}}}%%
+timeline
+    title KLONER · from the first proof to every app store
+    section Shipped
+        Proof : Anchors from official sources only
+              : Key rotation, R1 and R2
+              : Three engines and a strict ZIP gate
+        Reach : Hunts across stores, mirrors and links
+              : Impersonator sweep
+        Evidence : Forensic diff and injected capabilities
+                 : Seven report formats, STIX 2.1
+    section Next
+        Distribution : A ready Docker image on GHCR
+        Trust : F-Droid's index signature, entry.jar
+    section Later
+        Proof : Owner-run negative controls on real APKs
+        Reach : More stores with stable public APIs
+```
+
+<table>
+<tr>
+<th width="20%">Status</th>
+<th width="38%">Item</th>
+<th>Why it matters</th>
+</tr>
+<tr>
+<td>🟢 <b>Shipped</b></td>
+<td>The whole pipeline: official anchors, hunts, three-engine verification, forensics, intel, seven report formats</td>
+<td>Every verdict is a proof, reproducible byte for byte</td>
+</tr>
+<tr>
+<td>🟡 <b>Next</b></td>
+<td>A ready-made Docker image on GHCR</td>
+<td>Run KLONER with one <code>docker run</code>, without building the image</td>
+</tr>
+<tr>
+<td>🟡 <b>Next</b></td>
+<td>Verify F-Droid's index signature (<code>entry.jar</code>)</td>
+<td>One more signature in the chain, next to TLS and the index hash</td>
+</tr>
+<tr>
+<td>🔵 <b>Later</b></td>
+<td>Owner-run negative controls on real APKs</td>
+<td>File-level proof for the cases the corpus decides at the facts level</td>
+</tr>
+<tr>
+<td>🔵 <b>Later</b></td>
+<td>More sources, wherever a stable public API exists</td>
+<td>More of the places where copies live</td>
+</tr>
+</table>
 
 ## Author
 
-Khel ([0xKript](https://github.com/0xKript)). Licensed under the [Apache License 2.0](LICENSE).
+<div align="center">
 
-<p align="center"><sub>◆ KLONER · Looks can be cloned. Keys cannot.</sub></p>
+<a href="https://github.com/0xKript"><img src="https://github.com/0xKript.png?size=200" width="120" alt="0xKript"></a>
+
+### Designed and built by [0xKript](https://github.com/0xKript)
+
+*Looks can be cloned. Keys cannot.*
+
+<a href="https://github.com/0xKript"><img src="https://img.shields.io/badge/GitHub-0xKript-45bf88?style=for-the-badge&logo=github&logoColor=white&labelColor=0b1f15" alt="GitHub: 0xKript"></a>
+<a href="https://github.com/0xKript/KLONER"><img src="https://img.shields.io/github/stars/0xKript/KLONER?style=for-the-badge&logo=github&color=45bf88&labelColor=0b1f15" alt="Stars"></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-45bf88?style=for-the-badge&labelColor=0b1f15" alt="License: Apache 2.0"></a>
+
+If KLONER helps you protect an app, a ⭐ helps others find it.
+
+</div>
+
+<p align="center"><sub>◆ KLONER · Licensed under the <a href="LICENSE">Apache License 2.0</a></sub></p>

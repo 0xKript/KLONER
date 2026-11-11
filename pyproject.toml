@@ -102,5 +102,5 @@ skip_covered = true
 [tool.bandit]
 exclude_dirs = ["tests", ".venv"]
 # B101: asserts are used only to narrow Optional types for mypy; no check that guards a verdict or
-# hostile input relies on an assert (docs/DECISIONS.md, D-031).
+# hostile input relies on an assert (D-031).
 skips = ["B101"]

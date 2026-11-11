@@ -1,7 +1,7 @@
 """Fetch the official test APKs of AOSP's apksig (Apache-2.0) at a pinned commit, SHA-256 verified.
 
 These are real files produced by Google's own signing code with its public test keys, many of them broken on
-purpose, so they exercise KLONER's verdict paths on real bytes (docs/DECISIONS.md D-057). They are third-party
+purpose, so they exercise KLONER's verdict paths on real bytes (D-057). They are third-party
 APKs and are never committed: this script caches them outside the repository, in
 ``~/.cache/kloner/aosp-apksig/<commit>/`` (override with ``KLONER_AOSP_CACHE``), together with the upstream
 LICENSE and a NOTICE. ``tests/aosp/manifest.json`` pins the commit and, for every file, its git blob id and its
@@ -176,7 +176,7 @@ def fetch(manifest: dict[str, Any], *, client: Client | None = None, pin: bool =
 
 
 def verdict_table(manifest: dict[str, Any]) -> str:
-    """The expected verdict of every case, grouped by outcome, as a Markdown table (for docs/DECISIONS.md)."""
+    """The expected verdict of every case, grouped by outcome, as a Markdown table."""
     groups: dict[tuple[str, tuple[str, ...]], list[str]] = {}
     for e in manifest["apks"]:
         for case in e["cases"]:

@@ -460,7 +460,12 @@ def run_selftest(rt: Runtime, mode: str = "standard", console: Console | None = 
     n_facts = sum(1 for o in outcomes if o.level == "facts")
     summary = (
         f"selftest {mode}: {len(outcomes) - len(failed)}/{len(outcomes)} PASS in {time.monotonic() - t_all:.0f}s"
-        + (f" ({n_facts} decided at the facts level, see docs/DECISIONS.md D-026)" if n_facts else "")
+        + (
+            f" ({n_facts} decided at the facts level: real facts of a vendor-signed file, changed only in the data "
+            "the decision sees)"
+            if n_facts
+            else ""
+        )
     )
     console.print()
     console.print(

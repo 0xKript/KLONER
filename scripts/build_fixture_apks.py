@@ -5,7 +5,7 @@ The fixtures are unsigned APKs committed to ``src/kloner/selftest/fixtures/``.
 ``kloner selftest`` signs them with freshly generated synthetic-vendor keys to
 build the corpus. Nothing here touches a real vendor's code or keys.
 
-Toolchain (pinned, see docs/DECISIONS.md):
+Toolchain (pinned):
   * build-tools 36.0.0: aapt2 (link), lib/d8.jar (dex)
   * platforms/android-36/android.jar (link target)
   * a JDK 17+ (javac, java)
