@@ -737,7 +737,7 @@ checks every case.
 | **Third-party mirrors** | **22 GENUINE** copies of Signal, Wikipedia, DuckDuckGo and Bitwarden from official links, F-Droid and Aptoide, and **0** FORGED or IMPOSTOR among them; 54 unrelated apps with similar names kept apart as MISMATCH. The survey found a real **FORGED** `com.spotify.music` on Aptoide: a 1.1 MB app under Spotify's name, signed by an unknown key, with none of Spotify's code |
 | **Real files from Google** | 133 cases on 117 test APKs of AOSP's apksig, pinned by commit and SHA-256, each with its exact verdict and labels |
 | **Self-test** | `selftest --full`: 55/55 PASS in Docker, on Linux and on macOS (CI), including 38 corpus cases, 13 engine-agreement checks against `apksigner` and 1,200 random mutations of a signed file. Standard mode: 47/47 PASS in 39 s on 4 CPUs |
-| **Tests** | 206 pytest tests, including property tests and fuzzing (1,000 iterations per parser). Line coverage on Linux CI: `decide.py` 98.8%, `verify/` 93.3%, `container/` 94.7%, `anchor/` 93.0%, overall 86.7% (gates 90/90/90/90/80). mypy --strict, ruff and bandit are clean |
+| **Tests** | 206 pytest tests, including property tests and fuzzing (1,000 iterations per parser). Line coverage on Linux CI: `decide.py` 98.8%, `verify/` 93.3%, `container/` 95.1%, `anchor/` 93.0%, overall 87.3% (gates 90/90/90/90/80). mypy --strict, ruff and bandit are clean |
 | **Speed** | a 142 MB APK gets its verdict in about 3.5 s on 4 CPUs; Signal's 115 MB APK takes about 9 s, because its minSdk 23 also requires v1 verification of 4,115 entries |
 
 Every number, with the commands and raw outputs, is in [docs/VALIDATION.md](docs/VALIDATION.md). Every claim in this
