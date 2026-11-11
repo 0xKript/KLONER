@@ -1,0 +1,279 @@
+<svg class="rich-terminal" viewBox="0 0 1287 1514.0" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io by scripts/export_screens.py -->
+    <style>
+    .help-matrix {
+        font-family: "Cascadia Mono", "Fira Code", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+    .help-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    .help-r1 { fill: #7fe6b3;font-weight: bold }
+.help-r2 { fill: #a3c7b6 }
+.help-r3 { fill: #45bf88;font-weight: bold }
+.help-r4 { fill: #c2f5da;font-weight: bold }
+.help-r5 { fill: #c2f5da }
+.help-r6 { fill: #5f8577 }
+.help-r7 { fill: #2b7258 }
+.help-r8 { fill: #45bf88 }
+    </style>
+    <defs>
+    <clipPath id="help-clip-terminal">
+      <rect x="0" y="0" width="1267.8" height="1463.0" />
+    </clipPath>
+    <clipPath id="help-line-0">
+    <rect x="0" y="1.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-1">
+    <rect x="0" y="25.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-2">
+    <rect x="0" y="50.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-3">
+    <rect x="0" y="74.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-4">
+    <rect x="0" y="99.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-5">
+    <rect x="0" y="123.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-6">
+    <rect x="0" y="147.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-7">
+    <rect x="0" y="172.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-8">
+    <rect x="0" y="196.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-9">
+    <rect x="0" y="221.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-10">
+    <rect x="0" y="245.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-11">
+    <rect x="0" y="269.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-12">
+    <rect x="0" y="294.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-13">
+    <rect x="0" y="318.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-14">
+    <rect x="0" y="343.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-15">
+    <rect x="0" y="367.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-16">
+    <rect x="0" y="391.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-17">
+    <rect x="0" y="416.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-18">
+    <rect x="0" y="440.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-19">
+    <rect x="0" y="465.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-20">
+    <rect x="0" y="489.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-21">
+    <rect x="0" y="513.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-22">
+    <rect x="0" y="538.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-23">
+    <rect x="0" y="562.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-24">
+    <rect x="0" y="587.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-25">
+    <rect x="0" y="611.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-26">
+    <rect x="0" y="635.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-27">
+    <rect x="0" y="660.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-28">
+    <rect x="0" y="684.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-29">
+    <rect x="0" y="709.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-30">
+    <rect x="0" y="733.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-31">
+    <rect x="0" y="757.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-32">
+    <rect x="0" y="782.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-33">
+    <rect x="0" y="806.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-34">
+    <rect x="0" y="831.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-35">
+    <rect x="0" y="855.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-36">
+    <rect x="0" y="879.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-37">
+    <rect x="0" y="904.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-38">
+    <rect x="0" y="928.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-39">
+    <rect x="0" y="953.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-40">
+    <rect x="0" y="977.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-41">
+    <rect x="0" y="1001.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-42">
+    <rect x="0" y="1026.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-43">
+    <rect x="0" y="1050.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-44">
+    <rect x="0" y="1075.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-45">
+    <rect x="0" y="1099.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-46">
+    <rect x="0" y="1123.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-47">
+    <rect x="0" y="1148.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-48">
+    <rect x="0" y="1172.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-49">
+    <rect x="0" y="1197.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-50">
+    <rect x="0" y="1221.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-51">
+    <rect x="0" y="1245.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-52">
+    <rect x="0" y="1270.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-53">
+    <rect x="0" y="1294.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-54">
+    <rect x="0" y="1319.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-55">
+    <rect x="0" y="1343.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-56">
+    <rect x="0" y="1367.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-57">
+    <rect x="0" y="1392.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="help-line-58">
+    <rect x="0" y="1416.7" width="1268.8" height="24.65"/>
+            </clipPath>
+    </defs>
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="1285" height="1512" rx="8"/><text class="help-title" fill="#a3c7b6" text-anchor="middle" x="642" y="27">kloner&#160;--help</text>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#help-clip-terminal)">
+    
+    <g class="help-matrix">
+    <text class="help-r2" x="1268.8" y="20" textLength="12.2" clip-path="url(#help-line-0)">
+</text><text class="help-r3" x="12.2" y="44.4" textLength="85.4" clip-path="url(#help-line-1)">Usage:&#160;</text><text class="help-r1" x="97.6" y="44.4" textLength="414.8" clip-path="url(#help-line-1)">kloner&#160;[OPTIONS]&#160;COMMAND&#160;[ARGS]...</text><text class="help-r2" x="1268.8" y="44.4" textLength="12.2" clip-path="url(#help-line-1)">
+</text><text class="help-r2" x="1268.8" y="68.8" textLength="12.2" clip-path="url(#help-line-2)">
+</text><text class="help-r4" x="12.2" y="93.2" textLength="1073.6" clip-path="url(#help-line-3)">Find&#160;forged,&#160;trojanized&#160;and&#160;tampered&#160;copies&#160;of&#160;any&#160;Android&#160;app,&#160;and&#160;prove&#160;every&#160;verdict.</text><text class="help-r2" x="1268.8" y="93.2" textLength="12.2" clip-path="url(#help-line-3)">
+</text><text class="help-r2" x="1268.8" y="117.6" textLength="12.2" clip-path="url(#help-line-4)">
+</text><text class="help-r1" x="12.2" y="142" textLength="146.4" clip-path="url(#help-line-5)">How&#160;it&#160;works</text><text class="help-r2" x="1268.8" y="142" textLength="12.2" clip-path="url(#help-line-5)">
+</text><text class="help-r3" x="12.2" y="166.4" textLength="109.8" clip-path="url(#help-line-6)">1&#160;&#160;Anchor</text><text class="help-r2" x="122" y="166.4" textLength="817.4" clip-path="url(#help-line-6)">&#160;&#160;&#160;pin&#160;the&#160;vendor&#x27;s&#160;real&#160;signing&#160;key,&#160;once,&#160;from&#160;an&#160;official&#160;source</text><text class="help-r2" x="1268.8" y="166.4" textLength="12.2" clip-path="url(#help-line-6)">
+</text><text class="help-r5" x="48.8" y="190.8" textLength="219.6" clip-path="url(#help-line-7)">kloner&#160;anchor&#160;add&#160;</text><text class="help-r6" x="268.4" y="190.8" textLength="109.8" clip-path="url(#help-line-7)">&lt;package&gt;</text><text class="help-r1" x="390.4" y="190.8" textLength="12.2" clip-path="url(#help-line-7)">-</text><text class="help-r1" x="402.6" y="190.8" textLength="61" clip-path="url(#help-line-7)">-from</text><text class="help-r1" x="463.6" y="190.8" textLength="48.8" clip-path="url(#help-line-7)">-url</text><text class="help-r6" x="524.6" y="190.8" textLength="219.6" clip-path="url(#help-line-7)">&lt;official-apk-url&gt;</text><text class="help-r1" x="756.4" y="190.8" textLength="12.2" clip-path="url(#help-line-7)">-</text><text class="help-r1" x="768.6" y="190.8" textLength="85.4" clip-path="url(#help-line-7)">-vendor</text><text class="help-r1" x="854" y="190.8" textLength="85.4" clip-path="url(#help-line-7)">-domain</text><text class="help-r6" x="951.6" y="190.8" textLength="97.6" clip-path="url(#help-line-7)">&lt;domain&gt;</text><text class="help-r2" x="1268.8" y="190.8" textLength="12.2" clip-path="url(#help-line-7)">
+</text><text class="help-r3" x="12.2" y="215.2" textLength="85.4" clip-path="url(#help-line-8)">2&#160;&#160;Hunt</text><text class="help-r2" x="97.6" y="215.2" textLength="817.4" clip-path="url(#help-line-8)">&#160;&#160;&#160;&#160;&#160;sweep&#160;stores&#160;and&#160;mirrors&#160;for&#160;copies;&#160;every&#160;copy&#160;gets&#160;a&#160;verdict</text><text class="help-r2" x="1268.8" y="215.2" textLength="12.2" clip-path="url(#help-line-8)">
+</text><text class="help-r5" x="48.8" y="239.6" textLength="146.4" clip-path="url(#help-line-9)">kloner&#160;hunt&#160;</text><text class="help-r6" x="195.2" y="239.6" textLength="109.8" clip-path="url(#help-line-9)">&lt;package&gt;</text><text class="help-r2" x="1268.8" y="239.6" textLength="12.2" clip-path="url(#help-line-9)">
+</text><text class="help-r3" x="12.2" y="264" textLength="122" clip-path="url(#help-line-10)">3&#160;&#160;Inspect</text><text class="help-r2" x="134.2" y="264" textLength="805.2" clip-path="url(#help-line-10)">&#160;&#160;understand&#160;one&#160;copy:&#160;why&#160;it&#160;got&#160;its&#160;verdict,&#160;and&#160;what&#160;it&#160;changed</text><text class="help-r2" x="1268.8" y="264" textLength="12.2" clip-path="url(#help-line-10)">
+</text><text class="help-r5" x="48.8" y="288.4" textLength="183" clip-path="url(#help-line-11)">kloner&#160;explain&#160;</text><text class="help-r6" x="231.8" y="288.4" textLength="97.6" clip-path="url(#help-line-11)">&lt;sha256&gt;</text><text class="help-r5" x="378.2" y="288.4" textLength="146.4" clip-path="url(#help-line-11)">kloner&#160;diff&#160;</text><text class="help-r6" x="524.6" y="288.4" textLength="97.6" clip-path="url(#help-line-11)">&lt;sha256&gt;</text><text class="help-r1" x="634.4" y="288.4" textLength="12.2" clip-path="url(#help-line-11)">-</text><text class="help-r1" x="646.6" y="288.4" textLength="97.6" clip-path="url(#help-line-11)">-against</text><text class="help-r6" x="756.4" y="288.4" textLength="207.4" clip-path="url(#help-line-11)">&lt;official-sha256&gt;</text><text class="help-r2" x="1268.8" y="288.4" textLength="12.2" clip-path="url(#help-line-11)">
+</text><text class="help-r2" x="1268.8" y="312.8" textLength="12.2" clip-path="url(#help-line-12)">
+</text><text class="help-r6" x="12.2" y="337.2" textLength="195.2" clip-path="url(#help-line-13)">First&#160;time?&#160;Run&#160;</text><text class="help-r4" x="207.4" y="337.2" textLength="146.4" clip-path="url(#help-line-13)">kloner&#160;setup</text><text class="help-r6" x="353.8" y="337.2" textLength="85.4" clip-path="url(#help-line-13)">,&#160;then&#160;</text><text class="help-r4" x="439.2" y="337.2" textLength="158.6" clip-path="url(#help-line-13)">kloner&#160;doctor</text><text class="help-r6" x="597.8" y="337.2" textLength="12.2" clip-path="url(#help-line-13)">.</text><text class="help-r2" x="1268.8" y="337.2" textLength="12.2" clip-path="url(#help-line-13)">
+</text><text class="help-r6" x="12.2" y="361.6" textLength="610" clip-path="url(#help-line-14)">Nothing&#160;KLONER&#160;downloads&#160;is&#160;ever&#160;installed&#160;or&#160;run.</text><text class="help-r2" x="1268.8" y="361.6" textLength="12.2" clip-path="url(#help-line-14)">
+</text><text class="help-r2" x="1268.8" y="386" textLength="12.2" clip-path="url(#help-line-15)">
+</text><text class="help-r7" x="0" y="410.4" textLength="24.4" clip-path="url(#help-line-16)">╭─</text><text class="help-r7" x="24.4" y="410.4" textLength="109.8" clip-path="url(#help-line-16)">&#160;Options&#160;</text><text class="help-r7" x="134.2" y="410.4" textLength="1110.2" clip-path="url(#help-line-16)">───────────────────────────────────────────────────────────────────────────────────────────</text><text class="help-r7" x="1244.4" y="410.4" textLength="24.4" clip-path="url(#help-line-16)">─╮</text><text class="help-r2" x="1268.8" y="410.4" textLength="12.2" clip-path="url(#help-line-16)">
+</text><text class="help-r7" x="0" y="434.8" textLength="12.2" clip-path="url(#help-line-17)">│</text><text class="help-r1" x="24.4" y="434.8" textLength="12.2" clip-path="url(#help-line-17)">-</text><text class="help-r1" x="36.6" y="434.8" textLength="61" clip-path="url(#help-line-17)">-home</text><text class="help-r6" x="244" y="434.8" textLength="12.2" clip-path="url(#help-line-17)">&lt;</text><text class="help-r6" x="256.2" y="434.8" textLength="48.8" clip-path="url(#help-line-17)">path</text><text class="help-r6" x="305" y="434.8" textLength="12.2" clip-path="url(#help-line-17)">&gt;</text><text class="help-r2" x="536.8" y="434.8" textLength="707.6" clip-path="url(#help-line-17)">Where&#160;KLONER&#160;keeps&#160;anchors,&#160;the&#160;quarantine,&#160;the&#160;database&#160;&#160;</text><text class="help-r7" x="1256.6" y="434.8" textLength="12.2" clip-path="url(#help-line-17)">│</text><text class="help-r2" x="1268.8" y="434.8" textLength="12.2" clip-path="url(#help-line-17)">
+</text><text class="help-r7" x="0" y="459.2" textLength="12.2" clip-path="url(#help-line-18)">│</text><text class="help-r2" x="536.8" y="459.2" textLength="707.6" clip-path="url(#help-line-18)">and&#160;runs&#160;(default&#160;~/.kloner).&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r7" x="1256.6" y="459.2" textLength="12.2" clip-path="url(#help-line-18)">│</text><text class="help-r2" x="1268.8" y="459.2" textLength="12.2" clip-path="url(#help-line-18)">
+</text><text class="help-r7" x="0" y="483.6" textLength="12.2" clip-path="url(#help-line-19)">│</text><text class="help-r1" x="24.4" y="483.6" textLength="12.2" clip-path="url(#help-line-19)">-</text><text class="help-r1" x="36.6" y="483.6" textLength="61" clip-path="url(#help-line-19)">-json</text><text class="help-r2" x="536.8" y="483.6" textLength="536.8" clip-path="url(#help-line-19)">Machine-readable&#160;JSON&#160;instead&#160;of&#160;the&#160;screen.</text><text class="help-r7" x="1256.6" y="483.6" textLength="12.2" clip-path="url(#help-line-19)">│</text><text class="help-r2" x="1268.8" y="483.6" textLength="12.2" clip-path="url(#help-line-19)">
+</text><text class="help-r7" x="0" y="508" textLength="12.2" clip-path="url(#help-line-20)">│</text><text class="help-r1" x="24.4" y="508" textLength="12.2" clip-path="url(#help-line-20)">-</text><text class="help-r1" x="36.6" y="508" textLength="73.2" clip-path="url(#help-line-20)">-quiet</text><text class="help-r2" x="536.8" y="508" textLength="512.4" clip-path="url(#help-line-20)">No&#160;screen&#160;output;&#160;errors&#160;still&#160;print,&#160;and&#160;</text><text class="help-r1" x="1049.2" y="508" textLength="12.2" clip-path="url(#help-line-20)">-</text><text class="help-r1" x="1061.4" y="508" textLength="61" clip-path="url(#help-line-20)">-json</text><text class="help-r2" x="1122.4" y="508" textLength="122" clip-path="url(#help-line-20)">&#160;is&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r7" x="1256.6" y="508" textLength="12.2" clip-path="url(#help-line-20)">│</text><text class="help-r2" x="1268.8" y="508" textLength="12.2" clip-path="url(#help-line-20)">
+</text><text class="help-r7" x="0" y="532.4" textLength="12.2" clip-path="url(#help-line-21)">│</text><text class="help-r2" x="536.8" y="532.4" textLength="707.6" clip-path="url(#help-line-21)">unaffected.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r7" x="1256.6" y="532.4" textLength="12.2" clip-path="url(#help-line-21)">│</text><text class="help-r2" x="1268.8" y="532.4" textLength="12.2" clip-path="url(#help-line-21)">
+</text><text class="help-r7" x="0" y="556.8" textLength="12.2" clip-path="url(#help-line-22)">│</text><text class="help-r1" x="24.4" y="556.8" textLength="12.2" clip-path="url(#help-line-22)">-</text><text class="help-r1" x="36.6" y="556.8" textLength="73.2" clip-path="url(#help-line-22)">-debug</text><text class="help-r2" x="536.8" y="556.8" textLength="683.2" clip-path="url(#help-line-22)">Show&#160;tracebacks&#160;of&#160;internal&#160;errors&#160;and&#160;log&#160;debug&#160;detail.</text><text class="help-r7" x="1256.6" y="556.8" textLength="12.2" clip-path="url(#help-line-22)">│</text><text class="help-r2" x="1268.8" y="556.8" textLength="12.2" clip-path="url(#help-line-22)">
+</text><text class="help-r7" x="0" y="581.2" textLength="12.2" clip-path="url(#help-line-23)">│</text><text class="help-r1" x="24.4" y="581.2" textLength="12.2" clip-path="url(#help-line-23)">-</text><text class="help-r1" x="36.6" y="581.2" textLength="36.6" clip-path="url(#help-line-23)">-no</text><text class="help-r1" x="73.2" y="581.2" textLength="73.2" clip-path="url(#help-line-23)">-color</text><text class="help-r2" x="536.8" y="581.2" textLength="573.4" clip-path="url(#help-line-23)">Plain&#160;text&#160;without&#160;colors&#160;(NO_COLOR&#160;works&#160;too).</text><text class="help-r7" x="1256.6" y="581.2" textLength="12.2" clip-path="url(#help-line-23)">│</text><text class="help-r2" x="1268.8" y="581.2" textLength="12.2" clip-path="url(#help-line-23)">
+</text><text class="help-r7" x="0" y="605.6" textLength="12.2" clip-path="url(#help-line-24)">│</text><text class="help-r1" x="24.4" y="605.6" textLength="12.2" clip-path="url(#help-line-24)">-</text><text class="help-r1" x="36.6" y="605.6" textLength="97.6" clip-path="url(#help-line-24)">-workers</text><text class="help-r6" x="244" y="605.6" textLength="12.2" clip-path="url(#help-line-24)">&lt;</text><text class="help-r6" x="256.2" y="605.6" textLength="244" clip-path="url(#help-line-24)">int&#160;range&gt;&#160;[1&lt;=x&lt;=64</text><text class="help-r6" x="500.2" y="605.6" textLength="12.2" clip-path="url(#help-line-24)">]</text><text class="help-r2" x="536.8" y="605.6" textLength="585.6" clip-path="url(#help-line-24)">Parallel&#160;verification&#160;workers&#160;(default:&#160;config).</text><text class="help-r7" x="1256.6" y="605.6" textLength="12.2" clip-path="url(#help-line-24)">│</text><text class="help-r2" x="1268.8" y="605.6" textLength="12.2" clip-path="url(#help-line-24)">
+</text><text class="help-r7" x="0" y="630" textLength="12.2" clip-path="url(#help-line-25)">│</text><text class="help-r1" x="24.4" y="630" textLength="12.2" clip-path="url(#help-line-25)">-</text><text class="help-r1" x="36.6" y="630" textLength="61" clip-path="url(#help-line-25)">-rate</text><text class="help-r6" x="244" y="630" textLength="12.2" clip-path="url(#help-line-25)">&lt;</text><text class="help-r6" x="256.2" y="630" textLength="61" clip-path="url(#help-line-25)">float</text><text class="help-r6" x="317.2" y="630" textLength="12.2" clip-path="url(#help-line-25)">&gt;</text><text class="help-r2" x="536.8" y="630" textLength="573.4" clip-path="url(#help-line-25)">Requests&#160;per&#160;second&#160;per&#160;host&#160;(default:&#160;config).</text><text class="help-r7" x="1256.6" y="630" textLength="12.2" clip-path="url(#help-line-25)">│</text><text class="help-r2" x="1268.8" y="630" textLength="12.2" clip-path="url(#help-line-25)">
+</text><text class="help-r7" x="0" y="654.4" textLength="12.2" clip-path="url(#help-line-26)">│</text><text class="help-r1" x="24.4" y="654.4" textLength="12.2" clip-path="url(#help-line-26)">-</text><text class="help-r1" x="36.6" y="654.4" textLength="97.6" clip-path="url(#help-line-26)">-version</text><text class="help-r2" x="536.8" y="654.4" textLength="329.4" clip-path="url(#help-line-26)">Print&#160;the&#160;version&#160;and&#160;exit.</text><text class="help-r7" x="1256.6" y="654.4" textLength="12.2" clip-path="url(#help-line-26)">│</text><text class="help-r2" x="1268.8" y="654.4" textLength="12.2" clip-path="url(#help-line-26)">
+</text><text class="help-r7" x="0" y="678.8" textLength="12.2" clip-path="url(#help-line-27)">│</text><text class="help-r1" x="24.4" y="678.8" textLength="12.2" clip-path="url(#help-line-27)">-</text><text class="help-r1" x="36.6" y="678.8" textLength="61" clip-path="url(#help-line-27)">-help</text><text class="help-r2" x="536.8" y="678.8" textLength="329.4" clip-path="url(#help-line-27)">Show&#160;this&#160;message&#160;and&#160;exit.</text><text class="help-r7" x="1256.6" y="678.8" textLength="12.2" clip-path="url(#help-line-27)">│</text><text class="help-r2" x="1268.8" y="678.8" textLength="12.2" clip-path="url(#help-line-27)">
+</text><text class="help-r7" x="0" y="703.2" textLength="1268.8" clip-path="url(#help-line-28)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="help-r2" x="1268.8" y="703.2" textLength="12.2" clip-path="url(#help-line-28)">
+</text><text class="help-r8" x="0" y="727.6" textLength="24.4" clip-path="url(#help-line-29)">╭─</text><text class="help-r8" x="24.4" y="727.6" textLength="646.6" clip-path="url(#help-line-29)">&#160;Step&#160;1&#160;·&#160;Anchor&#160;—&#160;pin&#160;the&#160;official&#160;signing&#160;identity&#160;</text><text class="help-r8" x="671" y="727.6" textLength="573.4" clip-path="url(#help-line-29)">───────────────────────────────────────────────</text><text class="help-r8" x="1244.4" y="727.6" textLength="24.4" clip-path="url(#help-line-29)">─╮</text><text class="help-r2" x="1268.8" y="727.6" textLength="12.2" clip-path="url(#help-line-29)">
+</text><text class="help-r8" x="0" y="752" textLength="12.2" clip-path="url(#help-line-30)">│</text><text class="help-r1" x="24.4" y="752" textLength="97.6" clip-path="url(#help-line-30)">anchor&#160;&#160;</text><text class="help-r2" x="146.4" y="752" textLength="1098" clip-path="url(#help-line-30)">Pin,&#160;show&#160;and&#160;manage&#160;official&#160;signing&#160;identities&#160;(anchors).&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="752" textLength="12.2" clip-path="url(#help-line-30)">│</text><text class="help-r2" x="1268.8" y="752" textLength="12.2" clip-path="url(#help-line-30)">
+</text><text class="help-r8" x="0" y="776.4" textLength="1268.8" clip-path="url(#help-line-31)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="help-r2" x="1268.8" y="776.4" textLength="12.2" clip-path="url(#help-line-31)">
+</text><text class="help-r8" x="0" y="800.8" textLength="24.4" clip-path="url(#help-line-32)">╭─</text><text class="help-r8" x="24.4" y="800.8" textLength="585.6" clip-path="url(#help-line-32)">&#160;Step&#160;2&#160;·&#160;Hunt&#160;—&#160;find&#160;copies&#160;and&#160;prove&#160;each&#160;one&#160;</text><text class="help-r8" x="610" y="800.8" textLength="634.4" clip-path="url(#help-line-32)">────────────────────────────────────────────────────</text><text class="help-r8" x="1244.4" y="800.8" textLength="24.4" clip-path="url(#help-line-32)">─╮</text><text class="help-r2" x="1268.8" y="800.8" textLength="12.2" clip-path="url(#help-line-32)">
+</text><text class="help-r8" x="0" y="825.2" textLength="12.2" clip-path="url(#help-line-33)">│</text><text class="help-r1" x="24.4" y="825.2" textLength="97.6" clip-path="url(#help-line-33)">hunt&#160;&#160;&#160;&#160;</text><text class="help-r2" x="146.4" y="825.2" textLength="1098" clip-path="url(#help-line-33)">Sweep&#160;the&#160;sources&#160;for&#160;copies&#160;of&#160;PACKAGE&#160;and&#160;prove&#160;each&#160;one&#160;genuine&#160;or&#160;not.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="825.2" textLength="12.2" clip-path="url(#help-line-33)">│</text><text class="help-r2" x="1268.8" y="825.2" textLength="12.2" clip-path="url(#help-line-33)">
+</text><text class="help-r8" x="0" y="849.6" textLength="12.2" clip-path="url(#help-line-34)">│</text><text class="help-r1" x="24.4" y="849.6" textLength="97.6" clip-path="url(#help-line-34)">verify&#160;&#160;</text><text class="help-r2" x="146.4" y="849.6" textLength="500.2" clip-path="url(#help-line-34)">Evaluate&#160;files&#160;you&#160;already&#160;have.&#160;Without&#160;</text><text class="help-r1" x="646.6" y="849.6" textLength="12.2" clip-path="url(#help-line-34)">-</text><text class="help-r1" x="658.8" y="849.6" textLength="97.6" clip-path="url(#help-line-34)">-package</text><text class="help-r2" x="756.4" y="849.6" textLength="488" clip-path="url(#help-line-34)">&#160;every&#160;brand&#160;profile&#160;is&#160;checked&#160;(SOC&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="849.6" textLength="12.2" clip-path="url(#help-line-34)">│</text><text class="help-r2" x="1268.8" y="849.6" textLength="12.2" clip-path="url(#help-line-34)">
+</text><text class="help-r8" x="0" y="874" textLength="12.2" clip-path="url(#help-line-35)">│</text><text class="help-r2" x="146.4" y="874" textLength="1098" clip-path="url(#help-line-35)">triage).&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="874" textLength="12.2" clip-path="url(#help-line-35)">│</text><text class="help-r2" x="1268.8" y="874" textLength="12.2" clip-path="url(#help-line-35)">
+</text><text class="help-r8" x="0" y="898.4" textLength="12.2" clip-path="url(#help-line-36)">│</text><text class="help-r1" x="24.4" y="898.4" textLength="97.6" clip-path="url(#help-line-36)">fetch&#160;&#160;&#160;</text><text class="help-r2" x="146.4" y="898.4" textLength="1098" clip-path="url(#help-line-36)">Fetch&#160;direct&#160;links&#160;(smishing,&#160;chats,&#160;websites)&#160;into&#160;the&#160;quarantine&#160;and&#160;evaluate&#160;them.&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="898.4" textLength="12.2" clip-path="url(#help-line-36)">│</text><text class="help-r2" x="1268.8" y="898.4" textLength="12.2" clip-path="url(#help-line-36)">
+</text><text class="help-r8" x="0" y="922.8" textLength="12.2" clip-path="url(#help-line-37)">│</text><text class="help-r1" x="24.4" y="922.8" textLength="97.6" clip-path="url(#help-line-37)">survey&#160;&#160;</text><text class="help-r2" x="146.4" y="922.8" textLength="1098" clip-path="url(#help-line-37)">Signer&#160;census&#160;of&#160;a&#160;package&#160;that&#160;has&#160;no&#160;anchor.&#160;Shows&#160;who&#160;signs&#160;the&#160;copies;&#160;never&#160;writes&#160;an</text><text class="help-r8" x="1256.6" y="922.8" textLength="12.2" clip-path="url(#help-line-37)">│</text><text class="help-r2" x="1268.8" y="922.8" textLength="12.2" clip-path="url(#help-line-37)">
+</text><text class="help-r8" x="0" y="947.2" textLength="12.2" clip-path="url(#help-line-38)">│</text><text class="help-r2" x="146.4" y="947.2" textLength="1098" clip-path="url(#help-line-38)">anchor.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="947.2" textLength="12.2" clip-path="url(#help-line-38)">│</text><text class="help-r2" x="1268.8" y="947.2" textLength="12.2" clip-path="url(#help-line-38)">
+</text><text class="help-r8" x="0" y="971.6" textLength="1268.8" clip-path="url(#help-line-39)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="help-r2" x="1268.8" y="971.6" textLength="12.2" clip-path="url(#help-line-39)">
+</text><text class="help-r8" x="0" y="996" textLength="24.4" clip-path="url(#help-line-40)">╭─</text><text class="help-r8" x="24.4" y="996" textLength="488" clip-path="url(#help-line-40)">&#160;Step&#160;3&#160;·&#160;Inspect&#160;—&#160;understand&#160;one&#160;copy&#160;</text><text class="help-r8" x="512.4" y="996" textLength="732" clip-path="url(#help-line-40)">────────────────────────────────────────────────────────────</text><text class="help-r8" x="1244.4" y="996" textLength="24.4" clip-path="url(#help-line-40)">─╮</text><text class="help-r2" x="1268.8" y="996" textLength="12.2" clip-path="url(#help-line-40)">
+</text><text class="help-r8" x="0" y="1020.4" textLength="12.2" clip-path="url(#help-line-41)">│</text><text class="help-r1" x="24.4" y="1020.4" textLength="97.6" clip-path="url(#help-line-41)">explain&#160;</text><text class="help-r2" x="146.4" y="1020.4" textLength="1098" clip-path="url(#help-line-41)">Show&#160;why&#160;a&#160;sample&#160;got&#160;its&#160;verdict:&#160;every&#160;gate,&#160;reason,&#160;label,&#160;signer&#160;and&#160;where&#160;it&#160;was&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1020.4" textLength="12.2" clip-path="url(#help-line-41)">│</text><text class="help-r2" x="1268.8" y="1020.4" textLength="12.2" clip-path="url(#help-line-41)">
+</text><text class="help-r8" x="0" y="1044.8" textLength="12.2" clip-path="url(#help-line-42)">│</text><text class="help-r2" x="146.4" y="1044.8" textLength="1098" clip-path="url(#help-line-42)">seen.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1044.8" textLength="12.2" clip-path="url(#help-line-42)">│</text><text class="help-r2" x="1268.8" y="1044.8" textLength="12.2" clip-path="url(#help-line-42)">
+</text><text class="help-r8" x="0" y="1069.2" textLength="12.2" clip-path="url(#help-line-43)">│</text><text class="help-r1" x="24.4" y="1069.2" textLength="97.6" clip-path="url(#help-line-43)">diff&#160;&#160;&#160;&#160;</text><text class="help-r2" x="146.4" y="1069.2" textLength="1098" clip-path="url(#help-line-43)">Compare&#160;a&#160;copy&#160;with&#160;another&#160;build,&#160;usually&#160;the&#160;official&#160;one:&#160;what&#160;it&#160;adds,&#160;removes&#160;and&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1069.2" textLength="12.2" clip-path="url(#help-line-43)">│</text><text class="help-r2" x="1268.8" y="1069.2" textLength="12.2" clip-path="url(#help-line-43)">
+</text><text class="help-r8" x="0" y="1093.6" textLength="12.2" clip-path="url(#help-line-44)">│</text><text class="help-r2" x="146.4" y="1093.6" textLength="1098" clip-path="url(#help-line-44)">changes.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1093.6" textLength="12.2" clip-path="url(#help-line-44)">│</text><text class="help-r2" x="1268.8" y="1093.6" textLength="12.2" clip-path="url(#help-line-44)">
+</text><text class="help-r8" x="0" y="1118" textLength="12.2" clip-path="url(#help-line-45)">│</text><text class="help-r1" x="24.4" y="1118" textLength="97.6" clip-path="url(#help-line-45)">report&#160;&#160;</text><text class="help-r2" x="146.4" y="1118" textLength="1098" clip-path="url(#help-line-45)">Re-render&#160;the&#160;report&#160;of&#160;a&#160;past&#160;run.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1118" textLength="12.2" clip-path="url(#help-line-45)">│</text><text class="help-r2" x="1268.8" y="1118" textLength="12.2" clip-path="url(#help-line-45)">
+</text><text class="help-r8" x="0" y="1142.4" textLength="12.2" clip-path="url(#help-line-46)">│</text><text class="help-r1" x="24.4" y="1142.4" textLength="97.6" clip-path="url(#help-line-46)">reverify</text><text class="help-r2" x="146.4" y="1142.4" textLength="1098" clip-path="url(#help-line-46)">Recompute&#160;every&#160;verdict&#160;of&#160;a&#160;run&#160;offline&#160;and&#160;compare&#160;the&#160;canonical&#160;JSON&#160;byte&#160;for&#160;byte.&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1142.4" textLength="12.2" clip-path="url(#help-line-46)">│</text><text class="help-r2" x="1268.8" y="1142.4" textLength="12.2" clip-path="url(#help-line-46)">
+</text><text class="help-r8" x="0" y="1166.8" textLength="1268.8" clip-path="url(#help-line-47)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="help-r2" x="1268.8" y="1166.8" textLength="12.2" clip-path="url(#help-line-47)">
+</text><text class="help-r8" x="0" y="1191.2" textLength="24.4" clip-path="url(#help-line-48)">╭─</text><text class="help-r8" x="24.4" y="1191.2" textLength="219.6" clip-path="url(#help-line-48)">&#160;Setup&#160;and&#160;health&#160;</text><text class="help-r8" x="244" y="1191.2" textLength="1000.4" clip-path="url(#help-line-48)">──────────────────────────────────────────────────────────────────────────────────</text><text class="help-r8" x="1244.4" y="1191.2" textLength="24.4" clip-path="url(#help-line-48)">─╮</text><text class="help-r2" x="1268.8" y="1191.2" textLength="12.2" clip-path="url(#help-line-48)">
+</text><text class="help-r8" x="0" y="1215.6" textLength="12.2" clip-path="url(#help-line-49)">│</text><text class="help-r1" x="24.4" y="1215.6" textLength="97.6" clip-path="url(#help-line-49)">setup&#160;&#160;&#160;</text><text class="help-r2" x="146.4" y="1215.6" textLength="1098" clip-path="url(#help-line-49)">Install&#160;and&#160;pin&#160;the&#160;toolchain:&#160;the&#160;JDK&#160;check,&#160;Android&#160;build-tools,&#160;the&#160;apksig&#160;bridge&#160;and&#160;&#160;</text><text class="help-r8" x="1256.6" y="1215.6" textLength="12.2" clip-path="url(#help-line-49)">│</text><text class="help-r2" x="1268.8" y="1215.6" textLength="12.2" clip-path="url(#help-line-49)">
+</text><text class="help-r8" x="0" y="1240" textLength="12.2" clip-path="url(#help-line-50)">│</text><text class="help-r2" x="146.4" y="1240" textLength="1098" clip-path="url(#help-line-50)">apkeep.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1240" textLength="12.2" clip-path="url(#help-line-50)">│</text><text class="help-r2" x="1268.8" y="1240" textLength="12.2" clip-path="url(#help-line-50)">
+</text><text class="help-r8" x="0" y="1264.4" textLength="12.2" clip-path="url(#help-line-51)">│</text><text class="help-r1" x="24.4" y="1264.4" textLength="97.6" clip-path="url(#help-line-51)">doctor&#160;&#160;</text><text class="help-r2" x="146.4" y="1264.4" textLength="1098" clip-path="url(#help-line-51)">Check&#160;every&#160;component,&#160;the&#160;bridge&#160;round-trip,&#160;permissions&#160;and&#160;source&#160;reachability,&#160;each&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1264.4" textLength="12.2" clip-path="url(#help-line-51)">│</text><text class="help-r2" x="1268.8" y="1264.4" textLength="12.2" clip-path="url(#help-line-51)">
+</text><text class="help-r8" x="0" y="1288.8" textLength="12.2" clip-path="url(#help-line-52)">│</text><text class="help-r2" x="146.4" y="1288.8" textLength="1098" clip-path="url(#help-line-52)">with&#160;a&#160;fix.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1288.8" textLength="12.2" clip-path="url(#help-line-52)">│</text><text class="help-r2" x="1268.8" y="1288.8" textLength="12.2" clip-path="url(#help-line-52)">
+</text><text class="help-r8" x="0" y="1313.2" textLength="12.2" clip-path="url(#help-line-53)">│</text><text class="help-r1" x="24.4" y="1313.2" textLength="97.6" clip-path="url(#help-line-53)">selftest</text><text class="help-r2" x="146.4" y="1313.2" textLength="1098" clip-path="url(#help-line-53)">Rebuild&#160;the&#160;synthetic&#160;test&#160;corpus&#160;from&#160;KLONER&#x27;s&#160;own&#160;fixtures&#160;and&#160;check&#160;every&#160;expected&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1313.2" textLength="12.2" clip-path="url(#help-line-53)">│</text><text class="help-r2" x="1268.8" y="1313.2" textLength="12.2" clip-path="url(#help-line-53)">
+</text><text class="help-r8" x="0" y="1337.6" textLength="12.2" clip-path="url(#help-line-54)">│</text><text class="help-r2" x="146.4" y="1337.6" textLength="1098" clip-path="url(#help-line-54)">verdict.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1337.6" textLength="12.2" clip-path="url(#help-line-54)">│</text><text class="help-r2" x="1268.8" y="1337.6" textLength="12.2" clip-path="url(#help-line-54)">
+</text><text class="help-r8" x="0" y="1362" textLength="1268.8" clip-path="url(#help-line-55)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="help-r2" x="1268.8" y="1362" textLength="12.2" clip-path="url(#help-line-55)">
+</text><text class="help-r8" x="0" y="1386.4" textLength="24.4" clip-path="url(#help-line-56)">╭─</text><text class="help-r8" x="24.4" y="1386.4" textLength="231.8" clip-path="url(#help-line-56)">&#160;Intel&#160;and&#160;sharing&#160;</text><text class="help-r8" x="256.2" y="1386.4" textLength="988.2" clip-path="url(#help-line-56)">─────────────────────────────────────────────────────────────────────────────────</text><text class="help-r8" x="1244.4" y="1386.4" textLength="24.4" clip-path="url(#help-line-56)">─╮</text><text class="help-r2" x="1268.8" y="1386.4" textLength="12.2" clip-path="url(#help-line-56)">
+</text><text class="help-r8" x="0" y="1410.8" textLength="12.2" clip-path="url(#help-line-57)">│</text><text class="help-r1" x="24.4" y="1410.8" textLength="97.6" clip-path="url(#help-line-57)">intel&#160;&#160;&#160;</text><text class="help-r2" x="146.4" y="1410.8" textLength="1098" clip-path="url(#help-line-57)">Correlations&#160;across&#160;runs:&#160;who&#160;signed&#160;what,&#160;shared&#160;payloads,&#160;source&#160;quality.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1410.8" textLength="12.2" clip-path="url(#help-line-57)">│</text><text class="help-r2" x="1268.8" y="1410.8" textLength="12.2" clip-path="url(#help-line-57)">
+</text><text class="help-r8" x="0" y="1435.2" textLength="12.2" clip-path="url(#help-line-58)">│</text><text class="help-r1" x="24.4" y="1435.2" textLength="97.6" clip-path="url(#help-line-58)">export&#160;&#160;</text><text class="help-r2" x="146.4" y="1435.2" textLength="1098" clip-path="url(#help-line-58)">Package&#160;a&#160;run&#x27;s&#160;hostile&#160;samples&#160;for&#160;analysts&#160;(a&#160;password-protected&#160;ZIP).&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="help-r8" x="1256.6" y="1435.2" textLength="12.2" clip-path="url(#help-line-58)">│</text><text class="help-r2" x="1268.8" y="1435.2" textLength="12.2" clip-path="url(#help-line-58)">
+</text><text class="help-r8" x="0" y="1459.6" textLength="1268.8" clip-path="url(#help-line-59)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="help-r2" x="1268.8" y="1459.6" textLength="12.2" clip-path="url(#help-line-59)">
+</text>
+    </g>
+    </g>
+</svg>

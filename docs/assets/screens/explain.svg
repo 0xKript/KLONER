@@ -1,0 +1,253 @@
+<svg class="rich-terminal" viewBox="0 0 1287 1318.8" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io by scripts/export_screens.py -->
+    <style>
+    .explain-matrix {
+        font-family: "Cascadia Mono", "Fira Code", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+    .explain-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    .explain-r1 { fill: #7fe6b3 }
+.explain-r2 { fill: #7fe6b3;font-weight: bold }
+.explain-r3 { fill: #5f8577 }
+.explain-r4 { fill: #c2f5da;font-weight: bold }
+.explain-r5 { fill: #a3c7b6 }
+.explain-r6 { fill: #2b7258 }
+.explain-r7 { fill: #ff6b6b }
+.explain-r8 { fill: #ff6b6b;font-weight: bold }
+.explain-r9 { fill: #ffffff;font-weight: bold }
+.explain-r10 { fill: #5f8577;font-weight: bold }
+.explain-r11 { fill: #a3c7b6;font-weight: bold }
+.explain-r12 { fill: #45bf88;font-weight: bold }
+.explain-r13 { fill: #c2f5da }
+.explain-r14 { fill: #45bf88 }
+    </style>
+    <defs>
+    <clipPath id="explain-clip-terminal">
+      <rect x="0" y="0" width="1267.8" height="1267.8" />
+    </clipPath>
+    <clipPath id="explain-line-0">
+    <rect x="0" y="1.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-1">
+    <rect x="0" y="25.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-2">
+    <rect x="0" y="50.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-3">
+    <rect x="0" y="74.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-4">
+    <rect x="0" y="99.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-5">
+    <rect x="0" y="123.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-6">
+    <rect x="0" y="147.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-7">
+    <rect x="0" y="172.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-8">
+    <rect x="0" y="196.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-9">
+    <rect x="0" y="221.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-10">
+    <rect x="0" y="245.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-11">
+    <rect x="0" y="269.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-12">
+    <rect x="0" y="294.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-13">
+    <rect x="0" y="318.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-14">
+    <rect x="0" y="343.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-15">
+    <rect x="0" y="367.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-16">
+    <rect x="0" y="391.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-17">
+    <rect x="0" y="416.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-18">
+    <rect x="0" y="440.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-19">
+    <rect x="0" y="465.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-20">
+    <rect x="0" y="489.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-21">
+    <rect x="0" y="513.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-22">
+    <rect x="0" y="538.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-23">
+    <rect x="0" y="562.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-24">
+    <rect x="0" y="587.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-25">
+    <rect x="0" y="611.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-26">
+    <rect x="0" y="635.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-27">
+    <rect x="0" y="660.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-28">
+    <rect x="0" y="684.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-29">
+    <rect x="0" y="709.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-30">
+    <rect x="0" y="733.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-31">
+    <rect x="0" y="757.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-32">
+    <rect x="0" y="782.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-33">
+    <rect x="0" y="806.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-34">
+    <rect x="0" y="831.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-35">
+    <rect x="0" y="855.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-36">
+    <rect x="0" y="879.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-37">
+    <rect x="0" y="904.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-38">
+    <rect x="0" y="928.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-39">
+    <rect x="0" y="953.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-40">
+    <rect x="0" y="977.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-41">
+    <rect x="0" y="1001.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-42">
+    <rect x="0" y="1026.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-43">
+    <rect x="0" y="1050.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-44">
+    <rect x="0" y="1075.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-45">
+    <rect x="0" y="1099.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-46">
+    <rect x="0" y="1123.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-47">
+    <rect x="0" y="1148.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-48">
+    <rect x="0" y="1172.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-49">
+    <rect x="0" y="1197.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="explain-line-50">
+    <rect x="0" y="1221.5" width="1268.8" height="24.65"/>
+            </clipPath>
+    </defs>
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="1285" height="1316.8" rx="8"/><text class="explain-title" fill="#a3c7b6" text-anchor="middle" x="642" y="27">kloner&#160;explain&#160;&lt;sha256&gt;</text>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#explain-clip-terminal)">
+    <rect fill="#c94040" x="24.4" y="74.7" width="122" height="24.65" shape-rendering="crispEdges"/>
+    <g class="explain-matrix">
+    <text class="explain-r1" x="0" y="20" textLength="24.4" clip-path="url(#explain-line-0)">◆&#160;</text><text class="explain-r2" x="24.4" y="20" textLength="73.2" clip-path="url(#explain-line-0)">KLONER</text><text class="explain-r3" x="97.6" y="20" textLength="36.6" clip-path="url(#explain-line-0)">&#160;·&#160;</text><text class="explain-r4" x="134.2" y="20" textLength="85.4" clip-path="url(#explain-line-0)">explain</text><text class="explain-r3" x="219.6" y="20" textLength="36.6" clip-path="url(#explain-line-0)">&#160;·&#160;</text><text class="explain-r4" x="256.2" y="20" textLength="219.6" clip-path="url(#explain-line-0)">dev.kloner.fixture</text><text class="explain-r6" x="488" y="20" textLength="780.8" clip-path="url(#explain-line-0)">────────────────────────────────────────────────────────────────</text><text class="explain-r5" x="1268.8" y="20" textLength="12.2" clip-path="url(#explain-line-0)">
+</text><text class="explain-r5" x="1268.8" y="44.4" textLength="12.2" clip-path="url(#explain-line-1)">
+</text><text class="explain-r7" x="0" y="68.8" textLength="24.4" clip-path="url(#explain-line-2)">╭─</text><text class="explain-r8" x="24.4" y="68.8" textLength="109.8" clip-path="url(#explain-line-2)">&#160;Verdict&#160;</text><text class="explain-r7" x="134.2" y="68.8" textLength="1110.2" clip-path="url(#explain-line-2)">───────────────────────────────────────────────────────────────────────────────────────────</text><text class="explain-r7" x="1244.4" y="68.8" textLength="24.4" clip-path="url(#explain-line-2)">─╮</text><text class="explain-r5" x="1268.8" y="68.8" textLength="12.2" clip-path="url(#explain-line-2)">
+</text><text class="explain-r7" x="0" y="93.2" textLength="12.2" clip-path="url(#explain-line-3)">│</text><text class="explain-r9" x="24.4" y="93.2" textLength="122" clip-path="url(#explain-line-3)">&#160;✗&#160;FORGED&#160;</text><text class="explain-r4" x="170.8" y="93.2" textLength="780.8" clip-path="url(#explain-line-3)">2cdf1e088cd68d8f0978b887b7032df1c572ba8f9559599b48c211b0fea7bb9b</text><text class="explain-r7" x="1256.6" y="93.2" textLength="12.2" clip-path="url(#explain-line-3)">│</text><text class="explain-r5" x="1268.8" y="93.2" textLength="12.2" clip-path="url(#explain-line-3)">
+</text><text class="explain-r7" x="0" y="117.6" textLength="12.2" clip-path="url(#explain-line-4)">│</text><text class="explain-r5" x="24.4" y="117.6" textLength="1146.8" clip-path="url(#explain-line-4)">Valid&#160;signature&#160;by&#160;a&#160;key&#160;that&#160;is&#160;not&#160;the&#160;official&#160;one:&#160;2e6c…189&#160;(subject&#160;&#x27;CN=Kloner&#160;Synthetic&#160;</text><text class="explain-r7" x="1256.6" y="117.6" textLength="12.2" clip-path="url(#explain-line-4)">│</text><text class="explain-r5" x="1268.8" y="117.6" textLength="12.2" clip-path="url(#explain-line-4)">
+</text><text class="explain-r7" x="0" y="142" textLength="12.2" clip-path="url(#explain-line-5)">│</text><text class="explain-r5" x="24.4" y="142" textLength="500.2" clip-path="url(#explain-line-5)">foreign&#x27;).&#160;Official&#160;identities:&#160;fed6…252.</text><text class="explain-r7" x="1256.6" y="142" textLength="12.2" clip-path="url(#explain-line-5)">│</text><text class="explain-r5" x="1268.8" y="142" textLength="12.2" clip-path="url(#explain-line-5)">
+</text><text class="explain-r7" x="0" y="166.4" textLength="12.2" clip-path="url(#explain-line-6)">│</text><text class="explain-r3" x="24.4" y="166.4" textLength="719.8" clip-path="url(#explain-line-6)">Valid&#160;signature,&#160;but&#160;by&#160;a&#160;key&#160;that&#160;is&#160;not&#160;the&#160;official&#160;one.</text><text class="explain-r7" x="1256.6" y="166.4" textLength="12.2" clip-path="url(#explain-line-6)">│</text><text class="explain-r5" x="1268.8" y="166.4" textLength="12.2" clip-path="url(#explain-line-6)">
+</text><text class="explain-r7" x="0" y="190.8" textLength="1268.8" clip-path="url(#explain-line-7)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="explain-r5" x="1268.8" y="190.8" textLength="12.2" clip-path="url(#explain-line-7)">
+</text><text class="explain-r5" x="1268.8" y="215.2" textLength="12.2" clip-path="url(#explain-line-8)">
+</text><text class="explain-r3" x="0" y="239.6" textLength="73.2" clip-path="url(#explain-line-9)">File&#160;&#160;</text><text class="explain-r5" x="97.6" y="239.6" textLength="1122.4" clip-path="url(#explain-line-9)">package&#160;dev.kloner.fixture&#160;·&#160;version&#160;1.0&#160;(1)&#160;·&#160;25,057&#160;bytes&#160;·&#160;format&#160;apk&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r5" x="1268.8" y="239.6" textLength="12.2" clip-path="url(#explain-line-9)">
+</text><text class="explain-r3" x="0" y="264" textLength="73.2" clip-path="url(#explain-line-10)">Anchor</text><text class="explain-r5" x="97.6" y="264" textLength="1122.4" clip-path="url(#explain-line-10)">dev.kloner.fixture&#160;·&#160;record&#160;5217dd3938981ccf613df2dc66d4460d20fc9622f866262d19df297d2d5df3cd</text><text class="explain-r5" x="1268.8" y="264" textLength="12.2" clip-path="url(#explain-line-10)">
+</text><text class="explain-r3" x="0" y="288.4" textLength="73.2" clip-path="url(#explain-line-11)">Engine</text><text class="explain-r5" x="97.6" y="288.4" textLength="1122.4" clip-path="url(#explain-line-11)">KLONER&#160;1.0.0&#160;·&#160;apksig&#160;build-tools&#160;36.0.0&#160;(apksigner.jar&#160;sha256:3716d9311e55)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r5" x="1268.8" y="288.4" textLength="12.2" clip-path="url(#explain-line-11)">
+</text><text class="explain-r5" x="1268.8" y="312.8" textLength="12.2" clip-path="url(#explain-line-12)">
+</text><text class="explain-r2" x="0" y="337.2" textLength="61" clip-path="url(#explain-line-13)">Gates</text><text class="explain-r10" x="61" y="337.2" textLength="915" clip-path="url(#explain-line-13)">&#160;&#160;&#160;the&#160;checks&#160;run&#160;in&#160;this&#160;order;&#160;the&#160;first&#160;decisive&#160;one&#160;ends&#160;the&#160;evaluation</text><text class="explain-r5" x="1268.8" y="337.2" textLength="12.2" clip-path="url(#explain-line-13)">
+</text><text class="explain-r6" x="0" y="361.6" textLength="1268.8" clip-path="url(#explain-line-14)">╭──────┬────────────────────────────────────────────┬────────┬─────────────────────────────────────────╮</text><text class="explain-r5" x="1268.8" y="361.6" textLength="12.2" clip-path="url(#explain-line-14)">
+</text><text class="explain-r6" x="0" y="386" textLength="12.2" clip-path="url(#explain-line-15)">│</text><text class="explain-r2" x="24.4" y="386" textLength="48.8" clip-path="url(#explain-line-15)">GATE</text><text class="explain-r6" x="85.4" y="386" textLength="12.2" clip-path="url(#explain-line-15)">│</text><text class="explain-r2" x="109.8" y="386" textLength="512.4" clip-path="url(#explain-line-15)">CHECKS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="634.4" y="386" textLength="12.2" clip-path="url(#explain-line-15)">│</text><text class="explain-r2" x="658.8" y="386" textLength="73.2" clip-path="url(#explain-line-15)">RESULT</text><text class="explain-r6" x="744.2" y="386" textLength="12.2" clip-path="url(#explain-line-15)">│</text><text class="explain-r2" x="768.6" y="386" textLength="475.8" clip-path="url(#explain-line-15)">DETAIL&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="1256.6" y="386" textLength="12.2" clip-path="url(#explain-line-15)">│</text><text class="explain-r5" x="1268.8" y="386" textLength="12.2" clip-path="url(#explain-line-15)">
+</text><text class="explain-r6" x="0" y="410.4" textLength="1268.8" clip-path="url(#explain-line-16)">├──────┼────────────────────────────────────────────┼────────┼─────────────────────────────────────────┤</text><text class="explain-r5" x="1268.8" y="410.4" textLength="12.2" clip-path="url(#explain-line-16)">
+</text><text class="explain-r6" x="0" y="434.8" textLength="12.2" clip-path="url(#explain-line-17)">│</text><text class="explain-r4" x="24.4" y="434.8" textLength="48.8" clip-path="url(#explain-line-17)">G0&#160;&#160;</text><text class="explain-r6" x="85.4" y="434.8" textLength="12.2" clip-path="url(#explain-line-17)">│</text><text class="explain-r11" x="109.8" y="434.8" textLength="73.2" clip-path="url(#explain-line-17)">Format</text><text class="explain-r3" x="183" y="434.8" textLength="378.2" clip-path="url(#explain-line-17)">&#160;&#160;is&#160;it&#160;an&#160;Android&#160;file&#160;at&#160;all?</text><text class="explain-r6" x="634.4" y="434.8" textLength="12.2" clip-path="url(#explain-line-17)">│</text><text class="explain-r12" x="658.8" y="434.8" textLength="73.2" clip-path="url(#explain-line-17)">✓&#160;pass</text><text class="explain-r6" x="744.2" y="434.8" textLength="12.2" clip-path="url(#explain-line-17)">│</text><text class="explain-r5" x="768.6" y="434.8" textLength="475.8" clip-path="url(#explain-line-17)">format&#160;apk&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="1256.6" y="434.8" textLength="12.2" clip-path="url(#explain-line-17)">│</text><text class="explain-r5" x="1268.8" y="434.8" textLength="12.2" clip-path="url(#explain-line-17)">
+</text><text class="explain-r6" x="0" y="459.2" textLength="12.2" clip-path="url(#explain-line-18)">│</text><text class="explain-r4" x="24.4" y="459.2" textLength="48.8" clip-path="url(#explain-line-18)">G2&#160;&#160;</text><text class="explain-r6" x="85.4" y="459.2" textLength="12.2" clip-path="url(#explain-line-18)">│</text><text class="explain-r11" x="109.8" y="459.2" textLength="85.4" clip-path="url(#explain-line-18)">Archive</text><text class="explain-r3" x="195.2" y="459.2" textLength="402.6" clip-path="url(#explain-line-18)">&#160;&#160;ZIP&#160;integrity&#160;and&#160;safety&#160;limits</text><text class="explain-r6" x="634.4" y="459.2" textLength="12.2" clip-path="url(#explain-line-18)">│</text><text class="explain-r12" x="658.8" y="459.2" textLength="73.2" clip-path="url(#explain-line-18)">✓&#160;pass</text><text class="explain-r6" x="744.2" y="459.2" textLength="12.2" clip-path="url(#explain-line-18)">│</text><text class="explain-r5" x="768.6" y="459.2" textLength="475.8" clip-path="url(#explain-line-18)">7&#160;entries,&#160;CRC-32&#160;consistent&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="1256.6" y="459.2" textLength="12.2" clip-path="url(#explain-line-18)">│</text><text class="explain-r5" x="1268.8" y="459.2" textLength="12.2" clip-path="url(#explain-line-18)">
+</text><text class="explain-r6" x="0" y="483.6" textLength="12.2" clip-path="url(#explain-line-19)">│</text><text class="explain-r4" x="24.4" y="483.6" textLength="48.8" clip-path="url(#explain-line-19)">G3&#160;&#160;</text><text class="explain-r6" x="85.4" y="483.6" textLength="12.2" clip-path="url(#explain-line-19)">│</text><text class="explain-r11" x="109.8" y="483.6" textLength="97.6" clip-path="url(#explain-line-19)">Identity</text><text class="explain-r3" x="207.4" y="483.6" textLength="329.4" clip-path="url(#explain-line-19)">&#160;&#160;package&#160;name&#160;and&#160;manifest</text><text class="explain-r6" x="634.4" y="483.6" textLength="12.2" clip-path="url(#explain-line-19)">│</text><text class="explain-r12" x="658.8" y="483.6" textLength="73.2" clip-path="url(#explain-line-19)">✓&#160;pass</text><text class="explain-r6" x="744.2" y="483.6" textLength="12.2" clip-path="url(#explain-line-19)">│</text><text class="explain-r5" x="768.6" y="483.6" textLength="475.8" clip-path="url(#explain-line-19)">package&#160;dev.kloner.fixture&#160;versionCode&#160;</text><text class="explain-r6" x="1256.6" y="483.6" textLength="12.2" clip-path="url(#explain-line-19)">│</text><text class="explain-r5" x="1268.8" y="483.6" textLength="12.2" clip-path="url(#explain-line-19)">
+</text><text class="explain-r6" x="0" y="508" textLength="12.2" clip-path="url(#explain-line-20)">│</text><text class="explain-r6" x="85.4" y="508" textLength="12.2" clip-path="url(#explain-line-20)">│</text><text class="explain-r6" x="634.4" y="508" textLength="12.2" clip-path="url(#explain-line-20)">│</text><text class="explain-r6" x="744.2" y="508" textLength="12.2" clip-path="url(#explain-line-20)">│</text><text class="explain-r5" x="768.6" y="508" textLength="475.8" clip-path="url(#explain-line-20)">1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="1256.6" y="508" textLength="12.2" clip-path="url(#explain-line-20)">│</text><text class="explain-r5" x="1268.8" y="508" textLength="12.2" clip-path="url(#explain-line-20)">
+</text><text class="explain-r6" x="0" y="532.4" textLength="12.2" clip-path="url(#explain-line-21)">│</text><text class="explain-r4" x="24.4" y="532.4" textLength="48.8" clip-path="url(#explain-line-21)">G4&#160;&#160;</text><text class="explain-r6" x="85.4" y="532.4" textLength="12.2" clip-path="url(#explain-line-21)">│</text><text class="explain-r11" x="109.8" y="532.4" textLength="109.8" clip-path="url(#explain-line-21)">Structure</text><text class="explain-r3" x="219.6" y="532.4" textLength="402.6" clip-path="url(#explain-line-21)">&#160;&#160;no&#160;hidden&#160;or&#160;ambiguous&#160;ZIP&#160;data</text><text class="explain-r6" x="634.4" y="532.4" textLength="12.2" clip-path="url(#explain-line-21)">│</text><text class="explain-r12" x="658.8" y="532.4" textLength="73.2" clip-path="url(#explain-line-21)">✓&#160;pass</text><text class="explain-r6" x="744.2" y="532.4" textLength="12.2" clip-path="url(#explain-line-21)">│</text><text class="explain-r5" x="768.6" y="532.4" textLength="475.8" clip-path="url(#explain-line-21)">structural&#160;gate&#160;S1/S2/S3/S5&#160;satisfied&#160;&#160;</text><text class="explain-r6" x="1256.6" y="532.4" textLength="12.2" clip-path="url(#explain-line-21)">│</text><text class="explain-r5" x="1268.8" y="532.4" textLength="12.2" clip-path="url(#explain-line-21)">
+</text><text class="explain-r6" x="0" y="556.8" textLength="12.2" clip-path="url(#explain-line-22)">│</text><text class="explain-r4" x="24.4" y="556.8" textLength="48.8" clip-path="url(#explain-line-22)">G5&#160;&#160;</text><text class="explain-r6" x="85.4" y="556.8" textLength="12.2" clip-path="url(#explain-line-22)">│</text><text class="explain-r11" x="109.8" y="556.8" textLength="109.8" clip-path="url(#explain-line-22)">Signature</text><text class="explain-r3" x="219.6" y="556.8" textLength="390.4" clip-path="url(#explain-line-22)">&#160;&#160;apksig&#160;verifies&#160;the&#160;signatures</text><text class="explain-r6" x="634.4" y="556.8" textLength="12.2" clip-path="url(#explain-line-22)">│</text><text class="explain-r12" x="658.8" y="556.8" textLength="73.2" clip-path="url(#explain-line-22)">✓&#160;pass</text><text class="explain-r6" x="744.2" y="556.8" textLength="12.2" clip-path="url(#explain-line-22)">│</text><text class="explain-r5" x="768.6" y="556.8" textLength="475.8" clip-path="url(#explain-line-22)">apksig&#160;verified&#160;v2,&#160;v3&#160;for&#160;API&#160;24+&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="1256.6" y="556.8" textLength="12.2" clip-path="url(#explain-line-22)">│</text><text class="explain-r5" x="1268.8" y="556.8" textLength="12.2" clip-path="url(#explain-line-22)">
+</text><text class="explain-r6" x="0" y="581.2" textLength="12.2" clip-path="url(#explain-line-23)">│</text><text class="explain-r4" x="24.4" y="581.2" textLength="48.8" clip-path="url(#explain-line-23)">G6&#160;&#160;</text><text class="explain-r6" x="85.4" y="581.2" textLength="12.2" clip-path="url(#explain-line-23)">│</text><text class="explain-r11" x="109.8" y="581.2" textLength="109.8" clip-path="url(#explain-line-23)">Agreement</text><text class="explain-r3" x="219.6" y="581.2" textLength="329.4" clip-path="url(#explain-line-23)">&#160;&#160;independent&#160;engines&#160;agree</text><text class="explain-r6" x="634.4" y="581.2" textLength="12.2" clip-path="url(#explain-line-23)">│</text><text class="explain-r12" x="658.8" y="581.2" textLength="73.2" clip-path="url(#explain-line-23)">✓&#160;pass</text><text class="explain-r6" x="744.2" y="581.2" textLength="12.2" clip-path="url(#explain-line-23)">│</text><text class="explain-r5" x="768.6" y="581.2" textLength="475.8" clip-path="url(#explain-line-23)">apksig,&#160;native&#160;and&#160;androguard&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="1256.6" y="581.2" textLength="12.2" clip-path="url(#explain-line-23)">│</text><text class="explain-r5" x="1268.8" y="581.2" textLength="12.2" clip-path="url(#explain-line-23)">
+</text><text class="explain-r6" x="0" y="605.6" textLength="12.2" clip-path="url(#explain-line-24)">│</text><text class="explain-r6" x="85.4" y="605.6" textLength="12.2" clip-path="url(#explain-line-24)">│</text><text class="explain-r6" x="634.4" y="605.6" textLength="12.2" clip-path="url(#explain-line-24)">│</text><text class="explain-r6" x="744.2" y="605.6" textLength="12.2" clip-path="url(#explain-line-24)">│</text><text class="explain-r5" x="768.6" y="605.6" textLength="475.8" clip-path="url(#explain-line-24)">inventories&#160;agree&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="1256.6" y="605.6" textLength="12.2" clip-path="url(#explain-line-24)">│</text><text class="explain-r5" x="1268.8" y="605.6" textLength="12.2" clip-path="url(#explain-line-24)">
+</text><text class="explain-r6" x="0" y="630" textLength="12.2" clip-path="url(#explain-line-25)">│</text><text class="explain-r4" x="24.4" y="630" textLength="48.8" clip-path="url(#explain-line-25)">G7&#160;&#160;</text><text class="explain-r6" x="85.4" y="630" textLength="12.2" clip-path="url(#explain-line-25)">│</text><text class="explain-r11" x="109.8" y="630" textLength="61" clip-path="url(#explain-line-25)">Trust</text><text class="explain-r3" x="170.8" y="630" textLength="317.2" clip-path="url(#explain-line-25)">&#160;&#160;every&#160;signer&#160;is&#160;official</text><text class="explain-r6" x="634.4" y="630" textLength="12.2" clip-path="url(#explain-line-25)">│</text><text class="explain-r8" x="658.8" y="630" textLength="73.2" clip-path="url(#explain-line-25)">✗&#160;fail</text><text class="explain-r6" x="744.2" y="630" textLength="12.2" clip-path="url(#explain-line-25)">│</text><text class="explain-r5" x="768.6" y="630" textLength="475.8" clip-path="url(#explain-line-25)">signer(s)&#160;outside&#160;the&#160;official&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="1256.6" y="630" textLength="12.2" clip-path="url(#explain-line-25)">│</text><text class="explain-r5" x="1268.8" y="630" textLength="12.2" clip-path="url(#explain-line-25)">
+</text><text class="explain-r6" x="0" y="654.4" textLength="12.2" clip-path="url(#explain-line-26)">│</text><text class="explain-r6" x="85.4" y="654.4" textLength="12.2" clip-path="url(#explain-line-26)">│</text><text class="explain-r6" x="634.4" y="654.4" textLength="12.2" clip-path="url(#explain-line-26)">│</text><text class="explain-r6" x="744.2" y="654.4" textLength="12.2" clip-path="url(#explain-line-26)">│</text><text class="explain-r5" x="768.6" y="654.4" textLength="475.8" clip-path="url(#explain-line-26)">identity:&#160;2e6c…189&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="1256.6" y="654.4" textLength="12.2" clip-path="url(#explain-line-26)">│</text><text class="explain-r5" x="1268.8" y="654.4" textLength="12.2" clip-path="url(#explain-line-26)">
+</text><text class="explain-r6" x="0" y="678.8" textLength="1268.8" clip-path="url(#explain-line-27)">╰──────┴────────────────────────────────────────────┴────────┴─────────────────────────────────────────╯</text><text class="explain-r5" x="1268.8" y="678.8" textLength="12.2" clip-path="url(#explain-line-27)">
+</text><text class="explain-r3" x="0" y="703.2" textLength="109.8" clip-path="url(#explain-line-28)">Reasons&#160;&#160;</text><text class="explain-r4" x="109.8" y="703.2" textLength="231.8" clip-path="url(#explain-line-28)">R-G7-FOREIGN-SIGNER</text><text class="explain-r5" x="1268.8" y="703.2" textLength="12.2" clip-path="url(#explain-line-28)">
+</text><text class="explain-r5" x="1268.8" y="727.6" textLength="12.2" clip-path="url(#explain-line-29)">
+</text><text class="explain-r2" x="0" y="752" textLength="85.4" clip-path="url(#explain-line-30)">Signers</text><text class="explain-r10" x="85.4" y="752" textLength="866.2" clip-path="url(#explain-line-30)">&#160;&#160;&#160;every&#160;key&#160;that&#160;signed&#160;the&#160;file;&#160;trust&#160;none&#160;means&#160;not&#160;an&#160;official&#160;key</text><text class="explain-r5" x="1268.8" y="752" textLength="12.2" clip-path="url(#explain-line-30)">
+</text><text class="explain-r6" x="0" y="776.4" textLength="1268.8" clip-path="url(#explain-line-31)">╭────────────────────────────────────────────────────┬────────┬──────────┬─────────────────────────────╮</text><text class="explain-r5" x="1268.8" y="776.4" textLength="12.2" clip-path="url(#explain-line-31)">
+</text><text class="explain-r6" x="0" y="800.8" textLength="12.2" clip-path="url(#explain-line-32)">│</text><text class="explain-r2" x="24.4" y="800.8" textLength="610" clip-path="url(#explain-line-32)">CERTIFICATE&#160;SHA-256&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="646.6" y="800.8" textLength="12.2" clip-path="url(#explain-line-32)">│</text><text class="explain-r2" x="671" y="800.8" textLength="73.2" clip-path="url(#explain-line-32)">TRUST&#160;</text><text class="explain-r6" x="756.4" y="800.8" textLength="12.2" clip-path="url(#explain-line-32)">│</text><text class="explain-r2" x="780.8" y="800.8" textLength="97.6" clip-path="url(#explain-line-32)">SCHEMES&#160;</text><text class="explain-r6" x="890.6" y="800.8" textLength="12.2" clip-path="url(#explain-line-32)">│</text><text class="explain-r2" x="915" y="800.8" textLength="329.4" clip-path="url(#explain-line-32)">SUBJECT&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="1256.6" y="800.8" textLength="12.2" clip-path="url(#explain-line-32)">│</text><text class="explain-r5" x="1268.8" y="800.8" textLength="12.2" clip-path="url(#explain-line-32)">
+</text><text class="explain-r6" x="0" y="825.2" textLength="1268.8" clip-path="url(#explain-line-33)">├────────────────────────────────────────────────────┼────────┼──────────┼─────────────────────────────┤</text><text class="explain-r5" x="1268.8" y="825.2" textLength="12.2" clip-path="url(#explain-line-33)">
+</text><text class="explain-r6" x="0" y="849.6" textLength="12.2" clip-path="url(#explain-line-34)">│</text><text class="explain-r4" x="24.4" y="849.6" textLength="610" clip-path="url(#explain-line-34)">2e6c33abce5807addd169fd97cf1fd846fdebd7e0e5b53096a</text><text class="explain-r6" x="646.6" y="849.6" textLength="12.2" clip-path="url(#explain-line-34)">│</text><text class="explain-r8" x="671" y="849.6" textLength="73.2" clip-path="url(#explain-line-34)">✗&#160;none</text><text class="explain-r6" x="756.4" y="849.6" textLength="12.2" clip-path="url(#explain-line-34)">│</text><text class="explain-r5" x="780.8" y="849.6" textLength="97.6" clip-path="url(#explain-line-34)">v1,v2,v3</text><text class="explain-r6" x="890.6" y="849.6" textLength="12.2" clip-path="url(#explain-line-34)">│</text><text class="explain-r5" x="915" y="849.6" textLength="329.4" clip-path="url(#explain-line-34)">CN=Kloner&#160;Synthetic&#160;foreign</text><text class="explain-r6" x="1256.6" y="849.6" textLength="12.2" clip-path="url(#explain-line-34)">│</text><text class="explain-r5" x="1268.8" y="849.6" textLength="12.2" clip-path="url(#explain-line-34)">
+</text><text class="explain-r6" x="0" y="874" textLength="12.2" clip-path="url(#explain-line-35)">│</text><text class="explain-r4" x="24.4" y="874" textLength="610" clip-path="url(#explain-line-35)">dd4e45c0e4f189&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="646.6" y="874" textLength="12.2" clip-path="url(#explain-line-35)">│</text><text class="explain-r6" x="756.4" y="874" textLength="12.2" clip-path="url(#explain-line-35)">│</text><text class="explain-r6" x="890.6" y="874" textLength="12.2" clip-path="url(#explain-line-35)">│</text><text class="explain-r6" x="1256.6" y="874" textLength="12.2" clip-path="url(#explain-line-35)">│</text><text class="explain-r5" x="1268.8" y="874" textLength="12.2" clip-path="url(#explain-line-35)">
+</text><text class="explain-r6" x="0" y="898.4" textLength="1268.8" clip-path="url(#explain-line-36)">╰────────────────────────────────────────────────────┴────────┴──────────┴─────────────────────────────╯</text><text class="explain-r5" x="1268.8" y="898.4" textLength="12.2" clip-path="url(#explain-line-36)">
+</text><text class="explain-r5" x="1268.8" y="922.8" textLength="12.2" clip-path="url(#explain-line-37)">
+</text><text class="explain-r2" x="0" y="947.2" textLength="207.4" clip-path="url(#explain-line-38)">APK&#160;Signing&#160;Block</text><text class="explain-r10" x="207.4" y="947.2" textLength="427" clip-path="url(#explain-line-38)">&#160;&#160;&#160;every&#160;block&#160;entry,&#160;signed&#160;or&#160;not</text><text class="explain-r5" x="1268.8" y="947.2" textLength="12.2" clip-path="url(#explain-line-38)">
+</text><text class="explain-r6" x="0" y="971.6" textLength="780.8" clip-path="url(#explain-line-39)">╭────────────┬────────────────┬───────────┬─────────┬──────────╮</text><text class="explain-r5" x="1268.8" y="971.6" textLength="12.2" clip-path="url(#explain-line-39)">
+</text><text class="explain-r6" x="0" y="996" textLength="12.2" clip-path="url(#explain-line-40)">│</text><text class="explain-r2" x="24.4" y="996" textLength="122" clip-path="url(#explain-line-40)">ID&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="158.6" y="996" textLength="12.2" clip-path="url(#explain-line-40)">│</text><text class="explain-r2" x="183" y="996" textLength="170.8" clip-path="url(#explain-line-40)">NAME&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="366" y="996" textLength="12.2" clip-path="url(#explain-line-40)">│</text><text class="explain-r2" x="390.4" y="996" textLength="109.8" clip-path="url(#explain-line-40)">KIND&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="512.4" y="996" textLength="12.2" clip-path="url(#explain-line-40)">│</text><text class="explain-r2" x="536.8" y="996" textLength="85.4" clip-path="url(#explain-line-40)">SIZE&#160;&#160;&#160;</text><text class="explain-r6" x="634.4" y="996" textLength="12.2" clip-path="url(#explain-line-40)">│</text><text class="explain-r2" x="658.8" y="996" textLength="97.6" clip-path="url(#explain-line-40)">SHA-256&#160;</text><text class="explain-r6" x="768.6" y="996" textLength="12.2" clip-path="url(#explain-line-40)">│</text><text class="explain-r5" x="1268.8" y="996" textLength="12.2" clip-path="url(#explain-line-40)">
+</text><text class="explain-r6" x="0" y="1020.4" textLength="780.8" clip-path="url(#explain-line-41)">├────────────┼────────────────┼───────────┼─────────┼──────────┤</text><text class="explain-r5" x="1268.8" y="1020.4" textLength="12.2" clip-path="url(#explain-line-41)">
+</text><text class="explain-r6" x="0" y="1044.8" textLength="12.2" clip-path="url(#explain-line-42)">│</text><text class="explain-r13" x="24.4" y="1044.8" textLength="122" clip-path="url(#explain-line-42)">0x7109871a</text><text class="explain-r6" x="158.6" y="1044.8" textLength="12.2" clip-path="url(#explain-line-42)">│</text><text class="explain-r5" x="170.8" y="1044.8" textLength="195.2" clip-path="url(#explain-line-42)">&#160;v2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="366" y="1044.8" textLength="12.2" clip-path="url(#explain-line-42)">│</text><text class="explain-r5" x="390.4" y="1044.8" textLength="109.8" clip-path="url(#explain-line-42)">signature</text><text class="explain-r6" x="512.4" y="1044.8" textLength="12.2" clip-path="url(#explain-line-42)">│</text><text class="explain-r5" x="524.6" y="1044.8" textLength="109.8" clip-path="url(#explain-line-42)">&#160;2,440&#160;B&#160;</text><text class="explain-r6" x="634.4" y="1044.8" textLength="12.2" clip-path="url(#explain-line-42)">│</text><text class="explain-r5" x="658.8" y="1044.8" textLength="97.6" clip-path="url(#explain-line-42)">53a7…546</text><text class="explain-r6" x="768.6" y="1044.8" textLength="12.2" clip-path="url(#explain-line-42)">│</text><text class="explain-r5" x="1268.8" y="1044.8" textLength="12.2" clip-path="url(#explain-line-42)">
+</text><text class="explain-r6" x="0" y="1069.2" textLength="12.2" clip-path="url(#explain-line-43)">│</text><text class="explain-r13" x="24.4" y="1069.2" textLength="122" clip-path="url(#explain-line-43)">0xf05368c0</text><text class="explain-r6" x="158.6" y="1069.2" textLength="12.2" clip-path="url(#explain-line-43)">│</text><text class="explain-r5" x="170.8" y="1069.2" textLength="195.2" clip-path="url(#explain-line-43)">&#160;v3&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="explain-r6" x="366" y="1069.2" textLength="12.2" clip-path="url(#explain-line-43)">│</text><text class="explain-r5" x="390.4" y="1069.2" textLength="109.8" clip-path="url(#explain-line-43)">signature</text><text class="explain-r6" x="512.4" y="1069.2" textLength="12.2" clip-path="url(#explain-line-43)">│</text><text class="explain-r5" x="524.6" y="1069.2" textLength="109.8" clip-path="url(#explain-line-43)">&#160;2,440&#160;B&#160;</text><text class="explain-r6" x="634.4" y="1069.2" textLength="12.2" clip-path="url(#explain-line-43)">│</text><text class="explain-r5" x="658.8" y="1069.2" textLength="97.6" clip-path="url(#explain-line-43)">bb08…ccf</text><text class="explain-r6" x="768.6" y="1069.2" textLength="12.2" clip-path="url(#explain-line-43)">│</text><text class="explain-r5" x="1268.8" y="1069.2" textLength="12.2" clip-path="url(#explain-line-43)">
+</text><text class="explain-r6" x="0" y="1093.6" textLength="12.2" clip-path="url(#explain-line-44)">│</text><text class="explain-r13" x="24.4" y="1093.6" textLength="122" clip-path="url(#explain-line-44)">0x42726577</text><text class="explain-r6" x="158.6" y="1093.6" textLength="12.2" clip-path="url(#explain-line-44)">│</text><text class="explain-r5" x="170.8" y="1093.6" textLength="195.2" clip-path="url(#explain-line-44)">&#160;verity_padding&#160;</text><text class="explain-r6" x="366" y="1093.6" textLength="12.2" clip-path="url(#explain-line-44)">│</text><text class="explain-r5" x="390.4" y="1093.6" textLength="109.8" clip-path="url(#explain-line-44)">padding&#160;&#160;</text><text class="explain-r6" x="512.4" y="1093.6" textLength="12.2" clip-path="url(#explain-line-44)">│</text><text class="explain-r5" x="524.6" y="1093.6" textLength="109.8" clip-path="url(#explain-line-44)">&#160;3,244&#160;B&#160;</text><text class="explain-r6" x="634.4" y="1093.6" textLength="12.2" clip-path="url(#explain-line-44)">│</text><text class="explain-r5" x="658.8" y="1093.6" textLength="97.6" clip-path="url(#explain-line-44)">ac0a…160</text><text class="explain-r6" x="768.6" y="1093.6" textLength="12.2" clip-path="url(#explain-line-44)">│</text><text class="explain-r5" x="1268.8" y="1093.6" textLength="12.2" clip-path="url(#explain-line-44)">
+</text><text class="explain-r6" x="0" y="1118" textLength="780.8" clip-path="url(#explain-line-45)">╰────────────┴────────────────┴───────────┴─────────┴──────────╯</text><text class="explain-r5" x="1268.8" y="1118" textLength="12.2" clip-path="url(#explain-line-45)">
+</text><text class="explain-r5" x="1268.8" y="1142.4" textLength="12.2" clip-path="url(#explain-line-46)">
+</text><text class="explain-r2" x="0" y="1166.8" textLength="109.8" clip-path="url(#explain-line-47)">Forensics</text><text class="explain-r10" x="109.8" y="1166.8" textLength="646.6" clip-path="url(#explain-line-47)">&#160;&#160;&#160;what&#160;the&#160;file&#160;adds&#160;compared&#160;with&#160;an&#160;official&#160;build</text><text class="explain-r5" x="1268.8" y="1166.8" textLength="12.2" clip-path="url(#explain-line-47)">
+</text><text class="explain-r4" x="0" y="1191.2" textLength="610" clip-path="url(#explain-line-48)">Injected:&#160;nothing&#160;detected&#160;by&#160;the&#160;capability&#160;table</text><text class="explain-r5" x="1268.8" y="1191.2" textLength="12.2" clip-path="url(#explain-line-48)">
+</text><text class="explain-r5" x="1268.8" y="1215.6" textLength="12.2" clip-path="url(#explain-line-49)">
+</text><text class="explain-r2" x="0" y="1240" textLength="85.4" clip-path="url(#explain-line-50)">Seen&#160;at</text><text class="explain-r10" x="85.4" y="1240" textLength="414.8" clip-path="url(#explain-line-50)">&#160;&#160;&#160;where&#160;this&#160;exact&#160;file&#160;was&#160;found</text><text class="explain-r5" x="1268.8" y="1240" textLength="12.2" clip-path="url(#explain-line-50)">
+</text><text class="explain-r14" x="0" y="1264.4" textLength="24.4" clip-path="url(#explain-line-51)">●&#160;</text><text class="explain-r4" x="24.4" y="1264.4" textLength="61" clip-path="url(#explain-line-51)">local</text><text class="explain-r5" x="134.2" y="1264.4" textLength="390.4" clip-path="url(#explain-line-51)">~/kloner-demo/downloads/C-02.apk</text><text class="explain-r3" x="524.6" y="1264.4" textLength="268.4" clip-path="url(#explain-line-51)">&#160;&#160;2026-11-11&#160;00:18:27Z</text><text class="explain-r5" x="1268.8" y="1264.4" textLength="12.2" clip-path="url(#explain-line-51)">
+</text>
+    </g>
+    </g>
+</svg>

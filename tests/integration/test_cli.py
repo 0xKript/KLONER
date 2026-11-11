@@ -89,6 +89,10 @@ def test_end_to_end(
     r = k(cli_home, "anchor", "add", P, "--from-apk", str(corpus["files"]["C-01"]), "--brand-label", "Kloner Fixture")
     assert r.exit_code == 0, r.output
     assert "USER_ASSERTED" in r.output and "Next: kloner hunt" in r.output
+    # with --json, stdout is the JSON document alone; the notes go to stderr (D-069)
+    js = k(cli_home, "--json", "anchor", "add", P, "--from-apk", str(corpus["files"]["C-01"]))
+    assert js.exit_code == 0 and json.loads(js.stdout)["package"] == P
+    assert "Next:" not in js.stdout and "provenance" in js.stderr
     assert k(cli_home, "anchor", "show", P).exit_code == 0
     assert P in k(cli_home, "anchor", "list").output
     js = k(cli_home, "--json", "anchor", "show", P)

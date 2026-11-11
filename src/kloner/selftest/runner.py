@@ -6,6 +6,7 @@ P-01, N=200 for P-02, engine agreement on every file).
 
 from __future__ import annotations
 
+import contextlib
 import hashlib
 import json
 import secrets
@@ -18,8 +19,9 @@ from pathlib import Path
 from typing import Any
 
 from rich.console import Console
-from rich.table import Table
+from rich.text import Text
 
+from kloner import ui
 from kloner.anchor import methods as anchor_methods
 from kloner.anchor.hygiene import HygieneError
 from kloner.anchor.methods import AnchorConflict, MethodResult
@@ -386,8 +388,12 @@ def run_selftest(rt: Runtime, mode: str = "standard", console: Console | None = 
     work = Path(tempfile.mkdtemp(prefix="selftest-", dir=rt.quarantine.incoming))
     outcomes: list[Outcome] = []
     t_all = time.monotonic()
+    spinner = contextlib.ExitStack()
     try:
-        console.print(f"Building the corpus in {work} …")
+        console.print()
+        console.print(Text.assemble(("Building the corpus in ", ui.SOFT), (str(work), ui.MUTED), (" …", ui.SOFT)))
+        live = console.is_terminal and not console.quiet
+        spinner.enter_context(ui.working("Building the corpus and checking every case…", enabled=live))
         cases, ctx = build(rt, work, console)
         if mode == "quick":
             cases = [k for k in cases if k.id in ("C-01", "C-02", "C-06", "C-15", "C-16", "C-24", "C-33")]
@@ -438,18 +444,33 @@ def run_selftest(rt: Runtime, mode: str = "standard", console: Console | None = 
             n1, n2 = (1000, 200) if mode == "full" else (200, 30)  # P-01: N = 200, --full 1000 (§18.3)
             outcomes += mutation_cases(rt, ctx, n1, n2)
     finally:
+        spinner.close()
         shutil.rmtree(work, ignore_errors=True)
-    table = Table(box=None, header_style="bold")
-    for col in ("CASE", "RESULT", "LEVEL", "GOT", "EXPECTED", "DETAIL"):
-        table.add_column(col, overflow="fold")
+    table = ui.table()
+    table.add_column("CASE", no_wrap=True, style=f"bold {ui.PALE}")
+    table.add_column("RESULT", no_wrap=True)
+    for col in ("LEVEL", "GOT", "EXPECTED", "DETAIL"):
+        table.add_column(col, overflow="fold", style=ui.SOFT)
     for o in sorted(outcomes, key=lambda o: o.case):
-        table.add_row(o.case, "[green]PASS[/]" if o.ok else "[red]FAIL[/]", o.level, o.got, o.want, o.detail)
+        result = Text("✓ PASS", style=f"bold {ui.GREEN}") if o.ok else Text("✗ FAIL", style=f"bold {ui.RED}")
+        table.add_row(o.case, result, o.level, o.got, o.want, o.detail)
+    console.print()
     console.print(table)
     failed = [o for o in outcomes if not o.ok]
     n_facts = sum(1 for o in outcomes if o.level == "facts")
-    console.print(
+    summary = (
         f"selftest {mode}: {len(outcomes) - len(failed)}/{len(outcomes)} PASS in {time.monotonic() - t_all:.0f}s"
         + (f" ({n_facts} decided at the facts level, see docs/DECISIONS.md D-026)" if n_facts else "")
+    )
+    console.print()
+    console.print(
+        Text.assemble(
+            (
+                " ✓ ALL PASS " if not failed else f" ✗ {len(failed)} FAILED ",
+                ui.VERDICTS["GENUINE" if not failed else "FORGED"][1],
+            ),
+            ("  " + summary, f"bold {ui.SOFT}"),
+        )
     )
     _write_golden_projection(rt, outcomes)
     return not failed

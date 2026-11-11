@@ -1,0 +1,219 @@
+<svg class="rich-terminal" viewBox="0 0 1287 1123.6" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io by scripts/export_screens.py -->
+    <style>
+    .diff-matrix {
+        font-family: "Cascadia Mono", "Fira Code", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+    .diff-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    .diff-r1 { fill: #7fe6b3 }
+.diff-r2 { fill: #7fe6b3;font-weight: bold }
+.diff-r3 { fill: #5f8577 }
+.diff-r4 { fill: #c2f5da;font-weight: bold }
+.diff-r5 { fill: #a3c7b6 }
+.diff-r6 { fill: #2b7258 }
+.diff-r7 { fill: #5f8577;font-weight: bold }
+.diff-r8 { fill: #f0c75e;font-weight: bold }
+.diff-r9 { fill: #2b7258;font-weight: bold }
+.diff-r10 { fill: #45bf88 }
+.diff-r11 { fill: #c792ea;font-weight: bold }
+.diff-r12 { fill: #ff6b6b;font-weight: bold }
+    </style>
+    <defs>
+    <clipPath id="diff-clip-terminal">
+      <rect x="0" y="0" width="1267.8" height="1072.6" />
+    </clipPath>
+    <clipPath id="diff-line-0">
+    <rect x="0" y="1.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-1">
+    <rect x="0" y="25.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-2">
+    <rect x="0" y="50.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-3">
+    <rect x="0" y="74.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-4">
+    <rect x="0" y="99.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-5">
+    <rect x="0" y="123.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-6">
+    <rect x="0" y="147.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-7">
+    <rect x="0" y="172.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-8">
+    <rect x="0" y="196.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-9">
+    <rect x="0" y="221.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-10">
+    <rect x="0" y="245.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-11">
+    <rect x="0" y="269.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-12">
+    <rect x="0" y="294.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-13">
+    <rect x="0" y="318.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-14">
+    <rect x="0" y="343.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-15">
+    <rect x="0" y="367.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-16">
+    <rect x="0" y="391.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-17">
+    <rect x="0" y="416.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-18">
+    <rect x="0" y="440.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-19">
+    <rect x="0" y="465.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-20">
+    <rect x="0" y="489.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-21">
+    <rect x="0" y="513.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-22">
+    <rect x="0" y="538.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-23">
+    <rect x="0" y="562.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-24">
+    <rect x="0" y="587.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-25">
+    <rect x="0" y="611.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-26">
+    <rect x="0" y="635.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-27">
+    <rect x="0" y="660.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-28">
+    <rect x="0" y="684.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-29">
+    <rect x="0" y="709.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-30">
+    <rect x="0" y="733.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-31">
+    <rect x="0" y="757.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-32">
+    <rect x="0" y="782.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-33">
+    <rect x="0" y="806.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-34">
+    <rect x="0" y="831.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-35">
+    <rect x="0" y="855.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-36">
+    <rect x="0" y="879.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-37">
+    <rect x="0" y="904.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-38">
+    <rect x="0" y="928.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-39">
+    <rect x="0" y="953.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-40">
+    <rect x="0" y="977.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-41">
+    <rect x="0" y="1001.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="diff-line-42">
+    <rect x="0" y="1026.3" width="1268.8" height="24.65"/>
+            </clipPath>
+    </defs>
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="1285" height="1121.6" rx="8"/><text class="diff-title" fill="#a3c7b6" text-anchor="middle" x="642" y="27">kloner&#160;diff&#160;&lt;copy&gt;&#160;--against&#160;&lt;official&gt;</text>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#diff-clip-terminal)">
+    
+    <g class="diff-matrix">
+    <text class="diff-r1" x="0" y="20" textLength="24.4" clip-path="url(#diff-line-0)">◆&#160;</text><text class="diff-r2" x="24.4" y="20" textLength="73.2" clip-path="url(#diff-line-0)">KLONER</text><text class="diff-r3" x="97.6" y="20" textLength="36.6" clip-path="url(#diff-line-0)">&#160;·&#160;</text><text class="diff-r4" x="134.2" y="20" textLength="48.8" clip-path="url(#diff-line-0)">diff</text><text class="diff-r3" x="183" y="20" textLength="36.6" clip-path="url(#diff-line-0)">&#160;·&#160;</text><text class="diff-r4" x="219.6" y="20" textLength="280.6" clip-path="url(#diff-line-0)">dev.kloner.fixture.lite</text><text class="diff-r6" x="512.4" y="20" textLength="756.4" clip-path="url(#diff-line-0)">──────────────────────────────────────────────────────────────</text><text class="diff-r5" x="1268.8" y="20" textLength="12.2" clip-path="url(#diff-line-0)">
+</text><text class="diff-r5" x="1268.8" y="44.4" textLength="12.2" clip-path="url(#diff-line-1)">
+</text><text class="diff-r2" x="0" y="68.8" textLength="146.4" clip-path="url(#diff-line-2)">Side&#160;by&#160;side</text><text class="diff-r7" x="146.4" y="68.8" textLength="280.6" clip-path="url(#diff-line-2)">&#160;&#160;&#160;≠&#160;marks&#160;what&#160;differs</text><text class="diff-r5" x="1268.8" y="68.8" textLength="12.2" clip-path="url(#diff-line-2)">
+</text><text class="diff-r6" x="0" y="93.2" textLength="1195.6" clip-path="url(#diff-line-3)">╭──────────────────┬──────────────────────────────────────┬──────────────────────────────────────╮</text><text class="diff-r5" x="1268.8" y="93.2" textLength="12.2" clip-path="url(#diff-line-3)">
+</text><text class="diff-r6" x="0" y="117.6" textLength="12.2" clip-path="url(#diff-line-4)">│</text><text class="diff-r6" x="231.8" y="117.6" textLength="12.2" clip-path="url(#diff-line-4)">│</text><text class="diff-r2" x="256.2" y="117.6" textLength="439.2" clip-path="url(#diff-line-4)">SAMPLE&#160;&#160;the&#160;copy&#160;you&#160;examine&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="707.6" y="117.6" textLength="12.2" clip-path="url(#diff-line-4)">│</text><text class="diff-r2" x="732" y="117.6" textLength="439.2" clip-path="url(#diff-line-4)">REFERENCE&#160;&#160;what&#160;you&#160;compare&#160;it&#160;with&#160;</text><text class="diff-r6" x="1183.4" y="117.6" textLength="12.2" clip-path="url(#diff-line-4)">│</text><text class="diff-r5" x="1268.8" y="117.6" textLength="12.2" clip-path="url(#diff-line-4)">
+</text><text class="diff-r6" x="0" y="142" textLength="1195.6" clip-path="url(#diff-line-5)">├──────────────────┼──────────────────────────────────────┼──────────────────────────────────────┤</text><text class="diff-r5" x="1268.8" y="142" textLength="12.2" clip-path="url(#diff-line-5)">
+</text><text class="diff-r6" x="0" y="166.4" textLength="12.2" clip-path="url(#diff-line-6)">│</text><text class="diff-r3" x="24.4" y="166.4" textLength="195.2" clip-path="url(#diff-line-6)">SHA-256&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="231.8" y="166.4" textLength="12.2" clip-path="url(#diff-line-6)">│</text><text class="diff-r4" x="256.2" y="166.4" textLength="439.2" clip-path="url(#diff-line-6)">a82ed2cc2d5568b22023349a1aa33ef38b1a</text><text class="diff-r6" x="707.6" y="166.4" textLength="12.2" clip-path="url(#diff-line-6)">│</text><text class="diff-r4" x="732" y="166.4" textLength="439.2" clip-path="url(#diff-line-6)">08e4d18afa43d12ab73775b391c8311cc874</text><text class="diff-r6" x="1183.4" y="166.4" textLength="12.2" clip-path="url(#diff-line-6)">│</text><text class="diff-r5" x="1268.8" y="166.4" textLength="12.2" clip-path="url(#diff-line-6)">
+</text><text class="diff-r6" x="0" y="190.8" textLength="12.2" clip-path="url(#diff-line-7)">│</text><text class="diff-r6" x="231.8" y="190.8" textLength="12.2" clip-path="url(#diff-line-7)">│</text><text class="diff-r4" x="256.2" y="190.8" textLength="439.2" clip-path="url(#diff-line-7)">21e48ce4a3a277dec983c614e54c&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="707.6" y="190.8" textLength="12.2" clip-path="url(#diff-line-7)">│</text><text class="diff-r4" x="732" y="190.8" textLength="439.2" clip-path="url(#diff-line-7)">a6da85f74a52f66235adcbfaf7e8&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1183.4" y="190.8" textLength="12.2" clip-path="url(#diff-line-7)">│</text><text class="diff-r5" x="1268.8" y="190.8" textLength="12.2" clip-path="url(#diff-line-7)">
+</text><text class="diff-r6" x="0" y="215.2" textLength="12.2" clip-path="url(#diff-line-8)">│</text><text class="diff-r3" x="24.4" y="215.2" textLength="195.2" clip-path="url(#diff-line-8)">Package&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="231.8" y="215.2" textLength="12.2" clip-path="url(#diff-line-8)">│</text><text class="diff-r8" x="256.2" y="215.2" textLength="439.2" clip-path="url(#diff-line-8)">dev.kloner.fixture.lite&#160;&#160;≠&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="707.6" y="215.2" textLength="12.2" clip-path="url(#diff-line-8)">│</text><text class="diff-r4" x="732" y="215.2" textLength="439.2" clip-path="url(#diff-line-8)">dev.kloner.fixture&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1183.4" y="215.2" textLength="12.2" clip-path="url(#diff-line-8)">│</text><text class="diff-r5" x="1268.8" y="215.2" textLength="12.2" clip-path="url(#diff-line-8)">
+</text><text class="diff-r6" x="0" y="239.6" textLength="12.2" clip-path="url(#diff-line-9)">│</text><text class="diff-r3" x="24.4" y="239.6" textLength="195.2" clip-path="url(#diff-line-9)">Version&#160;code&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="231.8" y="239.6" textLength="12.2" clip-path="url(#diff-line-9)">│</text><text class="diff-r5" x="256.2" y="239.6" textLength="439.2" clip-path="url(#diff-line-9)">1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="707.6" y="239.6" textLength="12.2" clip-path="url(#diff-line-9)">│</text><text class="diff-r5" x="732" y="239.6" textLength="439.2" clip-path="url(#diff-line-9)">1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1183.4" y="239.6" textLength="12.2" clip-path="url(#diff-line-9)">│</text><text class="diff-r5" x="1268.8" y="239.6" textLength="12.2" clip-path="url(#diff-line-9)">
+</text><text class="diff-r6" x="0" y="264" textLength="12.2" clip-path="url(#diff-line-10)">│</text><text class="diff-r3" x="24.4" y="264" textLength="195.2" clip-path="url(#diff-line-10)">Classes&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="231.8" y="264" textLength="12.2" clip-path="url(#diff-line-10)">│</text><text class="diff-r5" x="256.2" y="264" textLength="439.2" clip-path="url(#diff-line-10)">1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="707.6" y="264" textLength="12.2" clip-path="url(#diff-line-10)">│</text><text class="diff-r5" x="732" y="264" textLength="439.2" clip-path="url(#diff-line-10)">1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1183.4" y="264" textLength="12.2" clip-path="url(#diff-line-10)">│</text><text class="diff-r5" x="1268.8" y="264" textLength="12.2" clip-path="url(#diff-line-10)">
+</text><text class="diff-r6" x="0" y="288.4" textLength="12.2" clip-path="url(#diff-line-11)">│</text><text class="diff-r3" x="24.4" y="288.4" textLength="195.2" clip-path="url(#diff-line-11)">Permissions&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="231.8" y="288.4" textLength="12.2" clip-path="url(#diff-line-11)">│</text><text class="diff-r5" x="256.2" y="288.4" textLength="439.2" clip-path="url(#diff-line-11)">0&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="707.6" y="288.4" textLength="12.2" clip-path="url(#diff-line-11)">│</text><text class="diff-r5" x="732" y="288.4" textLength="439.2" clip-path="url(#diff-line-11)">0&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1183.4" y="288.4" textLength="12.2" clip-path="url(#diff-line-11)">│</text><text class="diff-r5" x="1268.8" y="288.4" textLength="12.2" clip-path="url(#diff-line-11)">
+</text><text class="diff-r6" x="0" y="312.8" textLength="12.2" clip-path="url(#diff-line-12)">│</text><text class="diff-r3" x="24.4" y="312.8" textLength="195.2" clip-path="url(#diff-line-12)">Components&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="231.8" y="312.8" textLength="12.2" clip-path="url(#diff-line-12)">│</text><text class="diff-r5" x="256.2" y="312.8" textLength="439.2" clip-path="url(#diff-line-12)">1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="707.6" y="312.8" textLength="12.2" clip-path="url(#diff-line-12)">│</text><text class="diff-r5" x="732" y="312.8" textLength="439.2" clip-path="url(#diff-line-12)">1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1183.4" y="312.8" textLength="12.2" clip-path="url(#diff-line-12)">│</text><text class="diff-r5" x="1268.8" y="312.8" textLength="12.2" clip-path="url(#diff-line-12)">
+</text><text class="diff-r6" x="0" y="337.2" textLength="12.2" clip-path="url(#diff-line-13)">│</text><text class="diff-r3" x="24.4" y="337.2" textLength="195.2" clip-path="url(#diff-line-13)">Native&#160;libraries</text><text class="diff-r6" x="231.8" y="337.2" textLength="12.2" clip-path="url(#diff-line-13)">│</text><text class="diff-r5" x="256.2" y="337.2" textLength="439.2" clip-path="url(#diff-line-13)">0&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="707.6" y="337.2" textLength="12.2" clip-path="url(#diff-line-13)">│</text><text class="diff-r5" x="732" y="337.2" textLength="439.2" clip-path="url(#diff-line-13)">0&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1183.4" y="337.2" textLength="12.2" clip-path="url(#diff-line-13)">│</text><text class="diff-r5" x="1268.8" y="337.2" textLength="12.2" clip-path="url(#diff-line-13)">
+</text><text class="diff-r6" x="0" y="361.6" textLength="12.2" clip-path="url(#diff-line-14)">│</text><text class="diff-r3" x="24.4" y="361.6" textLength="195.2" clip-path="url(#diff-line-14)">Files&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="231.8" y="361.6" textLength="12.2" clip-path="url(#diff-line-14)">│</text><text class="diff-r5" x="256.2" y="361.6" textLength="439.2" clip-path="url(#diff-line-14)">6&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="707.6" y="361.6" textLength="12.2" clip-path="url(#diff-line-14)">│</text><text class="diff-r5" x="732" y="361.6" textLength="439.2" clip-path="url(#diff-line-14)">6&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1183.4" y="361.6" textLength="12.2" clip-path="url(#diff-line-14)">│</text><text class="diff-r5" x="1268.8" y="361.6" textLength="12.2" clip-path="url(#diff-line-14)">
+</text><text class="diff-r6" x="0" y="386" textLength="1195.6" clip-path="url(#diff-line-15)">╰──────────────────┴──────────────────────────────────────┴──────────────────────────────────────╯</text><text class="diff-r5" x="1268.8" y="386" textLength="12.2" clip-path="url(#diff-line-15)">
+</text><text class="diff-r5" x="1268.8" y="410.4" textLength="12.2" clip-path="url(#diff-line-16)">
+</text><text class="diff-r6" x="0" y="434.8" textLength="24.4" clip-path="url(#diff-line-17)">╭─</text><text class="diff-r9" x="24.4" y="434.8" textLength="683.2" clip-path="url(#diff-line-17)">&#160;Code&#160;overlap&#160;(heuristic):&#160;classes&#160;0.00,&#160;resources&#160;1.00&#160;</text><text class="diff-r6" x="707.6" y="434.8" textLength="536.8" clip-path="url(#diff-line-17)">────────────────────────────────────────────</text><text class="diff-r6" x="1244.4" y="434.8" textLength="24.4" clip-path="url(#diff-line-17)">─╮</text><text class="diff-r5" x="1268.8" y="434.8" textLength="12.2" clip-path="url(#diff-line-17)">
+</text><text class="diff-r6" x="0" y="459.2" textLength="12.2" clip-path="url(#diff-line-18)">│</text><text class="diff-r3" x="24.4" y="459.2" textLength="109.8" clip-path="url(#diff-line-18)">classes&#160;&#160;</text><text class="diff-r6" x="158.6" y="459.2" textLength="292.8" clip-path="url(#diff-line-18)">░░░░░░░░░░░░░░░░░░░░░░░░</text><text class="diff-r4" x="451.4" y="459.2" textLength="73.2" clip-path="url(#diff-line-18)">&#160;&#160;0.00</text><text class="diff-r6" x="1256.6" y="459.2" textLength="12.2" clip-path="url(#diff-line-18)">│</text><text class="diff-r5" x="1268.8" y="459.2" textLength="12.2" clip-path="url(#diff-line-18)">
+</text><text class="diff-r6" x="0" y="483.6" textLength="12.2" clip-path="url(#diff-line-19)">│</text><text class="diff-r3" x="24.4" y="483.6" textLength="109.8" clip-path="url(#diff-line-19)">resources</text><text class="diff-r10" x="158.6" y="483.6" textLength="292.8" clip-path="url(#diff-line-19)">████████████████████████</text><text class="diff-r4" x="451.4" y="483.6" textLength="73.2" clip-path="url(#diff-line-19)">&#160;&#160;1.00</text><text class="diff-r6" x="1256.6" y="483.6" textLength="12.2" clip-path="url(#diff-line-19)">│</text><text class="diff-r5" x="1268.8" y="483.6" textLength="12.2" clip-path="url(#diff-line-19)">
+</text><text class="diff-r6" x="0" y="508" textLength="12.2" clip-path="url(#diff-line-20)">│</text><text class="diff-r11" x="24.4" y="508" textLength="219.6" clip-path="url(#diff-line-20)">→&#160;IMPOSTOR&#160;range:&#160;</text><text class="diff-r5" x="244" y="508" textLength="805.2" clip-path="url(#diff-line-20)">the&#160;sample&#160;shares&#160;little&#160;code&#160;with&#160;the&#160;reference.&#160;A&#160;different&#160;app.</text><text class="diff-r6" x="1256.6" y="508" textLength="12.2" clip-path="url(#diff-line-20)">│</text><text class="diff-r5" x="1268.8" y="508" textLength="12.2" clip-path="url(#diff-line-20)">
+</text><text class="diff-r6" x="0" y="532.4" textLength="12.2" clip-path="url(#diff-line-21)">│</text><text class="diff-r3" x="24.4" y="532.4" textLength="1049.2" clip-path="url(#diff-line-21)">A&#160;heuristic,&#160;never&#160;a&#160;verdict:&#160;REPACKAGED&#160;from&#160;0.6,&#160;IMPOSTOR&#160;below&#160;0.2&#160;(class&#160;overlap).</text><text class="diff-r6" x="1256.6" y="532.4" textLength="12.2" clip-path="url(#diff-line-21)">│</text><text class="diff-r5" x="1268.8" y="532.4" textLength="12.2" clip-path="url(#diff-line-21)">
+</text><text class="diff-r6" x="0" y="556.8" textLength="1268.8" clip-path="url(#diff-line-22)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="diff-r5" x="1268.8" y="556.8" textLength="12.2" clip-path="url(#diff-line-22)">
+</text><text class="diff-r5" x="1268.8" y="581.2" textLength="12.2" clip-path="url(#diff-line-23)">
+</text><text class="diff-r2" x="0" y="605.6" textLength="280.6" clip-path="url(#diff-line-24)">What&#160;the&#160;sample&#160;changed</text><text class="diff-r7" x="280.6" y="605.6" textLength="585.6" clip-path="url(#diff-line-24)">&#160;&#160;&#160;+&#160;only&#160;in&#160;the&#160;sample,&#160;-&#160;only&#160;in&#160;the&#160;reference</text><text class="diff-r5" x="1268.8" y="605.6" textLength="12.2" clip-path="url(#diff-line-24)">
+</text><text class="diff-r6" x="0" y="630" textLength="1268.8" clip-path="url(#diff-line-25)">╭──────────────────────┬────┬────┬─────────────────────────────────────────────────────────────────────╮</text><text class="diff-r5" x="1268.8" y="630" textLength="12.2" clip-path="url(#diff-line-25)">
+</text><text class="diff-r6" x="0" y="654.4" textLength="12.2" clip-path="url(#diff-line-26)">│</text><text class="diff-r2" x="24.4" y="654.4" textLength="244" clip-path="url(#diff-line-26)">AREA&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="280.6" y="654.4" textLength="12.2" clip-path="url(#diff-line-26)">│</text><text class="diff-r2" x="305" y="654.4" textLength="24.4" clip-path="url(#diff-line-26)">&#160;+</text><text class="diff-r6" x="341.6" y="654.4" textLength="12.2" clip-path="url(#diff-line-26)">│</text><text class="diff-r2" x="366" y="654.4" textLength="24.4" clip-path="url(#diff-line-26)">&#160;-</text><text class="diff-r6" x="402.6" y="654.4" textLength="12.2" clip-path="url(#diff-line-26)">│</text><text class="diff-r2" x="427" y="654.4" textLength="817.4" clip-path="url(#diff-line-26)">DETAILS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1256.6" y="654.4" textLength="12.2" clip-path="url(#diff-line-26)">│</text><text class="diff-r5" x="1268.8" y="654.4" textLength="12.2" clip-path="url(#diff-line-26)">
+</text><text class="diff-r6" x="0" y="678.8" textLength="1268.8" clip-path="url(#diff-line-27)">├──────────────────────┼────┼────┼─────────────────────────────────────────────────────────────────────┤</text><text class="diff-r5" x="1268.8" y="678.8" textLength="12.2" clip-path="url(#diff-line-27)">
+</text><text class="diff-r6" x="0" y="703.2" textLength="12.2" clip-path="url(#diff-line-28)">│</text><text class="diff-r4" x="24.4" y="703.2" textLength="244" clip-path="url(#diff-line-28)">Permissions&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="280.6" y="703.2" textLength="12.2" clip-path="url(#diff-line-28)">│</text><text class="diff-r3" x="305" y="703.2" textLength="24.4" clip-path="url(#diff-line-28)">+0</text><text class="diff-r6" x="341.6" y="703.2" textLength="12.2" clip-path="url(#diff-line-28)">│</text><text class="diff-r3" x="366" y="703.2" textLength="24.4" clip-path="url(#diff-line-28)">-0</text><text class="diff-r6" x="402.6" y="703.2" textLength="12.2" clip-path="url(#diff-line-28)">│</text><text class="diff-r6" x="1256.6" y="703.2" textLength="12.2" clip-path="url(#diff-line-28)">│</text><text class="diff-r5" x="1268.8" y="703.2" textLength="12.2" clip-path="url(#diff-line-28)">
+</text><text class="diff-r6" x="0" y="727.6" textLength="12.2" clip-path="url(#diff-line-29)">│</text><text class="diff-r4" x="24.4" y="727.6" textLength="244" clip-path="url(#diff-line-29)">Components&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="280.6" y="727.6" textLength="12.2" clip-path="url(#diff-line-29)">│</text><text class="diff-r12" x="305" y="727.6" textLength="24.4" clip-path="url(#diff-line-29)">+1</text><text class="diff-r6" x="341.6" y="727.6" textLength="12.2" clip-path="url(#diff-line-29)">│</text><text class="diff-r8" x="366" y="727.6" textLength="24.4" clip-path="url(#diff-line-29)">-1</text><text class="diff-r6" x="402.6" y="727.6" textLength="12.2" clip-path="url(#diff-line-29)">│</text><text class="diff-r5" x="427" y="727.6" textLength="817.4" clip-path="url(#diff-line-29)">+&#160;activity:dev.kloner.fixture.lite.MainActivity&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1256.6" y="727.6" textLength="12.2" clip-path="url(#diff-line-29)">│</text><text class="diff-r5" x="1268.8" y="727.6" textLength="12.2" clip-path="url(#diff-line-29)">
+</text><text class="diff-r6" x="0" y="752" textLength="12.2" clip-path="url(#diff-line-30)">│</text><text class="diff-r6" x="280.6" y="752" textLength="12.2" clip-path="url(#diff-line-30)">│</text><text class="diff-r6" x="341.6" y="752" textLength="12.2" clip-path="url(#diff-line-30)">│</text><text class="diff-r6" x="402.6" y="752" textLength="12.2" clip-path="url(#diff-line-30)">│</text><text class="diff-r5" x="427" y="752" textLength="817.4" clip-path="url(#diff-line-30)">-&#160;activity:dev.kloner.fixture.MainActivity&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1256.6" y="752" textLength="12.2" clip-path="url(#diff-line-30)">│</text><text class="diff-r5" x="1268.8" y="752" textLength="12.2" clip-path="url(#diff-line-30)">
+</text><text class="diff-r6" x="0" y="776.4" textLength="12.2" clip-path="url(#diff-line-31)">│</text><text class="diff-r4" x="24.4" y="776.4" textLength="244" clip-path="url(#diff-line-31)">Classes&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="280.6" y="776.4" textLength="12.2" clip-path="url(#diff-line-31)">│</text><text class="diff-r12" x="305" y="776.4" textLength="24.4" clip-path="url(#diff-line-31)">+1</text><text class="diff-r6" x="341.6" y="776.4" textLength="12.2" clip-path="url(#diff-line-31)">│</text><text class="diff-r8" x="366" y="776.4" textLength="24.4" clip-path="url(#diff-line-31)">-1</text><text class="diff-r6" x="402.6" y="776.4" textLength="12.2" clip-path="url(#diff-line-31)">│</text><text class="diff-r5" x="427" y="776.4" textLength="817.4" clip-path="url(#diff-line-31)">0&#160;modified&#160;·&#160;new&#160;packages:&#160;dev.kloner.fixture.lite&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1256.6" y="776.4" textLength="12.2" clip-path="url(#diff-line-31)">│</text><text class="diff-r5" x="1268.8" y="776.4" textLength="12.2" clip-path="url(#diff-line-31)">
+</text><text class="diff-r6" x="0" y="800.8" textLength="12.2" clip-path="url(#diff-line-32)">│</text><text class="diff-r4" x="24.4" y="800.8" textLength="244" clip-path="url(#diff-line-32)">Network&#160;endpoints&#160;&#160;&#160;</text><text class="diff-r6" x="280.6" y="800.8" textLength="12.2" clip-path="url(#diff-line-32)">│</text><text class="diff-r3" x="305" y="800.8" textLength="24.4" clip-path="url(#diff-line-32)">+0</text><text class="diff-r6" x="341.6" y="800.8" textLength="12.2" clip-path="url(#diff-line-32)">│</text><text class="diff-r3" x="366" y="800.8" textLength="24.4" clip-path="url(#diff-line-32)">-0</text><text class="diff-r6" x="402.6" y="800.8" textLength="12.2" clip-path="url(#diff-line-32)">│</text><text class="diff-r6" x="1256.6" y="800.8" textLength="12.2" clip-path="url(#diff-line-32)">│</text><text class="diff-r5" x="1268.8" y="800.8" textLength="12.2" clip-path="url(#diff-line-32)">
+</text><text class="diff-r6" x="0" y="825.2" textLength="12.2" clip-path="url(#diff-line-33)">│</text><text class="diff-r4" x="24.4" y="825.2" textLength="244" clip-path="url(#diff-line-33)">Risky&#160;API&#160;references</text><text class="diff-r6" x="280.6" y="825.2" textLength="12.2" clip-path="url(#diff-line-33)">│</text><text class="diff-r3" x="305" y="825.2" textLength="24.4" clip-path="url(#diff-line-33)">+0</text><text class="diff-r6" x="341.6" y="825.2" textLength="12.2" clip-path="url(#diff-line-33)">│</text><text class="diff-r3" x="366" y="825.2" textLength="24.4" clip-path="url(#diff-line-33)">-0</text><text class="diff-r6" x="402.6" y="825.2" textLength="12.2" clip-path="url(#diff-line-33)">│</text><text class="diff-r6" x="1256.6" y="825.2" textLength="12.2" clip-path="url(#diff-line-33)">│</text><text class="diff-r5" x="1268.8" y="825.2" textLength="12.2" clip-path="url(#diff-line-33)">
+</text><text class="diff-r6" x="0" y="849.6" textLength="12.2" clip-path="url(#diff-line-34)">│</text><text class="diff-r4" x="24.4" y="849.6" textLength="244" clip-path="url(#diff-line-34)">Native&#160;libraries&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="280.6" y="849.6" textLength="12.2" clip-path="url(#diff-line-34)">│</text><text class="diff-r3" x="305" y="849.6" textLength="24.4" clip-path="url(#diff-line-34)">+0</text><text class="diff-r6" x="341.6" y="849.6" textLength="12.2" clip-path="url(#diff-line-34)">│</text><text class="diff-r3" x="366" y="849.6" textLength="24.4" clip-path="url(#diff-line-34)">-0</text><text class="diff-r6" x="402.6" y="849.6" textLength="12.2" clip-path="url(#diff-line-34)">│</text><text class="diff-r6" x="1256.6" y="849.6" textLength="12.2" clip-path="url(#diff-line-34)">│</text><text class="diff-r5" x="1268.8" y="849.6" textLength="12.2" clip-path="url(#diff-line-34)">
+</text><text class="diff-r6" x="0" y="874" textLength="12.2" clip-path="url(#diff-line-35)">│</text><text class="diff-r4" x="24.4" y="874" textLength="244" clip-path="url(#diff-line-35)">Files&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="280.6" y="874" textLength="12.2" clip-path="url(#diff-line-35)">│</text><text class="diff-r12" x="305" y="874" textLength="24.4" clip-path="url(#diff-line-35)">+2</text><text class="diff-r6" x="341.6" y="874" textLength="12.2" clip-path="url(#diff-line-35)">│</text><text class="diff-r8" x="366" y="874" textLength="24.4" clip-path="url(#diff-line-35)">-2</text><text class="diff-r6" x="402.6" y="874" textLength="12.2" clip-path="url(#diff-line-35)">│</text><text class="diff-r5" x="427" y="874" textLength="817.4" clip-path="url(#diff-line-35)">0&#160;embedded&#160;payloads&#160;·&#160;+&#160;META-INF/FOREIGN.RSA,&#160;META-INF/FOREIGN.SF&#160;&#160;</text><text class="diff-r6" x="1256.6" y="874" textLength="12.2" clip-path="url(#diff-line-35)">│</text><text class="diff-r5" x="1268.8" y="874" textLength="12.2" clip-path="url(#diff-line-35)">
+</text><text class="diff-r6" x="0" y="898.4" textLength="12.2" clip-path="url(#diff-line-36)">│</text><text class="diff-r6" x="280.6" y="898.4" textLength="12.2" clip-path="url(#diff-line-36)">│</text><text class="diff-r6" x="341.6" y="898.4" textLength="12.2" clip-path="url(#diff-line-36)">│</text><text class="diff-r6" x="402.6" y="898.4" textLength="12.2" clip-path="url(#diff-line-36)">│</text><text class="diff-r5" x="427" y="898.4" textLength="817.4" clip-path="url(#diff-line-36)">-&#160;META-INF/VENDOR.RSA,&#160;META-INF/VENDOR.SF&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1256.6" y="898.4" textLength="12.2" clip-path="url(#diff-line-36)">│</text><text class="diff-r5" x="1268.8" y="898.4" textLength="12.2" clip-path="url(#diff-line-36)">
+</text><text class="diff-r6" x="0" y="922.8" textLength="12.2" clip-path="url(#diff-line-37)">│</text><text class="diff-r4" x="24.4" y="922.8" textLength="244" clip-path="url(#diff-line-37)">Manifest&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="280.6" y="922.8" textLength="12.2" clip-path="url(#diff-line-37)">│</text><text class="diff-r6" x="341.6" y="922.8" textLength="12.2" clip-path="url(#diff-line-37)">│</text><text class="diff-r6" x="402.6" y="922.8" textLength="12.2" clip-path="url(#diff-line-37)">│</text><text class="diff-r5" x="427" y="922.8" textLength="817.4" clip-path="url(#diff-line-37)">launcher&#160;dev.kloner.fixture.MainActivity&#160;→&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1256.6" y="922.8" textLength="12.2" clip-path="url(#diff-line-37)">│</text><text class="diff-r5" x="1268.8" y="922.8" textLength="12.2" clip-path="url(#diff-line-37)">
+</text><text class="diff-r6" x="0" y="947.2" textLength="12.2" clip-path="url(#diff-line-38)">│</text><text class="diff-r6" x="280.6" y="947.2" textLength="12.2" clip-path="url(#diff-line-38)">│</text><text class="diff-r6" x="341.6" y="947.2" textLength="12.2" clip-path="url(#diff-line-38)">│</text><text class="diff-r6" x="402.6" y="947.2" textLength="12.2" clip-path="url(#diff-line-38)">│</text><text class="diff-r5" x="427" y="947.2" textLength="817.4" clip-path="url(#diff-line-38)">dev.kloner.fixture.lite.MainActivity&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="diff-r6" x="1256.6" y="947.2" textLength="12.2" clip-path="url(#diff-line-38)">│</text><text class="diff-r5" x="1268.8" y="947.2" textLength="12.2" clip-path="url(#diff-line-38)">
+</text><text class="diff-r6" x="0" y="971.6" textLength="1268.8" clip-path="url(#diff-line-39)">╰──────────────────────┴────┴────┴─────────────────────────────────────────────────────────────────────╯</text><text class="diff-r5" x="1268.8" y="971.6" textLength="12.2" clip-path="url(#diff-line-39)">
+</text><text class="diff-r5" x="1268.8" y="996" textLength="12.2" clip-path="url(#diff-line-40)">
+</text><text class="diff-r6" x="0" y="1020.4" textLength="24.4" clip-path="url(#diff-line-41)">╭─</text><text class="diff-r9" x="24.4" y="1020.4" textLength="170.8" clip-path="url(#diff-line-41)">&#160;Capabilities&#160;</text><text class="diff-r6" x="195.2" y="1020.4" textLength="1049.2" clip-path="url(#diff-line-41)">──────────────────────────────────────────────────────────────────────────────────────</text><text class="diff-r6" x="1244.4" y="1020.4" textLength="24.4" clip-path="url(#diff-line-41)">─╮</text><text class="diff-r5" x="1268.8" y="1020.4" textLength="12.2" clip-path="url(#diff-line-41)">
+</text><text class="diff-r6" x="0" y="1044.8" textLength="12.2" clip-path="url(#diff-line-42)">│</text><text class="diff-r4" x="24.4" y="1044.8" textLength="1220" clip-path="url(#diff-line-42)">Only&#160;in&#160;the&#160;sample&#160;(different&#160;code&#160;base,&#160;not&#160;an&#160;injection):&#160;nothing&#160;detected&#160;by&#160;the&#160;capability&#160;table</text><text class="diff-r6" x="1256.6" y="1044.8" textLength="12.2" clip-path="url(#diff-line-42)">│</text><text class="diff-r5" x="1268.8" y="1044.8" textLength="12.2" clip-path="url(#diff-line-42)">
+</text><text class="diff-r6" x="0" y="1069.2" textLength="1268.8" clip-path="url(#diff-line-43)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="diff-r5" x="1268.8" y="1069.2" textLength="12.2" clip-path="url(#diff-line-43)">
+</text>
+    </g>
+    </g>
+</svg>

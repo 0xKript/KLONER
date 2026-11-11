@@ -1,0 +1,327 @@
+<svg class="rich-terminal" viewBox="0 0 1287 1733.6" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io by scripts/export_screens.py -->
+    <style>
+    .hunt-matrix {
+        font-family: "Cascadia Mono", "Fira Code", "DejaVu Sans Mono", Menlo, Consolas, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+    .hunt-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    .hunt-r1 { fill: #7fe6b3 }
+.hunt-r2 { fill: #7fe6b3;font-weight: bold }
+.hunt-r3 { fill: #5f8577 }
+.hunt-r4 { fill: #c2f5da;font-weight: bold }
+.hunt-r5 { fill: #a3c7b6 }
+.hunt-r6 { fill: #2b7258 }
+.hunt-r7 { fill: #1f1800;font-weight: bold }
+.hunt-r8 { fill: #45bf88 }
+.hunt-r9 { fill: #f0c75e;font-weight: bold }
+.hunt-r10 { fill: #f0c75e }
+.hunt-r11 { fill: #5f8577;font-weight: bold }
+.hunt-r12 { fill: #ff6b6b;font-weight: bold }
+.hunt-r13 { fill: #c2f5da }
+.hunt-r14 { fill: #c792ea;font-weight: bold }
+.hunt-r15 { fill: #45bf88;font-weight: bold }
+.hunt-r16 { fill: #7fb3d5;font-weight: bold }
+.hunt-r17 { fill: #8a8a8a;font-weight: bold }
+.hunt-r18 { fill: #2b7258;font-weight: bold }
+.hunt-r19 { fill: #a3c7b6;font-weight: bold }
+.hunt-r20 { fill: #ff6b6b }
+    </style>
+    <defs>
+    <clipPath id="hunt-clip-terminal">
+      <rect x="0" y="0" width="1267.8" height="1682.6" />
+    </clipPath>
+    <clipPath id="hunt-line-0">
+    <rect x="0" y="1.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-1">
+    <rect x="0" y="25.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-2">
+    <rect x="0" y="50.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-3">
+    <rect x="0" y="74.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-4">
+    <rect x="0" y="99.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-5">
+    <rect x="0" y="123.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-6">
+    <rect x="0" y="147.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-7">
+    <rect x="0" y="172.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-8">
+    <rect x="0" y="196.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-9">
+    <rect x="0" y="221.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-10">
+    <rect x="0" y="245.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-11">
+    <rect x="0" y="269.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-12">
+    <rect x="0" y="294.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-13">
+    <rect x="0" y="318.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-14">
+    <rect x="0" y="343.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-15">
+    <rect x="0" y="367.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-16">
+    <rect x="0" y="391.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-17">
+    <rect x="0" y="416.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-18">
+    <rect x="0" y="440.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-19">
+    <rect x="0" y="465.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-20">
+    <rect x="0" y="489.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-21">
+    <rect x="0" y="513.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-22">
+    <rect x="0" y="538.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-23">
+    <rect x="0" y="562.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-24">
+    <rect x="0" y="587.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-25">
+    <rect x="0" y="611.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-26">
+    <rect x="0" y="635.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-27">
+    <rect x="0" y="660.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-28">
+    <rect x="0" y="684.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-29">
+    <rect x="0" y="709.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-30">
+    <rect x="0" y="733.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-31">
+    <rect x="0" y="757.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-32">
+    <rect x="0" y="782.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-33">
+    <rect x="0" y="806.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-34">
+    <rect x="0" y="831.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-35">
+    <rect x="0" y="855.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-36">
+    <rect x="0" y="879.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-37">
+    <rect x="0" y="904.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-38">
+    <rect x="0" y="928.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-39">
+    <rect x="0" y="953.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-40">
+    <rect x="0" y="977.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-41">
+    <rect x="0" y="1001.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-42">
+    <rect x="0" y="1026.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-43">
+    <rect x="0" y="1050.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-44">
+    <rect x="0" y="1075.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-45">
+    <rect x="0" y="1099.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-46">
+    <rect x="0" y="1123.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-47">
+    <rect x="0" y="1148.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-48">
+    <rect x="0" y="1172.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-49">
+    <rect x="0" y="1197.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-50">
+    <rect x="0" y="1221.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-51">
+    <rect x="0" y="1245.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-52">
+    <rect x="0" y="1270.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-53">
+    <rect x="0" y="1294.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-54">
+    <rect x="0" y="1319.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-55">
+    <rect x="0" y="1343.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-56">
+    <rect x="0" y="1367.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-57">
+    <rect x="0" y="1392.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-58">
+    <rect x="0" y="1416.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-59">
+    <rect x="0" y="1441.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-60">
+    <rect x="0" y="1465.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-61">
+    <rect x="0" y="1489.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-62">
+    <rect x="0" y="1514.3" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-63">
+    <rect x="0" y="1538.7" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-64">
+    <rect x="0" y="1563.1" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-65">
+    <rect x="0" y="1587.5" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-66">
+    <rect x="0" y="1611.9" width="1268.8" height="24.65"/>
+            </clipPath>
+<clipPath id="hunt-line-67">
+    <rect x="0" y="1636.3" width="1268.8" height="24.65"/>
+            </clipPath>
+    </defs>
+    <rect fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="1285" height="1731.6" rx="8"/><text class="hunt-title" fill="#a3c7b6" text-anchor="middle" x="642" y="27">kloner&#160;hunt&#160;dev.kloner.fixture</text>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#hunt-clip-terminal)">
+    <rect fill="#e8b93c" x="488" y="50.3" width="183" height="24.65" shape-rendering="crispEdges"/>
+    <g class="hunt-matrix">
+    <text class="hunt-r1" x="0" y="20" textLength="24.4" clip-path="url(#hunt-line-0)">◆&#160;</text><text class="hunt-r2" x="24.4" y="20" textLength="73.2" clip-path="url(#hunt-line-0)">KLONER</text><text class="hunt-r3" x="97.6" y="20" textLength="36.6" clip-path="url(#hunt-line-0)">&#160;·&#160;</text><text class="hunt-r4" x="134.2" y="20" textLength="48.8" clip-path="url(#hunt-line-0)">hunt</text><text class="hunt-r3" x="183" y="20" textLength="36.6" clip-path="url(#hunt-line-0)">&#160;·&#160;</text><text class="hunt-r4" x="219.6" y="20" textLength="219.6" clip-path="url(#hunt-line-0)">dev.kloner.fixture</text><text class="hunt-r6" x="451.4" y="20" textLength="817.4" clip-path="url(#hunt-line-0)">───────────────────────────────────────────────────────────────────</text><text class="hunt-r5" x="1268.8" y="20" textLength="12.2" clip-path="url(#hunt-line-0)">
+</text><text class="hunt-r5" x="1268.8" y="44.4" textLength="12.2" clip-path="url(#hunt-line-1)">
+</text><text class="hunt-r3" x="0" y="68.8" textLength="85.4" clip-path="url(#hunt-line-2)">Anchor&#160;</text><text class="hunt-r4" x="109.8" y="68.8" textLength="219.6" clip-path="url(#hunt-line-2)">dev.kloner.fixture</text><text class="hunt-r3" x="329.4" y="68.8" textLength="158.6" clip-path="url(#hunt-line-2)">&#160;&#160;#5217…3cd&#160;&#160;</text><text class="hunt-r7" x="488" y="68.8" textLength="183" clip-path="url(#hunt-line-2)">&#160;USER_ASSERTED&#160;</text><text class="hunt-r3" x="671" y="68.8" textLength="488" clip-path="url(#hunt-line-2)">&#160;&#160;supplied&#160;by&#160;you&#160;only:&#160;not&#160;corroborated</text><text class="hunt-r5" x="1268.8" y="68.8" textLength="12.2" clip-path="url(#hunt-line-2)">
+</text><text class="hunt-r3" x="0" y="93.2" textLength="85.4" clip-path="url(#hunt-line-3)">Engine&#160;</text><text class="hunt-r5" x="109.8" y="93.2" textLength="1049.2" clip-path="url(#hunt-line-3)">KLONER&#160;1.0.0&#160;·&#160;apksig&#160;build-tools&#160;36.0.0&#160;(apksigner.jar&#160;sha256:3716d9311e55)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="93.2" textLength="12.2" clip-path="url(#hunt-line-3)">
+</text><text class="hunt-r3" x="0" y="117.6" textLength="85.4" clip-path="url(#hunt-line-4)">Run&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="109.8" y="117.6" textLength="1049.2" clip-path="url(#hunt-line-4)">2026-11-11T00-18-27Z&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="117.6" textLength="12.2" clip-path="url(#hunt-line-4)">
+</text><text class="hunt-r3" x="0" y="142" textLength="85.4" clip-path="url(#hunt-line-5)">Sources</text><text class="hunt-r8" x="109.8" y="142" textLength="24.4" clip-path="url(#hunt-line-5)">●&#160;</text><text class="hunt-r4" x="134.2" y="142" textLength="61" clip-path="url(#hunt-line-5)">local</text><text class="hunt-r8" x="195.2" y="142" textLength="36.6" clip-path="url(#hunt-line-5)">&#160;OK</text><text class="hunt-r3" x="231.8" y="142" textLength="73.2" clip-path="url(#hunt-line-5)">&#160;11/11</text><text class="hunt-r5" x="1268.8" y="142" textLength="12.2" clip-path="url(#hunt-line-5)">
+</text><text class="hunt-r5" x="1268.8" y="166.4" textLength="12.2" clip-path="url(#hunt-line-6)">
+</text><text class="hunt-r9" x="0" y="190.8" textLength="317.2" clip-path="url(#hunt-line-7)">▲&#160;Anchor&#160;not&#160;corroborated.</text><text class="hunt-r10" x="317.2" y="190.8" textLength="622.2" clip-path="url(#hunt-line-7)">&#160;Verdicts&#160;are&#160;relative&#160;to&#160;a&#160;USER-asserted&#160;identity.</text><text class="hunt-r5" x="1268.8" y="190.8" textLength="12.2" clip-path="url(#hunt-line-7)">
+</text><text class="hunt-r5" x="1268.8" y="215.2" textLength="12.2" clip-path="url(#hunt-line-8)">
+</text><text class="hunt-r2" x="0" y="239.6" textLength="146.4" clip-path="url(#hunt-line-9)">Copies&#160;found</text><text class="hunt-r11" x="146.4" y="239.6" textLength="854" clip-path="url(#hunt-line-9)">&#160;&#160;&#160;every&#160;file&#160;the&#160;sweep&#160;found,&#160;and&#160;its&#160;verdict;&#160;the&#160;most&#160;serious&#160;first</text><text class="hunt-r5" x="1268.8" y="239.6" textLength="12.2" clip-path="url(#hunt-line-9)">
+</text><text class="hunt-r6" x="0" y="264" textLength="1268.8" clip-path="url(#hunt-line-10)">╭────────────────┬────────┬─────────────────────────┬──────────┬──────────┬────────────────────────────╮</text><text class="hunt-r5" x="1268.8" y="264" textLength="12.2" clip-path="url(#hunt-line-10)">
+</text><text class="hunt-r6" x="0" y="288.4" textLength="12.2" clip-path="url(#hunt-line-11)">│</text><text class="hunt-r2" x="24.4" y="288.4" textLength="170.8" clip-path="url(#hunt-line-11)">VERDICT&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="207.4" y="288.4" textLength="12.2" clip-path="url(#hunt-line-11)">│</text><text class="hunt-r2" x="231.8" y="288.4" textLength="73.2" clip-path="url(#hunt-line-11)">SOURCE</text><text class="hunt-r6" x="317.2" y="288.4" textLength="12.2" clip-path="url(#hunt-line-11)">│</text><text class="hunt-r2" x="341.6" y="288.4" textLength="280.6" clip-path="url(#hunt-line-11)">VERSION&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="634.4" y="288.4" textLength="12.2" clip-path="url(#hunt-line-11)">│</text><text class="hunt-r2" x="658.8" y="288.4" textLength="97.6" clip-path="url(#hunt-line-11)">FILE&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="768.6" y="288.4" textLength="12.2" clip-path="url(#hunt-line-11)">│</text><text class="hunt-r2" x="793" y="288.4" textLength="97.6" clip-path="url(#hunt-line-11)">SIGNER&#160;&#160;</text><text class="hunt-r6" x="902.8" y="288.4" textLength="12.2" clip-path="url(#hunt-line-11)">│</text><text class="hunt-r2" x="927.2" y="288.4" textLength="317.2" clip-path="url(#hunt-line-11)">LABELS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="1256.6" y="288.4" textLength="12.2" clip-path="url(#hunt-line-11)">│</text><text class="hunt-r5" x="1268.8" y="288.4" textLength="12.2" clip-path="url(#hunt-line-11)">
+</text><text class="hunt-r6" x="0" y="312.8" textLength="1268.8" clip-path="url(#hunt-line-12)">├────────────────┼────────┼─────────────────────────┼──────────┼──────────┼────────────────────────────┤</text><text class="hunt-r5" x="1268.8" y="312.8" textLength="12.2" clip-path="url(#hunt-line-12)">
+</text><text class="hunt-r6" x="0" y="337.2" textLength="12.2" clip-path="url(#hunt-line-13)">│</text><text class="hunt-r12" x="24.4" y="337.2" textLength="170.8" clip-path="url(#hunt-line-13)">✗&#160;FORGED&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="207.4" y="337.2" textLength="12.2" clip-path="url(#hunt-line-13)">│</text><text class="hunt-r5" x="231.8" y="337.2" textLength="73.2" clip-path="url(#hunt-line-13)">local&#160;</text><text class="hunt-r6" x="317.2" y="337.2" textLength="12.2" clip-path="url(#hunt-line-13)">│</text><text class="hunt-r13" x="341.6" y="337.2" textLength="280.6" clip-path="url(#hunt-line-13)">1.0&#160;(1)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="634.4" y="337.2" textLength="12.2" clip-path="url(#hunt-line-13)">│</text><text class="hunt-r5" x="658.8" y="337.2" textLength="97.6" clip-path="url(#hunt-line-13)">2cdf…b9b</text><text class="hunt-r6" x="768.6" y="337.2" textLength="12.2" clip-path="url(#hunt-line-13)">│</text><text class="hunt-r12" x="793" y="337.2" textLength="97.6" clip-path="url(#hunt-line-13)">2e6c…189</text><text class="hunt-r6" x="902.8" y="337.2" textLength="12.2" clip-path="url(#hunt-line-13)">│</text><text class="hunt-r10" x="927.2" y="337.2" textLength="122" clip-path="url(#hunt-line-13)">REPACKAGED</text><text class="hunt-r3" x="1049.2" y="337.2" textLength="36.6" clip-path="url(#hunt-line-13)">&#160;·&#160;</text><text class="hunt-r6" x="1256.6" y="337.2" textLength="12.2" clip-path="url(#hunt-line-13)">│</text><text class="hunt-r5" x="1268.8" y="337.2" textLength="12.2" clip-path="url(#hunt-line-13)">
+</text><text class="hunt-r6" x="0" y="361.6" textLength="12.2" clip-path="url(#hunt-line-14)">│</text><text class="hunt-r6" x="207.4" y="361.6" textLength="12.2" clip-path="url(#hunt-line-14)">│</text><text class="hunt-r6" x="317.2" y="361.6" textLength="12.2" clip-path="url(#hunt-line-14)">│</text><text class="hunt-r6" x="634.4" y="361.6" textLength="12.2" clip-path="url(#hunt-line-14)">│</text><text class="hunt-r6" x="768.6" y="361.6" textLength="12.2" clip-path="url(#hunt-line-14)">│</text><text class="hunt-r6" x="902.8" y="361.6" textLength="12.2" clip-path="url(#hunt-line-14)">│</text><text class="hunt-r12" x="927.2" y="361.6" textLength="256.2" clip-path="url(#hunt-line-14)">SHARED_FOREIGN_SIGNER</text><text class="hunt-r6" x="1256.6" y="361.6" textLength="12.2" clip-path="url(#hunt-line-14)">│</text><text class="hunt-r5" x="1268.8" y="361.6" textLength="12.2" clip-path="url(#hunt-line-14)">
+</text><text class="hunt-r6" x="0" y="386" textLength="12.2" clip-path="url(#hunt-line-15)">│</text><text class="hunt-r12" x="24.4" y="386" textLength="170.8" clip-path="url(#hunt-line-15)">✗&#160;FORGED&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="207.4" y="386" textLength="12.2" clip-path="url(#hunt-line-15)">│</text><text class="hunt-r5" x="231.8" y="386" textLength="73.2" clip-path="url(#hunt-line-15)">local&#160;</text><text class="hunt-r6" x="317.2" y="386" textLength="12.2" clip-path="url(#hunt-line-15)">│</text><text class="hunt-r13" x="341.6" y="386" textLength="280.6" clip-path="url(#hunt-line-15)">1.0&#160;(1)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="634.4" y="386" textLength="12.2" clip-path="url(#hunt-line-15)">│</text><text class="hunt-r5" x="658.8" y="386" textLength="97.6" clip-path="url(#hunt-line-15)">142d…dfe</text><text class="hunt-r6" x="768.6" y="386" textLength="12.2" clip-path="url(#hunt-line-15)">│</text><text class="hunt-r12" x="793" y="386" textLength="97.6" clip-path="url(#hunt-line-15)">6b71…d34</text><text class="hunt-r6" x="902.8" y="386" textLength="12.2" clip-path="url(#hunt-line-15)">│</text><text class="hunt-r10" x="927.2" y="386" textLength="97.6" clip-path="url(#hunt-line-15)">DEBUG_DN</text><text class="hunt-r3" x="1024.8" y="386" textLength="36.6" clip-path="url(#hunt-line-15)">&#160;·&#160;</text><text class="hunt-r10" x="1061.4" y="386" textLength="122" clip-path="url(#hunt-line-15)">REPACKAGED</text><text class="hunt-r6" x="1256.6" y="386" textLength="12.2" clip-path="url(#hunt-line-15)">│</text><text class="hunt-r5" x="1268.8" y="386" textLength="12.2" clip-path="url(#hunt-line-15)">
+</text><text class="hunt-r6" x="0" y="410.4" textLength="12.2" clip-path="url(#hunt-line-16)">│</text><text class="hunt-r12" x="24.4" y="410.4" textLength="170.8" clip-path="url(#hunt-line-16)">✗&#160;FORGED&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="207.4" y="410.4" textLength="12.2" clip-path="url(#hunt-line-16)">│</text><text class="hunt-r5" x="231.8" y="410.4" textLength="73.2" clip-path="url(#hunt-line-16)">local&#160;</text><text class="hunt-r6" x="317.2" y="410.4" textLength="12.2" clip-path="url(#hunt-line-16)">│</text><text class="hunt-r13" x="341.6" y="410.4" textLength="280.6" clip-path="url(#hunt-line-16)">1.0&#160;(1)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="634.4" y="410.4" textLength="12.2" clip-path="url(#hunt-line-16)">│</text><text class="hunt-r5" x="658.8" y="410.4" textLength="97.6" clip-path="url(#hunt-line-16)">403f…060</text><text class="hunt-r6" x="768.6" y="410.4" textLength="12.2" clip-path="url(#hunt-line-16)">│</text><text class="hunt-r12" x="793" y="410.4" textLength="97.6" clip-path="url(#hunt-line-16)">2e6c…189</text><text class="hunt-r6" x="902.8" y="410.4" textLength="12.2" clip-path="url(#hunt-line-16)">│</text><text class="hunt-r12" x="927.2" y="410.4" textLength="231.8" clip-path="url(#hunt-line-16)">BUNDLE_INCONSISTENT</text><text class="hunt-r3" x="1159" y="410.4" textLength="36.6" clip-path="url(#hunt-line-16)">&#160;·&#160;</text><text class="hunt-r6" x="1256.6" y="410.4" textLength="12.2" clip-path="url(#hunt-line-16)">│</text><text class="hunt-r5" x="1268.8" y="410.4" textLength="12.2" clip-path="url(#hunt-line-16)">
+</text><text class="hunt-r6" x="0" y="434.8" textLength="12.2" clip-path="url(#hunt-line-17)">│</text><text class="hunt-r6" x="207.4" y="434.8" textLength="12.2" clip-path="url(#hunt-line-17)">│</text><text class="hunt-r6" x="317.2" y="434.8" textLength="12.2" clip-path="url(#hunt-line-17)">│</text><text class="hunt-r6" x="634.4" y="434.8" textLength="12.2" clip-path="url(#hunt-line-17)">│</text><text class="hunt-r6" x="768.6" y="434.8" textLength="12.2" clip-path="url(#hunt-line-17)">│</text><text class="hunt-r6" x="902.8" y="434.8" textLength="12.2" clip-path="url(#hunt-line-17)">│</text><text class="hunt-r12" x="927.2" y="434.8" textLength="256.2" clip-path="url(#hunt-line-17)">SHARED_FOREIGN_SIGNER</text><text class="hunt-r6" x="1256.6" y="434.8" textLength="12.2" clip-path="url(#hunt-line-17)">│</text><text class="hunt-r5" x="1268.8" y="434.8" textLength="12.2" clip-path="url(#hunt-line-17)">
+</text><text class="hunt-r6" x="0" y="459.2" textLength="12.2" clip-path="url(#hunt-line-18)">│</text><text class="hunt-r14" x="24.4" y="459.2" textLength="170.8" clip-path="url(#hunt-line-18)">✗&#160;IMPERSONATOR</text><text class="hunt-r6" x="207.4" y="459.2" textLength="12.2" clip-path="url(#hunt-line-18)">│</text><text class="hunt-r5" x="231.8" y="459.2" textLength="73.2" clip-path="url(#hunt-line-18)">local&#160;</text><text class="hunt-r6" x="317.2" y="459.2" textLength="12.2" clip-path="url(#hunt-line-18)">│</text><text class="hunt-r13" x="341.6" y="459.2" textLength="280.6" clip-path="url(#hunt-line-18)">dev.kloner.fixture.lite</text><text class="hunt-r6" x="634.4" y="459.2" textLength="12.2" clip-path="url(#hunt-line-18)">│</text><text class="hunt-r5" x="658.8" y="459.2" textLength="97.6" clip-path="url(#hunt-line-18)">a82e…54c</text><text class="hunt-r6" x="768.6" y="459.2" textLength="12.2" clip-path="url(#hunt-line-18)">│</text><text class="hunt-r12" x="793" y="459.2" textLength="97.6" clip-path="url(#hunt-line-18)">2e6c…189</text><text class="hunt-r6" x="902.8" y="459.2" textLength="12.2" clip-path="url(#hunt-line-18)">│</text><text class="hunt-r12" x="927.2" y="459.2" textLength="134.2" clip-path="url(#hunt-line-18)">EXACT_LABEL</text><text class="hunt-r3" x="1061.4" y="459.2" textLength="36.6" clip-path="url(#hunt-line-18)">&#160;·&#160;</text><text class="hunt-r10" x="1098" y="459.2" textLength="97.6" clip-path="url(#hunt-line-18)">IMPOSTOR</text><text class="hunt-r3" x="1195.6" y="459.2" textLength="36.6" clip-path="url(#hunt-line-18)">&#160;·&#160;</text><text class="hunt-r6" x="1256.6" y="459.2" textLength="12.2" clip-path="url(#hunt-line-18)">│</text><text class="hunt-r5" x="1268.8" y="459.2" textLength="12.2" clip-path="url(#hunt-line-18)">
+</text><text class="hunt-r6" x="0" y="483.6" textLength="12.2" clip-path="url(#hunt-line-19)">│</text><text class="hunt-r6" x="207.4" y="483.6" textLength="12.2" clip-path="url(#hunt-line-19)">│</text><text class="hunt-r6" x="317.2" y="483.6" textLength="12.2" clip-path="url(#hunt-line-19)">│</text><text class="hunt-r6" x="634.4" y="483.6" textLength="12.2" clip-path="url(#hunt-line-19)">│</text><text class="hunt-r6" x="768.6" y="483.6" textLength="12.2" clip-path="url(#hunt-line-19)">│</text><text class="hunt-r6" x="902.8" y="483.6" textLength="12.2" clip-path="url(#hunt-line-19)">│</text><text class="hunt-r12" x="927.2" y="483.6" textLength="256.2" clip-path="url(#hunt-line-19)">SHARED_FOREIGN_SIGNER</text><text class="hunt-r3" x="1183.4" y="483.6" textLength="36.6" clip-path="url(#hunt-line-19)">&#160;·&#160;</text><text class="hunt-r6" x="1256.6" y="483.6" textLength="12.2" clip-path="url(#hunt-line-19)">│</text><text class="hunt-r5" x="1268.8" y="483.6" textLength="12.2" clip-path="url(#hunt-line-19)">
+</text><text class="hunt-r6" x="0" y="508" textLength="12.2" clip-path="url(#hunt-line-20)">│</text><text class="hunt-r6" x="207.4" y="508" textLength="12.2" clip-path="url(#hunt-line-20)">│</text><text class="hunt-r6" x="317.2" y="508" textLength="12.2" clip-path="url(#hunt-line-20)">│</text><text class="hunt-r6" x="634.4" y="508" textLength="12.2" clip-path="url(#hunt-line-20)">│</text><text class="hunt-r6" x="768.6" y="508" textLength="12.2" clip-path="url(#hunt-line-20)">│</text><text class="hunt-r6" x="902.8" y="508" textLength="12.2" clip-path="url(#hunt-line-20)">│</text><text class="hunt-r10" x="927.2" y="508" textLength="280.6" clip-path="url(#hunt-line-20)">LOOKALIKE:PACKAGE_AFFIX</text><text class="hunt-r6" x="1256.6" y="508" textLength="12.2" clip-path="url(#hunt-line-20)">│</text><text class="hunt-r5" x="1268.8" y="508" textLength="12.2" clip-path="url(#hunt-line-20)">
+</text><text class="hunt-r6" x="0" y="532.4" textLength="12.2" clip-path="url(#hunt-line-21)">│</text><text class="hunt-r15" x="24.4" y="532.4" textLength="170.8" clip-path="url(#hunt-line-21)">✓&#160;GENUINE&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="207.4" y="532.4" textLength="12.2" clip-path="url(#hunt-line-21)">│</text><text class="hunt-r5" x="231.8" y="532.4" textLength="73.2" clip-path="url(#hunt-line-21)">local&#160;</text><text class="hunt-r6" x="317.2" y="532.4" textLength="12.2" clip-path="url(#hunt-line-21)">│</text><text class="hunt-r13" x="341.6" y="532.4" textLength="280.6" clip-path="url(#hunt-line-21)">1.0&#160;(1)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="634.4" y="532.4" textLength="12.2" clip-path="url(#hunt-line-21)">│</text><text class="hunt-r5" x="658.8" y="532.4" textLength="97.6" clip-path="url(#hunt-line-21)">08e4…7e8</text><text class="hunt-r6" x="768.6" y="532.4" textLength="12.2" clip-path="url(#hunt-line-21)">│</text><text class="hunt-r15" x="793" y="532.4" textLength="97.6" clip-path="url(#hunt-line-21)">official</text><text class="hunt-r6" x="902.8" y="532.4" textLength="12.2" clip-path="url(#hunt-line-21)">│</text><text class="hunt-r6" x="1256.6" y="532.4" textLength="12.2" clip-path="url(#hunt-line-21)">│</text><text class="hunt-r5" x="1268.8" y="532.4" textLength="12.2" clip-path="url(#hunt-line-21)">
+</text><text class="hunt-r6" x="0" y="556.8" textLength="12.2" clip-path="url(#hunt-line-22)">│</text><text class="hunt-r15" x="24.4" y="556.8" textLength="170.8" clip-path="url(#hunt-line-22)">✓&#160;GENUINE&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="207.4" y="556.8" textLength="12.2" clip-path="url(#hunt-line-22)">│</text><text class="hunt-r5" x="231.8" y="556.8" textLength="73.2" clip-path="url(#hunt-line-22)">local&#160;</text><text class="hunt-r6" x="317.2" y="556.8" textLength="12.2" clip-path="url(#hunt-line-22)">│</text><text class="hunt-r13" x="341.6" y="556.8" textLength="280.6" clip-path="url(#hunt-line-22)">1.0&#160;(1)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="634.4" y="556.8" textLength="12.2" clip-path="url(#hunt-line-22)">│</text><text class="hunt-r5" x="658.8" y="556.8" textLength="97.6" clip-path="url(#hunt-line-22)">5c98…1e3</text><text class="hunt-r6" x="768.6" y="556.8" textLength="12.2" clip-path="url(#hunt-line-22)">│</text><text class="hunt-r15" x="793" y="556.8" textLength="97.6" clip-path="url(#hunt-line-22)">official</text><text class="hunt-r6" x="902.8" y="556.8" textLength="12.2" clip-path="url(#hunt-line-22)">│</text><text class="hunt-r5" x="927.2" y="556.8" textLength="134.2" clip-path="url(#hunt-line-22)">ROTATED_KEY</text><text class="hunt-r6" x="1256.6" y="556.8" textLength="12.2" clip-path="url(#hunt-line-22)">│</text><text class="hunt-r5" x="1268.8" y="556.8" textLength="12.2" clip-path="url(#hunt-line-22)">
+</text><text class="hunt-r6" x="0" y="581.2" textLength="12.2" clip-path="url(#hunt-line-23)">│</text><text class="hunt-r15" x="24.4" y="581.2" textLength="170.8" clip-path="url(#hunt-line-23)">✓&#160;GENUINE&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="207.4" y="581.2" textLength="12.2" clip-path="url(#hunt-line-23)">│</text><text class="hunt-r5" x="231.8" y="581.2" textLength="73.2" clip-path="url(#hunt-line-23)">local&#160;</text><text class="hunt-r6" x="317.2" y="581.2" textLength="12.2" clip-path="url(#hunt-line-23)">│</text><text class="hunt-r13" x="341.6" y="581.2" textLength="280.6" clip-path="url(#hunt-line-23)">1.0&#160;(1)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="634.4" y="581.2" textLength="12.2" clip-path="url(#hunt-line-23)">│</text><text class="hunt-r5" x="658.8" y="581.2" textLength="97.6" clip-path="url(#hunt-line-23)">b037…293</text><text class="hunt-r6" x="768.6" y="581.2" textLength="12.2" clip-path="url(#hunt-line-23)">│</text><text class="hunt-r15" x="793" y="581.2" textLength="97.6" clip-path="url(#hunt-line-23)">official</text><text class="hunt-r6" x="902.8" y="581.2" textLength="12.2" clip-path="url(#hunt-line-23)">│</text><text class="hunt-r6" x="1256.6" y="581.2" textLength="12.2" clip-path="url(#hunt-line-23)">│</text><text class="hunt-r5" x="1268.8" y="581.2" textLength="12.2" clip-path="url(#hunt-line-23)">
+</text><text class="hunt-r6" x="0" y="605.6" textLength="12.2" clip-path="url(#hunt-line-24)">│</text><text class="hunt-r15" x="24.4" y="605.6" textLength="170.8" clip-path="url(#hunt-line-24)">✓&#160;GENUINE&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="207.4" y="605.6" textLength="12.2" clip-path="url(#hunt-line-24)">│</text><text class="hunt-r5" x="231.8" y="605.6" textLength="73.2" clip-path="url(#hunt-line-24)">local&#160;</text><text class="hunt-r6" x="317.2" y="605.6" textLength="12.2" clip-path="url(#hunt-line-24)">│</text><text class="hunt-r13" x="341.6" y="605.6" textLength="280.6" clip-path="url(#hunt-line-24)">2.0&#160;(2)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="634.4" y="605.6" textLength="12.2" clip-path="url(#hunt-line-24)">│</text><text class="hunt-r5" x="658.8" y="605.6" textLength="97.6" clip-path="url(#hunt-line-24)">d87b…66c</text><text class="hunt-r6" x="768.6" y="605.6" textLength="12.2" clip-path="url(#hunt-line-24)">│</text><text class="hunt-r15" x="793" y="605.6" textLength="97.6" clip-path="url(#hunt-line-24)">official</text><text class="hunt-r6" x="902.8" y="605.6" textLength="12.2" clip-path="url(#hunt-line-24)">│</text><text class="hunt-r6" x="1256.6" y="605.6" textLength="12.2" clip-path="url(#hunt-line-24)">│</text><text class="hunt-r5" x="1268.8" y="605.6" textLength="12.2" clip-path="url(#hunt-line-24)">
+</text><text class="hunt-r6" x="0" y="630" textLength="12.2" clip-path="url(#hunt-line-25)">│</text><text class="hunt-r16" x="24.4" y="630" textLength="170.8" clip-path="url(#hunt-line-25)">≠&#160;MISMATCH&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="207.4" y="630" textLength="12.2" clip-path="url(#hunt-line-25)">│</text><text class="hunt-r5" x="231.8" y="630" textLength="73.2" clip-path="url(#hunt-line-25)">local&#160;</text><text class="hunt-r6" x="317.2" y="630" textLength="12.2" clip-path="url(#hunt-line-25)">│</text><text class="hunt-r13" x="341.6" y="630" textLength="280.6" clip-path="url(#hunt-line-25)">1.0&#160;(1)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="634.4" y="630" textLength="12.2" clip-path="url(#hunt-line-25)">│</text><text class="hunt-r5" x="658.8" y="630" textLength="97.6" clip-path="url(#hunt-line-25)">670a…ec7</text><text class="hunt-r6" x="768.6" y="630" textLength="12.2" clip-path="url(#hunt-line-25)">│</text><text class="hunt-r5" x="793" y="630" textLength="97.6" clip-path="url(#hunt-line-25)">fed6…252</text><text class="hunt-r6" x="902.8" y="630" textLength="12.2" clip-path="url(#hunt-line-25)">│</text><text class="hunt-r5" x="927.2" y="630" textLength="134.2" clip-path="url(#hunt-line-25)">SAME_VENDOR</text><text class="hunt-r6" x="1256.6" y="630" textLength="12.2" clip-path="url(#hunt-line-25)">│</text><text class="hunt-r5" x="1268.8" y="630" textLength="12.2" clip-path="url(#hunt-line-25)">
+</text><text class="hunt-r6" x="0" y="654.4" textLength="12.2" clip-path="url(#hunt-line-26)">│</text><text class="hunt-r17" x="24.4" y="654.4" textLength="170.8" clip-path="url(#hunt-line-26)">∅&#160;INVALID&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="207.4" y="654.4" textLength="12.2" clip-path="url(#hunt-line-26)">│</text><text class="hunt-r5" x="231.8" y="654.4" textLength="73.2" clip-path="url(#hunt-line-26)">local&#160;</text><text class="hunt-r6" x="317.2" y="654.4" textLength="12.2" clip-path="url(#hunt-line-26)">│</text><text class="hunt-r13" x="341.6" y="654.4" textLength="280.6" clip-path="url(#hunt-line-26)">—&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="634.4" y="654.4" textLength="12.2" clip-path="url(#hunt-line-26)">│</text><text class="hunt-r5" x="658.8" y="654.4" textLength="97.6" clip-path="url(#hunt-line-26)">03a2…374</text><text class="hunt-r6" x="768.6" y="654.4" textLength="12.2" clip-path="url(#hunt-line-26)">│</text><text class="hunt-r3" x="793" y="654.4" textLength="97.6" clip-path="url(#hunt-line-26)">—&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="902.8" y="654.4" textLength="12.2" clip-path="url(#hunt-line-26)">│</text><text class="hunt-r6" x="1256.6" y="654.4" textLength="12.2" clip-path="url(#hunt-line-26)">│</text><text class="hunt-r5" x="1268.8" y="654.4" textLength="12.2" clip-path="url(#hunt-line-26)">
+</text><text class="hunt-r6" x="0" y="678.8" textLength="12.2" clip-path="url(#hunt-line-27)">│</text><text class="hunt-r17" x="24.4" y="678.8" textLength="170.8" clip-path="url(#hunt-line-27)">∅&#160;INVALID&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="207.4" y="678.8" textLength="12.2" clip-path="url(#hunt-line-27)">│</text><text class="hunt-r5" x="231.8" y="678.8" textLength="73.2" clip-path="url(#hunt-line-27)">local&#160;</text><text class="hunt-r6" x="317.2" y="678.8" textLength="12.2" clip-path="url(#hunt-line-27)">│</text><text class="hunt-r13" x="341.6" y="678.8" textLength="280.6" clip-path="url(#hunt-line-27)">—&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="634.4" y="678.8" textLength="12.2" clip-path="url(#hunt-line-27)">│</text><text class="hunt-r5" x="658.8" y="678.8" textLength="97.6" clip-path="url(#hunt-line-27)">bb36…80c</text><text class="hunt-r6" x="768.6" y="678.8" textLength="12.2" clip-path="url(#hunt-line-27)">│</text><text class="hunt-r3" x="793" y="678.8" textLength="97.6" clip-path="url(#hunt-line-27)">—&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r6" x="902.8" y="678.8" textLength="12.2" clip-path="url(#hunt-line-27)">│</text><text class="hunt-r6" x="1256.6" y="678.8" textLength="12.2" clip-path="url(#hunt-line-27)">│</text><text class="hunt-r5" x="1268.8" y="678.8" textLength="12.2" clip-path="url(#hunt-line-27)">
+</text><text class="hunt-r6" x="0" y="703.2" textLength="1268.8" clip-path="url(#hunt-line-28)">╰────────────────┴────────┴─────────────────────────┴──────────┴──────────┴────────────────────────────╯</text><text class="hunt-r5" x="1268.8" y="703.2" textLength="12.2" clip-path="url(#hunt-line-28)">
+</text><text class="hunt-r5" x="1268.8" y="727.6" textLength="12.2" clip-path="url(#hunt-line-29)">
+</text><text class="hunt-r2" x="0" y="752" textLength="183" clip-path="url(#hunt-line-30)">What&#160;this&#160;means</text><text class="hunt-r5" x="1268.8" y="752" textLength="12.2" clip-path="url(#hunt-line-30)">
+</text><text class="hunt-r12" x="0" y="776.4" textLength="280.6" clip-path="url(#hunt-line-31)">✗&#160;FORGED&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="305" y="776.4" textLength="963.8" clip-path="url(#hunt-line-31)">Valid&#160;signature,&#160;but&#160;by&#160;a&#160;key&#160;that&#160;is&#160;not&#160;the&#160;official&#160;one.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="776.4" textLength="12.2" clip-path="url(#hunt-line-31)">
+</text><text class="hunt-r14" x="0" y="800.8" textLength="280.6" clip-path="url(#hunt-line-32)">✗&#160;IMPERSONATOR&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="305" y="800.8" textLength="963.8" clip-path="url(#hunt-line-32)">Another&#160;package&#160;with&#160;no&#160;trusted&#160;signer,&#160;wearing&#160;the&#160;official&#160;brand&#160;(icon&#160;or&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="800.8" textLength="12.2" clip-path="url(#hunt-line-32)">
+</text><text class="hunt-r5" x="305" y="825.2" textLength="963.8" clip-path="url(#hunt-line-33)">brand&#160;label).&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="825.2" textLength="12.2" clip-path="url(#hunt-line-33)">
+</text><text class="hunt-r16" x="0" y="849.6" textLength="280.6" clip-path="url(#hunt-line-34)">≠&#160;MISMATCH&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="305" y="849.6" textLength="963.8" clip-path="url(#hunt-line-34)">A&#160;valid&#160;app,&#160;but&#160;another&#160;package&#160;and&#160;not&#160;an&#160;impersonator.&#160;Not&#160;a&#160;copy.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="849.6" textLength="12.2" clip-path="url(#hunt-line-34)">
+</text><text class="hunt-r17" x="0" y="874" textLength="280.6" clip-path="url(#hunt-line-35)">∅&#160;INVALID&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="305" y="874" textLength="963.8" clip-path="url(#hunt-line-35)">Not&#160;an&#160;evaluable&#160;Android&#160;file:&#160;not&#160;a&#160;ZIP,&#160;corrupt,&#160;an&#160;AAB,&#160;encrypted&#160;or&#160;unsafe.</text><text class="hunt-r5" x="1268.8" y="874" textLength="12.2" clip-path="url(#hunt-line-35)">
+</text><text class="hunt-r15" x="0" y="898.4" textLength="280.6" clip-path="url(#hunt-line-36)">✓&#160;GENUINE&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="305" y="898.4" textLength="963.8" clip-path="url(#hunt-line-36)">Exactly&#160;the&#160;bytes&#160;the&#160;official&#160;identity&#160;signed.&#160;Safe&#160;to&#160;trust.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="898.4" textLength="12.2" clip-path="url(#hunt-line-36)">
+</text><text class="hunt-r5" x="1268.8" y="922.8" textLength="12.2" clip-path="url(#hunt-line-37)">
+</text><text class="hunt-r12" x="0" y="947.2" textLength="280.6" clip-path="url(#hunt-line-38)">BUNDLE_INCONSISTENT&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="305" y="947.2" textLength="963.8" clip-path="url(#hunt-line-38)">Bundle&#160;members&#160;disagree:&#160;some&#160;are&#160;genuine,&#160;some&#160;are&#160;not.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="947.2" textLength="12.2" clip-path="url(#hunt-line-38)">
+</text><text class="hunt-r10" x="0" y="971.6" textLength="280.6" clip-path="url(#hunt-line-39)">DEBUG_DN&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="305" y="971.6" textLength="963.8" clip-path="url(#hunt-line-39)">Signer&#160;certificate&#160;uses&#160;the&#160;Android&#160;debug&#160;subject&#160;DN.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="971.6" textLength="12.2" clip-path="url(#hunt-line-39)">
+</text><text class="hunt-r12" x="0" y="996" textLength="280.6" clip-path="url(#hunt-line-40)">EXACT_LABEL&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="305" y="996" textLength="963.8" clip-path="url(#hunt-line-40)">The&#160;label&#160;equals&#160;a&#160;declared&#160;brand&#160;label.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="996" textLength="12.2" clip-path="url(#hunt-line-40)">
+</text><text class="hunt-r10" x="0" y="1020.4" textLength="280.6" clip-path="url(#hunt-line-41)">IMPOSTOR&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="305" y="1020.4" textLength="963.8" clip-path="url(#hunt-line-41)">Heuristic:&#160;little&#160;of&#160;the&#160;official&#160;code&#160;is&#160;present&#160;(class&#160;overlap).&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="1020.4" textLength="12.2" clip-path="url(#hunt-line-41)">
+</text><text class="hunt-r10" x="0" y="1044.8" textLength="280.6" clip-path="url(#hunt-line-42)">LOOKALIKE:PACKAGE_AFFIX</text><text class="hunt-r5" x="305" y="1044.8" textLength="963.8" clip-path="url(#hunt-line-42)">Heuristic&#160;similarity&#160;to&#160;the&#160;brand&#160;(score&#160;attached).&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="1044.8" textLength="12.2" clip-path="url(#hunt-line-42)">
+</text><text class="hunt-r10" x="0" y="1069.2" textLength="280.6" clip-path="url(#hunt-line-43)">REPACKAGED&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="305" y="1069.2" textLength="963.8" clip-path="url(#hunt-line-43)">Heuristic:&#160;most&#160;of&#160;the&#160;official&#160;code&#160;is&#160;present&#160;(class&#160;overlap).&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="1069.2" textLength="12.2" clip-path="url(#hunt-line-43)">
+</text><text class="hunt-r5" x="0" y="1093.6" textLength="280.6" clip-path="url(#hunt-line-44)">ROTATED_KEY&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="305" y="1093.6" textLength="963.8" clip-path="url(#hunt-line-44)">Signed&#160;by&#160;a&#160;key&#160;admitted&#160;through&#160;proof-of-rotation&#160;(R1/R2).&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="1093.6" textLength="12.2" clip-path="url(#hunt-line-44)">
+</text><text class="hunt-r5" x="0" y="1118" textLength="280.6" clip-path="url(#hunt-line-45)">SAME_VENDOR&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="305" y="1118" textLength="963.8" clip-path="url(#hunt-line-45)">Signed&#160;by&#160;the&#160;official&#160;identity&#160;of&#160;the&#160;expected&#160;package&#160;(a&#160;sibling&#160;app).&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="1118" textLength="12.2" clip-path="url(#hunt-line-45)">
+</text><text class="hunt-r12" x="0" y="1142.4" textLength="280.6" clip-path="url(#hunt-line-46)">SHARED_FOREIGN_SIGNER&#160;&#160;</text><text class="hunt-r5" x="305" y="1142.4" textLength="963.8" clip-path="url(#hunt-line-46)">The&#160;foreign&#160;key&#160;also&#160;signed&#160;other&#160;hostile&#160;copies.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="hunt-r5" x="1268.8" y="1142.4" textLength="12.2" clip-path="url(#hunt-line-46)">
+</text><text class="hunt-r5" x="1268.8" y="1166.8" textLength="12.2" clip-path="url(#hunt-line-47)">
+</text><text class="hunt-r6" x="0" y="1191.2" textLength="24.4" clip-path="url(#hunt-line-48)">╭─</text><text class="hunt-r18" x="24.4" y="1191.2" textLength="97.6" clip-path="url(#hunt-line-48)">&#160;Result&#160;</text><text class="hunt-r6" x="122" y="1191.2" textLength="1122.4" clip-path="url(#hunt-line-48)">────────────────────────────────────────────────────────────────────────────────────────────</text><text class="hunt-r6" x="1244.4" y="1191.2" textLength="24.4" clip-path="url(#hunt-line-48)">─╮</text><text class="hunt-r5" x="1268.8" y="1191.2" textLength="12.2" clip-path="url(#hunt-line-48)">
+</text><text class="hunt-r6" x="0" y="1215.6" textLength="12.2" clip-path="url(#hunt-line-49)">│</text><text class="hunt-r12" x="24.4" y="1215.6" textLength="24.4" clip-path="url(#hunt-line-49)">●&#160;</text><text class="hunt-r4" x="48.8" y="1215.6" textLength="24.4" clip-path="url(#hunt-line-49)">3&#160;</text><text class="hunt-r12" x="73.2" y="1215.6" textLength="73.2" clip-path="url(#hunt-line-49)">FORGED</text><text class="hunt-r14" x="183" y="1215.6" textLength="24.4" clip-path="url(#hunt-line-49)">●&#160;</text><text class="hunt-r4" x="207.4" y="1215.6" textLength="24.4" clip-path="url(#hunt-line-49)">1&#160;</text><text class="hunt-r14" x="231.8" y="1215.6" textLength="146.4" clip-path="url(#hunt-line-49)">IMPERSONATOR</text><text class="hunt-r16" x="414.8" y="1215.6" textLength="24.4" clip-path="url(#hunt-line-49)">●&#160;</text><text class="hunt-r4" x="439.2" y="1215.6" textLength="24.4" clip-path="url(#hunt-line-49)">1&#160;</text><text class="hunt-r16" x="463.6" y="1215.6" textLength="97.6" clip-path="url(#hunt-line-49)">MISMATCH</text><text class="hunt-r17" x="597.8" y="1215.6" textLength="24.4" clip-path="url(#hunt-line-49)">●&#160;</text><text class="hunt-r4" x="622.2" y="1215.6" textLength="24.4" clip-path="url(#hunt-line-49)">2&#160;</text><text class="hunt-r17" x="646.6" y="1215.6" textLength="85.4" clip-path="url(#hunt-line-49)">INVALID</text><text class="hunt-r15" x="768.6" y="1215.6" textLength="24.4" clip-path="url(#hunt-line-49)">●&#160;</text><text class="hunt-r4" x="793" y="1215.6" textLength="24.4" clip-path="url(#hunt-line-49)">4&#160;</text><text class="hunt-r15" x="817.4" y="1215.6" textLength="85.4" clip-path="url(#hunt-line-49)">GENUINE</text><text class="hunt-r6" x="1256.6" y="1215.6" textLength="12.2" clip-path="url(#hunt-line-49)">│</text><text class="hunt-r5" x="1268.8" y="1215.6" textLength="12.2" clip-path="url(#hunt-line-49)">
+</text><text class="hunt-r6" x="0" y="1240" textLength="12.2" clip-path="url(#hunt-line-50)">│</text><text class="hunt-r3" x="24.4" y="1240" textLength="366" clip-path="url(#hunt-line-50)">11&#160;unique&#160;files&#160;·&#160;11&#160;sightings</text><text class="hunt-r6" x="1256.6" y="1240" textLength="12.2" clip-path="url(#hunt-line-50)">│</text><text class="hunt-r5" x="1268.8" y="1240" textLength="12.2" clip-path="url(#hunt-line-50)">
+</text><text class="hunt-r6" x="0" y="1264.4" textLength="12.2" clip-path="url(#hunt-line-51)">│</text><text class="hunt-r19" x="24.4" y="1264.4" textLength="122" clip-path="url(#hunt-line-51)">Coverage:&#160;</text><text class="hunt-r5" x="146.4" y="1264.4" textLength="866.2" clip-path="url(#hunt-line-51)">Evaluated&#160;11&#160;unique&#160;files&#160;(11&#160;sightings)&#160;from&#160;1&#160;of&#160;1&#160;source&#160;—&#160;local&#160;OK.</text><text class="hunt-r6" x="1256.6" y="1264.4" textLength="12.2" clip-path="url(#hunt-line-51)">│</text><text class="hunt-r5" x="1268.8" y="1264.4" textLength="12.2" clip-path="url(#hunt-line-51)">
+</text><text class="hunt-r6" x="0" y="1288.8" textLength="1268.8" clip-path="url(#hunt-line-52)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="hunt-r5" x="1268.8" y="1288.8" textLength="12.2" clip-path="url(#hunt-line-52)">
+</text><text class="hunt-r5" x="1268.8" y="1313.2" textLength="12.2" clip-path="url(#hunt-line-53)">
+</text><text class="hunt-r20" x="0" y="1337.6" textLength="24.4" clip-path="url(#hunt-line-54)">╭─</text><text class="hunt-r12" x="24.4" y="1337.6" textLength="500.2" clip-path="url(#hunt-line-54)">&#160;✗&#160;Top&#160;finding&#160;—&#160;FORGED&#160;2cdf…b9b&#160;(local)&#160;</text><text class="hunt-r20" x="524.6" y="1337.6" textLength="719.8" clip-path="url(#hunt-line-54)">───────────────────────────────────────────────────────────</text><text class="hunt-r20" x="1244.4" y="1337.6" textLength="24.4" clip-path="url(#hunt-line-54)">─╮</text><text class="hunt-r5" x="1268.8" y="1337.6" textLength="12.2" clip-path="url(#hunt-line-54)">
+</text><text class="hunt-r20" x="0" y="1362" textLength="12.2" clip-path="url(#hunt-line-55)">│</text><text class="hunt-r5" x="24.4" y="1362" textLength="1146.8" clip-path="url(#hunt-line-55)">Valid&#160;signature&#160;by&#160;a&#160;key&#160;that&#160;is&#160;not&#160;the&#160;official&#160;one:&#160;2e6c…189&#160;(subject&#160;&#x27;CN=Kloner&#160;Synthetic&#160;</text><text class="hunt-r20" x="1256.6" y="1362" textLength="12.2" clip-path="url(#hunt-line-55)">│</text><text class="hunt-r5" x="1268.8" y="1362" textLength="12.2" clip-path="url(#hunt-line-55)">
+</text><text class="hunt-r20" x="0" y="1386.4" textLength="12.2" clip-path="url(#hunt-line-56)">│</text><text class="hunt-r5" x="24.4" y="1386.4" textLength="500.2" clip-path="url(#hunt-line-56)">foreign&#x27;).&#160;Official&#160;identities:&#160;fed6…252.</text><text class="hunt-r20" x="1256.6" y="1386.4" textLength="12.2" clip-path="url(#hunt-line-56)">│</text><text class="hunt-r5" x="1268.8" y="1386.4" textLength="12.2" clip-path="url(#hunt-line-56)">
+</text><text class="hunt-r20" x="0" y="1410.8" textLength="12.2" clip-path="url(#hunt-line-57)">│</text><text class="hunt-r4" x="24.4" y="1410.8" textLength="610" clip-path="url(#hunt-line-57)">Injected:&#160;nothing&#160;detected&#160;by&#160;the&#160;capability&#160;table</text><text class="hunt-r20" x="1256.6" y="1410.8" textLength="12.2" clip-path="url(#hunt-line-57)">│</text><text class="hunt-r5" x="1268.8" y="1410.8" textLength="12.2" clip-path="url(#hunt-line-57)">
+</text><text class="hunt-r20" x="0" y="1435.2" textLength="12.2" clip-path="url(#hunt-line-58)">│</text><text class="hunt-r10" x="24.4" y="1435.2" textLength="1146.8" clip-path="url(#hunt-line-58)">Forger&#160;key&#160;2e6c…189&#160;also&#160;signed&#160;hostile&#160;copies&#160;of:&#160;dev.kloner.fixture,&#160;dev.kloner.fixture.lite</text><text class="hunt-r20" x="1256.6" y="1435.2" textLength="12.2" clip-path="url(#hunt-line-58)">│</text><text class="hunt-r5" x="1268.8" y="1435.2" textLength="12.2" clip-path="url(#hunt-line-58)">
+</text><text class="hunt-r20" x="0" y="1459.6" textLength="1268.8" clip-path="url(#hunt-line-59)">╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯</text><text class="hunt-r5" x="1268.8" y="1459.6" textLength="12.2" clip-path="url(#hunt-line-59)">
+</text><text class="hunt-r5" x="1268.8" y="1484" textLength="12.2" clip-path="url(#hunt-line-60)">
+</text><text class="hunt-r3" x="0" y="1508.4" textLength="109.8" clip-path="url(#hunt-line-61)">Reports&#160;&#160;</text><text class="hunt-r5" x="109.8" y="1508.4" textLength="427" clip-path="url(#hunt-line-61)">~/kloner-demo\runs\demo\report.json</text><text class="hunt-r3" x="536.8" y="1508.4" textLength="500.2" clip-path="url(#hunt-line-61)">&#160;&#160;(+&#160;~/kloner-demo\runs\demo\report.html)</text><text class="hunt-r5" x="1268.8" y="1508.4" textLength="12.2" clip-path="url(#hunt-line-61)">
+</text><text class="hunt-r12" x="0" y="1532.8" textLength="390.4" clip-path="url(#hunt-line-62)">✗&#160;Exit&#160;10&#160;—&#160;hostile&#160;copies&#160;found</text><text class="hunt-r5" x="1268.8" y="1532.8" textLength="12.2" clip-path="url(#hunt-line-62)">
+</text><text class="hunt-r5" x="1268.8" y="1557.2" textLength="12.2" clip-path="url(#hunt-line-63)">
+</text><text class="hunt-r8" x="0" y="1581.6" textLength="24.4" clip-path="url(#hunt-line-64)">▸&#160;</text><text class="hunt-r15" x="24.4" y="1581.6" textLength="73.2" clip-path="url(#hunt-line-64)">Next:&#160;</text><text class="hunt-r2" x="97.6" y="1581.6" textLength="963.8" clip-path="url(#hunt-line-64)">kloner&#160;explain&#160;2cdf1e088cd68d8f0978b887b7032df1c572ba8f9559599b48c211b0fea7bb9b</text><text class="hunt-r5" x="1268.8" y="1581.6" textLength="12.2" clip-path="url(#hunt-line-64)">
+</text><text class="hunt-r3" x="0" y="1606" textLength="549" clip-path="url(#hunt-line-65)">&#160;&#160;why&#160;this&#160;file&#160;got&#160;its&#160;verdict,&#160;gate&#160;by&#160;gate</text><text class="hunt-r5" x="1268.8" y="1606" textLength="12.2" clip-path="url(#hunt-line-65)">
+</text><text class="hunt-r8" x="0" y="1630.4" textLength="24.4" clip-path="url(#hunt-line-66)">▸&#160;</text><text class="hunt-r15" x="24.4" y="1630.4" textLength="73.2" clip-path="url(#hunt-line-66)">Next:&#160;</text><text class="hunt-r2" x="97.6" y="1630.4" textLength="1061.4" clip-path="url(#hunt-line-66)">kloner&#160;diff&#160;2cdf1e088cd68d8f0978b887b7032df1c572ba8f9559599b48c211b0fea7bb9b&#160;--against&#160;</text><text class="hunt-r5" x="1268.8" y="1630.4" textLength="12.2" clip-path="url(#hunt-line-66)">
+</text><text class="hunt-r2" x="0" y="1654.8" textLength="780.8" clip-path="url(#hunt-line-67)">08e4d18afa43d12ab73775b391c8311cc874a6da85f74a52f66235adcbfaf7e8</text><text class="hunt-r5" x="1268.8" y="1654.8" textLength="12.2" clip-path="url(#hunt-line-67)">
+</text><text class="hunt-r3" x="0" y="1679.2" textLength="622.2" clip-path="url(#hunt-line-68)">&#160;&#160;what&#160;this&#160;copy&#160;changed&#160;against&#160;the&#160;official&#160;build</text><text class="hunt-r5" x="1268.8" y="1679.2" textLength="12.2" clip-path="url(#hunt-line-68)">
+</text>
+    </g>
+    </g>
+</svg>

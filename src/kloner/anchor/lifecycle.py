@@ -6,7 +6,9 @@ import json
 from pathlib import Path
 
 from rich.console import Console
+from rich.text import Text
 
+from kloner import ui
 from kloner.anchor import corroborate, hygiene
 from kloner.anchor.methods import (
     AnchorError,
@@ -60,7 +62,11 @@ def refresh(rt: Runtime, package: str, *, accept: bool, console: Console) -> boo
                 elif ev.method == "fdroid":
                     results.append(from_fdroid(rt, package))
             except AnchorError as e:
-                console.print(f"[red]refresh {ev.method} {ev.url or ''} failed:[/] {e}")
+                console.print(
+                    Text.assemble(
+                        (f"✗ refresh {ev.method} {ev.url or ''} failed: ", f"bold {ui.RED}"), (str(e), ui.SOFT)
+                    )
+                )
                 return True
     for res in results:
         candidate, _ = merge(candidate, res, package=package, known_keys=rt.known_keys)
@@ -69,23 +75,30 @@ def refresh(rt: Runtime, package: str, *, accept: bool, console: Console) -> boo
     lin_after = [e.cert_sha256 for e in candidate.lineage]
     changed = before != after or lin_before != lin_after
     if not changed:
-        console.print(f"No identity change for {package} ({len(results)} method(s) re-run).")
+        ui.done(console, f"No identity change for {package} ({len(results)} method(s) re-run).")
         if accept:
             rt.anchors.save(candidate)
         return False
     console.print(
-        "[bold yellow]The vendor publication changed.[/] This is either a key rotation or a vendor-site "
-        "compromise; KLONER never decides that alone."
+        Text.assemble(
+            ("▲ The vendor publication changed. ", f"bold {ui.AMBER}"),
+            ("This is either a key rotation or a vendor-site compromise; KLONER never decides that alone.", ui.SOFT),
+        )
     )
     for c in sorted(after - before):
-        console.print(f"  + {short_fp(c)} {c}")
+        console.print(Text.assemble(("  + ", f"bold {ui.GREEN}"), (f"{short_fp(c)} ", f"bold {ui.PALE}"), (c, ui.SOFT)))
     for c in sorted(before - after):
-        console.print(f"  - {short_fp(c)} {c}")
+        console.print(Text.assemble(("  - ", f"bold {ui.RED}"), (f"{short_fp(c)} ", f"bold {ui.PALE}"), (c, ui.SOFT)))
     if lin_before != lin_after:
-        console.print(f"  lineage: {' → '.join(map(short_fp, lin_before))} ⇒ {' → '.join(map(short_fp, lin_after))}")
+        console.print(
+            Text(
+                f"  lineage: {' → '.join(map(short_fp, lin_before))} ⇒ {' → '.join(map(short_fp, lin_after))}",
+                style=ui.SOFT,
+            )
+        )
     if accept:
         rt.anchors.save(candidate)
-        console.print("Accepted and written.")
+        ui.done(console, "Accepted and written.")
     return True
 
 
