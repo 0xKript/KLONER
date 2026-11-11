@@ -223,3 +223,19 @@ def test_the_readme_svg_is_the_exported_banner() -> None:
     committed = (ROOT / "docs" / "assets" / "banner.svg").read_text(encoding="utf-8")
     assert committed == b.svg(__version__), "regenerate it: python scripts/export_banner.py"
     assert "https://" not in committed.replace("https://www.textualize.io", "")  # no external fonts
+
+
+def test_a_screen_drawn_first_never_changes_the_banner_colors() -> None:
+    # rich caches each style's escape codes for the color system it was first drawn with and shares equal styles
+    # between consoles. On GitHub Actions Typer drew the help in 16 colors first, with the banner's own greens, and
+    # the banner then printed 16-color codes in true-color mode (D-069). Draw those greens first, as CI did.
+    from rich.console import Console
+    from rich.text import Text
+
+    from kloner import ui
+
+    other = Console(file=io.StringIO(), force_terminal=True, color_system="standard", width=80)
+    for style in (ui.GREEN, ui.BORDER, ui.BRIGHT, f"bold {ui.BRIGHT}", ui.SOFT, ui.MUTED):
+        other.print(Text("x", style=style), Text.assemble(("y", style)))
+    test_true_color_codes_carry_the_exact_values()
+    assert "\x1b[96m" not in _render("truecolor") and "\x1b[90m" not in _render("truecolor")

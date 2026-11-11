@@ -61,7 +61,8 @@ def test_every_option_and_command_is_explained() -> None:
 def test_help_follows_the_three_steps() -> None:
     r = runner.invoke(cli.app, ["--help"], env={"COLUMNS": "120", "NO_COLOR": "1"})
     assert r.exit_code == 0
-    out = r.output
+    # on GitHub Actions Typer forces a terminal: NO_COLOR drops the colors but keeps bold, so strip every code
+    out = re.sub(r"\x1b\[[0-9;]*m", "", r.output)
     steps = [
         out.index(t)
         for t in ("How it works", "Step 1 · Anchor", "Step 2 · Hunt", "Step 3 · Inspect", "Setup and health")

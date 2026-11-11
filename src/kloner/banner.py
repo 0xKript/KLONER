@@ -205,13 +205,19 @@ def plain(version: str) -> str:
     return "".join(((" " * INDENT + "".join(c.text for c in row)) if row else "") + "\n" for row in layout(version))
 
 
+# rich caches a style's escape codes on the style object, for the color system it was first drawn with, and shares
+# equal styles between consoles. The screens use some of the banner's colors (D-069), so a screen drawn first under
+# another color system could hand the banner its codes. This mark keeps the banner's styles its own; it prints nothing.
+_OWN = {"kloner": "banner"}
+
+
 def _style(cell: Cell, mode: Mode, blocks_as_background: bool) -> Style | None:
     if cell.rgb is None or mode == "none":
         return None
     color = Color.from_rgb(*cell.rgb) if mode == "truecolor" else Color.from_ansi(cell.c256 or 0)
     if cell.block and blocks_as_background:
-        return Style(bgcolor=color)
-    return Style(color=color, bold=cell.bold or None)
+        return Style(bgcolor=color, meta=_OWN)
+    return Style(color=color, bold=cell.bold or None, meta=_OWN)
 
 
 def rich_lines(version: str, mode: Mode, *, blocks_as_background: bool = False) -> list[Text]:
